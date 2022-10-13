@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youliao/routers/main_page.dart';
+import 'package:youliao/main_page.dart';
 import 'package:youliao/routers/match/page/match_index_page.dart';
 import 'package:youliao/routers/routers.dart';
 import 'package:youliao/theme/theme_provider.dart';
