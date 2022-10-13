@@ -11,10 +11,8 @@ class MatchIndexPage extends StatefulWidget {
 class _MatchIndexPageState extends State<MatchIndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("比分"),
-      ),
+    return const Center(
+      child: Text("比分"),
     );
   }
 }

@@ -11,10 +11,8 @@ class PredictIndexPage extends StatefulWidget {
 class _PredictIndexPageState extends State<PredictIndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("预测"),
-      ),
+    return const Center(
+      child: Text("预测"),
     );
   }
 }

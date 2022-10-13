@@ -8,7 +8,7 @@ import 'home/home_router.dart';
 import 'router_provider.dart';
 
 class Routes {
-  static const List<IRouterProvider> _routerList = [];
+  static final List<IRouterProvider> _routerList = [];
   static final FluroRouter router = FluroRouter();
 
   static void initRoutes() {

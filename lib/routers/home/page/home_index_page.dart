@@ -11,10 +11,8 @@ class HomeIndexPage extends StatefulWidget {
 class _HomeIndexPageState extends State<HomeIndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("首页"),
-      ),
+    return const Center(
+      child: Text("首页"),
     );
   }
 }

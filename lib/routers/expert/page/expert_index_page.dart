@@ -11,10 +11,8 @@ class ExpertIndexPage extends StatefulWidget {
 class _ExpertIndexPageState extends State<ExpertIndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("专家"),
-      ),
+    return const Center(
+      child: Text("专家"),
     );
   }
 }

@@ -11,10 +11,8 @@ class MyIndexPage extends StatefulWidget {
 class _MyIndexPageState extends State<MyIndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("我的"),
-      ),
+    return const Center(
+      child: Text("我的"),
     );
   }
 }
