@@ -8,9 +8,15 @@ class HomeIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _HomeIndexPageState();
 }
 
-class _HomeIndexPageState extends State<HomeIndexPage> {
+class _HomeIndexPageState extends State<HomeIndexPage>
+    with AutomaticKeepAliveClientMixin {
+
+  @override
+  bool get wantKeepAlive => true; // 是否需要缓存
+
   @override
   Widget build(BuildContext context) {
+    print("build - HomeIndexPage");
     return const Center(
       child: Text("首页"),
     );

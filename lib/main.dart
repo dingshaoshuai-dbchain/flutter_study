@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:youliao/routers/main_page.dart';
 import 'package:youliao/routers/match/page/match_index_page.dart';
 import 'package:youliao/routers/routers.dart';
+import 'package:youliao/theme/theme_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "有料APP",
+      theme: ThemeProvider().getTheme(),
       home: MainPage(),
     );
   }
