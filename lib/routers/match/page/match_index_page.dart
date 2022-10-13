@@ -17,6 +17,7 @@ class _MatchIndexPageState extends State<MatchIndexPage>
   @override
   Widget build(BuildContext context) {
     print("build - MatchIndexPage");
+    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("比分"),
     );

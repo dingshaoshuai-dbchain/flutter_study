@@ -17,6 +17,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
   @override
   Widget build(BuildContext context) {
     print("build - ExpertIndexPage");
+    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("专家"),
     );

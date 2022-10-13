@@ -17,6 +17,7 @@ class _MyIndexPageState extends State<MyIndexPage>
   @override
   Widget build(BuildContext context) {
     print("build - MyIndexPage");
+    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("我的"),
     );
