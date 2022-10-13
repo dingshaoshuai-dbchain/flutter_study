@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:youliao/main_provider.dart';
@@ -32,35 +32,35 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       normalPath: 'main/ic_tab_home_normal',
       selectedPath: 'main/ic_tab_home_selected',
     ));
-    _pages.add(const HomeIndexPage());
+    _pages.add(const KeepAliveWrapper(child: HomeIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "专家",
       normalPath: 'main/ic_tab_expert_normal',
       selectedPath: 'main/ic_tab_expert_selected',
     ));
-    _pages.add(const ExpertIndexPage());
+    _pages.add(const KeepAliveWrapper(child: ExpertIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "预测",
       normalPath: 'main/ic_tab_predict_normal',
       selectedPath: 'main/ic_tab_predict_selected',
     ));
-    _pages.add(const PredictIndexPage());
+    _pages.add(const KeepAliveWrapper(child: PredictIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "比分",
       normalPath: 'main/ic_tab_match_normal',
       selectedPath: 'main/ic_tab_match_selected',
     ));
-    _pages.add(const MatchIndexPage());
+    _pages.add(const KeepAliveWrapper(child: MatchIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "我的",
       normalPath: 'main/ic_tab_my_normal',
       selectedPath: 'main/ic_tab_my_selected',
     ));
-    _pages.add(const MyIndexPage());
+    _pages.add(const KeepAliveWrapper(child: MyIndexPage()));
   }
 
   @override
@@ -79,16 +79,16 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                 builder: (_, provider, __) {
                   return BottomNavigationBar(
                     backgroundColor: Colors.white,
-                    items: _items,
-                    currentIndex: provider.value,
-                    // 不设置这个显示不出来文字
-                    type: BottomNavigationBarType.fixed,
-                    selectedFontSize: 10,
-                    unselectedFontSize: 10,
-                    selectedItemColor: AppColors.main,
-                    unselectedItemColor: AppColors.color_666666,
-                    onTap: (index) => _pageController.jumpToPage(index),
-                  );
+                items: _items,
+                currentIndex: provider.value,
+                // flex:文字始终显示 shifting:选中的显示文字
+                type: BottomNavigationBarType.fixed,
+                selectedFontSize: 10,
+                unselectedFontSize: 10,
+                selectedItemColor: AppColors.main,
+                unselectedItemColor: AppColors.color_666666,
+                onTap: (index) => _pageController.jumpToPage(index),
+              );
                 },
               ),
               body: _getPageView(_pageController, provider, _pages),
@@ -110,7 +110,7 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       List<Widget> children) {
     return PageView(
       // 禁止滑动
-      physics: const NeverScrollableScrollPhysics(),
+      // physics: const NeverScrollableScrollPhysics(),
       controller: controller,
       onPageChanged: (int index) => provider.value = index,
       children: children,
