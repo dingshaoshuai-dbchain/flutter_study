@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
+  flukit:
+    dependency: "direct main"
+    description:
+      name: flukit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   fluro:
     dependency: "direct main"
     description:

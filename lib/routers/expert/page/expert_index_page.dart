@@ -8,16 +8,11 @@ class ExpertIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _ExpertIndexPageState();
 }
 
-class _ExpertIndexPageState extends State<ExpertIndexPage>
-    with AutomaticKeepAliveClientMixin {
-
-  @override
-  bool get wantKeepAlive => true;// 是否需要缓存
+class _ExpertIndexPageState extends State<ExpertIndexPage> {
 
   @override
   Widget build(BuildContext context) {
     print("build - ExpertIndexPage");
-    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("专家"),
     );

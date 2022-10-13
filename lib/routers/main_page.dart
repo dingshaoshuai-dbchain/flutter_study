@@ -1,3 +1,4 @@
+import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/routers/expert/page/expert_index_page.dart';
@@ -15,11 +16,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var pages = [
-    const HomeIndexPage(),
-    const ExpertIndexPage(),
-    const PredictIndexPage(),
-    const MatchIndexPage(),
-    const MyIndexPage(),
+    const KeepAliveWrapper(child: HomeIndexPage()),
+    const KeepAliveWrapper(child: ExpertIndexPage()),
+    const KeepAliveWrapper(child: PredictIndexPage()),
+    const KeepAliveWrapper(child: MatchIndexPage()),
+    const KeepAliveWrapper(child: MyIndexPage()),
   ];
 
   @override

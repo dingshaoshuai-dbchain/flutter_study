@@ -8,16 +8,10 @@ class MyIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _MyIndexPageState();
 }
 
-class _MyIndexPageState extends State<MyIndexPage>
-    with AutomaticKeepAliveClientMixin {
+class _MyIndexPageState extends State<MyIndexPage>{
 
-  @override
-  bool get wantKeepAlive => true;// 是否需要缓存
-
-  @override
   Widget build(BuildContext context) {
     print("build - MyIndexPage");
-    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("我的"),
     );

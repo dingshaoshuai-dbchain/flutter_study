@@ -25,9 +25,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.2
   # 路由框架 https://github.com/theyakka/fluro
   fluro: ^2.0.3
-  cupertino_icons: ^1.0.2
+
+  # UI 组件库 ====================================================================
+  # flukit https://github.com/flutterchina/flukit
+  flukit:
+
 
 dev_dependencies:
   flutter_test:

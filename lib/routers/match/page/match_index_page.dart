@@ -8,16 +8,11 @@ class MatchIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _MatchIndexPageState();
 }
 
-class _MatchIndexPageState extends State<MatchIndexPage>
-    with AutomaticKeepAliveClientMixin {
-
-  @override
-  bool get wantKeepAlive => true; // 是否需要缓存
+class _MatchIndexPageState extends State<MatchIndexPage>{
 
   @override
   Widget build(BuildContext context) {
     print("build - MatchIndexPage");
-    super.build(context);// 缓存必须调用
     return const Center(
       child: Text("比分"),
     );
