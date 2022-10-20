@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "有料APP",
       theme: ThemeProvider().getTheme(),
-      home: MainPage(),
+      home: const MainPage(),
     );
   }
 }

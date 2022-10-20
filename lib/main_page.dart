@@ -89,17 +89,18 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                 unselectedItemColor: AppColors.color_666666,
                 onTap: (index) => _pageController.jumpToPage(index),
               );
-                },
-              ),
-              body: _getPageView(_pageController, provider, _pages),
-            )));
+            },
+          ),
+          body: _getPageView(_pageController, provider, _pages),
+        )));
   }
 
-  BottomNavigationBarItem _getBottomNavigationBarItem({required String label,
-    required String normalPath,
-    required String selectedPath,
-    double normalSize = 20.0,
-    double selectedSize = 20.0}) {
+  BottomNavigationBarItem _getBottomNavigationBarItem(
+      {required String label,
+      required String normalPath,
+      required String selectedPath,
+      double normalSize = 20.0,
+      double selectedSize = 20.0}) {
     return BottomNavigationBarItem(
         icon: LoadAssetImage(normalPath, width: normalSize),
         activeIcon: LoadAssetImage(selectedPath, width: selectedSize),
