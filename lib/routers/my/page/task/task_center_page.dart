@@ -8,6 +8,7 @@ import 'package:youliao/widgets/image_back.dart';
 import 'package:youliao/widgets/status_bar.dart';
 
 import '../../../../widgets/basis/round_text.dart';
+import '../../../../widgets/gaps.dart';
 
 class TaskCenterPage extends StatefulWidget {
   const TaskCenterPage({super.key});
@@ -29,15 +30,31 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
               const StatusBar(),
               const ImageBack(isBlack: false),
               _buildUserInfo(),
-              _buildContent(
-                title: '连续签到送好礼',
-                marginTop: 30,
-                child: _buildSign(context),
-              ),
-              _buildContent(
-                title: '做任务赚金币',
-                marginTop: 12,
-                child: _buildTask(context),
+              Gaps.vGapValue(15),
+              Expanded(
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView(
+                    // 滑动到边界效果
+                    // Android 微光效果：ClampingScrollPhysics
+                    // iOS 回弹效果：BouncingScrollPhysics
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      Gaps.vGapValue(18),
+                      _buildContent(
+                        title: '连续签到送好礼',
+                        child: _buildSign(context),
+                      ),
+                      Gaps.vGapValue(12),
+                      _buildContent(
+                        title: '做任务赚金币',
+                        child: _buildTask(context),
+                      ),
+                      Gaps.vGap32
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -146,13 +163,15 @@ Widget _buildUserInfo() {
 Widget _buildSign(BuildContext context) {
   return RoundContainer(
     alignment: Alignment.center,
-    height: 180,
     marginTop: 15,
     child: MediaQuery.removePadding(
         context: context,
         removeTop: true,
         child: GridView.builder(
           itemCount: 7,
+          shrinkWrap: true,
+          // 加上这玩意，就不会出现内部的微光效果（iOS回弹：BouncingScrollPhysics）
+          physics: const ClampingScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             mainAxisSpacing: 13,
@@ -169,13 +188,15 @@ Widget _buildSign(BuildContext context) {
 Widget _buildTask(BuildContext context) {
   return RoundContainer(
     alignment: Alignment.center,
-    height: 180,
     marginTop: 15,
     child: MediaQuery.removePadding(
       context: context,
       removeTop: true,
       child: ListView.builder(
         itemCount: 10,
+        shrinkWrap: true,
+        // 加上这玩意，就不会出现内部的微光效果
+        physics: const ClampingScrollPhysics(),
         itemBuilder: (context, index) {
           return TaskItemWidget();
         },
@@ -186,13 +207,11 @@ Widget _buildTask(BuildContext context) {
 
 Widget _buildContent({
   required String title,
-  required double marginTop,
   required Widget child,
 }) {
   return RoundContainer(
     marginLeft: 16,
     marginRight: 16,
-    marginTop: marginTop,
     backgroundColor: Colors.white,
     radius: 12,
     paddingLeft: 15,
