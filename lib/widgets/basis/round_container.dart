@@ -7,6 +7,7 @@ class RoundContainer extends StatelessWidget {
       this.width,
       this.height,
       this.backgroundColor,
+      this.alignment,
       this.padding,
       this.paddingLeft,
       this.paddingTop,
@@ -33,6 +34,7 @@ class RoundContainer extends StatelessWidget {
   final double? height;
 
   final Color? backgroundColor;
+  final AlignmentGeometry? alignment;
 
   final double? padding;
   final double? paddingTop;
@@ -65,6 +67,7 @@ class RoundContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      alignment: alignment,
       padding: EdgeInsets.only(
         left: paddingLeft ?? padding ?? 0.0,
         right: paddingRight ?? padding ?? 0.0,

@@ -11,6 +11,7 @@ class RoundText extends StatelessWidget {
     this.alignment = Alignment.center,
     this.maxLines,
     this.overflow,
+    this.fontWeight,
     this.width,
     this.height,
     this.backgroundColor,
@@ -42,6 +43,7 @@ class RoundText extends StatelessWidget {
   final Alignment alignment;
   final int? maxLines;
   final TextOverflow? overflow;
+  final FontWeight? fontWeight;
 
   final double? width;
   final double? height;
@@ -77,6 +79,7 @@ class RoundText extends StatelessWidget {
     return RoundContainer(
       width: width,
       height: height,
+      alignment: alignment,
       backgroundColor: backgroundColor,
       padding: padding,
       paddingTop: paddingTop,
@@ -103,13 +106,14 @@ class RoundText extends StatelessWidget {
   }
 
   Widget? _buildChild() {
-    return Align(
-      alignment: alignment,
-      child: Text(
-        text,
-        maxLines: maxLines,
-        overflow: overflow,
-        style: TextStyle(color: textColor, fontSize: fontSize),
+    return Text(
+      text,
+      maxLines: maxLines,
+      overflow: overflow,
+      style: TextStyle(
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
       ),
     );
   }
