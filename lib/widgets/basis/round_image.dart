@@ -1,16 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../util/image_util.dart';
 import 'round_container.dart';
 
-class RoundText extends StatelessWidget {
-  const RoundText({
+class RoundImage extends StatelessWidget {
+  const RoundImage({
     super.key,
-    required this.text,
-    required this.textColor,
-    required this.fontSize,
-    this.alignment = Alignment.center,
-    this.maxLines,
-    this.overflow,
+    required this.url,
+    this.fit = BoxFit.contain,
+    this.placeholder = 'none',
+    this.format = ImageFormat.png,
     this.width,
     this.height,
     this.backgroundColor,
@@ -36,12 +36,10 @@ class RoundText extends StatelessWidget {
     this.borderSideRight,
   });
 
-  final String text;
-  final Color textColor;
-  final double fontSize;
-  final Alignment alignment;
-  final int? maxLines;
-  final TextOverflow? overflow;
+  final String url;
+  final BoxFit fit;
+  final String placeholder;
+  final ImageFormat format;
 
   final double? width;
   final double? height;
@@ -98,15 +96,28 @@ class RoundText extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
-      child: Align(
-        alignment: alignment,
-        child: Text(
-          text,
-          maxLines: maxLines,
-          overflow: overflow,
-          style: TextStyle(color: textColor, fontSize: fontSize),
-        ),
-      ),
+      child: _buildChild(),
+    );
+  }
+
+  Widget? _buildChild() {
+    if (url.startsWith('http')) {
+      final Widget holder = _buildAssetImage(placeholder, fit, format);
+      return CachedNetworkImage(
+        imageUrl: url,
+        placeholder: (_, __) => holder,
+        errorWidget: (_, __, dynamic error) => holder,
+        fit: fit,
+      );
+    } else {
+      return _buildAssetImage(url, fit, format);
+    }
+  }
+
+  Widget _buildAssetImage(String path, BoxFit fit, ImageFormat format) {
+    return Image.asset(
+      ImageUtils.getImgPath(path, format: format),
+      fit: fit,
     );
   }
 }

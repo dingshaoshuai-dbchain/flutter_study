@@ -6,6 +6,7 @@ import 'package:youliao/theme/theme_provider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
+    // 状态栏透明
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
   runApp(MyApp());

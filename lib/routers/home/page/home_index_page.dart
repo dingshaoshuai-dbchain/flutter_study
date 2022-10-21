@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/widgets/round_container.dart';
-import 'package:youliao/widgets/round_text.dart';
-import 'package:youliao/widgets/load_image.dart';
+import 'package:youliao/widgets/basis/round_container.dart';
+import 'package:youliao/widgets/basis/round_image.dart';
+
+import '../../../widgets/basis/round_text.dart';
 
 class HomeIndexPage extends StatefulWidget {
   const HomeIndexPage({super.key});
@@ -23,8 +24,8 @@ class _HomeIndexPageState extends State<HomeIndexPage> {
               width: 100,
               height: 100,
               backgroundColor: Colors.yellow,
-              child: LoadAssetImage(
-                'main/ic_tab_expert_selected',
+              child: RoundImage(
+                url:'main/ic_tab_expert_selected',
                 fit: BoxFit.contain,
               ),
             ),

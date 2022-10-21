@@ -2,14 +2,15 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:youliao/main_provider.dart';
-import 'package:youliao/res/colors.dart';
 import 'package:youliao/routers/expert/page/expert_index_page.dart';
 import 'package:youliao/routers/home/page/home_index_page.dart';
 import 'package:youliao/routers/match/page/match_index_page.dart';
 import 'package:youliao/routers/my/page/my_index_page.dart';
 import 'package:youliao/routers/predict/page/predict_index_page.dart';
+import 'package:youliao/widgets/basis/round_image.dart';
 import 'package:youliao/widgets/double_tap_back_exit_app.dart';
-import 'package:youliao/widgets/load_image.dart';
+
+import 'app_res/app_colors.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -83,8 +84,6 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                 currentIndex: provider.value,
                 // flex:文字始终显示 shifting:选中的显示文字
                 type: BottomNavigationBarType.fixed,
-                selectedFontSize: 10,
-                unselectedFontSize: 10,
                 selectedItemColor: AppColors.main,
                 unselectedItemColor: AppColors.color_666666,
                 onTap: (index) => _pageController.jumpToPage(index),
@@ -102,8 +101,8 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       double normalSize = 20.0,
       double selectedSize = 20.0}) {
     return BottomNavigationBarItem(
-        icon: LoadAssetImage(normalPath, width: normalSize),
-        activeIcon: LoadAssetImage(selectedPath, width: selectedSize),
+        icon: RoundImage(url: normalPath, width: normalSize),
+        activeIcon: RoundImage(url: selectedPath, width: selectedSize),
         label: label);
   }
 
