@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
-class RoundContainer extends StatefulWidget {
+class RoundContainer extends StatelessWidget {
   const RoundContainer(
       {super.key,
       this.width,
@@ -61,48 +61,37 @@ class RoundContainer extends StatefulWidget {
   final Widget? child;
 
   @override
-  State<StatefulWidget> createState() => _RoundContainerState();
-}
-
-class _RoundContainerState extends State<RoundContainer> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.width,
-      height: widget.height,
+      width: width,
+      height: height,
       padding: EdgeInsets.only(
-        left: widget.paddingLeft ?? widget.padding ?? 0.0,
-        right: widget.paddingRight ?? widget.padding ?? 0.0,
-        top: widget.paddingTop ?? widget.padding ?? 0.0,
-        bottom: widget.paddingBottom ?? widget.padding ?? 0.0,
+        left: paddingLeft ?? padding ?? 0.0,
+        right: paddingRight ?? padding ?? 0.0,
+        top: paddingTop ?? padding ?? 0.0,
+        bottom: paddingBottom ?? padding ?? 0.0,
       ),
       margin: EdgeInsets.only(
-        left: widget.marginLeft ?? widget.margin ?? 0.0,
-        right: widget.marginRight ?? widget.margin ?? 0.0,
-        top: widget.marginTop ?? widget.margin ?? 0.0,
-        bottom: widget.marginBottom ?? widget.margin ?? 0.0,
+        left: marginLeft ?? margin ?? 0.0,
+        right: marginRight ?? margin ?? 0.0,
+        top: marginTop ?? margin ?? 0.0,
+        bottom: marginBottom ?? margin ?? 0.0,
       ),
       decoration: BoxDecoration(
-          color: widget.backgroundColor,
+          color: backgroundColor,
           borderRadius: BorderRadius.only(
-            topLeft:
-                Radius.circular(widget.radiusTopLeft ?? widget.radius ?? 0.0),
-            topRight:
-                Radius.circular(widget.radiusTopRight ?? widget.radius ?? 0.0),
-            bottomLeft: Radius.circular(
-                widget.radiusBottomLeft ?? widget.radius ?? 0.0),
-            bottomRight: Radius.circular(
-                widget.radiusBottomRight ?? widget.radius ?? 0.0),
+            topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
+            topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
+            bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
+            bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
           ),
           border: Border(
-            top: widget.borderSideTop ?? widget.borderSide ?? BorderSide.none,
-            bottom:
-                widget.borderSideBottom ?? widget.borderSide ?? BorderSide.none,
-            left: widget.borderSideLeft ?? widget.borderSide ?? BorderSide.none,
-            right:
-                widget.borderSideRight ?? widget.borderSide ?? BorderSide.none,
+            top: borderSideTop ?? borderSide ?? BorderSide.none,
+            bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
+            left: borderSideLeft ?? borderSide ?? BorderSide.none,
+            right: borderSideRight ?? borderSide ?? BorderSide.none,
           )),
-      child: widget.child,
+      child: child,
     );
   }
 }

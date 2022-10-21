@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'RoundContainer.dart';
 
-class RoundText extends StatefulWidget {
+class RoundText extends StatelessWidget {
   const RoundText({
     super.key,
     required this.text,
@@ -73,43 +73,38 @@ class RoundText extends StatefulWidget {
   final BorderSide? borderSideRight;
 
   @override
-  State<StatefulWidget> createState() => _RoundTextState();
-}
-
-class _RoundTextState extends State<RoundText> {
-  @override
   Widget build(BuildContext context) {
     return RoundContainer(
-      width: widget.width,
-      height: widget.height,
-      backgroundColor: widget.backgroundColor,
-      padding: widget.padding,
-      paddingTop: widget.paddingTop,
-      paddingBottom: widget.paddingBottom,
-      paddingLeft: widget.paddingLeft,
-      paddingRight: widget.paddingRight,
-      margin: widget.margin,
-      marginTop: widget.marginTop,
-      marginBottom: widget.marginBottom,
-      marginLeft: widget.marginLeft,
-      marginRight: widget.marginRight,
-      radius: widget.radius,
-      radiusTopLeft: widget.radiusTopLeft,
-      radiusTopRight: widget.radiusTopRight,
-      radiusBottomLeft: widget.radiusBottomLeft,
-      radiusBottomRight: widget.radiusBottomRight,
-      borderSide: widget.borderSide,
-      borderSideTop: widget.borderSideTop,
-      borderSideBottom: widget.borderSideBottom,
-      borderSideLeft: widget.borderSideLeft,
-      borderSideRight: widget.borderSideRight,
+      width: width,
+      height: height,
+      backgroundColor: backgroundColor,
+      padding: padding,
+      paddingTop: paddingTop,
+      paddingBottom: paddingBottom,
+      paddingLeft: paddingLeft,
+      paddingRight: paddingRight,
+      margin: margin,
+      marginTop: marginTop,
+      marginBottom: marginBottom,
+      marginLeft: marginLeft,
+      marginRight: marginRight,
+      radius: radius,
+      radiusTopLeft: radiusTopLeft,
+      radiusTopRight: radiusTopRight,
+      radiusBottomLeft: radiusBottomLeft,
+      radiusBottomRight: radiusBottomRight,
+      borderSide: borderSide,
+      borderSideTop: borderSideTop,
+      borderSideBottom: borderSideBottom,
+      borderSideLeft: borderSideLeft,
+      borderSideRight: borderSideRight,
       child: Align(
-        alignment: widget.alignment,
+        alignment: alignment,
         child: Text(
-          widget.text,
-          maxLines: widget.maxLines,
-          overflow: widget.overflow,
-          style: TextStyle(color: widget.textColor, fontSize: widget.fontSize),
+          text,
+          maxLines: maxLines,
+          overflow: overflow,
+          style: TextStyle(color: textColor, fontSize: fontSize),
         ),
       ),
     );
