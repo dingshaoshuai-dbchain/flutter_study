@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:youliao/main_page.dart';
-import 'package:youliao/routers/match/page/match_index_page.dart';
+import 'package:flutter/services.dart';
+import 'package:youliao/routers/my/page/task/task_center_page.dart';
 import 'package:youliao/routers/routers.dart';
 import 'package:youliao/theme/theme_provider.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+  );
   runApp(MyApp());
 }
 
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeProvider().getTheme(),
-      home: const MainPage(),
+      home: const TaskCenterPage(),
     );
   }
 }

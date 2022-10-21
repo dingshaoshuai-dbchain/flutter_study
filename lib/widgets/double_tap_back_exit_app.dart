@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../util/toast_utils.dart';
+import '../util/toast_util.dart';
 
 /// 双击返回退出
 class DoubleTapBackExitApp extends StatefulWidget {

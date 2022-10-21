@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/widgets/RoundContainer.dart';
-import 'package:youliao/widgets/RoundText.dart';
+import 'package:youliao/widgets/round_container.dart';
+import 'package:youliao/widgets/round_text.dart';
 import 'package:youliao/widgets/load_image.dart';
 
 class HomeIndexPage extends StatefulWidget {
@@ -34,6 +34,8 @@ class _HomeIndexPageState extends State<HomeIndexPage> {
               fontSize: 20,
               width: 200,
               height: 100,
+              marginLeft: 10,
+              radius: 20,
               backgroundColor: Colors.red,
             )
           ],
