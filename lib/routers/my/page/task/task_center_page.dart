@@ -7,6 +7,7 @@ import 'package:youliao/widgets/basis/round_image.dart';
 import 'package:youliao/widgets/image_back.dart';
 import 'package:youliao/widgets/status_bar.dart';
 
+import '../../../../app_widgets/sign/sign_item7.dart';
 import '../../../../widgets/basis/round_text.dart';
 import '../../../../widgets/gaps.dart';
 
@@ -179,7 +180,8 @@ Widget _buildSign(BuildContext context) {
             mainAxisExtent: 80,
           ),
           itemBuilder: (context, index) {
-            return SignItemWidget();
+            // return SignItemWidget();
+            return index < 6 ? SignItemWidget() : SignItem7Widget();
           },
         )),
   );
