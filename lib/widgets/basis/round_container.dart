@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
 class RoundContainer extends StatelessWidget {
-  const RoundContainer(
+  RoundContainer(
       {super.key,
       this.width,
       this.height,
@@ -28,6 +28,7 @@ class RoundContainer extends StatelessWidget {
       this.borderSideBottom,
       this.borderSideLeft,
       this.borderSideRight,
+      this.onTap,
       this.child});
 
   final double? width;
@@ -60,41 +61,46 @@ class RoundContainer extends StatelessWidget {
   final BorderSide? borderSideLeft;
   final BorderSide? borderSideRight;
 
+  final GestureTapCallback? onTap;
+
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      alignment: alignment,
-      padding: EdgeInsets.only(
-        left: paddingLeft ?? padding ?? 0.0,
-        right: paddingRight ?? padding ?? 0.0,
-        top: paddingTop ?? padding ?? 0.0,
-        bottom: paddingBottom ?? padding ?? 0.0,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        alignment: alignment,
+        padding: EdgeInsets.only(
+          left: paddingLeft ?? padding ?? 0.0,
+          right: paddingRight ?? padding ?? 0.0,
+          top: paddingTop ?? padding ?? 0.0,
+          bottom: paddingBottom ?? padding ?? 0.0,
+        ),
+        margin: EdgeInsets.only(
+          left: marginLeft ?? margin ?? 0.0,
+          right: marginRight ?? margin ?? 0.0,
+          top: marginTop ?? margin ?? 0.0,
+          bottom: marginBottom ?? margin ?? 0.0,
+        ),
+        decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
+              topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
+              bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
+              bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
+            ),
+            border: Border(
+              top: borderSideTop ?? borderSide ?? BorderSide.none,
+              bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
+              left: borderSideLeft ?? borderSide ?? BorderSide.none,
+              right: borderSideRight ?? borderSide ?? BorderSide.none,
+            )),
+        child: child,
       ),
-      margin: EdgeInsets.only(
-        left: marginLeft ?? margin ?? 0.0,
-        right: marginRight ?? margin ?? 0.0,
-        top: marginTop ?? margin ?? 0.0,
-        bottom: marginBottom ?? margin ?? 0.0,
-      ),
-      decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
-            topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
-            bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
-            bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
-          ),
-          border: Border(
-            top: borderSideTop ?? borderSide ?? BorderSide.none,
-            bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
-            left: borderSideLeft ?? borderSide ?? BorderSide.none,
-            right: borderSideRight ?? borderSide ?? BorderSide.none,
-          )),
-      child: child,
     );
   }
 }

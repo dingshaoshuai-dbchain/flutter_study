@@ -25,7 +25,7 @@ class _SignItemWidgetState extends State<SignItemWidget> {
       backgroundColor: defaultBackgroundColor,
       radius: 6,
       child: Stack(
-        children: const [
+        children: [
           RoundText(
             text: '第1天',
             textColor: AppColors.color_181818,

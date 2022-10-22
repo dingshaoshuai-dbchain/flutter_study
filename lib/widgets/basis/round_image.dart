@@ -5,7 +5,7 @@ import '../../util/image_util.dart';
 import 'round_container.dart';
 
 class RoundImage extends StatelessWidget {
-  const RoundImage({
+  RoundImage({
     super.key,
     required this.url,
     this.fit = BoxFit.contain,
@@ -34,6 +34,7 @@ class RoundImage extends StatelessWidget {
     this.borderSideBottom,
     this.borderSideLeft,
     this.borderSideRight,
+    this.onTap,
   });
 
   final String url;
@@ -70,6 +71,8 @@ class RoundImage extends StatelessWidget {
   final BorderSide? borderSideLeft;
   final BorderSide? borderSideRight;
 
+  final GestureTapCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     return RoundContainer(
@@ -96,6 +99,7 @@ class RoundImage extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
+      onTap: onTap,
       child: _buildChild(),
     );
   }

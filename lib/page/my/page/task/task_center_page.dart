@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets_app/sign/sign_item.dart';
 import 'package:youliao/widgets_app/sign/sign_item7.dart';
 import 'package:youliao/widgets_app/sign/task_item.dart';
@@ -24,7 +25,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
     return Scaffold(
       body: Stack(
         children: [
-          const RoundImage(url: 'my/task/bg_task_center'),
+          RoundImage(url: 'my/task/bg_task_center'),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -74,11 +75,12 @@ Widget _buildUserInfo() {
     marginTop: 25,
     child: Row(
       children: [
-        const RoundImage(
+        RoundImage(
           url: 'app/ic_gold',
           width: 50,
           height: 50,
           fit: BoxFit.cover,
+          onTap: () => Toast.show('点击了头像'),
         ),
         Expanded(
           flex: 1,
@@ -87,7 +89,7 @@ Widget _buildUserInfo() {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text.rich(
                   TextSpan(
                     text: '已连续签到',
@@ -133,7 +135,7 @@ Widget _buildUserInfo() {
           borderSide: const BorderSide(color: Color(0xFF7E8398), width: 1),
           radius: 12,
           child: Row(
-            children: const [
+            children: [
               RoundImage(
                 url: 'app/ic_gold',
                 width: 24,

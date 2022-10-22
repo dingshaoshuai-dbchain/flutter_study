@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'round_container.dart';
 
 class RoundText extends StatelessWidget {
-  const RoundText({
+  RoundText({
     super.key,
     required this.text,
     required this.textColor,
@@ -35,6 +35,7 @@ class RoundText extends StatelessWidget {
     this.borderSideBottom,
     this.borderSideLeft,
     this.borderSideRight,
+    this.onTap,
   });
 
   final String text;
@@ -74,6 +75,8 @@ class RoundText extends StatelessWidget {
   final BorderSide? borderSideLeft;
   final BorderSide? borderSideRight;
 
+  final GestureTapCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     return RoundContainer(
@@ -101,6 +104,7 @@ class RoundText extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
+      onTap: onTap,
       child: _buildChild(),
     );
   }
