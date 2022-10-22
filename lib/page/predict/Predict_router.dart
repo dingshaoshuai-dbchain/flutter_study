@@ -1,6 +1,6 @@
 import 'package:fluro/fluro.dart';
-import 'package:youliao/routers/router_provider.dart';
 
+import '../router_provider.dart';
 import 'page/predict_index_page.dart';
 
 class PredictRouter implements IRouterProvider {

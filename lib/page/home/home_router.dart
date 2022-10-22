@@ -1,7 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:fluro/src/fluro_router.dart';
-import 'package:youliao/routers/home/page/home_index_page.dart';
-import 'package:youliao/routers/router_provider.dart';
+
+import '../router_provider.dart';
+import 'page/home_index_page.dart';
 
 class HomeRouter implements IRouterProvider {
   static const String _pageRoot = "/home/page";

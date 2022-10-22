@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/app_res/app_colors.dart';
+import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/round_container.dart';
 import 'package:youliao/widgets/basis/round_image.dart';
 import 'package:youliao/widgets/basis/round_text.dart';

@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/app_res/app_colors.dart';
+import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/round_container.dart';
 import 'package:youliao/widgets/basis/round_image.dart';
 import 'package:youliao/widgets/basis/round_text.dart';
 
-class SignItemWidget extends StatefulWidget {
-  const SignItemWidget({super.key});
+class SignItem7Widget extends StatefulWidget {
+  const SignItem7Widget({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SignItemWidgetState();
+  State<StatefulWidget> createState() => _SignItem7WidgetState();
 }
 
-class _SignItemWidgetState extends State<SignItemWidget> {
+class _SignItem7WidgetState extends State<SignItem7Widget> {
   Color defaultBackgroundColor = AppColors.colorF5F5F5;
   Color lightBackgroundColor = AppColors.main;
 
@@ -27,26 +27,28 @@ class _SignItemWidgetState extends State<SignItemWidget> {
       child: Stack(
         children: const [
           RoundText(
-            text: '第1天',
+            text: '第7天',
             textColor: AppColors.color_181818,
             fontSize: 12,
+            marginLeft: 20,
             marginTop: 5,
-            alignment: Alignment.topCenter,
+            alignment: Alignment.topLeft,
             fontWeight: FontWeight.w600,
           ),
           RoundText(
-            text: '10金币',
+            text: '神秘大礼包',
             textColor: AppColors.color_999999,
             fontSize: 10,
-            marginBottom: 8,
-            alignment: Alignment.bottomCenter,
+            marginLeft: 20,
+            marginTop: 26,
+            alignment: Alignment.topLeft,
           ),
           Align(
-            alignment: Alignment.center,
+            alignment: Alignment.bottomRight,
             child: RoundImage(
               url: 'app/ic_gold',
-              width: 24,
-              height: 24,
+              width: 62,
+              height: 35,
             ),
           ),
         ],

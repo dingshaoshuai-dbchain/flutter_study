@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
-import 'package:fluro/src/fluro_router.dart';
-import 'package:youliao/routers/expert/page/expert_index_page.dart';
-import 'package:youliao/routers/router_provider.dart';
+
+import '../router_provider.dart';
+import 'page/expert_index_page.dart';
 
 class ExpertRouter implements IRouterProvider {
   static const String _pageRoot = "/expert/page";

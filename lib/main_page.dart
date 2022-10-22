@@ -1,16 +1,17 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:youliao/main_provider.dart';
-import 'package:youliao/routers/expert/page/expert_index_page.dart';
-import 'package:youliao/routers/home/page/home_index_page.dart';
-import 'package:youliao/routers/match/page/match_index_page.dart';
-import 'package:youliao/routers/my/page/my_index_page.dart';
-import 'package:youliao/routers/predict/page/predict_index_page.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
-import 'package:youliao/widgets/double_tap_back_exit_app.dart';
+import 'package:youliao/page/my/page/task/task_center_page.dart';
 
-import 'app_res/app_colors.dart';
+import 'res_app/app_colors.dart';
+import 'main_provider.dart';
+import 'page/expert/page/expert_index_page.dart';
+import 'page/home/page/home_index_page.dart';
+import 'page/match/page/match_index_page.dart';
+import 'page/my/page/my_index_page.dart';
+import 'page/predict/page/predict_index_page.dart';
+import 'widgets/basis/round_image.dart';
+import 'widgets/double_tap_back_exit_app.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -33,7 +34,7 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       normalPath: 'main/ic_tab_home_normal',
       selectedPath: 'main/ic_tab_home_selected',
     ));
-    _pages.add(const KeepAliveWrapper(child: HomeIndexPage()));
+    _pages.add(const KeepAliveWrapper(child: TaskCenterPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "专家",
@@ -86,6 +87,8 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
                 type: BottomNavigationBarType.fixed,
                 selectedItemColor: AppColors.main,
                 unselectedItemColor: AppColors.color_666666,
+                selectedFontSize: 10,
+                unselectedFontSize: 10,
                 onTap: (index) => _pageController.jumpToPage(index),
               );
             },

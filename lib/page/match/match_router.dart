@@ -1,7 +1,6 @@
 import 'package:fluro/fluro.dart';
-import 'package:fluro/src/fluro_router.dart';
-import 'package:youliao/routers/match/page/match_index_page.dart';
-import 'package:youliao/routers/router_provider.dart';
+import '../router_provider.dart';
+import 'page/match_index_page.dart';
 
 class MatchRouter implements IRouterProvider {
   static const String _pageRoot = "/match/page";

@@ -1,10 +1,10 @@
 import 'package:fluro/fluro.dart';
-import 'package:youliao/routers/expert/expert_router.dart';
-import 'package:youliao/routers/match/match_router.dart';
-import 'package:youliao/routers/my/match_router.dart';
-import 'package:youliao/routers/predict/Predict_router.dart';
 
+import 'expert/expert_router.dart';
 import 'home/home_router.dart';
+import 'match/match_router.dart';
+import 'my/match_router.dart';
+import 'predict/Predict_router.dart';
 import 'router_provider.dart';
 
 class Routes {
