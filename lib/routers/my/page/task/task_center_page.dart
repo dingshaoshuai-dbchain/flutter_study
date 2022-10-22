@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:youliao/app_res/app_colors.dart';
 import 'package:youliao/app_widgets/sign/sign_item.dart';
+import 'package:youliao/app_widgets/sign/sign_item7.dart';
 import 'package:youliao/app_widgets/sign/task_item.dart';
 import 'package:youliao/widgets/basis/round_container.dart';
 import 'package:youliao/widgets/basis/round_image.dart';
 import 'package:youliao/widgets/image_back.dart';
 import 'package:youliao/widgets/status_bar.dart';
 
-import '../../../../app_widgets/sign/sign_item7.dart';
 import '../../../../widgets/basis/round_text.dart';
 import '../../../../widgets/gaps.dart';
 
@@ -163,28 +163,33 @@ Widget _buildUserInfo() {
 
 Widget _buildSign(BuildContext context) {
   return RoundContainer(
-    alignment: Alignment.center,
-    marginTop: 15,
-    child: MediaQuery.removePadding(
-        context: context,
-        removeTop: true,
-        child: GridView.builder(
-          itemCount: 7,
-          shrinkWrap: true,
-          // 加上这玩意，就不会出现内部的微光效果（iOS回弹：BouncingScrollPhysics）
-          physics: const ClampingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            mainAxisSpacing: 13,
-            crossAxisSpacing: 13,
-            mainAxisExtent: 80,
+      alignment: Alignment.center,
+      marginTop: 15,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: SignItemWidget()),
+              Gaps.hGapValue(12),
+              Expanded(child: SignItemWidget()),
+              Gaps.hGapValue(12),
+              Expanded(child: SignItemWidget()),
+              Gaps.hGapValue(12),
+              Expanded(child: SignItemWidget()),
+            ],
           ),
-          itemBuilder: (context, index) {
-            // return SignItemWidget();
-            return index < 6 ? SignItemWidget() : SignItem7Widget();
-          },
-        )),
-  );
+          Gaps.vGapValue(12),
+          Row(
+            children: [
+              Expanded(child: SignItemWidget()),
+              Gaps.hGapValue(12),
+              Expanded(child: SignItemWidget()),
+              Gaps.hGapValue(12),
+              Expanded(flex: 2, child: SignItem7Widget()),
+            ],
+          ),
+        ],
+      ));
 }
 
 Widget _buildTask(BuildContext context) {

@@ -21,29 +21,34 @@ class _SignItemWidgetState extends State<SignItemWidget> {
   @override
   Widget build(BuildContext context) {
     return RoundContainer(
+      height: 80,
       backgroundColor: defaultBackgroundColor,
       radius: 6,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
         children: const [
           RoundText(
             text: '第1天',
             textColor: AppColors.color_181818,
             fontSize: 12,
-            marginBottom: 7,
+            marginTop: 5,
+            alignment: Alignment.topCenter,
             fontWeight: FontWeight.w600,
-          ),
-          RoundImage(
-            url: 'app/ic_gold',
-            width: 24,
-            height: 24,
           ),
           RoundText(
             text: '10金币',
             textColor: AppColors.color_999999,
             fontSize: 10,
-            marginTop: 7,
-          )
+            marginBottom: 8,
+            alignment: Alignment.bottomCenter,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: RoundImage(
+              url: 'app/ic_gold',
+              width: 24,
+              height: 24,
+            ),
+          ),
         ],
       ),
     );
