@@ -11,6 +11,7 @@ class RoundImage extends StatelessWidget {
     this.fit = BoxFit.contain,
     this.placeholder = 'none',
     this.format = ImageFormat.png,
+    this.imageRadius,
     this.width,
     this.height,
     this.backgroundColor,
@@ -41,6 +42,8 @@ class RoundImage extends StatelessWidget {
   final BoxFit fit;
   final String placeholder;
   final ImageFormat format;
+
+  final double? imageRadius;
 
   final double? width;
   final double? height;
@@ -105,19 +108,36 @@ class RoundImage extends StatelessWidget {
   }
 
   Widget? _buildChild() {
+    final Widget child;
     if (url.startsWith('http')) {
       final Widget holder = _buildAssetImage(placeholder, fit, format);
-      return CachedNetworkImage(
-        imageUrl: url,
-        placeholder: (_, __) => holder,
-        errorWidget: (_, __, dynamic error) => holder,
-        fit: fit,
-      );
+      child = _buildNetworkImage(url, fit, format, holder);
     } else {
-      return _buildAssetImage(url, fit, format);
+      child = _buildAssetImage(url, fit, format);
     }
+    if (imageRadius == null) return child;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(imageRadius ?? 0),
+      child: child,
+    );
   }
 
+  /// 加载网络图片
+  Widget _buildNetworkImage(
+    String url,
+    BoxFit fit,
+    ImageFormat format,
+    Widget holder,
+  ) {
+    return CachedNetworkImage(
+      imageUrl: url,
+      placeholder: (_, __) => holder,
+      errorWidget: (_, __, dynamic error) => holder,
+      fit: fit,
+    );
+  }
+
+  /// 加载本地图片
   Widget _buildAssetImage(String path, BoxFit fit, ImageFormat format) {
     return Image.asset(
       ImageUtils.getImgPath(path, format: format),
