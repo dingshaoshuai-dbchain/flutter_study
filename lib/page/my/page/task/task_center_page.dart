@@ -76,9 +76,15 @@ Widget _buildUserInfo() {
     child: Row(
       children: [
         RoundImage(
-          url: 'app/ic_gold',
+          url: 'app/ic_default_avatar',
           width: 50,
           height: 50,
+          imageRadius: 25,
+          radius: 25,
+          borderSide: BorderSide(
+            color: Colors.white,
+            width: 1.5,
+          ),
           fit: BoxFit.cover,
           onTap: () => Toast.show('点击了头像'),
         ),

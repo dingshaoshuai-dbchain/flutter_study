@@ -16,7 +16,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage> {
     print("build - ExpertIndexPage");
     return Center(
       child: RoundImage(
-        url: 'https://t7.baidu.com/it/u=4272803060,4157549139&fm=193&f=GIF',
+        url: 'app/ic_default_avatar',
         width: 200,
         height: 200,
         fit: BoxFit.cover,
