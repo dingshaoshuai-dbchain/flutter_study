@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/init_provider.dart';
+import 'package:youliao/app_widget_init_provider.dart';
 
 /// Toast 配置
-class ScreenInitProvider extends InitProvider {
+class ScreenInitProvider extends AppWidgetInitProvider {
   @override
   Widget init(Widget child) => ScreenUtilInit(
         /// 设计图尺寸

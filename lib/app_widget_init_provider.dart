@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-abstract class InitProvider {
+abstract class AppWidgetInitProvider {
   Widget init(Widget child);
 }
