@@ -10,7 +10,7 @@ import 'page/home/page/home_index_page.dart';
 import 'page/match/page/match_index_page.dart';
 import 'page/my/page/my_index_page.dart';
 import 'page/predict/page/predict_index_page.dart';
-import 'widgets/basis/round_image.dart';
+import 'widgets/basis/image_widget.dart';
 import 'widgets/double_tap_back_exit_app.dart';
 
 class MainPage extends StatefulWidget {
@@ -104,8 +104,8 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       double normalSize = 20.0,
       double selectedSize = 20.0}) {
     return BottomNavigationBarItem(
-        icon: RoundImage(url: normalPath, width: normalSize),
-        activeIcon: RoundImage(url: selectedPath, width: selectedSize),
+        icon: ImageWidget(url: normalPath, width: normalSize),
+        activeIcon: ImageWidget(url: selectedPath, width: selectedSize),
         label: label);
   }
 

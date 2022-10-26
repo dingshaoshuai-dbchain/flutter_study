@@ -1,17 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../util/image_util.dart';
-import 'round_container.dart';
+import 'container_widget.dart';
 
-class RoundImage extends StatelessWidget {
-  RoundImage({
+class TextWidget extends StatelessWidget {
+  TextWidget({
     super.key,
-    required this.url,
-    this.fit = BoxFit.contain,
-    this.placeholder = 'none',
-    this.format = ImageFormat.png,
-    this.imageRadius,
+    required this.text,
+    required this.textColor,
+    required this.fontSize,
+    this.alignment = Alignment.center,
+    this.maxLines,
+    this.overflow,
+    this.fontWeight,
     this.width,
     this.height,
     this.backgroundColor,
@@ -38,12 +38,13 @@ class RoundImage extends StatelessWidget {
     this.onTap,
   });
 
-  final String url;
-  final BoxFit fit;
-  final String placeholder;
-  final ImageFormat format;
-
-  final double? imageRadius;
+  final String text;
+  final Color textColor;
+  final double fontSize;
+  final Alignment alignment;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final FontWeight? fontWeight;
 
   final double? width;
   final double? height;
@@ -78,9 +79,10 @@ class RoundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RoundContainer(
+    return ContainerWidget(
       width: width,
       height: height,
+      alignment: alignment,
       backgroundColor: backgroundColor,
       padding: padding,
       paddingTop: paddingTop,
@@ -108,40 +110,15 @@ class RoundImage extends StatelessWidget {
   }
 
   Widget? _buildChild() {
-    final Widget child;
-    if (url.startsWith('http')) {
-      final Widget holder = _buildAssetImage(placeholder, fit, format);
-      child = _buildNetworkImage(url, fit, format, holder);
-    } else {
-      child = _buildAssetImage(url, fit, format);
-    }
-    if (imageRadius == null) return child;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(imageRadius ?? 0),
-      child: child,
-    );
-  }
-
-  /// 加载网络图片
-  Widget _buildNetworkImage(
-    String url,
-    BoxFit fit,
-    ImageFormat format,
-    Widget holder,
-  ) {
-    return CachedNetworkImage(
-      imageUrl: url,
-      placeholder: (_, __) => holder,
-      errorWidget: (_, __, dynamic error) => holder,
-      fit: fit,
-    );
-  }
-
-  /// 加载本地图片
-  Widget _buildAssetImage(String path, BoxFit fit, ImageFormat format) {
-    return Image.asset(
-      ImageUtils.getImgPath(path, format: format),
-      fit: fit,
+    return Text(
+      text,
+      maxLines: maxLines,
+      overflow: overflow,
+      style: TextStyle(
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
     );
   }
 }

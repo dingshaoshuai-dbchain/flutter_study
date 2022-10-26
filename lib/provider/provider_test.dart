@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/basis/round_text.dart';
+import '../widgets/basis/text_widget.dart';
 
 void main() {
   runApp(const ProviderTestApp());
@@ -46,7 +46,7 @@ class ProviderTestHome extends StatelessWidget {
       ),
       body: Column(
         children: [
-          RoundText(
+          TextWidget(
             text: context.watch<NumberProvider>().number,
             textColor: Colors.red,
             fontSize: 20,
@@ -75,7 +75,7 @@ class RedPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("读取界面"),
       ),
-      body: RoundText(
+      body: TextWidget(
         text: context.watch<NumberProvider>().number,
         textColor: Colors.red,
         fontSize: 20,

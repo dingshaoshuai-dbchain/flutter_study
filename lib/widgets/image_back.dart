@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
 
 class ImageBack extends StatelessWidget {
   const ImageBack({
@@ -14,7 +14,7 @@ class ImageBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RoundImage(
+    return ImageWidget(
       url: isBlack ? 'common/ic_back_black' : 'common/ic_back_white',
       width: 48,
       height: 48,

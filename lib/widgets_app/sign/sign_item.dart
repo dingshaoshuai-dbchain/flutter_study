@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/widgets/basis/round_container.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
-import 'package:youliao/widgets/basis/round_text.dart';
+import 'package:youliao/widgets/basis/container_widget.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
+import 'package:youliao/widgets/basis/text_widget.dart';
 
 class SignItemWidget extends StatefulWidget {
   const SignItemWidget({super.key});
@@ -20,13 +20,13 @@ class _SignItemWidgetState extends State<SignItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return RoundContainer(
+    return ContainerWidget(
       height: 80,
       backgroundColor: defaultBackgroundColor,
       radius: 6,
       child: Stack(
         children: [
-          RoundText(
+          TextWidget(
             text: '第1天',
             textColor: AppColors.color_181818,
             fontSize: 12,
@@ -34,7 +34,7 @@ class _SignItemWidgetState extends State<SignItemWidget> {
             alignment: Alignment.topCenter,
             fontWeight: FontWeight.w600,
           ),
-          RoundText(
+          TextWidget(
             text: '10金币',
             textColor: AppColors.color_999999,
             fontSize: 10,
@@ -43,7 +43,7 @@ class _SignItemWidgetState extends State<SignItemWidget> {
           ),
           Align(
             alignment: Alignment.center,
-            child: RoundImage(
+            child: ImageWidget(
               url: 'app/ic_gold',
               width: 24,
               height: 24,

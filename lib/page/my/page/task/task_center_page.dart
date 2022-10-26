@@ -4,12 +4,12 @@ import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets_app/sign/sign_item.dart';
 import 'package:youliao/widgets_app/sign/sign_item7.dart';
 import 'package:youliao/widgets_app/sign/task_item.dart';
-import 'package:youliao/widgets/basis/round_container.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
+import 'package:youliao/widgets/basis/container_widget.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/image_back.dart';
 import 'package:youliao/widgets/status_bar.dart';
 
-import '../../../../widgets/basis/round_text.dart';
+import '../../../../widgets/basis/text_widget.dart';
 import '../../../../widgets/gaps.dart';
 
 class TaskCenterPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
     return Scaffold(
       body: Stack(
         children: [
-          RoundImage(url: 'my/task/bg_task_center'),
+          ImageWidget(url: 'my/task/bg_task_center'),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -67,7 +67,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
 }
 
 Widget _buildUserInfo() {
-  return RoundContainer(
+  return ContainerWidget(
     width: double.maxFinite,
     height: 52,
     marginLeft: 16,
@@ -75,7 +75,7 @@ Widget _buildUserInfo() {
     marginTop: 25,
     child: Row(
       children: [
-        RoundImage(
+        ImageWidget(
           url: 'app/ic_default_avatar',
           width: 50,
           height: 50,
@@ -124,7 +124,7 @@ Widget _buildUserInfo() {
                     ],
                   ),
                 ),
-                RoundText(
+                TextWidget(
                   alignment: Alignment.centerLeft,
                   text: '明日签到可获得10金币',
                   textColor: Color(0xFF7E8398),
@@ -135,21 +135,21 @@ Widget _buildUserInfo() {
             ),
           ),
         ),
-        RoundContainer(
+        ContainerWidget(
           width: 82,
           height: 41,
           borderSide: const BorderSide(color: Color(0xFF7E8398), width: 1),
           radius: 12,
           child: Row(
             children: [
-              RoundImage(
+              ImageWidget(
                 url: 'app/ic_gold',
                 width: 24,
                 height: 24,
                 marginLeft: 10,
               ),
               Expanded(
-                child: RoundText(
+                child: TextWidget(
                   text: '100',
                   alignment: Alignment.centerLeft,
                   maxLines: 1,
@@ -170,7 +170,7 @@ Widget _buildUserInfo() {
 }
 
 Widget _buildSign(BuildContext context) {
-  return RoundContainer(
+  return ContainerWidget(
       alignment: Alignment.center,
       marginTop: 15,
       child: Column(
@@ -201,7 +201,7 @@ Widget _buildSign(BuildContext context) {
 }
 
 Widget _buildTask(BuildContext context) {
-  return RoundContainer(
+  return ContainerWidget(
     alignment: Alignment.center,
     marginTop: 15,
     child: MediaQuery.removePadding(
@@ -224,7 +224,7 @@ Widget _buildContent({
   required String title,
   required Widget child,
 }) {
-  return RoundContainer(
+  return ContainerWidget(
     marginLeft: 16,
     marginRight: 16,
     backgroundColor: Colors.white,
@@ -235,7 +235,7 @@ Widget _buildContent({
     paddingBottom: 13,
     child: Column(
       children: [
-        RoundText(
+        TextWidget(
           text: title,
           textColor: AppColors.color_181818,
           fontSize: 16,

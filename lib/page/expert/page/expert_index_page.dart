@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
 
 class ExpertIndexPage extends StatefulWidget {
   const ExpertIndexPage({super.key});
@@ -15,7 +15,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage> {
   Widget build(BuildContext context) {
     print("build - ExpertIndexPage");
     return Center(
-      child: RoundImage(
+      child: ImageWidget(
         url: 'app/ic_default_avatar',
         width: 200,
         height: 200,

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/widgets/basis/round_container.dart';
-import 'package:youliao/widgets/basis/round_image.dart';
-import 'package:youliao/widgets/basis/round_text.dart';
+import 'package:youliao/widgets/basis/container_widget.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
+import 'package:youliao/widgets/basis/text_widget.dart';
 
 class TaskItemWidget extends StatefulWidget {
   const TaskItemWidget({super.key});
@@ -15,12 +15,12 @@ class TaskItemWidget extends StatefulWidget {
 class _TaskItemWidgetState extends State<TaskItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return RoundContainer(
+    return ContainerWidget(
       paddingTop: 14,
       paddingBottom: 14,
       child: Row(
         children: [
-          RoundImage(
+          ImageWidget(
             url: 'app/ic_gold',
             width: 30,
             height: 30,
@@ -29,7 +29,7 @@ class _TaskItemWidgetState extends State<TaskItemWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RoundText(
+                TextWidget(
                   text: '累计签到3天',
                   textColor: AppColors.color_181818,
                   fontSize: 14,
@@ -39,7 +39,7 @@ class _TaskItemWidgetState extends State<TaskItemWidget> {
                   overflow: TextOverflow.ellipsis,
                   alignment: Alignment.centerLeft,
                 ),
-                RoundText(
+                TextWidget(
                   text: '连续签到3天额外获得10金币',
                   textColor: AppColors.color_999999,
                   fontSize: 12,
@@ -52,21 +52,21 @@ class _TaskItemWidgetState extends State<TaskItemWidget> {
               ],
             ),
           ),
-          RoundContainer(
+          ContainerWidget(
             width: 71,
             height: 30,
             radius: 15,
             backgroundColor: AppColors.main,
             child: Row(
               children: [
-                RoundImage(
+                ImageWidget(
                   url: 'app/ic_gold',
                   width: 15,
                   height: 15,
                   marginLeft: 8,
                 ),
                 Expanded(
-                  child: RoundText(
+                  child: TextWidget(
                     text: '+10',
                     textColor: Colors.white,
                     fontSize: 12,

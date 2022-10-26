@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
-class RoundContainer extends StatelessWidget {
-  RoundContainer(
+class ContainerWidget extends StatelessWidget {
+  ContainerWidget(
       {super.key,
       this.width,
       this.height,
