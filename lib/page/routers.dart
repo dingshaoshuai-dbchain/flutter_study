@@ -8,18 +8,18 @@ import 'predict/Predict_router.dart';
 import 'router_provider.dart';
 
 class Routes {
-  static final List<IRouterProvider> _routerList = [];
-  static final FluroRouter router = FluroRouter();
+  static final FluroRouter _router = FluroRouter();
 
   static void initRoutes() {
-    _routerList.clear();
-    _routerList.add(HomeRouter());
-    _routerList.add(ExpertRouter());
-    _routerList.add(PredictRouter());
-    _routerList.add(MatchRouter());
-    _routerList.add(MyRouter());
-    for (var element in _routerList) {
-      element.initRouter(router);
+    List<IRouterProvider> routerList = [];
+    routerList.add(HomeRouter());
+    routerList.add(ExpertRouter());
+    routerList.add(PredictRouter());
+    routerList.add(MatchRouter());
+    routerList.add(MyRouter());
+
+    for (var element in routerList) {
+      element.initRouter(_router);
     }
   }
 }
