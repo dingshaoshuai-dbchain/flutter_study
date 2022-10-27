@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets_app/sign/sign_item.dart';
 import 'package:youliao/widgets_app/sign/sign_item7.dart';
@@ -31,7 +32,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
             children: [
               const StatusBar(),
               const ImageBack(isBlack: false),
-              _buildUserInfo(),
+              _buildUserInfo(context),
               Gaps.vGapValue(15),
               Expanded(
                 child: MediaQuery.removePadding(
@@ -66,7 +67,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
   }
 }
 
-Widget _buildUserInfo() {
+Widget _buildUserInfo(BuildContext context) {
   return ContainerWidget(
     width: double.maxFinite,
     height: 52,
@@ -86,7 +87,9 @@ Widget _buildUserInfo() {
             width: 1.5,
           ),
           fit: BoxFit.cover,
-          onTap: () => Toast.show('点击了头像'),
+          onTap: () => {
+            Toast.show('点击了头像'),
+          },
         ),
         Expanded(
           flex: 1,
