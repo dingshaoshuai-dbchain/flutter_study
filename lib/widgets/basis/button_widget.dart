@@ -16,11 +16,15 @@ class ButtonWidget extends StatelessWidget {
     this.height,
     this.backgroundColor,
     this.padding,
+    this.paddingHorizontal,
+    this.paddingVertical,
     this.paddingLeft,
     this.paddingTop,
     this.paddingRight,
     this.paddingBottom,
     this.margin,
+    this.marginHorizontal,
+    this.marginVertical,
     this.marginLeft,
     this.marginTop,
     this.marginRight,
@@ -52,12 +56,16 @@ class ButtonWidget extends StatelessWidget {
   final Color? backgroundColor;
 
   final double? padding;
+  final double? paddingHorizontal;
+  final double? paddingVertical;
   final double? paddingTop;
   final double? paddingBottom;
   final double? paddingLeft;
   final double? paddingRight;
 
   final double? margin;
+  final double? marginHorizontal;
+  final double? marginVertical;
   final double? marginTop;
   final double? marginBottom;
   final double? marginLeft;
@@ -85,11 +93,15 @@ class ButtonWidget extends StatelessWidget {
       alignment: alignment,
       backgroundColor: backgroundColor,
       padding: padding,
+      paddingHorizontal: paddingHorizontal,
+      paddingVertical: paddingVertical,
       paddingTop: paddingTop,
       paddingBottom: paddingBottom,
       paddingLeft: paddingLeft,
       paddingRight: paddingRight,
       margin: margin,
+      marginHorizontal: marginHorizontal,
+      marginVertical: marginVertical,
       marginTop: marginTop,
       marginBottom: marginBottom,
       marginLeft: marginLeft,

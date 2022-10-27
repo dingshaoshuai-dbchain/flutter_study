@@ -9,11 +9,15 @@ class ContainerWidget extends StatelessWidget {
       this.backgroundColor,
       this.alignment,
       this.padding,
+      this.paddingHorizontal,
+      this.paddingVertical,
       this.paddingLeft,
       this.paddingTop,
       this.paddingRight,
       this.paddingBottom,
       this.margin,
+      this.marginHorizontal,
+      this.marginVertical,
       this.marginLeft,
       this.marginTop,
       this.marginRight,
@@ -38,12 +42,16 @@ class ContainerWidget extends StatelessWidget {
   final AlignmentGeometry? alignment;
 
   final double? padding;
+  final double? paddingHorizontal;
+  final double? paddingVertical;
   final double? paddingTop;
   final double? paddingBottom;
   final double? paddingLeft;
   final double? paddingRight;
 
   final double? margin;
+  final double? marginHorizontal;
+  final double? marginVertical;
   final double? marginTop;
   final double? marginBottom;
   final double? marginLeft;
@@ -74,16 +82,16 @@ class ContainerWidget extends StatelessWidget {
         height: height,
         alignment: alignment,
         padding: EdgeInsets.only(
-          left: paddingLeft ?? padding ?? 0.0,
-          right: paddingRight ?? padding ?? 0.0,
-          top: paddingTop ?? padding ?? 0.0,
-          bottom: paddingBottom ?? padding ?? 0.0,
+          left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
+          right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
+          top: paddingTop ?? paddingVertical ?? padding ?? 0.0,
+          bottom: paddingBottom ?? paddingVertical ?? padding ?? 0.0,
         ),
         margin: EdgeInsets.only(
-          left: marginLeft ?? margin ?? 0.0,
-          right: marginRight ?? margin ?? 0.0,
-          top: marginTop ?? margin ?? 0.0,
-          bottom: marginBottom ?? margin ?? 0.0,
+          left: marginLeft ?? marginHorizontal ?? margin ?? 0.0,
+          right: marginRight ?? marginHorizontal ?? margin ?? 0.0,
+          top: marginTop ?? marginVertical ?? margin ?? 0.0,
+          bottom: marginBottom ?? marginVertical ?? margin ?? 0.0,
         ),
         decoration: BoxDecoration(
             color: backgroundColor,
