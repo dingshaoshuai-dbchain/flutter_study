@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:youliao/init_app/init_app_mode_provider.dart';
 import 'package:youliao/net/http_util.dart';
 import 'package:youliao/net/intercepts.dart';
 
 import '../../global/config.dart';
+import '../app_mode_init_provider.dart';
 
-class HttpInit extends InitAppModeProvider {
+class HttpInit extends AppModeInitProvider {
   @override
   init() {
     final List<Interceptor> interceptors = [];
