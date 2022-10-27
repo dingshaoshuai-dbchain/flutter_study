@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util/navigator_util.dart';
-import 'package:youliao/util/toast_util.dart';
-import 'package:youliao/widgets_app/sign/sign_item.dart';
-import 'package:youliao/widgets_app/sign/sign_item7.dart';
-import 'package:youliao/widgets_app/sign/task_item.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/image_back.dart';
@@ -12,6 +6,11 @@ import 'package:youliao/widgets/status_bar.dart';
 
 import '../../../../widgets/basis/text_widget.dart';
 import '../../../../widgets/gaps.dart';
+import '../../../res_app/app_colors.dart';
+import '../../../util/toast_util.dart';
+import 'sign/sign_item.dart';
+import 'sign/sign_item7.dart';
+import 'task_item.dart';
 
 class TaskCenterPage extends StatefulWidget {
   const TaskCenterPage({super.key});
@@ -87,7 +86,7 @@ Widget _buildUserInfo(BuildContext context) {
             width: 1.5,
           ),
           fit: BoxFit.cover,
-          onTap: () => {
+          onPressed: () => {
             Toast.show('点击了头像'),
           },
         ),

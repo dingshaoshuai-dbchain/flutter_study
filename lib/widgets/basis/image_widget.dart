@@ -35,7 +35,7 @@ class ImageWidget extends StatelessWidget {
     this.borderSideBottom,
     this.borderSideLeft,
     this.borderSideRight,
-    this.onTap,
+    this.onPressed,
   });
 
   final String url;
@@ -74,7 +74,7 @@ class ImageWidget extends StatelessWidget {
   final BorderSide? borderSideLeft;
   final BorderSide? borderSideRight;
 
-  final GestureTapCallback? onTap;
+  final GestureTapCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class ImageWidget extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
-      onTap: onTap,
+      onPressed: onPressed,
       child: _buildChild(),
     );
   }

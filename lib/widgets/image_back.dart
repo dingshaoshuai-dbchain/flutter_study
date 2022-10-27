@@ -19,7 +19,7 @@ class ImageBack extends StatelessWidget {
       width: 48,
       height: 48,
       padding: 16,
-      onTap: onTap,
+      onPressed: onTap,
     );
   }
 }

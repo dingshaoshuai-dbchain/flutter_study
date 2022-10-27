@@ -28,7 +28,7 @@ class ContainerWidget extends StatelessWidget {
       this.borderSideBottom,
       this.borderSideLeft,
       this.borderSideRight,
-      this.onTap,
+      this.onPressed,
       this.child});
 
   final double? width;
@@ -61,14 +61,14 @@ class ContainerWidget extends StatelessWidget {
   final BorderSide? borderSideLeft;
   final BorderSide? borderSideRight;
 
-  final GestureTapCallback? onTap;
+  final GestureTapCallback? onPressed;
 
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: onPressed,
       child: Container(
         width: width,
         height: height,

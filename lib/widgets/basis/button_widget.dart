@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'container_widget.dart';
 
-class TextWidget extends StatelessWidget {
-  TextWidget({
+class ButtonWidget extends StatelessWidget {
+  ButtonWidget({
     super.key,
     required this.text,
     required this.textColor,
@@ -104,20 +104,35 @@ class TextWidget extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
-      onPressed: onPressed,
       child: _buildChild(),
     );
   }
 
   Widget? _buildChild() {
-    return Text(
-      text,
-      maxLines: maxLines,
-      overflow: overflow,
-      style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        // 按钮大小
+        minimumSize: ButtonStyleButton.allOrNull(
+          const Size(
+            double.infinity,
+            double.infinity,
+          ),
+        ),
+        // 水波纹
+        overlayColor: MaterialStateProperty.resolveWith((states) {
+          return Colors.white.withOpacity(0.12);
+        }),
+      ),
+      child: Text(
+        text,
+        maxLines: maxLines,
+        overflow: overflow,
+        style: TextStyle(
+          color: textColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
       ),
     );
   }

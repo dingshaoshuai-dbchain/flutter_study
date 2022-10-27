@@ -76,6 +76,7 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
         create: (_) => provider,
         child: DoubleTapBackExitApp(
             child: Scaffold(
+              appBar: AppBar(),
               bottomNavigationBar: Consumer<MainProvider>(
                 builder: (_, provider, __) {
                   return BottomNavigationBar(
