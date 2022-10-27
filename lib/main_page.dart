@@ -1,15 +1,14 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:youliao/page/my/page/task/task_center_page.dart';
 
-import 'res_app/app_colors.dart';
 import 'main_provider.dart';
-import 'page/expert/page/expert_index_page.dart';
-import 'page/home/page/home_index_page.dart';
-import 'page/match/page/match_index_page.dart';
-import 'page/my/page/my_index_page.dart';
-import 'page/predict/page/predict_index_page.dart';
+import 'page/expert/expert_index_page.dart';
+import 'page/match/match_index_page.dart';
+import 'page/my/my_index_page.dart';
+import 'page/my/task/task_center_page.dart';
+import 'page/predict/predict_index_page.dart';
+import 'res_app/app_colors.dart';
 import 'widgets/basis/image_widget.dart';
 import 'widgets/double_tap_back_exit_app.dart';
 

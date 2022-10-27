@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 
 import '../router_provider.dart';
-import 'page/predict_index_page.dart';
+import 'predict_index_page.dart';
 
 class PredictRouter implements IRouterProvider {
   static const String _pageRoot = "/predict/page";

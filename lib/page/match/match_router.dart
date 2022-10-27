@@ -1,6 +1,6 @@
 import 'package:fluro/fluro.dart';
 import '../router_provider.dart';
-import 'page/match_index_page.dart';
+import 'match_index_page.dart';
 
 class MatchRouter implements IRouterProvider {
   static const String _pageRoot = "/match/page";

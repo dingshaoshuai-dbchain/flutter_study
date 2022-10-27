@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 
 import '../router_provider.dart';
-import 'page/my_index_page.dart';
+import 'my_index_page.dart';
 
 class MyRouter implements IRouterProvider {
   static const String _pageRoot = "/my/page";

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 
-import '../../../widgets/basis/text_widget.dart';
+import '../../widgets/basis/text_widget.dart';
 
 class HomeIndexPage extends StatefulWidget {
   const HomeIndexPage({super.key});
