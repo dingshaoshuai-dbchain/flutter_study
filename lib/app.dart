@@ -4,6 +4,7 @@ import 'package:youliao/app_init/mode/piecemeal_init.dart';
 import 'package:youliao/app_init/mode/route_init.dart';
 import 'package:youliao/app_init/widget/main_init.dart';
 import 'package:youliao/app_init/widget/screen_init.dart';
+import 'package:youliao/page/my/login/login_page.dart';
 
 import 'app_init/app_mode_init_provider.dart';
 import 'app_init/app_widget_init_provider.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       OkToastInitProvider(),
       ScreenInit(),
     ];
-    Widget child = const MainPage();
+    Widget child = const LoginPage();
     for (var element in list) {
       child = element.init(child);
     }

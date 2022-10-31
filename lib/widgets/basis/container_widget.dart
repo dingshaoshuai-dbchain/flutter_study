@@ -75,40 +75,41 @@ class ContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        width: width,
-        height: height,
-        alignment: alignment,
-        padding: EdgeInsets.only(
-          left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
-          right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
-          top: paddingTop ?? paddingVertical ?? padding ?? 0.0,
-          bottom: paddingBottom ?? paddingVertical ?? padding ?? 0.0,
-        ),
-        margin: EdgeInsets.only(
-          left: marginLeft ?? marginHorizontal ?? margin ?? 0.0,
-          right: marginRight ?? marginHorizontal ?? margin ?? 0.0,
-          top: marginTop ?? marginVertical ?? margin ?? 0.0,
-          bottom: marginBottom ?? marginVertical ?? margin ?? 0.0,
-        ),
-        decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
-              topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
-              bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
-              bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
-            ),
-            border: Border(
-              top: borderSideTop ?? borderSide ?? BorderSide.none,
-              bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
-              left: borderSideLeft ?? borderSide ?? BorderSide.none,
-              right: borderSideRight ?? borderSide ?? BorderSide.none,
-            )),
-        child: child,
+    Widget content = Container(
+      width: width,
+      height: height,
+      alignment: alignment,
+      padding: EdgeInsets.only(
+        left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
+        right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
+        top: paddingTop ?? paddingVertical ?? padding ?? 0.0,
+        bottom: paddingBottom ?? paddingVertical ?? padding ?? 0.0,
       ),
+      margin: EdgeInsets.only(
+        left: marginLeft ?? marginHorizontal ?? margin ?? 0.0,
+        right: marginRight ?? marginHorizontal ?? margin ?? 0.0,
+        top: marginTop ?? marginVertical ?? margin ?? 0.0,
+        bottom: marginBottom ?? marginVertical ?? margin ?? 0.0,
+      ),
+      decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
+            topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
+            bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
+            bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
+          ),
+          border: Border(
+            top: borderSideTop ?? borderSide ?? BorderSide.none,
+            bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
+            left: borderSideLeft ?? borderSide ?? BorderSide.none,
+            right: borderSideRight ?? borderSide ?? BorderSide.none,
+          )),
+      child: child,
+    );
+    return GestureDetector(
+      onTap: onPressed,
+      child: content,
     );
   }
 }
