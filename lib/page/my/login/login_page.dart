@@ -53,7 +53,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 height: 80.w,
                 padding: 28.w,
                 marginTop: 83.h,
-                backgroundColor: Colors.red,
                 onPressed: () => {NavigatorUtil.goBack(context)},
               ),
               Expanded(
