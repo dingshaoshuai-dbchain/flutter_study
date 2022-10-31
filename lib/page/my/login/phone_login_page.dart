@@ -54,7 +54,11 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                 Positioned(
                   bottom: 13.w,
                   right: 0,
-                  child: SmsCodeButton(),
+                  child: SmsCodeButton(
+                    getSmsCodeF: () {
+                      return Future(() => true);
+                    },
+                  ),
                 )
               ],
             ),
