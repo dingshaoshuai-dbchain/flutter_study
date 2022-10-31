@@ -74,22 +74,19 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ContainerWidget(
-          width: 22.w,
-          height: 22.w,
-          child: Checkbox(
-            value: _checkboxSelected,
-            activeColor: AppColors.main,
-            shape: const CircleBorder(),
-            side: BorderSide(width: 1.w, color: AppColors.colorCACACA),
-            onChanged: (value) {
-              setState(() {
-                _checkboxSelected = value ?? false;
-              });
-            },
-          ),
+        ImageWidget(
+          url: _checkboxSelected
+              ? 'app/ic_checkbox_checked'
+              : 'app/ic_checkbox_normal',
+          width: 23.w,
+          height: 23.w,
+          padding: 5.w,
+          onPressed: (){
+            setState(() {
+              _checkboxSelected = !_checkboxSelected;
+            });
+          },
         ),
-        Gaps.hGap5,
         Text.rich(
           TextSpan(
             children: [

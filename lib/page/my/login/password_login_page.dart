@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/widgets/basis/image_widget.dart';
+import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 
 import '../../../global/length_config.dart';
@@ -18,6 +20,8 @@ class PasswordLoginPage extends StatefulWidget {
 }
 
 class _PasswordLoginPageState extends State<PasswordLoginPage> {
+  bool _isSavePassword = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -51,11 +55,24 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
             ),
             Row(
               children: [
-                TextWidget(
+                TextComposeWidget(
                   text: '记住密码',
                   textColor: AppColors.color_999999,
                   fontSize: 13.sp,
                   paddingVertical: 17.w,
+                  leftWidget: ImageWidget(
+                    url: _isSavePassword
+                        ? 'app/ic_checkbox_checked'
+                        : 'app/ic_checkbox_normal',
+                    width: 13.w,
+                    height: 13.w,
+                    marginRight: 6.w,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isSavePassword = !_isSavePassword;
+                    });
+                  },
                 ),
                 Spacer(),
                 TextWidget(

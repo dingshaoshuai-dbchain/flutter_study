@@ -86,8 +86,9 @@ class _LoginTextFieldWidgetState extends State<LoginTextFieldWidget> {
   Widget _buildVisible(BuildContext context) {
     return ImageWidget(
       url: _isShow ? 'common/ic_edit_hide' : 'common/ic_edit_show',
-      width: 20.w,
-      height: 20.w,
+      width: 30.w,
+      height: 30.w,
+      padding: 5.w,
       onPressed: () {
         setState(() {
           _isShow = !_isShow;
