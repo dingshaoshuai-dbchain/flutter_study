@@ -39,7 +39,7 @@ class HttpUtil {
     });
   }
 
-  void request() {
-
+  Future<void> request(String path) async {
+    Response response = await _dio.request(path);
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/api/user_api.dart';
 import 'package:youliao/global/length_config.dart';
 import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util/toast_util.dart';
+import 'package:youliao/util_app/edit_check.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 import 'package:youliao/widgets_app/AppButton.dart';
@@ -18,6 +19,13 @@ class PhoneLoginPage extends StatefulWidget {
 }
 
 class _PhoneLoginPageState extends State<PhoneLoginPage> {
+  final TextEditingController _phoneController = TextEditingController(
+    text: "13823188079",
+  );
+  final TextEditingController _smsCodeController =
+      TextEditingController(text: "999999");
+  final TextEditingController _inviteCodeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -40,6 +48,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                   maxLength: phoneLength,
                   paddingLeft: 75,
                   keyboardType: TextInputType.phone,
+                  controller: _phoneController,
                 )
               ],
             ),
@@ -50,13 +59,17 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                   hintText: '请输入验证码',
                   maxLength: smsCodeLength,
                   keyboardType: TextInputType.number,
+                  controller: _smsCodeController,
                 ),
                 Positioned(
                   bottom: 13.w,
                   right: 0,
                   child: SmsCodeButton(
                     getSmsCodeF: () {
-                      return Future(() => true);
+                      return Future(() {
+                        if (checkPhone(_phoneController.text)) return false;
+                        return true;
+                      });
                     },
                   ),
                 )
@@ -67,12 +80,22 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
               hintText: '请输入邀请码（可不填写）',
               maxLength: inviteCodeLength,
               keyboardType: TextInputType.text,
+              controller: _inviteCodeController,
             ),
             AppButton(
               text: '登录',
               marginTop: 40,
               marginHorizontal: 0,
-              onPressed: () => {Toast.show('登录')},
+              onPressed: () {
+                Future(() {
+                  if (checkPhone(_phoneController.text)) return;
+                  if (checkSmsCode(_smsCodeController.text)) return;
+                  UserApi.instance.loginByPhone(
+                    _phoneController.text,
+                    _smsCodeController.text,
+                  );
+                });
+              },
             )
           ],
         ),

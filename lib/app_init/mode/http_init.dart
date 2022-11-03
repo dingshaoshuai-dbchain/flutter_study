@@ -14,7 +14,7 @@ class HttpInit extends AppModeInitProvider {
       interceptors.add(LoggingInterceptor());
     }
     HttpUtil.instance.init(
-      baseUrl: 'baseUrl',
+      baseUrl: 'https://gateway.yiqiulive.com/',
       interceptors: interceptors,
     );
   }

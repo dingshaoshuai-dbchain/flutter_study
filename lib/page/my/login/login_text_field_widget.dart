@@ -13,12 +13,14 @@ class LoginTextFieldWidget extends StatefulWidget {
     this.maxLength,
     this.keyboardType,
     this.paddingLeft,
+    this.controller,
   });
 
   final String? hintText;
   final int? maxLength;
   final TextInputType? keyboardType;
   final int? paddingLeft;
+  final TextEditingController? controller;
 
   @override
   State<StatefulWidget> createState() => _LoginTextFieldWidgetState();
@@ -30,6 +32,7 @@ class _LoginTextFieldWidgetState extends State<LoginTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     Widget textField = TextField(
+      controller: widget.controller,
       decoration: InputDecoration(
           constraints: BoxConstraints(minHeight: 40.w),
           contentPadding: EdgeInsets.only(
