@@ -144,6 +144,7 @@ class TextComposeWidget extends StatelessWidget {
     Widget child = textWidget;
     if (leftWidget != null || rightWidget != null) {
       child = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (leftWidget != null) leftWidget!,
@@ -154,6 +155,7 @@ class TextComposeWidget extends StatelessWidget {
     }
     if (topWidget != null || bottomWidget != null) {
       child = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (topWidget != null) topWidget!,

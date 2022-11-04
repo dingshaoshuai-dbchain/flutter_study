@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       OkToastInitProvider(),
       ScreenInit(),
     ];
-    Widget child = const LoginPage();
+    Widget child = const MainPage();
     for (var element in list) {
       child = element.init(child);
     }

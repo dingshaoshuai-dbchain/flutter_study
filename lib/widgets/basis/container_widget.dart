@@ -1,45 +1,55 @@
 import 'package:flutter/material.dart';
 
+import '../../util/image_util.dart';
+
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
 class ContainerWidget extends StatelessWidget {
-  ContainerWidget(
-      {super.key,
-      this.width,
-      this.height,
-      this.backgroundColor,
-      this.alignment,
-      this.padding,
-      this.paddingHorizontal,
-      this.paddingVertical,
-      this.paddingLeft,
-      this.paddingTop,
-      this.paddingRight,
-      this.paddingBottom,
-      this.margin,
-      this.marginHorizontal,
-      this.marginVertical,
-      this.marginLeft,
-      this.marginTop,
-      this.marginRight,
-      this.marginBottom,
-      this.radius,
-      this.radiusTopLeft,
-      this.radiusTopRight,
-      this.radiusBottomLeft,
-      this.radiusBottomRight,
-      this.borderSide,
-      this.borderSideTop,
-      this.borderSideBottom,
-      this.borderSideLeft,
-      this.borderSideRight,
-      this.onPressed,
-      this.child});
+  ContainerWidget({
+    super.key,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.alignment,
+    this.backgroundImagePath,
+    this.backgroundImageFormat,
+    this.backgroundImageBoxFit = BoxFit.fill,
+    this.padding,
+    this.paddingHorizontal,
+    this.paddingVertical,
+    this.paddingLeft,
+    this.paddingTop,
+    this.paddingRight,
+    this.paddingBottom,
+    this.margin,
+    this.marginHorizontal,
+    this.marginVertical,
+    this.marginLeft,
+    this.marginTop,
+    this.marginRight,
+    this.marginBottom,
+    this.radius,
+    this.radiusTopLeft,
+    this.radiusTopRight,
+    this.radiusBottomLeft,
+    this.radiusBottomRight,
+    this.borderSide,
+    this.borderSideTop,
+    this.borderSideBottom,
+    this.borderSideLeft,
+    this.borderSideRight,
+    this.onPressed,
+    this.child,
+  });
 
   final double? width;
   final double? height;
 
   final Color? backgroundColor;
   final AlignmentGeometry? alignment;
+
+  final String? backgroundImagePath;
+  final ImageFormat? backgroundImageFormat;
+  final BoxFit? backgroundImageBoxFit;
 
   final double? padding;
   final double? paddingHorizontal;
@@ -104,7 +114,18 @@ class ContainerWidget extends StatelessWidget {
             bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
             left: borderSideLeft ?? borderSide ?? BorderSide.none,
             right: borderSideRight ?? borderSide ?? BorderSide.none,
-          )),
+          ),
+          image: backgroundImagePath == null
+              ? null
+              : DecorationImage(
+                  fit: backgroundImageBoxFit,
+                  image: AssetImage(
+                    ImageUtils.getImgPath(
+                      backgroundImagePath ?? '',
+                      format: backgroundImageFormat ?? ImageFormat.png,
+                    ),
+                  ),
+                )),
       child: child,
     );
     return GestureDetector(

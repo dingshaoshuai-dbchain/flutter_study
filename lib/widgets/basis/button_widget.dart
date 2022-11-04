@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../util/image_util.dart';
 import 'container_widget.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -15,6 +16,8 @@ class ButtonWidget extends StatelessWidget {
     this.width,
     this.height,
     this.backgroundColor,
+    this.backgroundImagePath,
+    this.backgroundImageFormat,
     this.padding,
     this.paddingHorizontal,
     this.paddingVertical,
@@ -55,6 +58,9 @@ class ButtonWidget extends StatelessWidget {
 
   final Color? backgroundColor;
 
+  final String? backgroundImagePath;
+  final ImageFormat? backgroundImageFormat;
+
   final double? padding;
   final double? paddingHorizontal;
   final double? paddingVertical;
@@ -92,6 +98,8 @@ class ButtonWidget extends StatelessWidget {
       height: height,
       alignment: alignment,
       backgroundColor: backgroundColor,
+      backgroundImagePath: backgroundImagePath,
+      backgroundImageFormat: backgroundImageFormat,
       padding: padding,
       paddingHorizontal: paddingHorizontal,
       paddingVertical: paddingVertical,
