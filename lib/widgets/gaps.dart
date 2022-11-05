@@ -31,7 +31,10 @@ class Gaps {
   static const Widget vGap32 = SizedBox(height: Dimens.gap_dp32);
   static const Widget vGap50 = SizedBox(height: Dimens.gap_dp50);
 
-  static const Widget line = Divider();
+  static Widget line = Divider(
+    indent: 48.w,
+    endIndent: 31.w,
+  );
 
   static const Widget vLine = SizedBox(
     width: 0.6,
@@ -40,6 +43,23 @@ class Gaps {
   );
 
   static const Widget empty = SizedBox.shrink();
+
+  static Widget hLine({
+    double? indent,
+    double? endIndent,
+    Color? color,
+    // 线条的厚度
+    double? thickness = 0.5,
+    // 高度（间距）
+    double? height = 0.5,
+  }) =>
+      Divider(
+        indent: indent,
+        endIndent: endIndent,
+        color: color ?? const Color(0xFFF1F1F1),
+        thickness: thickness,
+        height: height,
+      );
 
   /// 补充一种空Widget实现 https://github.com/letsar/nil
   /// https://github.com/flutter/flutter/issues/78159

@@ -9,7 +9,7 @@ import '../../../global/length_config.dart';
 import '../../../res_app/app_colors.dart';
 import '../../../util/toast_util.dart';
 import '../../../widgets/gaps.dart';
-import '../../../widgets_app/AppButton.dart';
+import '../../../widgets_app/app_button.dart';
 import 'login_text_field_widget.dart';
 
 class PasswordLoginPage extends StatefulWidget {

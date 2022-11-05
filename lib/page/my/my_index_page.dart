@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/page/my/widgets/menu_list_widget.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/image_util.dart';
 import 'package:youliao/util/toast_util.dart';
@@ -19,13 +20,18 @@ class MyIndexPage extends StatefulWidget {
 }
 
 class _MyIndexPageState extends State<MyIndexPage> {
+  final Widget _menuListWidget = const MenuListWidget();
+
   Widget build(BuildContext context) {
     print("build - MyIndexPage");
-    return Column(children: [
-      _buildTop(),
-      _buildMenu(),
-      _buildTaskCenter(),
-    ]);
+    return Container(
+      child: Column(children: [
+        _buildTop(),
+        _buildMenu(),
+        _buildTaskCenter(),
+        Expanded(child: _buildMenuList()),
+      ]),
+    );
   }
 
   Widget _buildTop() {
@@ -76,7 +82,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                     height: 68.w,
                     radius: 23.w,
                     borderSide:
-                        BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
+                    BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
                     marginLeft: 15.w,
                   ),
                   Expanded(
@@ -89,14 +95,14 @@ class _MyIndexPageState extends State<MyIndexPage> {
                             children: [
                               Expanded(
                                   child: TextWidget(
-                                text: '二郎真君',
-                                textColor: AppColors.color_181818,
-                                alignment: Alignment.centerLeft,
-                                fontSize: 18.sp,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.w600,
-                              )),
+                                    text: '二郎真君',
+                                    textColor: AppColors.color_181818,
+                                    alignment: Alignment.centerLeft,
+                                    fontSize: 18.sp,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    fontWeight: FontWeight.w600,
+                                  )),
                               Stack(
                                 children: [
                                   TextWidget(
@@ -331,10 +337,11 @@ class _MyIndexPageState extends State<MyIndexPage> {
                   TextWidget(
                     text: '任务中心',
                     textColor: Colors.white,
-                    marginTop: 12.h,
+                    marginTop: 10.h,
                     fontSize: 20.sp,
                     alignment: Alignment.centerLeft,
                     marginLeft: 13.w,
+                    fontWeight: FontWeight.w600,
                   ),
                   TextWidget(
                     text: '立即查看',
@@ -345,7 +352,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                     backgroundColor: Colors.white,
                     paddingVertical: 1.w,
                     paddingHorizontal: 4.w,
-                    marginTop: 8.w,
+                    marginTop: 6.w,
                     radius: 2.w,
                   )
                 ],
@@ -365,10 +372,11 @@ class _MyIndexPageState extends State<MyIndexPage> {
                   TextWidget(
                     text: '活动广场',
                     textColor: Colors.white,
-                    marginTop: 12.h,
+                    marginTop: 10.h,
                     fontSize: 20.sp,
                     alignment: Alignment.centerLeft,
                     marginLeft: 13.w,
+                    fontWeight: FontWeight.w600,
                   ),
                   Row(
                     children: [
@@ -377,7 +385,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                           text: '好友下单力得金币',
                           textColor: Colors.white,
                           fontSize: 11.sp,
-                          marginTop: 5.w,
+                          marginTop: 4.w,
                           marginLeft: 13.w,
                           alignment: Alignment.centerLeft,
                         ),
@@ -391,7 +399,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                         paddingVertical: 1.w,
                         borderSide: BorderSide(color: Colors.white, width: 1.w),
                         paddingHorizontal: 4.w,
-                        marginTop: 5.w,
+                        marginTop: 4.w,
                         radius: 2.w,
                         marginRight: 8.w,
                       )
@@ -403,6 +411,15 @@ class _MyIndexPageState extends State<MyIndexPage> {
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildMenuList() {
+    return ContainerWidget(
+      backgroundColor: Colors.white,
+      marginTop: 10.w,
+      paddingVertical: 5.w,
+      child: _menuListWidget,
     );
   }
 }
