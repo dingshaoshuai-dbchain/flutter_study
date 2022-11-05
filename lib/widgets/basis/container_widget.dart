@@ -8,6 +8,10 @@ class ContainerWidget extends StatelessWidget {
     super.key,
     this.width,
     this.height,
+    this.minWidth,
+    this.maxWidth,
+    this.minHeight,
+    this.maxHeight,
     this.backgroundColor,
     this.alignment,
     this.backgroundImagePath,
@@ -43,6 +47,10 @@ class ContainerWidget extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final double? minWidth;
+  final double? maxWidth;
+  final double? minHeight;
+  final double? maxHeight;
 
   final Color? backgroundColor;
   final AlignmentGeometry? alignment;
@@ -86,8 +94,12 @@ class ContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content = Container(
-      width: width,
-      height: height,
+      constraints: BoxConstraints(
+        minWidth: width ?? minWidth ?? 0.0,
+        maxWidth: width ?? maxWidth ?? double.infinity,
+        minHeight: height ?? minHeight ?? 0.0,
+        maxHeight: height ?? maxHeight ?? double.infinity,
+      ),
       alignment: alignment,
       padding: EdgeInsets.only(
         left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,

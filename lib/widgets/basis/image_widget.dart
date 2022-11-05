@@ -14,6 +14,10 @@ class ImageWidget extends StatelessWidget {
     this.imageRadius,
     this.width,
     this.height,
+    this.minWidth,
+    this.maxWidth,
+    this.minHeight,
+    this.maxHeight,
     this.backgroundColor,
     this.padding,
     this.paddingHorizontal,
@@ -51,6 +55,10 @@ class ImageWidget extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final double? minWidth;
+  final double? maxWidth;
+  final double? minHeight;
+  final double? maxHeight;
 
   final Color? backgroundColor;
 
@@ -89,6 +97,10 @@ class ImageWidget extends StatelessWidget {
     return ContainerWidget(
       width: width,
       height: height,
+      minWidth: minWidth,
+      maxWidth: maxWidth,
+      minHeight: minHeight,
+      maxHeight: maxHeight,
       backgroundColor: backgroundColor,
       padding: padding,
       paddingHorizontal: paddingHorizontal,

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/page/my/widgets/menu_list_widget.dart';
+import 'package:youliao/page/my/widgets/menu_item_widget.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/image_util.dart';
 import 'package:youliao/util/toast_util.dart';
@@ -12,6 +12,8 @@ import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 import 'package:youliao/widgets/status_bar.dart';
 
+import '../../util/log_utils.dart';
+
 class MyIndexPage extends StatefulWidget {
   const MyIndexPage({super.key});
 
@@ -20,21 +22,38 @@ class MyIndexPage extends StatefulWidget {
 }
 
 class _MyIndexPageState extends State<MyIndexPage> {
-  final Widget _menuListWidget = const MenuListWidget();
+  final Widget _topWidget = _TopWidget();
+  final Widget _functionMenuWidget = _FunctionMenuWidget();
+  final Widget _taskMenuWidget = _TaskMenuWidget();
+  final Widget _menuListWidget = _MenuListWidget();
 
   Widget build(BuildContext context) {
     print("build - MyIndexPage");
     return Container(
       child: Column(children: [
-        _buildTop(),
-        _buildMenu(),
-        _buildTaskCenter(),
-        Expanded(child: _buildMenuList()),
+        // 用户信息
+        _topWidget,
+        // 我的订单、我的收藏、邀请好友
+        _functionMenuWidget,
+        // 任务中心、活动广场
+        _taskMenuWidget,
+        // 意见反馈、申请成为专家..
+        Expanded(
+          child: ContainerWidget(
+            backgroundColor: Colors.white,
+            marginTop: 10.w,
+            paddingVertical: 5.w,
+            child: _menuListWidget,
+          ),
+        ),
       ]),
     );
   }
+}
 
-  Widget _buildTop() {
+class _TopWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       children: [
         ImageWidget(
@@ -82,7 +101,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                     height: 68.w,
                     radius: 23.w,
                     borderSide:
-                    BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
+                        BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
                     marginLeft: 15.w,
                   ),
                   Expanded(
@@ -95,14 +114,14 @@ class _MyIndexPageState extends State<MyIndexPage> {
                             children: [
                               Expanded(
                                   child: TextWidget(
-                                    text: '二郎真君',
-                                    textColor: AppColors.color_181818,
-                                    alignment: Alignment.centerLeft,
-                                    fontSize: 18.sp,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    fontWeight: FontWeight.w600,
-                                  )),
+                                text: '二郎真君',
+                                textColor: AppColors.color_181818,
+                                alignment: Alignment.centerLeft,
+                                fontSize: 18.sp,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                fontWeight: FontWeight.w600,
+                              )),
                               Stack(
                                 children: [
                                   TextWidget(
@@ -127,16 +146,21 @@ class _MyIndexPageState extends State<MyIndexPage> {
                               )
                             ],
                           ),
-                          TextWidget(
-                            text: '已注册1天',
-                            width: 80.w,
-                            textColor: AppColors.color5C6274,
-                            fontSize: 9.sp,
-                            radius: 8.w,
-                            backgroundColor: Colors.white,
-                            paddingHorizontal: 10.w,
-                            paddingVertical: 1.w,
-                            marginTop: 5.w,
+                          Row(
+                            children: [
+                              TextWidget(
+                                text: '已注册10天',
+                                width: 65.w,
+                                height: 16.w,
+                                textColor: AppColors.color5C6274,
+                                fontSize: 9.sp,
+                                maxLines: 1,
+                                radius: 8.w,
+                                paddingHorizontal: 2.w,
+                                backgroundColor: Colors.white,
+                                marginTop: 5.w,
+                              )
+                            ],
                           ),
                           Gaps.vGap5,
                           Row(
@@ -253,8 +277,11 @@ class _MyIndexPageState extends State<MyIndexPage> {
       ],
     );
   }
+}
 
-  Widget _buildMenu() {
+class _FunctionMenuWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return ContainerWidget(
       height: 72.w,
       backgroundColor: Colors.white,
@@ -315,8 +342,12 @@ class _MyIndexPageState extends State<MyIndexPage> {
       ),
     );
   }
+}
 
-  Widget _buildTaskCenter() {
+class _TaskMenuWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Log.d('build - _TaskMenuWidget');
     return ContainerWidget(
       height: 105.w,
       backgroundColor: Colors.white,
@@ -333,6 +364,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                 Toast.show('任务中心');
               },
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWidget(
                     text: '任务中心',
@@ -347,11 +379,10 @@ class _MyIndexPageState extends State<MyIndexPage> {
                     text: '立即查看',
                     textColor: const Color(0xFFE6715F),
                     fontSize: 9.sp,
-                    alignment: Alignment.centerLeft,
+                    width: 45.w,
+                    height: 15.w,
                     marginLeft: 13.w,
                     backgroundColor: Colors.white,
-                    paddingVertical: 1.w,
-                    paddingHorizontal: 4.w,
                     marginTop: 6.w,
                     radius: 2.w,
                   )
@@ -394,11 +425,11 @@ class _MyIndexPageState extends State<MyIndexPage> {
                         text: '立即查看',
                         textColor: Colors.white,
                         fontSize: 9.sp,
-                        alignment: Alignment.centerLeft,
+                        width: 45.w,
+                        height: 15.w,
                         marginLeft: 13.w,
-                        paddingVertical: 1.w,
-                        borderSide: BorderSide(color: Colors.white, width: 1.w),
-                        paddingHorizontal: 4.w,
+                        borderSide:
+                            BorderSide(color: Colors.white, width: 0.5.w),
                         marginTop: 4.w,
                         radius: 2.w,
                         marginRight: 8.w,
@@ -413,13 +444,41 @@ class _MyIndexPageState extends State<MyIndexPage> {
       ),
     );
   }
+}
 
-  Widget _buildMenuList() {
+class _MenuListWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Log.d('build - _MenuListWidget');
     return ContainerWidget(
       backgroundColor: Colors.white,
-      marginTop: 10.w,
-      paddingVertical: 5.w,
-      child: _menuListWidget,
+      child: Column(
+        children: [
+          MenuItemWidget(
+            url: 'my/ic_feedback',
+            text: '意见反馈',
+            onPressed: () {
+              Toast.show('意见反馈');
+            },
+          ),
+          Gaps.hLine(indent: 48.w, endIndent: 38.w),
+          MenuItemWidget(
+            url: 'my/ic_person',
+            text: '申请成为专家',
+            onPressed: () {
+              Toast.show('申请成为专家');
+            },
+          ),
+          Gaps.hLine(indent: 48.w, endIndent: 38.w),
+          MenuItemWidget(
+            url: 'my/ic_settings',
+            text: '设置',
+            onPressed: () {
+              Toast.show('设置');
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -11,10 +11,14 @@ class TextWidget extends StatelessWidget {
     required this.fontSize,
     this.alignment = Alignment.center,
     this.maxLines,
-    this.overflow,
+    this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
     this.width,
     this.height,
+    this.minWidth,
+    this.maxWidth,
+    this.minHeight,
+    this.maxHeight,
     this.backgroundColor,
     this.backgroundImagePath,
     this.backgroundImageFormat,
@@ -55,6 +59,10 @@ class TextWidget extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final double? minWidth;
+  final double? maxWidth;
+  final double? minHeight;
+  final double? maxHeight;
 
   final Color? backgroundColor;
 
@@ -96,6 +104,10 @@ class TextWidget extends StatelessWidget {
     return ContainerWidget(
       width: width,
       height: height,
+      minWidth: minWidth,
+      maxWidth: maxWidth,
+      minHeight: minHeight,
+      maxHeight: maxHeight,
       alignment: alignment,
       backgroundColor: backgroundColor,
       backgroundImagePath: backgroundImagePath,
