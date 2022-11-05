@@ -70,6 +70,7 @@ class _TopWidget extends StatelessWidget {
           child: Column(
             children: [
               const StatusBar(),
+              // 顶部按钮
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -94,143 +95,147 @@ class _TopWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Gaps.vGapValue(17.w),
-              Row(
+              // 用户信息
+              Stack(
                 children: [
-                  ImageWidget(
-                    url: 'app/ic_default_avatar',
-                    width: 68.w,
-                    height: 68.w,
-                    radius: 23.w,
-                    borderSide:
-                        BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
-                    marginLeft: 15.w,
+                  Padding(
+                    padding: EdgeInsets.only(top: 17.w),
+                    child: Row(
+                      children: [
+                        ImageWidget(
+                          url: 'app/ic_default_avatar',
+                          width: 68.w,
+                          height: 68.w,
+                          radius: 23.w,
+                          borderSide: BorderSide(
+                              color: const Color(0xFFCFEBE6), width: 2.w),
+                          marginLeft: 15.w,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 11.w),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextWidget(
+                                  text: '二郎真君',
+                                  textColor: AppColors.color_181818,
+                                  alignment: Alignment.centerLeft,
+                                  fontSize: 18.sp,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  fontWeight: FontWeight.w600,
+                                  marginRight: 110.w,
+                                ),
+                                TextWidget(
+                                  text: '已注册10天',
+                                  //TODO 宽度自适应问题待解决
+                                  width: 65.w,
+                                  height: 16.w,
+                                  textColor: AppColors.color5C6274,
+                                  fontSize: 9.sp,
+                                  maxLines: 1,
+                                  radius: 8.w,
+                                  paddingHorizontal: 2.w,
+                                  backgroundColor: Colors.white,
+                                  marginTop: 5.w,
+                                ),
+                                Gaps.vGap5,
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text.rich(
+                                      TextSpan(children: [
+                                        TextSpan(
+                                          text: '0',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              color: AppColors.color_181818),
+                                        ),
+                                        TextSpan(
+                                          text: ' 关注 ',
+                                          style: TextStyle(
+                                              fontSize: 11.sp,
+                                              color: AppColors.color6A6A6A),
+                                        )
+                                      ]),
+                                    ),
+                                    const Spacer(),
+                                    Text.rich(
+                                      TextSpan(children: [
+                                        TextSpan(
+                                          text: '0',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              color: AppColors.color_181818),
+                                        ),
+                                        TextSpan(
+                                          text: ' 消息 ',
+                                          style: TextStyle(
+                                              fontSize: 11.sp,
+                                              color: AppColors.color6A6A6A),
+                                        )
+                                      ]),
+                                    ),
+                                    const Spacer(),
+                                    Text.rich(
+                                      TextSpan(children: [
+                                        TextSpan(
+                                          text: '0',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16.sp,
+                                              color: AppColors.color_181818),
+                                        ),
+                                        TextSpan(
+                                          text: ' 粉丝 ',
+                                          style: TextStyle(
+                                              fontSize: 11.sp,
+                                              color: AppColors.color6A6A6A),
+                                        )
+                                      ]),
+                                    ),
+                                    Gaps.hGapValue(42.w)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 11.w),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: TextWidget(
-                                text: '二郎真君',
-                                textColor: AppColors.color_181818,
-                                alignment: Alignment.centerLeft,
-                                fontSize: 18.sp,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.w600,
-                              )),
-                              Stack(
-                                children: [
-                                  TextWidget(
-                                    text: '每日签到',
-                                    textColor: const Color(0xFFF54F2A),
-                                    fontSize: 13.sp,
-                                    width: 102.w,
-                                    height: 28.w,
-                                    backgroundColor: Colors.white,
-                                    marginTop: 8.w,
-                                    radiusTopLeft: 14.w,
-                                    paddingLeft: 30.w,
-                                    radiusBottomLeft: 14.w,
-                                  ),
-                                  ImageWidget(
-                                    url: 'my/ic_red_package',
-                                    width: 30.w,
-                                    height: 30.w,
-                                    marginLeft: 6.w,
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              TextWidget(
-                                text: '已注册10天',
-                                width: 65.w,
-                                height: 16.w,
-                                textColor: AppColors.color5C6274,
-                                fontSize: 9.sp,
-                                maxLines: 1,
-                                radius: 8.w,
-                                paddingHorizontal: 2.w,
-                                backgroundColor: Colors.white,
-                                marginTop: 5.w,
-                              )
-                            ],
-                          ),
-                          Gaps.vGap5,
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text.rich(
-                                TextSpan(children: [
-                                  TextSpan(
-                                    text: '0',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16.sp,
-                                        color: AppColors.color_181818),
-                                  ),
-                                  TextSpan(
-                                    text: ' 关注 ',
-                                    style: TextStyle(
-                                        fontSize: 11.sp,
-                                        color: AppColors.color6A6A6A),
-                                  )
-                                ]),
-                              ),
-                              const Spacer(),
-                              Text.rich(
-                                TextSpan(children: [
-                                  TextSpan(
-                                    text: '0',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16.sp,
-                                        color: AppColors.color_181818),
-                                  ),
-                                  TextSpan(
-                                    text: ' 消息 ',
-                                    style: TextStyle(
-                                        fontSize: 11.sp,
-                                        color: AppColors.color6A6A6A),
-                                  )
-                                ]),
-                              ),
-                              const Spacer(),
-                              Text.rich(
-                                TextSpan(children: [
-                                  TextSpan(
-                                    text: '0',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16.sp,
-                                        color: AppColors.color_181818),
-                                  ),
-                                  TextSpan(
-                                    text: ' 粉丝 ',
-                                    style: TextStyle(
-                                        fontSize: 11.sp,
-                                        color: AppColors.color6A6A6A),
-                                  )
-                                ]),
-                              ),
-                              Gaps.hGapValue(42.w)
-                            ],
-                          )
-                        ],
-                      ),
+                  Positioned(
+                    right: 0,
+                    child: Stack(
+                      children: [
+                        TextWidget(
+                          text: '每日签到',
+                          textColor: const Color(0xFFF54F2A),
+                          fontSize: 13.sp,
+                          width: 102.w,
+                          height: 28.w,
+                          backgroundColor: Colors.white,
+                          marginTop: 8.w,
+                          radiusTopLeft: 14.w,
+                          paddingLeft: 30.w,
+                          radiusBottomLeft: 14.w,
+                        ),
+                        ImageWidget(
+                          url: 'my/ic_red_package',
+                          width: 30.w,
+                          height: 30.w,
+                          marginLeft: 6.w,
+                        ),
+                      ],
                     ),
                   )
                 ],
               ),
               const Spacer(),
+              // 我的金币
               ContainerWidget(
                 height: 55.w,
                 backgroundImagePath: 'my/bg_gold_recharge',
