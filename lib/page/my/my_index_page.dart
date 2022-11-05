@@ -51,9 +51,11 @@ class _MyIndexPageState extends State<MyIndexPage> {
   }
 }
 
+/// 用户信息
 class _TopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Log.d('build - _TopWidget');
     return Stack(
       children: [
         ImageWidget(
@@ -279,9 +281,11 @@ class _TopWidget extends StatelessWidget {
   }
 }
 
+/// 我的订单、我的收藏、邀请好友
 class _FunctionMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Log.d('build - _FunctionMenuWidget');
     return ContainerWidget(
       height: 72.w,
       backgroundColor: Colors.white,
@@ -344,6 +348,7 @@ class _FunctionMenuWidget extends StatelessWidget {
   }
 }
 
+/// 任务中心、活动广场
 class _TaskMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -446,6 +451,7 @@ class _TaskMenuWidget extends StatelessWidget {
   }
 }
 
+/// 意见反馈、申请成为专家..
 class _MenuListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
