@@ -1,3 +1,4 @@
+import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,8 @@ import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 import 'package:youliao/widgets/status_bar.dart';
+import 'package:youliao/widgets_app/my_tab_bar.dart';
+import 'package:youliao/widgets_app/plan_item_list.dart';
 
 class ExpertIndexPage extends StatefulWidget {
   const ExpertIndexPage({super.key});
@@ -18,7 +21,24 @@ class ExpertIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _ExpertIndexPageState();
 }
 
-class _ExpertIndexPageState extends State<ExpertIndexPage> {
+class _ExpertIndexPageState extends State<ExpertIndexPage>
+    with TickerProviderStateMixin {
+  List<String> _titles = [];
+  List<Widget> _pages = [];
+  late final TabController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _titles.clear();
+    _pages.clear();
+    _titles.add('准确率排序');
+    _pages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _titles.add('连红排序');
+    _pages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _pageController = TabController(length: _pages.length, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     print("build - ExpertIndexPage");
@@ -41,6 +61,27 @@ class _ExpertIndexPageState extends State<ExpertIndexPage> {
                 isShowBack: false,
               ),
               _RecommendExpertWidget(),
+              Expanded(
+                child: ContainerWidget(
+                  radiusTopLeft: 8.w,
+                  radiusTopRight: 8.w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyTabBar(
+                        pageController: _pageController,
+                        titles: _titles,
+                      ),
+                      Expanded(
+                        child: TabBarView(
+                          controller: _pageController,
+                          children: _pages,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ],
