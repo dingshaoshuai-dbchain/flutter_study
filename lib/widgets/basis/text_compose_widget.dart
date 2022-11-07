@@ -146,6 +146,7 @@ class TextComposeWidget extends StatelessWidget {
       child = Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           if (leftWidget != null) leftWidget!,
           textWidget,
@@ -157,6 +158,7 @@ class TextComposeWidget extends StatelessWidget {
       child = Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           if (topWidget != null) topWidget!,
           child,

@@ -1,12 +1,12 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:youliao/page/home/home_index_page.dart';
 
 import 'main_provider.dart';
 import 'page/expert/expert_index_page.dart';
 import 'page/match/match_index_page.dart';
 import 'page/my/my_index_page.dart';
-import 'page/my/task/task_center_page.dart';
 import 'page/predict/predict_index_page.dart';
 import 'res_app/app_colors.dart';
 import 'widgets/basis/image_widget.dart';
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       normalPath: 'main/ic_tab_home_normal',
       selectedPath: 'main/ic_tab_home_selected',
     ));
-    _pages.add(const KeepAliveWrapper(child: TaskCenterPage()));
+    _pages.add(const KeepAliveWrapper(child: HomeIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "专家",
@@ -112,7 +112,7 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       List<Widget> children) {
     return PageView(
       // 禁止滑动
-      // physics: const NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       controller: controller,
       onPageChanged: (int index) => provider.value = index,
       children: children,

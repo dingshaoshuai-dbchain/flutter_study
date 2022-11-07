@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/page/my/my_router.dart';
 import 'package:youliao/page/my/widgets/menu_item_widget.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/image_util.dart';
+import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
@@ -371,7 +373,7 @@ class _TaskMenuWidget extends StatelessWidget {
             child: ContainerWidget(
               backgroundImagePath: 'my/bg_task_center_my',
               onPressed: () {
-                Toast.show('任务中心');
+                NavigatorUtil.push(context, MyRouter.taskCenterPage);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

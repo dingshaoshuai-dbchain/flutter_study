@@ -61,5 +61,6 @@ flutter:
     - assets/images/common/
     - assets/images/app/
     - assets/images/main/
+    - assets/images/expert/
     - assets/images/my/
     - assets/images/my/task/

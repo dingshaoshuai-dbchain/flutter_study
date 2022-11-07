@@ -17,4 +17,5 @@ class Colors {
   static const Color colorDDDDDD = Color(0xFFDDDDDD);
   static const Color colorEEEEEE = Color(0xFFEEEEEE);
   static const Color colorFFFFFF = Color(0xFFFFFFFF);
+  static const Color color_181818 = Color(0xFF181818);
 }

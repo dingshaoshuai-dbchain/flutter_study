@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 
 class ImageBack extends StatelessWidget {
   const ImageBack({
     super.key,
     this.isBlack = true,
-    this.onTap,
+    this.onPressed,
   });
 
   final bool isBlack;
 
-  final GestureTapCallback? onTap;
+  final GestureTapCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,10 @@ class ImageBack extends StatelessWidget {
       width: 48,
       height: 48,
       padding: 16,
-      onPressed: onTap,
+      onPressed: onPressed ??
+          () {
+            NavigatorUtil.goBack(context);
+          },
     );
   }
 }
