@@ -1,8 +1,7 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:youliao/page/home/home_index_page.dart';
-
+import 'package:youliao/page/find/find_index_page.dart';
 import 'main_provider.dart';
 import 'page/expert/expert_index_page.dart';
 import 'page/match/match_index_page.dart';
@@ -30,10 +29,10 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
     super.initState();
     _items.add(_getBottomNavigationBarItem(
       label: "首页",
-      normalPath: 'main/ic_tab_home_normal',
-      selectedPath: 'main/ic_tab_home_selected',
+      normalPath: 'main/ic_tab_find_normal',
+      selectedPath: 'main/ic_tab_find_selected',
     ));
-    _pages.add(const KeepAliveWrapper(child: HomeIndexPage()));
+    _pages.add(const KeepAliveWrapper(child: FindIndexPage()));
 
     _items.add(_getBottomNavigationBarItem(
       label: "专家",

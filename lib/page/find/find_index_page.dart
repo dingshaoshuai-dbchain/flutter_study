@@ -5,14 +5,14 @@ import 'package:youliao/widgets/basis/image_widget.dart';
 
 import '../../widgets/basis/text_widget.dart';
 
-class HomeIndexPage extends StatefulWidget {
-  const HomeIndexPage({super.key});
+class FindIndexPage extends StatefulWidget {
+  const FindIndexPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HomeIndexPageState();
+  State<StatefulWidget> createState() => _FindIndexPageState();
 }
 
-class _HomeIndexPageState extends State<HomeIndexPage> {
+class _FindIndexPageState extends State<FindIndexPage> {
   @override
   Widget build(BuildContext context) {
     print("build - HomeIndexPage");

@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:youliao/util/navigator_util.dart';
 
 import '../../page/expert/expert_router.dart';
-import '../../page/home/home_router.dart';
+import '../../page/find/find_router.dart';
 import '../../page/match/match_router.dart';
 import '../../page/my/my_router.dart';
 import '../../page/predict/Predict_router.dart';
@@ -14,7 +14,7 @@ class RouteInit extends AppModeInitProvider {
   init() {
     FluroRouter router = FluroRouter();
     List<IRouterProvider> routerList = [];
-    routerList.add(HomeRouter());
+    routerList.add(FindRouter());
     routerList.add(ExpertRouter());
     routerList.add(PredictRouter());
     routerList.add(MatchRouter());
