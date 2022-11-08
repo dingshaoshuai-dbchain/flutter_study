@@ -23,8 +23,8 @@ class ExpertIndexPage extends StatefulWidget {
 
 class _ExpertIndexPageState extends State<ExpertIndexPage>
     with TickerProviderStateMixin {
-  List<String> _titles = [];
-  List<Widget> _pages = [];
+  final List<String> _titles = [];
+  final List<Widget> _pages = [];
   late final TabController _pageController;
 
   @override
@@ -42,50 +42,48 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
   @override
   Widget build(BuildContext context) {
     print("build - ExpertIndexPage");
-    return Container(
-      child: Stack(
-        children: [
-          ImageWidget(
-            url: 'expert/bg_top',
-            width: 1.sw,
-            height: 280.h,
-            fit: BoxFit.cover,
-          ),
-          Column(
-            children: [
-              const StatusBar(),
-              AppBarCommon(
-                title: '专家',
-                titleColor: Colors.white,
-                titleFontSize: 18.sp,
-                isShowBack: false,
-              ),
-              _RecommendExpertWidget(),
-              Expanded(
-                child: ContainerWidget(
-                  radiusTopLeft: 8.w,
-                  radiusTopRight: 8.w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MyTabBar(
-                        pageController: _pageController,
-                        titles: _titles,
+    return Stack(
+      children: [
+        ImageWidget(
+          url: 'expert/bg_top',
+          width: 1.sw,
+          height: 280.h,
+          fit: BoxFit.cover,
+        ),
+        Column(
+          children: [
+            const StatusBar(),
+            AppBarCommon(
+              title: '专家',
+              titleColor: Colors.white,
+              titleFontSize: 18.sp,
+              isShowBack: false,
+            ),
+            _RecommendExpertWidget(),
+            Expanded(
+              child: ContainerWidget(
+                radiusTopLeft: 8.w,
+                radiusTopRight: 8.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyTabBar(
+                      pageController: _pageController,
+                      titles: _titles,
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        controller: _pageController,
+                        children: _pages,
                       ),
-                      Expanded(
-                        child: TabBarView(
-                          controller: _pageController,
-                          children: _pages,
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -94,55 +92,54 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
 class _RecommendExpertWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 190.h,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              TextComposeWidget(
-                text: '推荐专家',
-                textColor: Colors.white,
-                fontSize: 16.sp,
-                marginLeft: 20.w,
-                fontWeight: FontWeight.w600,
-                leftWidget: ImageWidget(
-                  url: 'expert/ic_recommend_expert',
-                  width: 14.w,
-                  height: 14.w,
-                  marginRight: 4.5.w,
-                ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            TextComposeWidget(
+              text: '推荐专家',
+              textColor: Colors.white,
+              fontSize: 16.sp,
+              marginLeft: 20.w,
+              fontWeight: FontWeight.w600,
+              leftWidget: ImageWidget(
+                url: 'expert/ic_recommend_expert',
+                width: 14.w,
+                height: 14.w,
+                marginRight: 4.5.w,
+                fit: BoxFit.fill,
               ),
-              const Spacer(),
-              TextWidget(
-                text: '更多专家 >',
-                textColor: AppColors.color_999999,
-                fontSize: 10.sp,
-                paddingHorizontal: 14.w,
-                paddingVertical: 5.w,
-                onPressed: () {
-                  Toast.show('更多专家');
-                },
-              ),
-            ],
-          ),
-          Gaps.vGapValue(15),
-          Expanded(
-            child: ListView.separated(
-              itemCount: 20,
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return _buildItem(context, index, 20);
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return Gaps.hGap10;
+            ),
+            const Spacer(),
+            TextWidget(
+              text: '更多专家 >',
+              textColor: AppColors.color_999999,
+              fontSize: 10.sp,
+              paddingHorizontal: 14.w,
+              paddingVertical: 5.w,
+              onPressed: () {
+                Toast.show('更多专家');
               },
             ),
+          ],
+        ),
+        Gaps.vGapValue(15),
+        SizedBox(
+          height: 138.h,
+          child: ListView.separated(
+            itemCount: 20,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              return _buildItem(context, index, 20);
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return Gaps.hGap10;
+            },
           ),
-          Gaps.vGapValue(13),
-        ],
-      ),
+        ),
+        Gaps.vGapValue(13),
+      ],
     );
   }
 

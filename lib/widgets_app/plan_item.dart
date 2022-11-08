@@ -105,7 +105,7 @@ class PlanItemWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: 16.w,
-        right: 22.w,
+        right: 16.w,
         top: 2.w,
         bottom: 10.w,
       ),

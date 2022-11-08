@@ -129,18 +129,18 @@ class _TopWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   marginRight: 110.w,
                                 ),
-                                TextWidget(
-                                  text: '已注册10天',
-                                  //TODO 宽度自适应问题待解决
-                                  width: 65.w,
-                                  height: 16.w,
-                                  textColor: AppColors.color5C6274,
-                                  fontSize: 9.sp,
-                                  maxLines: 1,
-                                  radius: 8.w,
-                                  paddingHorizontal: 2.w,
-                                  backgroundColor: Colors.white,
-                                  marginTop: 5.w,
+                                UnconstrainedBox(
+                                  child: TextWidget(
+                                    text: '已注册10天',
+                                    height: 16.w,
+                                    textColor: AppColors.color5C6274,
+                                    fontSize: 9.sp,
+                                    maxLines: 1,
+                                    radius: 8.w,
+                                    paddingHorizontal: 5.w,
+                                    backgroundColor: Colors.white,
+                                    marginTop: 5.w,
+                                  ),
                                 ),
                                 Gaps.vGap5,
                                 Row(
