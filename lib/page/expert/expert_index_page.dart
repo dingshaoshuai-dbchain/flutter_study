@@ -9,10 +9,10 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
-import 'package:youliao/widgets/status_bar.dart';
 import 'package:youliao/widgets_app/my_tab_bar.dart';
 import 'package:youliao/widgets_app/plan_item_list.dart';
+
+import '../../widgets/gaps.dart';
 
 class ExpertIndexPage extends StatefulWidget {
   const ExpertIndexPage({super.key});
@@ -52,12 +52,13 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
         ),
         Column(
           children: [
-            const StatusBar(),
             AppBarCommon(
               title: '专家',
               titleColor: Colors.white,
               titleFontSize: 18.sp,
+              backgroundColor: Colors.transparent,
               isShowBack: false,
+              isBlackStatusFontColor: false,
             ),
             _RecommendExpertWidget(),
             Expanded(
