@@ -36,12 +36,6 @@ class Gaps {
     endIndent: 31.w,
   );
 
-  static const Widget vLine = SizedBox(
-    width: 0.6,
-    height: 24.0,
-    child: VerticalDivider(),
-  );
-
   static const Widget empty = SizedBox.shrink();
 
   static Widget hLine({
@@ -60,6 +54,27 @@ class Gaps {
         thickness: thickness,
         height: height,
       );
+
+  static Widget vLine({
+    // 上下间距
+    double? indent = 0,
+    double? endIndent = 0,
+    Color? color,
+    // 线条的厚度
+    double? thickness = 0.5,
+    // 高度（间距）
+    double? height = double.infinity,
+  }) {
+    return SizedBox(
+        width: 0.5,
+        height: height,
+        child: VerticalDivider(
+          indent: indent,
+          endIndent: endIndent,
+          color: color ?? const Color(0xFFF1F1F1),
+          thickness: thickness,
+        ));
+  }
 
   /// 补充一种空Widget实现 https://github.com/letsar/nil
   /// https://github.com/flutter/flutter/issues/78159
