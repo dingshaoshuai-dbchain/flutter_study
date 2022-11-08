@@ -37,7 +37,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     Widget content = ContainerWidget(
       alignment: Alignment.center,
       width: double.infinity,
-      height: 48.h,
+      height: 45.h,
       backgroundColor: backgroundColor,
       child: Stack(
         alignment: Alignment.center,

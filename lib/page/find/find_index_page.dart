@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
+import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 
 import '../../widgets/app_bar_common.dart';
 import '../../widgets/basis/text_widget.dart';
+import '../../widgets_app/plan_item.dart';
 
 class FindIndexPage extends StatefulWidget {
   const FindIndexPage({super.key});
@@ -32,7 +35,7 @@ class _FindIndexPageState extends State<FindIndexPage> {
           Gaps.vGapValue(8.w),
           _Menu(),
           Gaps.vGapValue(8.w),
-          _PlanList(),
+          _PlanList()
         ],
       ),
     );
@@ -116,6 +119,9 @@ class _Match extends StatelessWidget {
   Widget _buildItem(BuildContext context) {
     return ContainerWidget(
       width: 154.w,
+      onPressed: () {
+        Toast.show('跳转赛事详情');
+      },
       child: Column(
         children: [
           _buildMatch(context),
@@ -185,6 +191,7 @@ class _Match extends StatelessWidget {
     );
   }
 
+  /// 队伍信息
   Widget _buildTeam(BuildContext context) {
     return Row(
       children: [
@@ -219,8 +226,56 @@ class _Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ContainerWidget(
-      height: 75.w,
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
+      radius: 8.w,
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildItem(context, '不对退返', 'find/ic_plan_return', () {
+              Toast.show('不对退返');
+            }),
+          ),
+          Gaps.hGap5,
+          Expanded(
+              child: _buildItem(context, '免费专区', 'find/ic_plan_free', () {
+            Toast.show('免费专区');
+          })),
+          Gaps.hGap5,
+          Expanded(
+              child: _buildItem(context, '打包专区', 'find/ic_plan_package', () {
+            Toast.show('打包专区');
+          })),
+          Gaps.hGap5,
+          Expanded(
+              child: _buildItem(context, '2串1', 'find/ic_plan_2_and_1', () {
+            Toast.show('2串1');
+          })),
+        ],
+      ),
+    );
+  }
+
+  /// 菜单 item
+  Widget _buildItem(
+    BuildContext context,
+    String text,
+    String iconPath,
+    GestureTapCallback onPressed,
+  ) {
+    return TextComposeWidget(
+      text: text,
+      textColor: AppColors.color_181818,
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+      marginTop: 10.w,
+      marginBottom: 8.w,
+      topWidget: ImageWidget(
+        url: iconPath,
+        width: 34.w,
+        height: 34.w,
+        marginBottom: 6.w,
+      ),
+      onPressed: onPressed,
     );
   }
 }
@@ -229,9 +284,49 @@ class _Menu extends StatelessWidget {
 class _PlanList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ContainerWidget(
-      height: 1000.w,
-      backgroundColor: Colors.cyanAccent,
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+            left: 3.w,
+            right: 3.w,
+            top: 8.w,
+            bottom: 5.w,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ImageWidget(
+                url: 'find/ic_hot_plan_list',
+                width: 16.w,
+                height: 14.w,
+                fit: BoxFit.fill,
+              ),
+              ImageWidget(
+                url: 'find/ic_hot_plan_list_title',
+                width: 62.w,
+                height: 13.w,
+                fit: BoxFit.fill,
+                marginLeft: 6.w,
+              )
+            ],
+          ),
+        ),
+        ListView.separated(
+          itemCount: 30,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (BuildContext context, int index) {
+            return PlanItemWidget(
+              marginTop: index == 0 ? 7.w : 0.0,
+              marginBottom: index == 30 - 1 ? 10.w : 0.0,
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return Gaps.vGapValue(8.w);
+          },
+        )
+      ],
     );
   }
 }
