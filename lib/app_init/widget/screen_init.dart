@@ -10,7 +10,7 @@ class ScreenInit extends AppWidgetInitProvider {
   @override
   Widget init(Widget child) => ScreenUtilInit(
         /// 设计图尺寸
-        designSize: const Size(375, 783),
+        designSize: const Size(334, 750),
 
         /// 是否根据宽度/高度中的最小值适配文字
         minTextAdapt: true,

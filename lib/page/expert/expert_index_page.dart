@@ -153,8 +153,8 @@ class _RecommendExpertWidget extends StatelessWidget {
       marginLeft: marginLeft,
       marginRight: marginRight,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Gaps.vGapValue(10.w),
           Stack(
             alignment: Alignment.center,
             children: [
@@ -210,6 +210,7 @@ class _RecommendExpertWidget extends StatelessWidget {
               Toast.show('关注专家');
             },
           ),
+          Gaps.vGapValue(9.w),
         ],
       ),
     );
