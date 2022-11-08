@@ -11,10 +11,10 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
-import 'package:youliao/widgets/status_bar.dart';
 
 import '../../util/log_utils.dart';
+import '../../util/status_bar_util.dart';
+import '../../widgets/gaps.dart';
 
 class MyIndexPage extends StatefulWidget {
   const MyIndexPage({super.key});
@@ -31,33 +31,6 @@ class _MyIndexPageState extends State<MyIndexPage> {
 
   Widget build(BuildContext context) {
     print("build - MyIndexPage");
-    return Container(
-      child: Column(children: [
-        // 用户信息
-        _topWidget,
-        // 我的订单、我的收藏、邀请好友
-        _functionMenuWidget,
-        // 任务中心、活动广场
-        _taskMenuWidget,
-        // 意见反馈、申请成为专家..
-        Expanded(
-          child: ContainerWidget(
-            backgroundColor: Colors.white,
-            marginTop: 10.w,
-            paddingVertical: 5.w,
-            child: _menuListWidget,
-          ),
-        ),
-      ]),
-    );
-  }
-}
-
-/// 用户信息
-class _TopWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Log.d('build - _TopWidget');
     return Stack(
       children: [
         ImageWidget(
@@ -67,223 +40,255 @@ class _TopWidget extends StatelessWidget {
           height: 261.h,
           fit: BoxFit.cover,
         ),
-        SizedBox(
-          height: 261.h,
-          child: Column(
+        ContainerWidget(
+          marginTop: StatusBarUtil.getStatusBarHeight(),
+          child: MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                // 用户信息
+                _topWidget,
+                // 我的订单、我的收藏、邀请好友
+                _functionMenuWidget,
+                // 任务中心、活动广场
+                _taskMenuWidget,
+                // 意见反馈、申请成为专家..
+                ContainerWidget(
+                  backgroundColor: Colors.white,
+                  marginTop: 10.w,
+                  paddingVertical: 5.w,
+                  child: _menuListWidget,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// 用户信息
+class _TopWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Log.d('build - _TopWidget');
+    return SizedBox(
+      height: 261.h - StatusBarUtil.getStatusBarHeight(),
+      child: Column(
+        children: [
+          // 顶部按钮
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const StatusBar(),
-              // 顶部按钮
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ImageWidget(
-                    url: 'my/ic_settings',
-                    width: 40.w,
-                    height: 40.w,
-                    padding: 10.w,
-                    onPressed: () {
-                      Toast.show('设置');
-                    },
-                  ),
-                  ImageWidget(
-                    url: 'my/ic_message',
-                    width: 40.w,
-                    height: 40.w,
-                    padding: 10.w,
-                    marginRight: 12.w,
-                    onPressed: () {
-                      Toast.show('消息');
-                    },
-                  ),
-                ],
+              ImageWidget(
+                url: 'my/ic_settings',
+                width: 40.w,
+                height: 40.w,
+                padding: 10.w,
+                onPressed: () {
+                  Toast.show('设置');
+                },
               ),
-              // 用户信息
-              Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 17.w),
-                    child: Row(
-                      children: [
-                        ImageWidget(
-                          url: 'app/ic_default_avatar',
-                          width: 68.w,
-                          height: 68.w,
-                          radius: 23.w,
-                          borderSide: BorderSide(
-                              color: const Color(0xFFCFEBE6), width: 2.w),
-                          marginLeft: 15.w,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 11.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextWidget(
-                                  text: '二郎真君',
-                                  textColor: AppColors.color_181818,
-                                  alignment: Alignment.centerLeft,
-                                  fontSize: 18.sp,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  fontWeight: FontWeight.w600,
-                                  marginRight: 110.w,
-                                ),
-                                UnconstrainedBox(
-                                  child: TextWidget(
-                                    text: '已注册10天',
-                                    height: 16.w,
-                                    textColor: AppColors.color5C6274,
-                                    fontSize: 9.sp,
-                                    maxLines: 1,
-                                    radius: 8.w,
-                                    paddingHorizontal: 5.w,
-                                    backgroundColor: Colors.white,
-                                    marginTop: 5.w,
-                                  ),
-                                ),
-                                Gaps.vGap5,
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '0',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16.sp,
-                                              color: AppColors.color_181818),
-                                        ),
-                                        TextSpan(
-                                          text: ' 关注 ',
-                                          style: TextStyle(
-                                              fontSize: 11.sp,
-                                              color: AppColors.color6A6A6A),
-                                        )
-                                      ]),
-                                    ),
-                                    const Spacer(),
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '0',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16.sp,
-                                              color: AppColors.color_181818),
-                                        ),
-                                        TextSpan(
-                                          text: ' 消息 ',
-                                          style: TextStyle(
-                                              fontSize: 11.sp,
-                                              color: AppColors.color6A6A6A),
-                                        )
-                                      ]),
-                                    ),
-                                    const Spacer(),
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '0',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16.sp,
-                                              color: AppColors.color_181818),
-                                        ),
-                                        TextSpan(
-                                          text: ' 粉丝 ',
-                                          style: TextStyle(
-                                              fontSize: 11.sp,
-                                              color: AppColors.color6A6A6A),
-                                        )
-                                      ]),
-                                    ),
-                                    Gaps.hGapValue(42.w)
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: Stack(
-                      children: [
-                        TextWidget(
-                          text: '每日签到',
-                          textColor: const Color(0xFFF54F2A),
-                          fontSize: 13.sp,
-                          width: 102.w,
-                          height: 28.w,
-                          backgroundColor: Colors.white,
-                          marginTop: 8.w,
-                          radiusTopLeft: 14.w,
-                          paddingLeft: 30.w,
-                          radiusBottomLeft: 14.w,
-                        ),
-                        ImageWidget(
-                          url: 'my/ic_red_package',
-                          width: 30.w,
-                          height: 30.w,
-                          marginLeft: 6.w,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+              ImageWidget(
+                url: 'my/ic_message',
+                width: 40.w,
+                height: 40.w,
+                padding: 10.w,
+                marginRight: 12.w,
+                onPressed: () {
+                  Toast.show('消息');
+                },
               ),
-              const Spacer(),
-              // 我的金币
-              ContainerWidget(
-                height: 55.w,
-                backgroundImagePath: 'my/bg_gold_recharge',
-                backgroundImageFormat: ImageFormat.webp,
-                backgroundImageBoxFit: BoxFit.fill,
-                marginHorizontal: 13.w,
-                marginBottom: 5.w,
+            ],
+          ),
+          // 用户信息
+          Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 17.w),
                 child: Row(
                   children: [
                     ImageWidget(
-                      url: 'app/ic_gold',
-                      width: 20.w,
-                      height: 20.w,
-                      marginLeft: 18.w,
-                    ),
-                    TextWidget(
-                      text: '我的金币：',
-                      textColor: const Color(0xFFDAC888),
-                      fontSize: 15.sp,
-                      marginLeft: 12.w,
+                      url: 'app/ic_default_avatar',
+                      width: 68.w,
+                      height: 68.w,
+                      radius: 23.w,
+                      borderSide: BorderSide(
+                          color: const Color(0xFFCFEBE6), width: 2.w),
+                      marginLeft: 15.w,
                     ),
                     Expanded(
-                      child: TextWidget(
-                        text: '100',
-                        textColor: Color(0xFFFBE846),
-                        fontSize: 21.sp,
-                        fontWeight: FontWeight.w700,
-                        alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 11.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidget(
+                              text: '二郎真君',
+                              textColor: AppColors.color_181818,
+                              alignment: Alignment.centerLeft,
+                              fontSize: 18.sp,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              fontWeight: FontWeight.w600,
+                              marginRight: 110.w,
+                            ),
+                            UnconstrainedBox(
+                              child: TextWidget(
+                                text: '已注册10天',
+                                height: 16.w,
+                                textColor: AppColors.color5C6274,
+                                fontSize: 9.sp,
+                                maxLines: 1,
+                                radius: 8.w,
+                                paddingHorizontal: 5.w,
+                                backgroundColor: Colors.white,
+                                marginTop: 5.w,
+                              ),
+                            ),
+                            Gaps.vGap5,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text.rich(
+                                  TextSpan(children: [
+                                    TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColors.color_181818),
+                                    ),
+                                    TextSpan(
+                                      text: ' 关注 ',
+                                      style: TextStyle(
+                                          fontSize: 11.sp,
+                                          color: AppColors.color6A6A6A),
+                                    )
+                                  ]),
+                                ),
+                                const Spacer(),
+                                Text.rich(
+                                  TextSpan(children: [
+                                    TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColors.color_181818),
+                                    ),
+                                    TextSpan(
+                                      text: ' 消息 ',
+                                      style: TextStyle(
+                                          fontSize: 11.sp,
+                                          color: AppColors.color6A6A6A),
+                                    )
+                                  ]),
+                                ),
+                                const Spacer(),
+                                Text.rich(
+                                  TextSpan(children: [
+                                    TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          color: AppColors.color_181818),
+                                    ),
+                                    TextSpan(
+                                      text: ' 粉丝 ',
+                                      style: TextStyle(
+                                          fontSize: 11.sp,
+                                          color: AppColors.color6A6A6A),
+                                    )
+                                  ]),
+                                ),
+                                Gaps.hGapValue(42.w)
+                              ],
+                            )
+                          ],
+                        ),
                       ),
+                    )
+                  ],
+                ),
+              ),
+              Positioned(
+                right: 0,
+                child: Stack(
+                  children: [
+                    TextWidget(
+                      text: '每日签到',
+                      textColor: const Color(0xFFF54F2A),
+                      fontSize: 13.sp,
+                      width: 102.w,
+                      height: 28.w,
+                      backgroundColor: Colors.white,
+                      marginTop: 8.w,
+                      radiusTopLeft: 14.w,
+                      paddingLeft: 30.w,
+                      radiusBottomLeft: 14.w,
                     ),
                     ImageWidget(
-                      url: 'my/bg_recharge_btn',
-                      width: 86.w,
-                      height: 36.w,
-                      marginRight: 22.w,
-                      onPressed: () {
-                        Toast.show('立即充值');
-                      },
-                    )
+                      url: 'my/ic_red_package',
+                      width: 30.w,
+                      height: 30.w,
+                      marginLeft: 6.w,
+                    ),
                   ],
                 ),
               )
             ],
           ),
-        )
-      ],
+          const Spacer(),
+          // 我的金币
+          ContainerWidget(
+            height: 55.w,
+            backgroundImagePath: 'my/bg_gold_recharge',
+            backgroundImageFormat: ImageFormat.webp,
+            backgroundImageBoxFit: BoxFit.fill,
+            marginHorizontal: 13.w,
+            marginBottom: 5.w,
+            child: Row(
+              children: [
+                ImageWidget(
+                  url: 'app/ic_gold',
+                  width: 20.w,
+                  height: 20.w,
+                  marginLeft: 18.w,
+                ),
+                TextWidget(
+                  text: '我的金币：',
+                  textColor: const Color(0xFFDAC888),
+                  fontSize: 15.sp,
+                  marginLeft: 12.w,
+                ),
+                Expanded(
+                  child: TextWidget(
+                    text: '100',
+                    textColor: Color(0xFFFBE846),
+                    fontSize: 21.sp,
+                    fontWeight: FontWeight.w700,
+                    alignment: Alignment.centerLeft,
+                  ),
+                ),
+                ImageWidget(
+                  url: 'my/bg_recharge_btn',
+                  width: 86.w,
+                  height: 36.w,
+                  marginRight: 22.w,
+                  onPressed: () {
+                    Toast.show('立即充值');
+                  },
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
