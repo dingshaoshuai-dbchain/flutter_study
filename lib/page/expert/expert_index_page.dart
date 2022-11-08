@@ -47,7 +47,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
         ImageWidget(
           url: 'expert/bg_top',
           width: 1.sw,
-          height: 280.h,
+          height: 290.h,
           fit: BoxFit.cover,
         ),
         Column(
@@ -123,9 +123,10 @@ class _RecommendExpertWidget extends StatelessWidget {
             ),
           ],
         ),
-        Gaps.vGapValue(15),
+        Gaps.vGapValue(13),
         SizedBox(
-          height: 138.h,
+          // TODO 屏幕适配问题，高度这样搞不靠谱
+          height: 150.h,
           child: ListView.separated(
             itemCount: 20,
             scrollDirection: Axis.horizontal,
@@ -138,7 +139,7 @@ class _RecommendExpertWidget extends StatelessWidget {
             },
           ),
         ),
-        Gaps.vGapValue(13),
+        Gaps.vGapValue(14),
       ],
     );
   }
@@ -206,11 +207,11 @@ class _RecommendExpertWidget extends StatelessWidget {
             width: 35.w,
             height: 20.w,
             marginTop: 6.w,
-            onPressed: (){
+            onPressed: () {
               Toast.show('关注专家');
             },
           ),
-          Gaps.vGapValue(9.w),
+          Gaps.vGapValue(8.w),
         ],
       ),
     );
