@@ -470,7 +470,9 @@ class _MenuListWidget extends StatelessWidget {
     Log.d('build - _MenuListWidget');
     return ContainerWidget(
       backgroundColor: Colors.white,
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           MenuItemWidget(
             url: 'my/ic_feedback',
