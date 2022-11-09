@@ -26,19 +26,21 @@ class _FindIndexPageState extends State<FindIndexPage> {
     print("build - HomeIndexPage");
     return Scaffold(
       appBar: AppBarCommon(title: '发现', isShowBack: false),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
+      body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 9.w, right: 9.w),
-        children: [
-          Gaps.vGapValue(8.w),
-          _Banner(),
-          Gaps.vGapValue(8.w),
-          _Match(),
-          Gaps.vGapValue(8.w),
-          _Menu(),
-          Gaps.vGapValue(8.w),
-          _PlanList()
-        ],
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            Gaps.vGapValue(8.w),
+            _Banner(),
+            Gaps.vGapValue(8.w),
+            _Match(),
+            Gaps.vGapValue(8.w),
+            _Menu(),
+            Gaps.vGapValue(8.w),
+            _PlanList()
+          ],
+        ),
       ),
     );
   }
