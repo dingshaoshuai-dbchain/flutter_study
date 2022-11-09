@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/global/plan_mode.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util/toast_util.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
@@ -22,6 +23,9 @@ class PlanItemWidget extends StatelessWidget {
       marginBottom: marginBottom,
       backgroundColor: Colors.white,
       radius: 8.w,
+      onPressed: () {
+        Toast.show('跳转方案详情');
+      },
       child: Stack(
         children: [
           Column(

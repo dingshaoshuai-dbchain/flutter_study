@@ -26,6 +26,7 @@ class _FindIndexPageState extends State<FindIndexPage> {
     return Scaffold(
       appBar: AppBarCommon(title: '发现', isShowBack: false),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.only(left: 9.w, right: 9.w),
         children: [
           Gaps.vGapValue(8.w),
