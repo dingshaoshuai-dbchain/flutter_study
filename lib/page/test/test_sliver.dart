@@ -2,57 +2,54 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/widgets/basis/text_widget.dart';
+import 'package:youliao/widgets/app_bar_common.dart';
 
+import '../../res_app/app_colors.dart';
 import '../../widgets/basis/container_widget.dart';
+import '../../widgets/basis/text_widget.dart';
 
-class PredictIndexPage extends StatefulWidget {
-  const PredictIndexPage({super.key});
+class TestSliverPage extends StatelessWidget {
+  const TestSliverPage({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _PredictIndexPageState();
-}
-
-class _PredictIndexPageState extends State<PredictIndexPage> {
   @override
   Widget build(BuildContext context) {
-    print("build - PredictIndexPage");
-
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          backgroundColor: Colors.white,
-          title: TextWidget(
-            text: '我是标题',
-            textColor: AppColors.color_181818,
-            fontSize: 20.sp,
-          ),
-        ),
-        _buildSliverList1(),
-        SliverToBoxAdapter(
-          child: ContainerWidget(
-            backgroundColor: Colors.yellow,
-            height: 200,
-          ),
-        ),
-        SliverPersistentHeader(
-          pinned: false,
-          floating: true,
-          delegate: SliverHeaderDelegate(
-            maxHeight: 50.w,
-            minHeight: 50.w,
-            child: TextWidget(
-              text: '我可以固定',
+    return Scaffold(
+      appBar: AppBarCommon(title: 'Sliver 吸顶测试'),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.red,
+            title: TextWidget(
+              text: '我是标题',
               textColor: AppColors.color_181818,
               fontSize: 20.sp,
-              height: 50.w,
-              backgroundColor: Colors.orange,
             ),
           ),
-        ),
-        _buildSliverList2(),
-      ],
+          _buildSliverList1(),
+          SliverToBoxAdapter(
+            child: ContainerWidget(
+              backgroundColor: Colors.yellow,
+              height: 200,
+            ),
+          ),
+          SliverPersistentHeader(
+            pinned: false,
+            floating: true,
+            delegate: SliverHeaderDelegate(
+              maxHeight: 50.w,
+              minHeight: 50.w,
+              child: TextWidget(
+                text: '我可以固定',
+                textColor: AppColors.color_181818,
+                fontSize: 20.sp,
+                height: 50.w,
+                backgroundColor: Colors.orange,
+              ),
+            ),
+          ),
+          _buildSliverList2(),
+        ],
+      ),
     );
   }
 

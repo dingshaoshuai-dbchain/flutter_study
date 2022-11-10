@@ -2,6 +2,8 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:youliao/page/find/find_index_page.dart';
+import 'package:youliao/page/test/test_index_page.dart';
+
 import 'main_provider.dart';
 import 'page/expert/expert_index_page.dart';
 import 'page/match/match_index_page.dart';
@@ -61,6 +63,13 @@ class _MainPageState extends State<MainPage> with RestorationMixin {
       selectedPath: 'main/ic_tab_my_selected',
     ));
     _pages.add(const KeepAliveWrapper(child: MyIndexPage()));
+
+    _items.add(_getBottomNavigationBarItem(
+      label: "测试",
+      normalPath: 'main/ic_tab_my_normal',
+      selectedPath: 'main/ic_tab_my_selected',
+    ));
+    _pages.add(const KeepAliveWrapper(child: TestIndexPage()));
   }
 
   @override

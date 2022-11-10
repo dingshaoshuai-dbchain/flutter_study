@@ -1,11 +1,12 @@
 import 'package:fluro/fluro.dart';
+import 'package:youliao/page/test/page/test_router_pager.dart';
 import 'package:youliao/util/navigator_util.dart';
 
 import '../../page/expert/expert_router.dart';
 import '../../page/find/find_router.dart';
 import '../../page/match/match_router.dart';
 import '../../page/my/my_router.dart';
-import '../../page/predict/Predict_router.dart';
+import '../../page/predict/predict_router.dart';
 import '../../page/router_provider.dart';
 import '../app_mode_init_provider.dart';
 
@@ -19,6 +20,7 @@ class RouteInit extends AppModeInitProvider {
     routerList.add(PredictRouter());
     routerList.add(MatchRouter());
     routerList.add(MyRouter());
+    routerList.add(TestRouter());
     for (var element in routerList) {
       element.initRouter(router);
     }
@@ -26,7 +28,7 @@ class RouteInit extends AppModeInitProvider {
       router,
       'login/path',
       (pathWrapper, loginPath) {
-        if(pathWrapper.path == '1'){
+        if (pathWrapper.path == '1') {
           pathWrapper.path = loginPath;
         }
       },
