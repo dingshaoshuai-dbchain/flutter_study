@@ -18,6 +18,12 @@ class TestSliverPage extends StatelessWidget {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 200,
+              child: _buildListHor(),
+            ),
+          ),
           _buildSliverList1(),
           SliverToBoxAdapter(
             child: ContainerWidget(
@@ -81,6 +87,26 @@ class TestSliverPage extends StatelessWidget {
                   backgroundColor: Colors.cyanAccent,
                 ),
           childCount: 50),
+    );
+  }
+
+  Widget _buildListHor() {
+    return ListView.builder(
+      itemCount: 50,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (_, index) {
+        return index % 2 == 0
+            ? ContainerWidget(
+          width: 30,
+          height: 20,
+          backgroundColor: Colors.red,
+        )
+            : ContainerWidget(
+          width: 60,
+          height: 20,
+          backgroundColor: Colors.cyanAccent,
+        );
+      },
     );
   }
 }

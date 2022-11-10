@@ -46,7 +46,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
             left: 0,
             child: Row(
               children: [
-                if (isShowBack) ImageBack(),
+                if (isShowBack) const ImageBack(),
               ],
             ),
           ),

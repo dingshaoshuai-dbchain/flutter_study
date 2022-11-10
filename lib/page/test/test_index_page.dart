@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/page/test/test_router_pager.dart';
+import 'package:youliao/page/test/test_router.dart';
 import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 
@@ -16,6 +16,9 @@ class TestIndexPage extends StatelessWidget {
         children: [
           _buildPageButton(context, 'sliver 吸顶', () {
             NavigatorUtil.push(context, TestRouter.testSliverPager);
+          }),
+          _buildPageButton(context, 'NestedScrollerView 吸顶', () {
+            NavigatorUtil.push(context, TestRouter.testNestedScrollerPager);
           }),
         ],
       ),
