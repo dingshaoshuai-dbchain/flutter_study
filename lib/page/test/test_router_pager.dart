@@ -1,8 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:youliao/page/test/test_index_page.dart';
-import 'package:youliao/page/test/test_sliver.dart';
+import 'package:youliao/page/test/page/test_sliver.dart';
 
-import '../../router_provider.dart';
+import '../router_provider.dart';
 
 class TestRouter implements IRouterProvider {
   static const String _pageRoot = "/test/page";

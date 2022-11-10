@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/page/test/page/test_router_pager.dart';
+import 'package:youliao/page/test/test_router_pager.dart';
 import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 

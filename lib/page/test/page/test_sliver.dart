@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 
-import '../../res_app/app_colors.dart';
-import '../../widgets/basis/container_widget.dart';
-import '../../widgets/basis/text_widget.dart';
+import '../../../res_app/app_colors.dart';
+import '../../../widgets/basis/container_widget.dart';
+import '../../../widgets/basis/text_widget.dart';
 
 class TestSliverPage extends StatelessWidget {
   const TestSliverPage({super.key});
@@ -16,15 +16,8 @@ class TestSliverPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarCommon(title: 'Sliver 吸顶测试'),
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.red,
-            title: TextWidget(
-              text: '我是标题',
-              textColor: AppColors.color_181818,
-              fontSize: 20.sp,
-            ),
-          ),
           _buildSliverList1(),
           SliverToBoxAdapter(
             child: ContainerWidget(
