@@ -1,5 +1,5 @@
 import 'package:fluro/fluro.dart';
-import 'package:youliao/page/test/page/test_nested_scroller_page.dart';
+import 'package:youliao/page/test/page/test_nested_scroll_page.dart';
 import 'package:youliao/page/test/test_index_page.dart';
 import 'package:youliao/page/test/page/test_sliver_pager.dart';
 
@@ -18,6 +18,6 @@ class TestRouter implements IRouterProvider {
     router.define(testSliverPager,
         handler: Handler(handlerFunc: (_, __) => const TestSliverPage()));
     router.define(testNestedScrollerPager,
-        handler: Handler(handlerFunc: (_, __) => const TestNestedScrollerPage()));
+        handler: Handler(handlerFunc: (_, __) => const TestNestedScrollPage()));
   }
 }

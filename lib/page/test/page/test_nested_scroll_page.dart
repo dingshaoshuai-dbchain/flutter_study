@@ -8,8 +8,8 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import '../../../res_app/app_colors.dart';
 import '../../../widgets/basis/text_widget.dart';
 
-class TestNestedScrollerPage extends StatelessWidget {
-  const TestNestedScrollerPage({super.key});
+class TestNestedScrollPage extends StatelessWidget {
+  const TestNestedScrollPage({super.key});
 
   @override
   Widget build(BuildContext context) {
