@@ -11,16 +11,25 @@ import 'package:youliao/widgets/gaps.dart';
 import 'package:youliao/widgets_app/hit_rate_widget.dart';
 
 class PlanItemWidget extends StatelessWidget {
-  const PlanItemWidget({super.key, this.marginTop, this.marginBottom});
+  const PlanItemWidget(
+      {super.key,
+      this.marginTop,
+      this.marginBottom,
+      this.marginLeft,
+      this.marginRight});
 
   final double? marginTop;
   final double? marginBottom;
+  final double? marginLeft;
+  final double? marginRight;
 
   @override
   Widget build(BuildContext context) {
     return ContainerWidget(
       marginTop: marginTop,
       marginBottom: marginBottom,
+      marginLeft: marginLeft,
+      marginRight: marginRight,
       backgroundColor: Colors.white,
       radius: 8.w,
       onPressed: () {

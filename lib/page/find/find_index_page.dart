@@ -8,10 +8,10 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
-import 'package:youliao/widgets_app/plan_item_list.dart';
 
 import '../../widgets/app_bar_common.dart';
 import '../../widgets/basis/text_widget.dart';
+import '../../widgets_app/plan_item.dart';
 
 class FindIndexPage extends StatefulWidget {
   const FindIndexPage({super.key});
@@ -26,40 +26,48 @@ class _FindIndexPageState extends State<FindIndexPage> {
     print("build - HomeIndexPage");
     return Scaffold(
       appBar: AppBarCommon(title: '发现', isShowBack: false),
-      body: NestedScrollView(
-        key: GlobalKey(),
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.only(left: 9.w, right: 9.w),
-                child: Column(
-                  children: [
-                    Gaps.vGapValue(8.w),
-                    _Banner(),
-                    Gaps.vGapValue(8.w),
-                    _Match(),
-                    Gaps.vGapValue(8.w),
-                    _Menu(),
-                    Gaps.vGapValue(8.w),
-                  ],
-                ),
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          // 头部区域
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(left: 9.w, right: 9.w),
+              child: Column(
+                children: [
+                  Gaps.vGapValue(8.w),
+                  _Banner(),
+                  Gaps.vGapValue(8.w),
+                  _Match(),
+                  Gaps.vGapValue(8.w),
+                  _Menu(),
+                  Gaps.vGapValue(8.w),
+                ],
               ),
             ),
-            SliverPersistentHeader(
-              // 滑动到可视区域顶部时，是否固定在顶部
-              pinned: true,
-              // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
-              // 注意：测试 CustomScrollView 才生效，具体原因后面再看
-              floating: true,
-              delegate: SliverHeaderDelegate.fixedHeight(
-                height: 30.w,
-                child: _PlanListTitle(),
+          ),
+          // 头部固定区域
+          SliverPersistentHeader(
+            // 滑动到可视区域顶部时，是否固定在顶部
+            pinned: false,
+            // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
+            // 注意：测试 CustomScrollView 才生效
+            floating: true,
+            delegate: SliverHeaderDelegate.fixedHeight(
+              height: 30.w,
+              child: _PlanListTitle(),
+            ),
+          ),
+          // 列表区域
+          SliverPadding(
+            padding: EdgeInsets.only(left: 9.w, right: 9.w),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => _buildPlanItem(context, index),
               ),
-            )
-          ];
-        },
-        body: const PlanItemListWidget(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -323,7 +331,7 @@ class _Menu extends StatelessWidget {
   }
 }
 
-/// 红人情报
+/// 红人情报标题
 class _PlanListTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -351,4 +359,11 @@ class _PlanListTitle extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildPlanItem(BuildContext context, int index) {
+  return PlanItemWidget(
+    marginTop: 10.w,
+    marginBottom: index == 30 - 1 ? 10.w : 0.0,
+  );
 }
