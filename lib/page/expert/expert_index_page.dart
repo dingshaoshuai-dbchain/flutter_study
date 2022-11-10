@@ -60,28 +60,39 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
               isShowBack: false,
               isBlackStatusFontColor: false,
             ),
-            _RecommendExpertWidget(),
             Expanded(
-              child: ContainerWidget(
-                radiusTopLeft: 8.w,
-                radiusTopRight: 8.w,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MyTabBar(
-                      pageController: _pageController,
-                      titles: _titles,
+              child: NestedScrollView(
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
+                  return [
+                    SliverToBoxAdapter(
+                      child: _RecommendExpertWidget(),
                     ),
-                    Expanded(
-                      child: TabBarView(
-                        controller: _pageController,
-                        children: _pages,
+                    SliverPersistentHeader(
+                      // 滑动到可视区域顶部时，是否固定在顶部
+                      pinned: true,
+                      // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
+                      // 注意：测试 CustomScrollView 才生效，具体原因后面再看
+                      floating: true,
+                      delegate: SliverHeaderDelegate.fixedHeight(
+                        height: 50.w,
+                        child: MyTabBar(
+                          pageController: _pageController,
+                          titles: _titles,
+                        ),
                       ),
-                    )
-                  ],
+                    ),
+                  ];
+                },
+                body: ContainerWidget(
+                  backgroundColor: AppColors.mainBackground,
+                  child: TabBarView(
+                    controller: _pageController,
+                    children: _pages,
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ],
@@ -127,7 +138,7 @@ class _RecommendExpertWidget extends StatelessWidget {
         Gaps.vGapValue(13),
         SizedBox(
           // TODO 屏幕适配问题，高度这样搞不靠谱
-          height: 150.h,
+          height: 138.h,
           child: ListView.separated(
             itemCount: 20,
             scrollDirection: Axis.horizontal,
