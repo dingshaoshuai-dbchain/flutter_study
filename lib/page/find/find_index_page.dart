@@ -8,10 +8,10 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/widgets_app/plan_item_list.dart';
 
 import '../../widgets/app_bar_common.dart';
 import '../../widgets/basis/text_widget.dart';
-import '../../widgets_app/plan_item.dart';
 
 class FindIndexPage extends StatefulWidget {
   const FindIndexPage({super.key});
@@ -26,21 +26,40 @@ class _FindIndexPageState extends State<FindIndexPage> {
     print("build - HomeIndexPage");
     return Scaffold(
       appBar: AppBarCommon(title: '发现', isShowBack: false),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 9.w, right: 9.w),
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            Gaps.vGapValue(8.w),
-            _Banner(),
-            Gaps.vGapValue(8.w),
-            _Match(),
-            Gaps.vGapValue(8.w),
-            _Menu(),
-            Gaps.vGapValue(8.w),
-            _PlanList()
-          ],
-        ),
+      body: NestedScrollView(
+        key: GlobalKey(),
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(left: 9.w, right: 9.w),
+                child: Column(
+                  children: [
+                    Gaps.vGapValue(8.w),
+                    _Banner(),
+                    Gaps.vGapValue(8.w),
+                    _Match(),
+                    Gaps.vGapValue(8.w),
+                    _Menu(),
+                    Gaps.vGapValue(8.w),
+                  ],
+                ),
+              ),
+            ),
+            SliverPersistentHeader(
+              // 滑动到可视区域顶部时，是否固定在顶部
+              pinned: true,
+              // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
+              // 注意：测试 CustomScrollView 才生效，具体原因后面再看
+              floating: true,
+              delegate: SliverHeaderDelegate.fixedHeight(
+                height: 30.w,
+                child: _PlanListTitle(),
+              ),
+            )
+          ];
+        },
+        body: const PlanItemListWidget(),
       ),
     );
   }
@@ -52,7 +71,12 @@ class _Banner extends StatelessWidget {
     'https://live-yq.oss-cn-shenzhen.aliyuncs.com/cos/20221017213350486054/a8e11b6d-4b58-4fc0-9ae0-28e9f6958ae2.png?version=3',
     'https://live-yq.oss-cn-shenzhen.aliyuncs.com/cos/20221017200019301079/389f57a9-fe97-4d6a-92c9-22f282cdeb60.png?version=3',
     'https://live-yq.oss-cn-shenzhen.aliyuncs.com/cos/20221018173031992022/719753a7-4672-4b79-9610-2e2d9b83a566.png?version=3',
-  ].map((e) => ImageWidget(url: e, fit: BoxFit.cover, imageRadius: 6.w));
+  ].map((e) => ImageWidget(
+        url: e,
+        fit: BoxFit.cover,
+        imageRadius: 6.w,
+        placeholder: 'app/ic_place_holder',
+      ));
 
   @override
   Widget build(BuildContext context) {
@@ -299,53 +323,32 @@ class _Menu extends StatelessWidget {
   }
 }
 
-/// 方案列表
-class _PlanList extends StatelessWidget {
+/// 红人情报
+class _PlanListTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: 3.w,
-            right: 3.w,
-            top: 8.w,
-            bottom: 5.w,
+    return ContainerWidget(
+      paddingHorizontal: 12.w,
+      paddingVertical: 5.w,
+      backgroundColor: AppColors.mainBackground,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ImageWidget(
+            url: 'find/ic_hot_plan_list',
+            width: 16.w,
+            height: 14.w,
+            fit: BoxFit.fill,
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ImageWidget(
-                url: 'find/ic_hot_plan_list',
-                width: 16.w,
-                height: 14.w,
-                fit: BoxFit.fill,
-              ),
-              ImageWidget(
-                url: 'find/ic_hot_plan_list_title',
-                width: 62.w,
-                height: 13.w,
-                fit: BoxFit.fill,
-                marginLeft: 6.w,
-              )
-            ],
-          ),
-        ),
-        ListView.separated(
-          itemCount: 30,
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) {
-            return PlanItemWidget(
-              marginTop: index == 0 ? 7.w : 0.0,
-              marginBottom: index == 30 - 1 ? 10.w : 0.0,
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return Gaps.vGapValue(8.w);
-          },
-        )
-      ],
+          ImageWidget(
+            url: 'find/ic_hot_plan_list_title',
+            width: 62.w,
+            height: 13.w,
+            fit: BoxFit.fill,
+            marginLeft: 6.w,
+          )
+        ],
+      ),
     );
   }
 }

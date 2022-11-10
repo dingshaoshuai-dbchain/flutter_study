@@ -10,6 +10,7 @@ class PlanItemListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: 30,
+      physics: const ClampingScrollPhysics(),
       padding: EdgeInsets.only(left: 9.w, right: 9.w),
       itemBuilder: (BuildContext context, int index) {
         return PlanItemWidget(

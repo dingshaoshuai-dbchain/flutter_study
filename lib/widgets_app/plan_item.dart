@@ -66,41 +66,46 @@ class PlanItemWidget extends StatelessWidget {
 
   /// 作者区域
   Widget _buildAnchor() {
-    return Row(
-      children: [
-        ImageWidget(
-          url: 'app/ic_default_avatar',
-          width: 19.w,
-          height: 19.w,
-          marginLeft: 14.w,
-          marginTop: 12.w,
-          marginBottom: 10.w,
-          fit: BoxFit.cover,
-        ),
-        TextWidget(
-          text: '蔡萌萌',
-          textColor: AppColors.color_181818,
-          fontSize: 10.sp,
-          marginLeft: 6.w,
-        ),
-        ImageWidget(
-          url: 'app/ic_v',
-          width: 11.w,
-          height: 10.w,
-          marginLeft: 8,
-          marginRight: 6.5.w,
-        ),
-        Text(
-          '社区红人',
-          style: TextStyle(
-            fontSize: 10.sp,
-            color: AppColors.color_999999,
+    return ContainerWidget(
+      onPressed: (){
+        Toast.show('跳转专家主页');
+      },
+      child: Row(
+        children: [
+          ImageWidget(
+            url: 'app/ic_default_avatar',
+            width: 19.w,
+            height: 19.w,
+            marginLeft: 14.w,
+            marginTop: 12.w,
+            marginBottom: 10.w,
+            fit: BoxFit.cover,
           ),
-        ),
-        const Spacer(),
-        HitRateWidget(),
-        Gaps.hGapValue(20.w)
-      ],
+          TextWidget(
+            text: '蔡萌萌',
+            textColor: AppColors.color_181818,
+            fontSize: 10.sp,
+            marginLeft: 6.w,
+          ),
+          ImageWidget(
+            url: 'app/ic_v',
+            width: 11.w,
+            height: 10.w,
+            marginLeft: 8,
+            marginRight: 6.5.w,
+          ),
+          Text(
+            '社区红人',
+            style: TextStyle(
+              fontSize: 10.sp,
+              color: AppColors.color_999999,
+            ),
+          ),
+          const Spacer(),
+          HitRateWidget(),
+          Gaps.hGapValue(20.w)
+        ],
+      ),
     );
   }
 
