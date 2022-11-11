@@ -171,8 +171,41 @@ class _BasketballMatchItem extends StatelessWidget {
   /// 比分区域
   Widget _buildScore() {
     return ContainerWidget(
+      height: 40.w,
       backgroundColor: Colors.red,
-      height: 40,
+      // child: Column(
+      //   mainAxisSize: MainAxisSize.min,
+      //   children: [
+      //     Row(
+      //       mainAxisSize: MainAxisSize.min,
+      //       children: [
+      //         ListView.separated(
+      //           scrollDirection: Axis.horizontal,
+      //           shrinkWrap: true,
+      //           itemCount: 5,
+      //           itemBuilder: (context, index) {
+      //             return _buildScoreItem();
+      //           },
+      //           separatorBuilder: (context, index) {
+      //             return Gaps.hGap3;
+      //           },
+      //         ),
+      //       ],
+      //     ),
+      //   ],
+      // ),
+    );
+  }
+
+  Widget _buildScoreItem() {
+    return TextWidget(
+      text: '10',
+      textColor: AppColors.color8B8B8B,
+      fontSize: 11.sp,
+      width: 20.w,
+      height: 16.w,
+      backgroundColor: AppColors.colorF7F8FC,
+      radius: 2.5.w,
     );
   }
 }
