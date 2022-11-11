@@ -6,6 +6,11 @@ class AppColors {
   static const Color red = Color(0xFFFF0F47);
   static const Color red_2 = Color(0xFFD73422);
 
+  /// 足球赛事牌子 - 黄牌
+  static const Color footballMatchYellow = Color(0xFFF4B748);
+  /// 足球赛事牌子 - 红牌
+  static const Color footballMatchRed = Color(0xFFE74C41);
+
   static const Color color_181818 = Color(0xFF181818);
   static const Color color_333333 = Color(0xFF333333);
   static const Color color_666666 = Color(0xFF666666);

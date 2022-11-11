@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
+import 'package:youliao/widgets_app/football_match_card.dart';
 
 import '../../util/toast_util.dart';
 import '../../widgets/basis/container_widget.dart';
@@ -150,6 +151,29 @@ class _FootballMatchItem extends StatelessWidget {
           child: const CollectedWidget(),
         ),
         // 队伍信息区域
+        Positioned(
+          bottom: 5.w,
+          left: 45.w,
+          right: 45.w,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(child: _buildTeam(context, TextDirection.rtl)),
+                  Gaps.hGap12,
+                  _buildScoreItem(context, '2 - 1'),
+                  Gaps.hGap12,
+                  Expanded(child: _buildTeam(context, TextDirection.ltr)),
+                ],
+              ),
+              Gaps.vGap5,
+              Text(
+                '半（0-0） 角（0-0）',
+                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 11.sp),
+              )
+            ],
+          ),
+        ),
         // 图标区域
         Positioned(
           right: 15.w,
@@ -158,6 +182,43 @@ class _FootballMatchItem extends StatelessWidget {
           child: const NextWidget(),
         ),
       ],
+    );
+  }
+
+  /// 队伍区域
+  Widget _buildTeam(BuildContext context, TextDirection textDirection) {
+    return Row(
+      textDirection: textDirection,
+      children: [
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: 90.w
+          ),
+          child: Text(
+            '皇家君主皇家君主皇家君主皇家君主',
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: AppColors.color_181818,
+              fontSize: 14.sp,
+            ),
+          ),
+        ),
+        Gaps.hGapValue(4.w),
+        const YellowCard(number: 2),
+        Gaps.hGapValue(2.w),
+        const RedCard(number: 2),
+      ],
+    );
+  }
+
+  /// 比分 item
+  /// 如果某一队有两位数的话，中间的横杠就不在整个界面的最中间，不考虑这种情况
+  Widget _buildScoreItem(BuildContext context, String text) {
+    return TextWidget(
+      text: text,
+      textColor: AppColors.main,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
     );
   }
 }
