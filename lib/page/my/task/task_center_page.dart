@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
-import 'package:youliao/widgets/image_back.dart';
-import 'package:youliao/widgets/status_bar.dart';
 
 import '../../../../widgets/basis/text_widget.dart';
 import '../../../../widgets/gaps.dart';
@@ -29,8 +28,12 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const StatusBar(),
-              const ImageBack(isBlack: false),
+              AppBarCommon(
+                title: '',
+                isBlackStatusFontColor: false,
+                backgroundColor: Colors.transparent,
+                isBlackBack: false,
+              ),
               _buildUserInfo(context),
               Gaps.vGapValue(15),
               Expanded(

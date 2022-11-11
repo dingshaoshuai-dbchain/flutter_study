@@ -8,6 +8,7 @@ import 'package:youliao/page/my/login/password_login_page.dart';
 import 'package:youliao/page/my/login/phone_login_page.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/navigator_util.dart';
+import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
@@ -41,48 +42,49 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-        // 状态栏黑色
-        value: SystemUiOverlayStyle.dark,
-        child: Scaffold(
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ImageWidget(
-                url: 'app/ic_close_black',
-                width: 80.w,
-                height: 80.w,
-                padding: 28.w,
-                marginTop: 60.h,
-                onPressed: () => {NavigatorUtil.goBack(context)},
-              ),
-              ContainerWidget(
-                marginTop: 20.w,
-                marginLeft: 12.w,
-                child: TabBar(
-                    controller: _pageController,
-                    labelColor: AppColors.color_181818,
-                    unselectedLabelColor: AppColors.color_999999,
-                    indicatorColor: Colors.transparent,
-                    // 坑爹玩意，只有设置了这个才会包裹内容显示tab
-                    isScrollable: true,
-                    labelPadding: EdgeInsets.only(left: 15.w, right: 15.w),
-                    labelStyle:
-                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
-                    tabs: titles.map((e) => Text(e)).toList()),
-              ),
-              Gaps.vGapValue(30),
-              Expanded(
-                child: TabBarView(
-                  controller: _pageController,
-                  children: pages,
-                ),
-              ),
-              _buildBottom(context),
-              Gaps.vGapValue(28)
-            ],
+    return Scaffold(
+      appBar: AppBarCommon(
+        title: '',
+        isShowBack: false,
+        backgroundColor: Colors.transparent,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ImageWidget(
+            url: 'app/ic_close_black',
+            width: 80.w,
+            height: 80.w,
+            padding: 28.w,
+            onPressed: () => {NavigatorUtil.goBack(context)},
           ),
-        ));
+          ContainerWidget(
+            marginTop: 20.w,
+            marginLeft: 12.w,
+            child: TabBar(
+                controller: _pageController,
+                labelColor: AppColors.color_181818,
+                unselectedLabelColor: AppColors.color_999999,
+                indicatorColor: Colors.transparent,
+                // 坑爹玩意，只有设置了这个才会包裹内容显示tab
+                isScrollable: true,
+                labelPadding: EdgeInsets.only(left: 15.w, right: 15.w),
+                labelStyle:
+                    TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                tabs: titles.map((e) => Text(e)).toList()),
+          ),
+          Gaps.vGapValue(30),
+          Expanded(
+            child: TabBarView(
+              controller: _pageController,
+              children: pages,
+            ),
+          ),
+          _buildBottom(context),
+          Gaps.vGapValue(28)
+        ],
+      ),
+    );
   }
 
   Widget _buildBottom(BuildContext context) {

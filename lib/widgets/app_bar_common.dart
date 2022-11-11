@@ -12,6 +12,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.isShowBack = true,
+    this.isBlackBack = true,
     // 标题字体样式
     this.titleColor = AppColors.color_181818,
     this.titleFontSize = 18,
@@ -29,7 +30,13 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
 
   final Color backgroundColor;
 
+  /// 是否显示返回按钮
   final bool isShowBack;
+
+  /// 返回按钮是否为黑色的
+  final bool isBlackBack;
+
+  /// 系统状态栏颜色是否为黑色
   final bool isBlackStatusFontColor;
 
   @override
@@ -46,7 +53,10 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
             left: 0,
             child: Row(
               children: [
-                if (isShowBack) const ImageBack(),
+                if (isShowBack)
+                  ImageBack(
+                    isBlack: isBlackBack,
+                  ),
               ],
             ),
           ),
