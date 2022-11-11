@@ -63,5 +63,6 @@ flutter:
     - assets/images/main/
     - assets/images/expert/
     - assets/images/find/
+    - assets/images/match/
     - assets/images/my/
     - assets/images/my/task/
