@@ -4,6 +4,7 @@ import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
+import 'package:youliao/widgets_app/next_widget.dart';
 
 class MenuItemWidget extends StatelessWidget {
   const MenuItemWidget({super.key, this.url, this.text, this.onPressed});
@@ -34,12 +35,9 @@ class MenuItemWidget extends StatelessWidget {
             fontSize: 13.sp,
             alignment: Alignment.centerLeft,
           )),
-          ImageWidget(
-            url: 'common/ic_next_page',
-            width: 8.w,
-            height: 14.w,
+          NextWidget(
             marginRight: 18.w,
-          )
+          ),
         ],
       ),
     );

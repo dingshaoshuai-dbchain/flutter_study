@@ -7,6 +7,8 @@ import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/widgets_app/collected_widget.dart';
+import 'package:youliao/widgets_app/next_widget.dart';
 
 import '../../res_app/app_colors.dart';
 
@@ -28,7 +30,7 @@ class HotMatchIndexPage extends StatelessWidget {
         separatorBuilder: (context, index) {
           return Gaps.vGapValue(6);
         },
-        itemCount: 100,
+        itemCount: 50,
       ),
     );
   }
@@ -153,12 +155,7 @@ class _HotMatchItem extends StatelessWidget {
           left: 4.w,
           child: Row(
             children: [
-              ImageWidget(
-                url: 'match/ic_collected_checked',
-                width: 33.w,
-                height: 33.w,
-                padding: 10.w,
-              ),
+              const CollectedWidget(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -221,11 +218,7 @@ class _HotMatchItem extends StatelessWidget {
           right: 15.w,
           top: 0,
           bottom: 0,
-          child: ImageWidget(
-            url: 'common/ic_next_page',
-            width: 6.w,
-            height: 10.w,
-          ),
+          child: const NextWidget(),
         )
       ],
     );
