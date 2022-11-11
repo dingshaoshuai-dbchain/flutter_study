@@ -112,7 +112,7 @@ class PlanItemWidget extends StatelessWidget {
           ),
           const Spacer(),
           HitRateWidget(),
-          Gaps.hGapValue(20.w)
+          Gaps.hGap20
         ],
       ),
     );

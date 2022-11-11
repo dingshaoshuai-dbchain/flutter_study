@@ -405,7 +405,7 @@ class _TaskMenuWidget extends StatelessWidget {
               ),
             ),
           ),
-          Gaps.hGapValue(12.w),
+          Gaps.hGap12,
           Expanded(
             flex: 2,
             child: ContainerWidget(

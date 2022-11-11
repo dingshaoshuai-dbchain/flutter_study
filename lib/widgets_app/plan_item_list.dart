@@ -19,7 +19,7 @@ class PlanItemListWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return Gaps.vGapValue(8.w);
+        return Gaps.vGap8;
       },
     );
   }

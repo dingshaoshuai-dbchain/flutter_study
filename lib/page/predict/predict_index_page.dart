@@ -100,7 +100,7 @@ class _PredictIndexPageState extends State<PredictIndexPage>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Gaps.vGapValue(8.w),
+                  Gaps.vGap8,
                   MyTabBar(
                     pageController: _expertPageController,
                     titles: _expertTitles,
@@ -119,7 +119,7 @@ class _PredictIndexPageState extends State<PredictIndexPage>
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Gaps.vGapValue(1.w),
+                  Gaps.vGap1,
                   MyTabBar(
                     pageController: _planPageController,
                     titles: _planTitles,
@@ -212,7 +212,7 @@ class _ExpertWidget extends StatelessWidget {
             height: 40.w,
             imageRadius: 20.w,
           ),
-          Gaps.vGapValue(6.w),
+          Gaps.vGap6,
           Text(
             '哥是个传说',
             maxLines: 1,
@@ -222,7 +222,7 @@ class _ExpertWidget extends StatelessWidget {
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w600),
           ),
-          Gaps.vGapValue(1),
+          Gaps.vGap1,
           Text(
             '平台人气王',
             maxLines: 1,
@@ -251,7 +251,7 @@ class _ExpertWidget extends StatelessWidget {
               height: 40.w,
               imageRadius: 20.w,
             ),
-            Gaps.vGapValue(6.w),
+            Gaps.vGap6,
             Text(
               '更多专家',
               maxLines: 1,
@@ -261,7 +261,7 @@ class _ExpertWidget extends StatelessWidget {
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w600),
             ),
-            Gaps.vGapValue(1),
+            Gaps.vGap1,
             Text(
               '占位',
               maxLines: 1,

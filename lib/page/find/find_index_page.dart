@@ -35,13 +35,13 @@ class _FindIndexPageState extends State<FindIndexPage> {
               padding: EdgeInsets.only(left: 9.w, right: 9.w),
               child: Column(
                 children: [
-                  Gaps.vGapValue(8.w),
+                  Gaps.vGap8,
                   _Banner(),
-                  Gaps.vGapValue(8.w),
+                  Gaps.vGap8,
                   _Match(),
-                  Gaps.vGapValue(8.w),
+                  Gaps.vGap8,
                   _Menu(),
-                  Gaps.vGapValue(8.w),
+                  Gaps.vGap8,
                 ],
               ),
             ),

@@ -135,7 +135,7 @@ class _RecommendExpertWidget extends StatelessWidget {
             ),
           ],
         ),
-        Gaps.vGapValue(13),
+        Gaps.vGap13,
         SizedBox(
           // TODO 屏幕适配问题，高度这样搞不靠谱
           height: 138.h,
@@ -151,7 +151,7 @@ class _RecommendExpertWidget extends StatelessWidget {
             },
           ),
         ),
-        Gaps.vGapValue(14),
+        Gaps.vGap14,
       ],
     );
   }
@@ -167,7 +167,7 @@ class _RecommendExpertWidget extends StatelessWidget {
       marginRight: marginRight,
       child: Column(
         children: [
-          Gaps.vGapValue(10.w),
+          Gaps.vGap10,
           Stack(
             alignment: Alignment.center,
             children: [
@@ -176,7 +176,7 @@ class _RecommendExpertWidget extends StatelessWidget {
                 width: 57.w,
                 height: 57.w,
                 marginBottom: 8.w,
-                onPressed: (){
+                onPressed: () {
                   Toast.show('点击了专家');
                 },
               ),
@@ -223,7 +223,7 @@ class _RecommendExpertWidget extends StatelessWidget {
               Toast.show('关注专家');
             },
           ),
-          Gaps.vGapValue(8.w),
+          Gaps.vGap8,
         ],
       ),
     );

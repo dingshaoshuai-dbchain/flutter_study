@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets_app/football_match_card.dart';
+import 'package:youliao/widgets_app/plan_number_widget.dart';
 
 import '../../util/toast_util.dart';
 import '../../widgets/basis/container_widget.dart';
@@ -23,11 +24,11 @@ class FootballMatchIndexPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return _FootballMatchItem(
             marginTop: index == 0 ? 6.w : 0,
-            marginBottom: index == 100 - 1 ? 6.w : 0,
+            marginBottom: index == 50 - 1 ? 6.w : 0,
           );
         },
         separatorBuilder: (context, index) {
-          return Gaps.vGapValue(6);
+          return Gaps.vGap6;
         },
         itemCount: 50,
       ),
@@ -35,6 +36,7 @@ class FootballMatchIndexPage extends StatelessWidget {
   }
 }
 
+/// 赛事列表 - 足球 item
 class _FootballMatchItem extends StatelessWidget {
   const _FootballMatchItem({this.marginTop, this.marginBottom});
 
@@ -104,35 +106,8 @@ class _FootballMatchItem extends StatelessWidget {
         // 专家方案
         Align(
           alignment: Alignment.centerRight,
-          child: ContainerWidget(
+          child: PlanNumberWidget(
             marginRight: 8.w,
-            backgroundColor: AppColors.main,
-            width: 38.w,
-            height: 12.w,
-            radius: 2.w,
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextWidget(
-                    text: '专家',
-                    textColor: Colors.white,
-                    fontSize: 7.sp,
-                  ),
-                ),
-                Expanded(
-                  child: TextWidget(
-                    text: '10',
-                    textColor: AppColors.main,
-                    fontSize: 7.sp,
-                    backgroundColor: Colors.white,
-                    marginVertical: 1.w,
-                    marginRight: 1.w,
-                    radiusTopRight: 2.w,
-                    radiusBottomRight: 2.w,
-                  ),
-                )
-              ],
-            ),
           ),
         )
       ],
@@ -195,7 +170,7 @@ class _FootballMatchItem extends StatelessWidget {
             maxWidth: 90.w
           ),
           child: Text(
-            '皇家君主皇家君主皇家君主皇家君主',
+            '皇家君主',
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: AppColors.color_181818,
@@ -203,9 +178,9 @@ class _FootballMatchItem extends StatelessWidget {
             ),
           ),
         ),
-        Gaps.hGapValue(4.w),
+        Gaps.hGap4,
         const YellowCard(number: 2),
-        Gaps.hGapValue(2.w),
+        Gaps.hGap2,
         const RedCard(number: 2),
       ],
     );

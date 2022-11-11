@@ -11,6 +11,7 @@ import 'package:youliao/widgets_app/collected_widget.dart';
 import 'package:youliao/widgets_app/next_widget.dart';
 
 import '../../res_app/app_colors.dart';
+import '../../widgets_app/plan_number_widget.dart';
 
 class HotMatchIndexPage extends StatelessWidget {
   const HotMatchIndexPage({super.key});
@@ -24,11 +25,11 @@ class HotMatchIndexPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return _HotMatchItem(
             marginTop: index == 0 ? 6.w : 0,
-            marginBottom: index == 100 - 1 ? 6.w : 0,
+            marginBottom: index == 50 - 1 ? 6.w : 0,
           );
         },
         separatorBuilder: (context, index) {
-          return Gaps.vGapValue(6);
+          return Gaps.vGap6;
         },
         itemCount: 50,
       ),
@@ -109,35 +110,8 @@ class _HotMatchItem extends StatelessWidget {
         // 专家方案
         Align(
           alignment: Alignment.centerRight,
-          child: ContainerWidget(
+          child: PlanNumberWidget(
             marginRight: 8.w,
-            backgroundColor: AppColors.main,
-            width: 38.w,
-            height: 12.w,
-            radius: 2.w,
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextWidget(
-                    text: '专家',
-                    textColor: Colors.white,
-                    fontSize: 7.sp,
-                  ),
-                ),
-                Expanded(
-                  child: TextWidget(
-                    text: '10',
-                    textColor: AppColors.main,
-                    fontSize: 7.sp,
-                    backgroundColor: Colors.white,
-                    marginVertical: 1.w,
-                    marginRight: 1.w,
-                    radiusTopRight: 2.w,
-                    radiusBottomRight: 2.w,
-                  ),
-                )
-              ],
-            ),
           ),
         )
       ],
@@ -163,6 +137,8 @@ class _HotMatchItem extends StatelessWidget {
                     text: '巴塞罗那',
                     textColor: AppColors.color_181818,
                     fontSize: 13.sp,
+                    width: 100.w,
+                    alignment: Alignment.centerLeft,
                     leftWidget: ImageWidget(
                       url: 'app/ic_default_avatar',
                       width: 18.w,
@@ -170,11 +146,13 @@ class _HotMatchItem extends StatelessWidget {
                       marginRight: 8.w,
                     ),
                   ),
-                  Gaps.vGapValue(5.w),
+                  Gaps.vGap5,
                   TextComposeWidget(
                     text: '巴塞罗那',
                     textColor: AppColors.color_181818,
                     fontSize: 13.sp,
+                    width: 100.w,
+                    alignment: Alignment.centerLeft,
                     leftWidget: ImageWidget(
                       url: 'app/ic_default_avatar',
                       width: 18.w,
@@ -202,7 +180,7 @@ class _HotMatchItem extends StatelessWidget {
                 width: 50.w,
                 fontWeight: FontWeight.w600,
               ),
-              Gaps.vGapValue(5.w),
+              Gaps.vGap5,
               TextWidget(
                 text: '100',
                 textColor: AppColors.main,

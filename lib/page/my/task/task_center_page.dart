@@ -35,7 +35,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
                 isBlackBack: false,
               ),
               _buildUserInfo(context),
-              Gaps.vGapValue(15),
+              Gaps.vGap15,
               Expanded(
                 child: MediaQuery.removePadding(
                   context: context,
@@ -46,17 +46,17 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
                     // iOS 回弹效果：BouncingScrollPhysics
                     physics: const BouncingScrollPhysics(),
                     children: [
-                      Gaps.vGapValue(18),
+                      Gaps.vGap18,
                       _buildContent(
                         title: '连续签到送好礼',
                         child: _buildSign(context),
                       ),
-                      Gaps.vGapValue(12),
+                      Gaps.vGap12,
                       _buildContent(
                         title: '做任务赚金币',
                         child: _buildTask(context),
                       ),
-                      Gaps.vGap32
+                      Gaps.vGapValue(32)
                     ],
                   ),
                 ),
@@ -183,21 +183,21 @@ Widget _buildSign(BuildContext context) {
           Row(
             children: [
               Expanded(child: SignItemWidget()),
-              Gaps.hGapValue(12),
+              Gaps.hGap12,
               Expanded(child: SignItemWidget()),
-              Gaps.hGapValue(12),
+              Gaps.hGap12,
               Expanded(child: SignItemWidget()),
-              Gaps.hGapValue(12),
+              Gaps.hGap12,
               Expanded(child: SignItemWidget()),
             ],
           ),
-          Gaps.vGapValue(12),
+          Gaps.vGap12,
           Row(
             children: [
               Expanded(child: SignItemWidget()),
-              Gaps.hGapValue(12),
+              Gaps.hGap12,
               Expanded(child: SignItemWidget()),
-              Gaps.hGapValue(12),
+              Gaps.hGap12,
               Expanded(flex: 2, child: SignItem7Widget()),
             ],
           ),
