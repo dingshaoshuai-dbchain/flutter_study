@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
+import 'package:youliao/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
+import '../../util/toast_util.dart';
 import '../../widgets/basis/image_widget.dart';
 import '../../widgets_app/my_tab_bar.dart';
 import '../../widgets_app/plan_item_list.dart';
@@ -19,19 +21,28 @@ class PredictIndexPage extends StatefulWidget {
 
 class _PredictIndexPageState extends State<PredictIndexPage>
     with TickerProviderStateMixin {
-  /// 方案控页制器等
-  final List<String> _planTitles = [];
-  final List<Widget> _planPages = [];
-  late final TabController _planPageController;
-
   /// 专家页控制器等
   final List<String> _expertTitles = [];
   final List<Widget> _expertPages = [];
   late final TabController _expertPageController;
 
+  /// 方案控页制器等
+  final List<String> _planTitles = [];
+  final List<Widget> _planPages = [];
+  late final TabController _planPageController;
+
   @override
   void initState() {
     super.initState();
+    _expertTitles.clear();
+    _expertPages.clear();
+    _expertTitles.add('足球专家');
+    _expertPages.add(KeepAliveWrapper(child: _ExpertWidget()));
+    _expertTitles.add('篮球专家');
+    _expertPages.add(KeepAliveWrapper(child: _ExpertWidget()));
+    _expertPageController =
+        TabController(length: _expertPages.length, vsync: this);
+
     _planTitles.clear();
     _planPages.clear();
     _planTitles.add('准确率排序');
@@ -41,13 +52,6 @@ class _PredictIndexPageState extends State<PredictIndexPage>
     _planTitles.add('按时间');
     _planPages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
     _planPageController = TabController(length: _planPages.length, vsync: this);
-
-    _expertTitles.clear();
-    _planPages.clear();
-    _expertTitles.add('足球专家');
-    _planPages.add(KeepAliveWrapper(child: _Expert()));
-    _expertTitles.add('篮球专家');
-    _planPages.add(KeepAliveWrapper(child: _Expert()));
   }
 
   @override
@@ -57,6 +61,30 @@ class _PredictIndexPageState extends State<PredictIndexPage>
       appBar: AppBarCommon(
         title: '预测',
         isShowBack: false,
+        leftMenuWidget: [
+          ImageWidget(
+            url: 'app/ic_search',
+            width: 40.w,
+            height: 40.w,
+            padding: 11.5.w,
+            marginLeft: 5.w,
+            onPressed: () {
+              Toast.show('搜索');
+            },
+          ),
+        ],
+        rightMenuWidget: [
+          ImageWidget(
+            url: 'app/ic_my_predict',
+            width: 40.w,
+            height: 40.w,
+            padding: 11.w,
+            marginRight: 5.w,
+            onPressed: () {
+              Toast.show('我的预测');
+            },
+          ),
+        ],
       ),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -68,29 +96,37 @@ class _PredictIndexPageState extends State<PredictIndexPage>
                 child: _Banner(),
               ),
             ),
-            // SliverToBoxAdapter(
-            //   child: Column(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: [
-            //       MyTabBar(
-            //         pageController: _expertPageController,
-            //         titles: _expertTitles,
-            //         radiusTopLeft: 0,
-            //         radiusTopRight: 0,
-            //       ),
-            //       TabBarView(
-            //         controller: _expertPageController,
-            //         children: _expertPages,
-            //       )
-            //     ],
-            //   ),
-            // ),
+            SliverToBoxAdapter(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Gaps.vGapValue(8.w),
+                  MyTabBar(
+                    pageController: _expertPageController,
+                    titles: _expertTitles,
+                  ),
+                  SizedBox(
+                    height: 200.w,
+                    child: TabBarView(
+                      controller: _expertPageController,
+                      children: _expertPages,
+                    ),
+                  )
+                ],
+              ),
+            ),
             SliverPersistentHeaderToBox(
-              child: MyTabBar(
-                pageController: _planPageController,
-                titles: _planTitles,
-                radiusTopLeft: 0,
-                radiusTopRight: 0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Gaps.vGapValue(1.w),
+                  MyTabBar(
+                    pageController: _planPageController,
+                    titles: _planTitles,
+                    radiusTopLeft: 0.w,
+                    radiusTopRight: 0.w,
+                  )
+                ],
               ),
             ),
           ];
@@ -138,12 +174,104 @@ class _Banner extends StatelessWidget {
 }
 
 /// 专家栏
-class _Expert extends StatelessWidget {
+class _ExpertWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ContainerWidget(
-      backgroundColor: Colors.red,
-      height: 200,
+      backgroundColor: Colors.white,
+      paddingHorizontal: 5.w,
+      child: GridView.builder(
+        itemCount: 10,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+            // 宽高比（宽/高）
+            childAspectRatio: 0.75,
+            mainAxisSpacing: 0),
+        itemBuilder: (context, index) {
+          return index == 10 - 1
+              ? _buildLastItem(context)
+              : _buildItem(context, index);
+        },
+      ),
     );
+  }
+
+  Widget _buildItem(BuildContext context, int index) {
+    return ContainerWidget(
+      onPressed: () {
+        Toast.show('跳转专家主页');
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ImageWidget(
+            url: 'app/ic_default_avatar',
+            width: 40.w,
+            height: 40.w,
+            imageRadius: 20.w,
+          ),
+          Gaps.vGapValue(6.w),
+          Text(
+            '哥是个传说',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+                color: AppColors.color_181818,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600),
+          ),
+          Gaps.vGapValue(1),
+          Text(
+            '平台人气王',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: AppColors.color_999999,
+              fontSize: 8.sp,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLastItem(BuildContext context) {
+    return ContainerWidget(
+        onPressed: () {
+          Toast.show('跳转更多专家');
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ImageWidget(
+              url: 'expert/ic_more_expert',
+              width: 40.w,
+              height: 40.w,
+              imageRadius: 20.w,
+            ),
+            Gaps.vGapValue(6.w),
+            Text(
+              '更多专家',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  color: AppColors.main,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+            Gaps.vGapValue(1),
+            Text(
+              '占位',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 8.sp,
+              ),
+            )
+          ],
+        ));
   }
 }

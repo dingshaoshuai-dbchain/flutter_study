@@ -62,7 +62,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
                   width: 40.w,
                   height: 40.w,
                   padding: 10.w,
-                  marginRight: 12.w,
+                  marginRight: 10.w,
                   onPressed: () {
                     Toast.show('消息');
                   },
