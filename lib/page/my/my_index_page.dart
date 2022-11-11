@@ -115,6 +115,9 @@ class _TopWidget extends StatelessWidget {
                     borderSide:
                         BorderSide(color: const Color(0xFFCFEBE6), width: 2.w),
                     marginLeft: 15.w,
+                    onPressed: () {
+                      NavigatorUtil.push(context, MyRouter.loginPage);
+                    },
                   ),
                   Expanded(
                     child: Padding(

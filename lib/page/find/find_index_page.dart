@@ -361,6 +361,7 @@ class _PlanListTitle extends StatelessWidget {
   }
 }
 
+/// 红人情报方案列表
 Widget _buildPlanItem(BuildContext context, int index) {
   return PlanItemWidget(
     marginTop: 10.w,

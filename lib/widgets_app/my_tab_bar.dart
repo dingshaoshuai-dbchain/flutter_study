@@ -9,18 +9,23 @@ class MyTabBar extends StatelessWidget {
     super.key,
     required this.pageController,
     required this.titles,
+    this.radiusTopLeft,
+    this.radiusTopRight,
   });
 
   final TabController pageController;
   final List<String> titles;
+
+  final double? radiusTopLeft;
+  final double? radiusTopRight;
 
   @override
   Widget build(BuildContext context) {
     return ContainerWidget(
       width: double.infinity,
       backgroundColor: Colors.white,
-      radiusTopRight: 8.w,
-      radiusTopLeft: 8.w,
+      radiusTopRight: radiusTopLeft ?? 8.w,
+      radiusTopLeft: radiusTopLeft ?? 8.w,
       child: TabBar(
         padding:
             EdgeInsets.only(top: 13.w, bottom: 13.w, left: 10.w, right: 10.w),
