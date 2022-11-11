@@ -7,13 +7,13 @@ import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/image_util.dart';
 import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/util/toast_util.dart';
+import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 
 import '../../util/log_utils.dart';
-import '../../util/status_bar_util.dart';
 import '../../widgets/gaps.dart';
 
 class MyIndexPage extends StatefulWidget {
@@ -40,29 +40,54 @@ class _MyIndexPageState extends State<MyIndexPage> {
           height: 261.h,
           fit: BoxFit.cover,
         ),
-        ContainerWidget(
-          marginTop: StatusBarUtil.getStatusBarHeight(),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                // 用户信息
-                _topWidget,
-                // 我的订单、我的收藏、邀请好友
-                _functionMenuWidget,
-                // 任务中心、活动广场
-                _taskMenuWidget,
-                // 意见反馈、申请成为专家..
-                ContainerWidget(
-                  backgroundColor: Colors.white,
-                  marginTop: 10.w,
-                  paddingVertical: 5.w,
-                  child: _menuListWidget,
+        Column(
+          children: [
+            // 设置栏
+            AppBarCommon(
+              title: '',
+              backgroundColor: Colors.transparent,
+              isShowBack: false,
+              rightMenuWidget: [
+                ImageWidget(
+                  url: 'my/ic_settings',
+                  width: 40.w,
+                  height: 40.w,
+                  padding: 10.w,
+                  onPressed: () {
+                    Toast.show('设置');
+                  },
+                ),
+                ImageWidget(
+                  url: 'my/ic_message',
+                  width: 40.w,
+                  height: 40.w,
+                  padding: 10.w,
+                  marginRight: 12.w,
+                  onPressed: () {
+                    Toast.show('消息');
+                  },
                 ),
               ],
             ),
-          ),
-        ),
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    // 用户信息
+                    _topWidget,
+                    // 我的订单、我的收藏、邀请好友
+                    _functionMenuWidget,
+                    // 任务中心、活动广场
+                    _taskMenuWidget,
+                    // 意见反馈、申请成为专家..
+                    _menuListWidget,
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
@@ -75,31 +100,6 @@ class _TopWidget extends StatelessWidget {
     Log.d('build - _TopWidget');
     return Column(
       children: [
-        // 顶部按钮
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ImageWidget(
-              url: 'my/ic_settings',
-              width: 40.w,
-              height: 40.w,
-              padding: 10.w,
-              onPressed: () {
-                Toast.show('设置');
-              },
-            ),
-            ImageWidget(
-              url: 'my/ic_message',
-              width: 40.w,
-              height: 40.w,
-              padding: 10.w,
-              marginRight: 12.w,
-              onPressed: () {
-                Toast.show('消息');
-              },
-            ),
-          ],
-        ),
         // 用户信息
         Stack(
           children: [
@@ -468,6 +468,8 @@ class _MenuListWidget extends StatelessWidget {
     Log.d('build - _MenuListWidget');
     return ContainerWidget(
       backgroundColor: Colors.white,
+      marginTop: 10.w,
+      paddingVertical: 5.w,
       child: Column(
         children: [
           MenuItemWidget(

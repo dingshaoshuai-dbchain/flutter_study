@@ -21,6 +21,10 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor = Colors.white,
     // 状态栏字体颜色是否为黑色
     this.isBlackStatusFontColor = true,
+    // 右侧的 widget
+    this.rightMenuWidget,
+    // 左侧的 widget
+    this.leftMenuWidget,
   });
 
   final String title;
@@ -39,8 +43,33 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   /// 系统状态栏颜色是否为黑色
   final bool isBlackStatusFontColor;
 
+  final List<Widget>? leftMenuWidget;
+  final List<Widget>? rightMenuWidget;
+
   @override
   Widget build(BuildContext context) {
+    // 标题
+    Widget titleWidget = TextWidget(
+      text: title,
+      textColor: titleColor,
+      fontSize: titleFontSize,
+      fontWeight: titleFontWeight,
+    );
+    // 左侧
+    List<Widget> leftList = [
+      if (isShowBack) ImageBack(isBlack: isBlackBack),
+    ];
+    if (leftMenuWidget != null) {
+      leftList.addAll(leftMenuWidget!);
+    }
+    Widget leftWidget = Row(
+      children: leftList,
+    );
+    // 右侧
+    Widget rightWidget = Row(
+      children: rightMenuWidget ?? [],
+    );
+    // 整体
     Widget content = ContainerWidget(
       alignment: Alignment.center,
       width: double.infinity,
@@ -49,31 +78,13 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Positioned(
-            left: 0,
-            child: Row(
-              children: [
-                if (isShowBack)
-                  ImageBack(
-                    isBlack: isBlackBack,
-                  ),
-              ],
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            child: TextWidget(
-              text: title ?? '',
-              textColor: titleColor,
-              fontSize: titleFontSize,
-              fontWeight: titleFontWeight,
-            ),
-          ),
+          Positioned(left: 0, child: leftWidget),
+          Positioned(left: 100, right: 100, child: titleWidget),
+          Positioned(right: 0, child: rightWidget),
         ],
       ),
     );
-
+    // 搞个状态栏变色神马的
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: isBlackStatusFontColor
           ? SystemUiOverlayStyle.dark
