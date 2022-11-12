@@ -7,6 +7,7 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
+import '../../util/font_weiget_util.dart';
 import '../../util/toast_util.dart';
 import '../../widgets/basis/image_widget.dart';
 import '../../widgets_app/my_tab_bar.dart';
@@ -220,7 +221,7 @@ class _ExpertWidget extends StatelessWidget {
             style: TextStyle(
                 color: AppColors.color_181818,
                 fontSize: 12.sp,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeightUtil.pingFangSCSemibold),
           ),
           Gaps.vGap1,
           Text(
@@ -259,7 +260,7 @@ class _ExpertWidget extends StatelessWidget {
               style: TextStyle(
                   color: AppColors.main,
                   fontSize: 12.sp,
-                  fontWeight: FontWeight.w600),
+                  fontWeight: FontWeightUtil.pingFangSCSemibold),
             ),
             Gaps.vGap1,
             Text(

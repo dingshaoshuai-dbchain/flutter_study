@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util_app/font_family_util.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
+
+import '../util/font_weiget_util.dart';
 
 /// 足球赛事牌子
 abstract class BaseFootballCard extends StatelessWidget {
@@ -22,7 +25,7 @@ abstract class BaseFootballCard extends StatelessWidget {
       radius: 2.w,
       width: 10.w,
       height: 12.w,
-      fontWeight: FontWeight.w600,
+      fontFamily: FontFamilyUtil.din,
     );
   }
 }

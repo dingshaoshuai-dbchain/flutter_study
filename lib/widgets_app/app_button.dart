@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/widgets/basis/button_widget.dart';
 
+import '../util/font_weiget_util.dart';
+
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
@@ -36,7 +38,7 @@ class AppButton extends StatelessWidget {
       text: text,
       textColor: Colors.white,
       fontSize: 16.sp,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeightUtil.pingFangSCSemibold,
       width: 1.sw,
       height: 45.w,
       backgroundColor: AppColors.main,

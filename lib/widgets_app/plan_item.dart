@@ -4,11 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/global/plan_mode.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util/toast_util.dart';
+import 'package:youliao/util_app/font_family_util.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 import 'package:youliao/widgets_app/hit_rate_widget.dart';
+
+import '../util/font_weiget_util.dart';
 
 class PlanItemWidget extends StatelessWidget {
   const PlanItemWidget(
@@ -181,15 +184,17 @@ class PlanItemWidget extends StatelessWidget {
                       color: AppColors.color_999999,
                       fontSize: 9.sp,
                     ),
+                ),
+                TextSpan(
+                  text: '     纽卡斯尔联 VS 阿森纳',
+                  style: TextStyle(
+                    color: AppColors.color_181818,
+                    fontSize: 11.sp,
+                    fontWeight: FontWeightUtil.pingFangSCSemibold,
                   ),
-                  TextSpan(
-                    text: '     纽卡斯尔联 VS 阿森纳',
-                    style: TextStyle(
-                        color: AppColors.color_181818,
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ]),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -233,7 +238,7 @@ class PlanItemWidget extends StatelessWidget {
                       text: '128金币',
                       textColor: AppColors.main,
                       fontSize: 10.sp,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeightUtil.pingFangSCSemibold,
                     ),
                   )
                 ],

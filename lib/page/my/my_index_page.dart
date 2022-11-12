@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/page/my/my_router.dart';
 import 'package:youliao/page/my/widgets/menu_item_widget.dart';
 import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util/font_weiget_util.dart';
 import 'package:youliao/util/image_util.dart';
 import 'package:youliao/util/navigator_util.dart';
 import 'package:youliao/util/toast_util.dart';
+import 'package:youliao/util_app/font_family_util.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
@@ -132,7 +134,7 @@ class _TopWidget extends StatelessWidget {
                             fontSize: 18.sp,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeightUtil.pingFangSCSemibold,
                             marginRight: 110.w,
                           ),
                           UnconstrainedBox(
@@ -157,7 +159,7 @@ class _TopWidget extends StatelessWidget {
                                   TextSpan(
                                     text: '0',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeightUtil.pingFangSCMedium,
                                         fontSize: 16.sp,
                                         color: AppColors.color_181818),
                                   ),
@@ -175,7 +177,7 @@ class _TopWidget extends StatelessWidget {
                                   TextSpan(
                                     text: '0',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeightUtil.pingFangSCMedium,
                                         fontSize: 16.sp,
                                         color: AppColors.color_181818),
                                   ),
@@ -193,7 +195,7 @@ class _TopWidget extends StatelessWidget {
                                   TextSpan(
                                     text: '0',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeightUtil.pingFangSCMedium,
                                         fontSize: 16.sp,
                                         color: AppColors.color_181818),
                                   ),
@@ -270,8 +272,8 @@ class _TopWidget extends StatelessWidget {
                   text: '100',
                   textColor: Color(0xFFFBE846),
                   fontSize: 21.sp,
-                  fontWeight: FontWeight.w700,
                   alignment: Alignment.centerLeft,
+                  fontFamily: FontFamilyUtil.din,
                 ),
               ),
               ImageWidget(
@@ -388,7 +390,7 @@ class _TaskMenuWidget extends StatelessWidget {
                     fontSize: 20.sp,
                     alignment: Alignment.centerLeft,
                     marginLeft: 13.w,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeightUtil.pingFangSCSemibold,
                   ),
                   TextWidget(
                     text: '立即查看',
@@ -422,7 +424,7 @@ class _TaskMenuWidget extends StatelessWidget {
                     fontSize: 20.sp,
                     alignment: Alignment.centerLeft,
                     marginLeft: 13.w,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeightUtil.pingFangSCSemibold,
                   ),
                   Row(
                     children: [

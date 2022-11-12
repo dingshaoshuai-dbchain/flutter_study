@@ -9,6 +9,7 @@ import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/widgets/gaps.dart';
 
+import '../../util/font_weiget_util.dart';
 import '../../widgets/app_bar_common.dart';
 import '../../widgets/basis/text_widget.dart';
 import '../../widgets_app/plan_item.dart';
@@ -196,7 +197,7 @@ class _Match extends StatelessWidget {
           text: '澳超',
           textColor: AppColors.color_181818,
           fontSize: 10.sp,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeightUtil.pingFangSCSemibold,
           marginLeft: 9.w,
           marginTop: 7.w,
           marginRight: 3.w,
@@ -264,7 +265,7 @@ class _Match extends StatelessWidget {
               style: TextStyle(
                 color: AppColors.color_181818,
                 fontSize: 12.sp,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeightUtil.pingFangSCSemibold,
               ),
             ),
           ),
@@ -317,7 +318,7 @@ class _Menu extends StatelessWidget {
       text: text,
       textColor: AppColors.color_181818,
       fontSize: 12.sp,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeightUtil.pingFangSCSemibold,
       marginTop: 10.w,
       marginBottom: 8.w,
       topWidget: ImageWidget(

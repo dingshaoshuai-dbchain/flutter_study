@@ -9,6 +9,7 @@ import 'package:youliao/page/match/hot_match_index_page.dart';
 import 'package:youliao/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
+import '../../util/font_weiget_util.dart';
 import '../../widgets/basis/container_widget.dart';
 
 class MatchIndexPage extends StatefulWidget {
@@ -89,11 +90,11 @@ class _TabBar extends StatelessWidget implements PreferredSizeWidget {
                     controller: pageController,
                     labelColor: Colors.white,
                     labelStyle: const TextStyle(
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeightUtil.pingFangSCSemibold,
                     ),
                     unselectedLabelColor: AppColors.main,
                     unselectedLabelStyle: const TextStyle(
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeightUtil.pingFangSCSemibold,
                     ),
                     indicatorColor: AppColors.main,
                     indicator: const BoxDecoration(

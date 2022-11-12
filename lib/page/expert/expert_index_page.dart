@@ -12,6 +12,7 @@ import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets_app/my_tab_bar.dart';
 import 'package:youliao/widgets_app/plan_item_list.dart';
 
+import '../../util/font_weiget_util.dart';
 import '../../widgets/gaps.dart';
 
 class ExpertIndexPage extends StatefulWidget {
@@ -113,7 +114,7 @@ class _RecommendExpertWidget extends StatelessWidget {
               textColor: Colors.white,
               fontSize: 16.sp,
               marginLeft: 20.w,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeightUtil.pingFangSCSemibold,
               leftWidget: ImageWidget(
                 url: 'expert/ic_recommend_expert',
                 width: 14.w,
@@ -204,7 +205,7 @@ class _RecommendExpertWidget extends StatelessWidget {
             text: '哥只是个传说',
             textColor: AppColors.color_181818,
             fontSize: 12.sp,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeightUtil.pingFangSCSemibold,
             marginHorizontal: 2.w,
             marginTop: 2.w,
           ),

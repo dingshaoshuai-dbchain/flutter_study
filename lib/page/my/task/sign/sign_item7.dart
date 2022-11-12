@@ -5,6 +5,8 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 
+import '../../../../util/font_weiget_util.dart';
+
 class SignItem7Widget extends StatefulWidget {
   const SignItem7Widget({super.key});
 
@@ -33,7 +35,7 @@ class _SignItem7WidgetState extends State<SignItem7Widget> {
             marginLeft: 20,
             marginTop: 5,
             alignment: Alignment.topLeft,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeightUtil.pingFangSCSemibold,
           ),
           TextWidget(
             text: '神秘大礼包',

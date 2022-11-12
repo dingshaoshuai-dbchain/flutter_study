@@ -11,6 +11,8 @@ import 'package:youliao/widgets_app/collected_widget.dart';
 import 'package:youliao/widgets_app/next_widget.dart';
 
 import '../../res_app/app_colors.dart';
+import '../../util/font_weiget_util.dart';
+import '../../util_app/font_family_util.dart';
 import '../../widgets_app/plan_number_widget.dart';
 
 class HotMatchIndexPage extends StatelessWidget {
@@ -133,33 +135,9 @@ class _HotMatchItem extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextComposeWidget(
-                    text: '巴塞罗那',
-                    textColor: AppColors.color_181818,
-                    fontSize: 13.sp,
-                    width: 100.w,
-                    alignment: Alignment.centerLeft,
-                    leftWidget: ImageWidget(
-                      url: 'app/ic_default_avatar',
-                      width: 18.w,
-                      height: 18.w,
-                      marginRight: 8.w,
-                    ),
-                  ),
+                  _buildTeamItem(context),
                   Gaps.vGap5,
-                  TextComposeWidget(
-                    text: '巴塞罗那',
-                    textColor: AppColors.color_181818,
-                    fontSize: 13.sp,
-                    width: 100.w,
-                    alignment: Alignment.centerLeft,
-                    leftWidget: ImageWidget(
-                      url: 'app/ic_default_avatar',
-                      width: 18.w,
-                      height: 18.w,
-                      marginRight: 8.w,
-                    ),
-                  ),
+                  _buildTeamItem(context),
                 ],
               )
             ],
@@ -173,21 +151,9 @@ class _HotMatchItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextWidget(
-                text: '100',
-                textColor: AppColors.main,
-                fontSize: 14.sp,
-                width: 50.w,
-                fontWeight: FontWeight.w600,
-              ),
+              _buildScoreItem(context, '100'),
               Gaps.vGap5,
-              TextWidget(
-                text: '100',
-                textColor: AppColors.main,
-                fontSize: 14.sp,
-                width: 50.w,
-                fontWeight: FontWeight.w600,
-              ),
+              _buildScoreItem(context, '98'),
             ],
           ),
         ),
@@ -199,6 +165,35 @@ class _HotMatchItem extends StatelessWidget {
           child: const NextWidget(),
         )
       ],
+    );
+  }
+
+  /// 队伍
+  Widget _buildTeamItem(BuildContext context) {
+    return TextComposeWidget(
+      text: '巴塞罗那',
+      textColor: AppColors.color_181818,
+      fontSize: 13.sp,
+      width: 100.w,
+      alignment: Alignment.centerLeft,
+      leftWidget: ImageWidget(
+        url: 'app/ic_default_avatar',
+        width: 18.w,
+        height: 18.w,
+        marginRight: 8.w,
+      ),
+    );
+  }
+
+  /// 比分 item
+  /// 如果某一队有两位数的话，中间的横杠就不在整个界面的最中间，不考虑这种情况
+  Widget _buildScoreItem(BuildContext context, String text) {
+    return TextWidget(
+      text: text,
+      textColor: AppColors.main,
+      fontSize: 14.sp,
+      width: 50.w,
+      fontFamily: FontFamilyUtil.din,
     );
   }
 }

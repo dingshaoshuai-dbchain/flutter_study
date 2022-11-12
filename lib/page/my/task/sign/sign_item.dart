@@ -5,6 +5,8 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 
+import '../../../../util/font_weiget_util.dart';
+
 class SignItemWidget extends StatefulWidget {
   const SignItemWidget({super.key});
 
@@ -32,7 +34,7 @@ class _SignItemWidgetState extends State<SignItemWidget> {
             fontSize: 12,
             marginTop: 5,
             alignment: Alignment.topCenter,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeightUtil.pingFangSCSemibold,
           ),
           TextWidget(
             text: '10金币',

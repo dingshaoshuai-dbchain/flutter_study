@@ -7,6 +7,8 @@ import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
 import 'package:youliao/widgets/image_back.dart';
 
+import '../util/font_weiget_util.dart';
+
 class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   AppBarCommon({
     super.key,
@@ -16,7 +18,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     // 标题字体样式
     this.titleColor = AppColors.color_181818,
     this.titleFontSize = 18,
-    this.titleFontWeight = FontWeight.w600,
+    this.titleFontWeight = FontWeightUtil.pingFangSCSemibold,
     // 标题及状态栏颜色
     this.backgroundColor = Colors.white,
     // 状态栏字体颜色是否为黑色

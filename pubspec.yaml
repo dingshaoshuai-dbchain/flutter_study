@@ -57,6 +57,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: D_Din_Bold
+      fonts:
+        - asset: assets/fonts/D-DIN-Bold.ttf
+
   assets:
     - assets/images/common/
     - assets/images/app/

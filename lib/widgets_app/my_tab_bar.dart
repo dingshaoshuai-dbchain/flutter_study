@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 
 import '../res_app/app_colors.dart';
+import '../util/font_weiget_util.dart';
 
 class MyTabBar extends StatelessWidget {
   const MyTabBar({
@@ -33,7 +34,7 @@ class MyTabBar extends StatelessWidget {
         labelColor: AppColors.color_181818,
         labelStyle: TextStyle(
           // fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeightUtil.pingFangSCSemibold,
         ),
         unselectedLabelColor: AppColors.color_181818,
         unselectedLabelStyle: TextStyle(

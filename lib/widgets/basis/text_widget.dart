@@ -13,6 +13,7 @@ class TextWidget extends StatelessWidget {
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
+    this.fontFamily,
     this.width,
     this.height,
     this.minWidth,
@@ -56,6 +57,7 @@ class TextWidget extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
+  final String? fontFamily;
 
   final double? width;
   final double? height;
@@ -150,6 +152,7 @@ class TextWidget extends StatelessWidget {
         color: textColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
+        fontFamily: fontFamily
       ),
     );
   }

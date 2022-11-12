@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youliao/util_app/font_family_util.dart';
 import 'package:youliao/widgets/app_bar_common.dart';
 import 'package:youliao/widgets/basis/container_widget.dart';
 import 'package:youliao/widgets/basis/image_widget.dart';
@@ -6,6 +7,7 @@ import 'package:youliao/widgets/basis/image_widget.dart';
 import '../../../../widgets/basis/text_widget.dart';
 import '../../../../widgets/gaps.dart';
 import '../../../res_app/app_colors.dart';
+import '../../../util/font_weiget_util.dart';
 import '../../../util/toast_util.dart';
 import 'sign/sign_item.dart';
 import 'sign/sign_item7.dart';
@@ -69,6 +71,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
   }
 }
 
+/// 用户信息
 Widget _buildUserInfo(BuildContext context) {
   return ContainerWidget(
     width: double.maxFinite,
@@ -163,7 +166,7 @@ Widget _buildUserInfo(BuildContext context) {
                   paddingRight: 2,
                   textColor: Colors.white,
                   fontSize: 15,
-                  fontWeight: FontWeight.w700,
+                  fontFamily: FontFamilyUtil.din,
                 ),
               )
             ],
@@ -174,6 +177,7 @@ Widget _buildUserInfo(BuildContext context) {
   );
 }
 
+/// 签到列表
 Widget _buildSign(BuildContext context) {
   return ContainerWidget(
       alignment: Alignment.center,
@@ -205,6 +209,7 @@ Widget _buildSign(BuildContext context) {
       ));
 }
 
+/// 任务列表
 Widget _buildTask(BuildContext context) {
   return ContainerWidget(
     alignment: Alignment.center,
@@ -244,7 +249,7 @@ Widget _buildContent({
           text: title,
           textColor: AppColors.color_181818,
           fontSize: 16,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeightUtil.pingFangSCSemibold,
           alignment: Alignment.centerLeft,
         ),
         child
