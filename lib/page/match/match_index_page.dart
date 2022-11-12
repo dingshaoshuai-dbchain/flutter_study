@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/page/match/list/basketball_match_index_page.dart';
-import 'package:youliao/page/match/list/football_match_index_page.dart';
-import 'package:youliao/page/match/list/hot_match_index_page.dart';
+import 'package:youliao/page/match/list/basketball_match_list_page.dart';
+import 'package:youliao/page/match/list/football_match_list_page.dart';
+import 'package:youliao/page/match/list/hot_match_list_page.dart';
 import 'package:youliao/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
@@ -31,11 +31,11 @@ class _MatchIndexPageState extends State<MatchIndexPage>
     _titles.clear();
     _pages.clear();
     _titles.add('热门');
-    _pages.add(const KeepAliveWrapper(child: HotMatchIndexPage()));
+    _pages.add(const KeepAliveWrapper(child: HotMatchListPage()));
     _titles.add('足球');
-    _pages.add(const KeepAliveWrapper(child: FootballMatchIndexPage()));
+    _pages.add(const KeepAliveWrapper(child: FootballMatchListPage()));
     _titles.add('篮球');
-    _pages.add(const KeepAliveWrapper(child: BasketballMatchIndexPage()));
+    _pages.add(const KeepAliveWrapper(child: BasketballMatchListPage()));
     _pageController = TabController(length: _pages.length, vsync: this);
   }
 
