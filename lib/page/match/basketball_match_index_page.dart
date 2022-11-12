@@ -155,6 +155,7 @@ class _BasketballMatchItem extends StatelessWidget {
           top: 10.w,
           bottom: 10.w,
           left: 160.w,
+          right: 35.w,
           child: _buildScore(),
         ),
         // 图标区域
@@ -170,34 +171,57 @@ class _BasketballMatchItem extends StatelessWidget {
 
   /// 比分区域
   Widget _buildScore() {
-    return Column(
+    return Row(
       children: [
-        Expanded(
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return _buildScoreItem();
-            },
-            separatorBuilder: (context, index) {
-              return Gaps.hGap3;
-            },
-          ),
+        // 前面的一大坨比分
+        Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return _buildScoreItem();
+                },
+                separatorBuilder: (context, index) {
+                  return Gaps.hGap3;
+                },
+              ),
+            ),
+            Gaps.vGap5,
+            Expanded(
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return _buildScoreItem();
+                },
+                separatorBuilder: (context, index) {
+                  return Gaps.hGap3;
+                },
+              ),
+            ),
+          ],
         ),
-        Gaps.vGap5,
-        Expanded(
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return _buildScoreItem();
-            },
-            separatorBuilder: (context, index) {
-              return Gaps.hGap3;
-            },
-          ),
+        const Spacer(),
+        // 封啥的
+        Column(
+          children: [
+            Expanded(child: _buildStatus('封')),
+            Gaps.vGap5,
+            Expanded(child: _buildStatus('1.2')),
+          ],
+        ),
+        Gaps.hGap6,
+        // 最牛逼的比分
+        Column(
+          children: [
+            Expanded(child: _buildNbScore('100')),
+            Gaps.vGap5,
+            Expanded(child: _buildNbScore('102')),
+          ],
         ),
       ],
     );
@@ -213,6 +237,26 @@ class _BasketballMatchItem extends StatelessWidget {
       height: 16.w,
       backgroundColor: AppColors.colorF7F8FC,
       radius: 2.5.w,
+    );
+  }
+
+  /// 不知道啥玩意的状态，有时候显示 ”封“，有时候显示小数，如：”1.2“
+  Widget _buildStatus(String text) {
+    return TextWidget(
+      text: text,
+      textColor: AppColors.color8B8B8B,
+      fontSize: 11.sp,
+      width: 20.w,
+    );
+  }
+
+  /// 最闪的比分
+  Widget _buildNbScore(String score) {
+    return TextWidget(
+      text: score,
+      textColor: AppColors.main,
+      fontSize: 11.sp,
+      width: 20.w,
     );
   }
 }
