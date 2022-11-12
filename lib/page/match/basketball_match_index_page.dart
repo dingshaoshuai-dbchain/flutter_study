@@ -152,9 +152,9 @@ class _BasketballMatchItem extends StatelessWidget {
         ),
         // 队伍比分区域
         Positioned(
-          bottom: 5.w,
-          left: 45.w,
-          right: 45.w,
+          top: 10.w,
+          bottom: 10.w,
+          left: 160.w,
           child: _buildScore(),
         ),
         // 图标区域
@@ -170,33 +170,40 @@ class _BasketballMatchItem extends StatelessWidget {
 
   /// 比分区域
   Widget _buildScore() {
-    return ContainerWidget(
-      height: 40.w,
-      backgroundColor: Colors.red,
-      // child: Column(
-      //   mainAxisSize: MainAxisSize.min,
-      //   children: [
-      //     Row(
-      //       mainAxisSize: MainAxisSize.min,
-      //       children: [
-      //         ListView.separated(
-      //           scrollDirection: Axis.horizontal,
-      //           shrinkWrap: true,
-      //           itemCount: 5,
-      //           itemBuilder: (context, index) {
-      //             return _buildScoreItem();
-      //           },
-      //           separatorBuilder: (context, index) {
-      //             return Gaps.hGap3;
-      //           },
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return _buildScoreItem();
+            },
+            separatorBuilder: (context, index) {
+              return Gaps.hGap3;
+            },
+          ),
+        ),
+        Gaps.vGap5,
+        Expanded(
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return _buildScoreItem();
+            },
+            separatorBuilder: (context, index) {
+              return Gaps.hGap3;
+            },
+          ),
+        ),
+      ],
     );
   }
 
+  /// 一坨的比分区域 item
   Widget _buildScoreItem() {
     return TextWidget(
       text: '10',
