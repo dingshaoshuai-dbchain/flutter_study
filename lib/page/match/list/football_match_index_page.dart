@@ -1,22 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/util/toast_util.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-import 'package:youliao/widgets/basis/image_widget.dart';
-import 'package:youliao/widgets/basis/text_compose_widget.dart';
+import 'package:youliao/res_app/app_colors.dart';
+import 'package:youliao/util_app/font_family_util.dart';
 import 'package:youliao/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
-import 'package:youliao/widgets_app/collected_widget.dart';
-import 'package:youliao/widgets_app/next_widget.dart';
+import 'package:youliao/widgets_app/football_match_card.dart';
+import 'package:youliao/widgets_app/plan_number_widget.dart';
 
-import '../../res_app/app_colors.dart';
-import '../../util/font_weiget_util.dart';
-import '../../util_app/font_family_util.dart';
-import '../../widgets_app/plan_number_widget.dart';
+import '../../../util/font_weiget_util.dart';
+import '../../../util/toast_util.dart';
+import '../../../widgets/basis/container_widget.dart';
+import '../../../widgets/gaps.dart';
+import '../../../widgets_app/collected_widget.dart';
+import '../../../widgets_app/next_widget.dart';
 
-class HotMatchIndexPage extends StatelessWidget {
-  const HotMatchIndexPage({super.key});
+class FootballMatchIndexPage extends StatelessWidget {
+  const FootballMatchIndexPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class HotMatchIndexPage extends StatelessWidget {
       removeTop: true,
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return _HotMatchItem(
+          return _FootballMatchItem(
             marginTop: index == 0 ? 6.w : 0,
             marginBottom: index == 50 - 1 ? 6.w : 0,
           );
@@ -39,9 +38,9 @@ class HotMatchIndexPage extends StatelessWidget {
   }
 }
 
-/// 赛事列表 - 热门 item
-class _HotMatchItem extends StatelessWidget {
-  const _HotMatchItem({this.marginTop, this.marginBottom});
+/// 赛事列表 - 足球 item
+class _FootballMatchItem extends StatelessWidget {
+  const _FootballMatchItem({this.marginTop, this.marginBottom});
 
   final double? marginTop;
   final double? marginBottom;
@@ -98,15 +97,12 @@ class _HotMatchItem extends StatelessWidget {
           ),
         ),
         // 比赛状态
-        Positioned(
-          right: 100.w,
-          top: 0,
-          bottom: 0,
+        Align(
+          alignment: Alignment.center,
           child: TextWidget(
-            text: '完',
-            textColor: AppColors.color8B8B8B,
+            text: '中',
+            textColor: AppColors.main,
             fontSize: 10.sp,
-            width: 50.w,
           ),
         ),
         // 专家方案
@@ -124,36 +120,34 @@ class _HotMatchItem extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return Stack(
       children: [
-        // 收藏按钮、队伍信息区域
+        // 收藏按钮
         Positioned(
           top: 0,
           bottom: 0,
           left: 4.w,
-          child: Row(
-            children: [
-              const CollectedWidget(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildTeamItem(context),
-                  Gaps.vGap5,
-                  _buildTeamItem(context),
-                ],
-              )
-            ],
-          ),
+          child: const CollectedWidget(),
         ),
-        // 比分区域
+        // 队伍信息区域
         Positioned(
-          right: 100.w,
-          top: 0,
-          bottom: 0,
+          bottom: 5.w,
+          left: 45.w,
+          right: 45.w,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildScoreItem(context, '100'),
+              Row(
+                children: [
+                  Expanded(child: _buildTeam(context, TextDirection.rtl)),
+                  Gaps.hGap12,
+                  _buildScoreItem(context, '2 - 1'),
+                  Gaps.hGap12,
+                  Expanded(child: _buildTeam(context, TextDirection.ltr)),
+                ],
+              ),
               Gaps.vGap5,
-              _buildScoreItem(context, '98'),
+              Text(
+                '半（0-0） 角（0-0）',
+                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 11.sp),
+              )
             ],
           ),
         ),
@@ -163,25 +157,34 @@ class _HotMatchItem extends StatelessWidget {
           top: 0,
           bottom: 0,
           child: const NextWidget(),
-        )
+        ),
       ],
     );
   }
 
-  /// 队伍
-  Widget _buildTeamItem(BuildContext context) {
-    return TextComposeWidget(
-      text: '巴塞罗那',
-      textColor: AppColors.color_181818,
-      fontSize: 13.sp,
-      width: 100.w,
-      alignment: Alignment.centerLeft,
-      leftWidget: ImageWidget(
-        url: 'app/ic_default_avatar',
-        width: 18.w,
-        height: 18.w,
-        marginRight: 8.w,
-      ),
+  /// 队伍区域
+  Widget _buildTeam(BuildContext context, TextDirection textDirection) {
+    return Row(
+      textDirection: textDirection,
+      children: [
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: 90.w
+          ),
+          child: Text(
+            '皇家君主',
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: AppColors.color_181818,
+              fontSize: 14.sp,
+            ),
+          ),
+        ),
+        Gaps.hGap4,
+        const YellowCard(number: 2),
+        Gaps.hGap2,
+        const RedCard(number: 2),
+      ],
     );
   }
 
@@ -192,7 +195,6 @@ class _HotMatchItem extends StatelessWidget {
       text: text,
       textColor: AppColors.main,
       fontSize: 14.sp,
-      width: 50.w,
       fontFamily: FontFamilyUtil.din,
     );
   }

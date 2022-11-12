@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/page/match/basketball_match_index_page.dart';
-import 'package:youliao/page/match/football_match_index_page.dart';
-import 'package:youliao/page/match/hot_match_index_page.dart';
+import 'package:youliao/page/match/list/basketball_match_index_page.dart';
+import 'package:youliao/page/match/list/football_match_index_page.dart';
+import 'package:youliao/page/match/list/hot_match_index_page.dart';
 import 'package:youliao/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
