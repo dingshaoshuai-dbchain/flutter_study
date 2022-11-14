@@ -24,7 +24,7 @@ class ImageBack extends StatelessWidget {
       // TODO 不知道为毛，死难点到
       onPressed: onPressed ??
           () {
-            NavigatorUtil.goBack(context);
+            NavigatorUtil.pop(context);
           },
     );
   }

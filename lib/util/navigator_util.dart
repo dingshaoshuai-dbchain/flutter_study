@@ -1,6 +1,5 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:youliao/util/log_utils.dart';
 
 typedef NetSuccessCallback<T> = Function(String targetPath, String loginPath);
 
@@ -45,9 +44,9 @@ class NavigatorUtil {
   }
 
   /// 返回
-  static void goBack(BuildContext context) {
+  static void pop<T>(BuildContext context, {T? result}) {
     unFocus();
-    Navigator.pop(context);
+    Navigator.pop(context, result);
   }
 
   static void unFocus() {

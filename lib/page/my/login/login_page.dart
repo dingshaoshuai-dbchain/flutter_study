@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             width: 80.w,
             height: 80.w,
             padding: 28.w,
-            onPressed: () => {NavigatorUtil.goBack(context)},
+            onPressed: () => {NavigatorUtil.pop(context)},
           ),
           ContainerWidget(
             marginTop: 20.w,
