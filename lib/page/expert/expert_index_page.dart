@@ -8,7 +8,7 @@ import 'package:youliao/widgets/plan_item_list.dart';
 
 import '../../dss_library/util/font_weiget_util.dart';
 import '../../dss_library/util/toast_util.dart';
-import '../../dss_library/widgets/app_bar_common.dart';
+import '../../dss_library/widgets/app_bar_widget.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
 import '../../dss_library/widgets/basis/image_widget.dart';
 import '../../dss_library/widgets/basis/text_compose_widget.dart';
@@ -53,7 +53,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
         ),
         Column(
           children: [
-            AppBarCommon(
+            AppBarWidget(
               title: '专家',
               titleColor: Colors.white,
               titleFontSize: 18.sp,

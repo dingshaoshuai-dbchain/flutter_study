@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/page/test/test_router.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 
 class TestIndexPage extends StatelessWidget {
   const TestIndexPage({super.key});
@@ -10,7 +10,7 @@ class TestIndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCommon(title: '测试组件', isShowBack: false),
+      appBar: AppBarWidget(title: '测试组件', isShowBack: false),
       body: ListView(
         padding: const EdgeInsets.only(left: 10, right: 10),
         children: [

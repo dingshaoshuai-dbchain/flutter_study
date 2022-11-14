@@ -9,8 +9,8 @@ import 'basis/container_widget.dart';
 import 'basis/text_widget.dart';
 import 'image_back.dart';
 
-class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
-  AppBarCommon({
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  AppBarWidget({
     super.key,
     required this.title,
     this.isShowBack = true,

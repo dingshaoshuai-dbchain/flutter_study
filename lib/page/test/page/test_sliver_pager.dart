@@ -2,7 +2,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 
 import '../../../res/app_colors.dart';
 import '../../../dss_library/widgets/basis/container_widget.dart';
@@ -14,7 +14,7 @@ class TestSliverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCommon(title: 'Sliver 吸顶测试'),
+      appBar: AppBarWidget(title: 'Sliver 吸顶测试'),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

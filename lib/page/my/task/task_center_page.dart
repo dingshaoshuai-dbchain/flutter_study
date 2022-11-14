@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youliao/util/font_family_util.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 
@@ -30,7 +30,7 @@ class _TaskCenterPageState extends State<TaskCenterPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppBarCommon(
+              AppBarWidget(
                 title: '',
                 isBlackStatusFontColor: false,
                 backgroundColor: Colors.transparent,

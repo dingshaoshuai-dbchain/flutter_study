@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
 import '../../dss_library/util/font_weiget_util.dart';
 import '../../dss_library/util/toast_util.dart';
-import '../../dss_library/widgets/app_bar_common.dart';
+import '../../dss_library/widgets/app_bar_widget.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
 import '../../dss_library/widgets/basis/image_widget.dart';
 import '../../dss_library/widgets/basis/text_compose_widget.dart';
@@ -25,7 +25,7 @@ class _FindIndexPageState extends State<FindIndexPage> {
   Widget build(BuildContext context) {
     print("build - HomeIndexPage");
     return Scaffold(
-      appBar: AppBarCommon(title: '发现', isShowBack: false),
+      appBar: AppBarWidget(title: '发现', isShowBack: false),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

@@ -8,7 +8,7 @@ import 'package:youliao/page/my/login/password_login_page.dart';
 import 'package:youliao/page/my/login/phone_login_page.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCommon(
+      appBar: AppBarWidget(
         title: '',
         isShowBack: false,
         backgroundColor: Colors.transparent,

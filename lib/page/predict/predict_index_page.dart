@@ -2,7 +2,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
 
@@ -59,7 +59,7 @@ class _PredictIndexPageState extends State<PredictIndexPage>
   Widget build(BuildContext context) {
     print("build - PredictIndexPage");
     return Scaffold(
-      appBar: AppBarCommon(
+      appBar: AppBarWidget(
         title: '预测',
         isShowBack: false,
         leftMenuWidget: [

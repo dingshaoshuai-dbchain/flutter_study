@@ -8,7 +8,7 @@ import 'package:youliao/dss_library/util/font_weiget_util.dart';
 import 'package:youliao/dss_library/util/image_util.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/util/font_family_util.dart';
-import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
@@ -45,7 +45,7 @@ class _MyIndexPageState extends State<MyIndexPage> {
         Column(
           children: [
             // 设置栏
-            AppBarCommon(
+            AppBarWidget(
               title: '',
               backgroundColor: Colors.transparent,
               isShowBack: false,
