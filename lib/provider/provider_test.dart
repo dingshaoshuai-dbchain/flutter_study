@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/basis/text_widget.dart';
+import '../dss_library/widgets/basis/text_widget.dart';
 
 void main() {
   runApp(const ProviderTestApp());

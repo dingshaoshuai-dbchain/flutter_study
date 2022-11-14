@@ -3,15 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util/toast_util.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-import 'package:youliao/widgets/basis/image_widget.dart';
-import 'package:youliao/widgets/basis/text_compose_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
-
-import '../../util/font_weiget_util.dart';
-import '../../widgets/app_bar_common.dart';
-import '../../widgets/basis/text_widget.dart';
+import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/util/toast_util.dart';
+import '../../dss_library/widgets/app_bar_common.dart';
+import '../../dss_library/widgets/basis/container_widget.dart';
+import '../../dss_library/widgets/basis/image_widget.dart';
+import '../../dss_library/widgets/basis/text_compose_widget.dart';
+import '../../dss_library/widgets/basis/text_widget.dart';
+import '../../dss_library/widgets/gaps.dart';
 import '../../widgets_app/plan_item.dart';
 
 class FindIndexPage extends StatefulWidget {

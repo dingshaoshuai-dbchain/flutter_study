@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/widgets_app/plan_item.dart';
 
 class PlanItemListWidget extends StatelessWidget {

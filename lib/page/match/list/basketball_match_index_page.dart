@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
 import 'package:youliao/util_app/font_family_util.dart';
-import 'package:youliao/widgets/basis/text_widget.dart';
 
-import '../../../util/toast_util.dart';
-import '../../../widgets/basis/container_widget.dart';
-import '../../../widgets/gaps.dart';
+import '../../../dss_library/util/toast_util.dart';
+import '../../../dss_library/widgets/basis/container_widget.dart';
+import '../../../dss_library/widgets/basis/text_widget.dart';
+import '../../../dss_library/widgets/gaps.dart';
 import '../../../widgets_app/collected_widget.dart';
 import '../../../widgets_app/next_widget.dart';
 import '../../../widgets_app/plan_number_widget.dart';

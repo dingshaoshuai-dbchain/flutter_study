@@ -2,14 +2,14 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/widgets/app_bar_common.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/dss_library/widgets/app_bar_common.dart';
+import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
+import 'package:youliao/dss_library/widgets/gaps.dart';
 
+import '../../dss_library/util/toast_util.dart';
 import '../../res_app/app_colors.dart';
-import '../../util/font_weiget_util.dart';
-import '../../util/toast_util.dart';
-import '../../widgets/basis/image_widget.dart';
+import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/widgets/basis/image_widget.dart';
 import '../../widgets_app/my_tab_bar.dart';
 import '../../widgets_app/plan_item_list.dart';
 

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-import 'package:youliao/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets/image_back.dart';
 
 import '../util/font_weiget_util.dart';
+import 'basis/container_widget.dart';
+import 'basis/text_widget.dart';
+import 'image_back.dart';
 
 class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   AppBarCommon({

@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/util/navigator_util.dart';
-import 'package:youliao/widgets/basis/image_widget.dart';
+
+import '../util/navigator_util.dart';
+import 'basis/image_widget.dart';
 
 class ImageBack extends StatelessWidget {
   const ImageBack({

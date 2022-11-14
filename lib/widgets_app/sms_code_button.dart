@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res_app/app_colors.dart';
 
-import '../widgets/basis/text_widget.dart';
+import '../dss_library/widgets/basis/text_widget.dart';
 
 class SmsCodeButton extends StatefulWidget {
   const SmsCodeButton({

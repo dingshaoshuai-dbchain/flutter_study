@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:youliao/page/test/test_router.dart';
-import 'package:youliao/util/navigator_util.dart';
 
+import '../../dss_library/util/navigator_util.dart';
 import '../../page/expert/expert_router.dart';
 import '../../page/find/find_router.dart';
 import '../../page/match/match_router.dart';

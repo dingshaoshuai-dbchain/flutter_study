@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/widgets/basis/image_widget.dart';
-import 'package:youliao/widgets/basis/text_compose_widget.dart';
-import 'package:youliao/widgets/basis/text_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 
+import '../../../dss_library/util/toast_util.dart';
 import '../../../global/length_config.dart';
 import '../../../res_app/app_colors.dart';
-import '../../../util/toast_util.dart';
-import '../../../widgets/gaps.dart';
+import '../../../dss_library/widgets/gaps.dart';
 import '../../../widgets_app/app_button.dart';
 import 'login_text_field_widget.dart';
 

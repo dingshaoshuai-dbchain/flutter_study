@@ -1,12 +1,6 @@
-import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/widgets/app_bar_common.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-
-import '../../../res_app/app_colors.dart';
-import '../../../widgets/basis/text_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 
 class TestNestedScrollPage extends StatelessWidget {
   const TestNestedScrollPage({super.key});

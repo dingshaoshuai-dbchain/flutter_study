@@ -10,8 +10,8 @@ import 'page/match/match_index_page.dart';
 import 'page/my/my_index_page.dart';
 import 'page/predict/predict_index_page.dart';
 import 'res_app/app_colors.dart';
-import 'widgets/basis/image_widget.dart';
-import 'widgets/double_tap_back_exit_app.dart';
+import 'dss_library/widgets/basis/image_widget.dart';
+import 'dss_library/widgets/double_tap_back_exit_app.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

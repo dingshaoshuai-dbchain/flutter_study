@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:youliao/net/http_util.dart';
-import 'package:youliao/net/intercepts.dart';
 
+import '../../dss_library/net/http_util.dart';
+import '../../dss_library/net/intercepts.dart';
 import '../../global/config.dart';
 import '../app_mode_init_provider.dart';
 

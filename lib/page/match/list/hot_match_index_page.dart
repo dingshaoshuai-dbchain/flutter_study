@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/util/toast_util.dart';
-import 'package:youliao/widgets/basis/container_widget.dart';
-import 'package:youliao/widgets/basis/image_widget.dart';
-import 'package:youliao/widgets/basis/text_compose_widget.dart';
-import 'package:youliao/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
+import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/widgets_app/collected_widget.dart';
 import 'package:youliao/widgets_app/next_widget.dart';
 
+import '../../../dss_library/util/toast_util.dart';
 import '../../../res_app/app_colors.dart';
-import '../../../util/font_weiget_util.dart';
 import '../../../util_app/font_family_util.dart';
 import '../../../widgets_app/plan_number_widget.dart';
 

@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/page/match/list/basketball_match_list_page.dart';
 import 'package:youliao/page/match/list/football_match_list_page.dart';
 import 'package:youliao/page/match/list/hot_match_list_page.dart';
-import 'package:youliao/widgets/gaps.dart';
+import 'package:youliao/dss_library/widgets/gaps.dart';
 
 import '../../res_app/app_colors.dart';
-import '../../util/font_weiget_util.dart';
-import '../../widgets/basis/container_widget.dart';
+import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/widgets/basis/container_widget.dart';
 
 class MatchIndexPage extends StatefulWidget {
   const MatchIndexPage({super.key});
