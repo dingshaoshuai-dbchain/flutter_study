@@ -7,9 +7,9 @@ import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 
 import '../../../dss_library/util/toast_util.dart';
 import '../../../global/length_config.dart';
-import '../../../res_app/app_colors.dart';
+import '../../../res/app_colors.dart';
 import '../../../dss_library/widgets/gaps.dart';
-import '../../../widgets_app/app_button.dart';
+import '../../../widgets/app_button.dart';
 import 'login_text_field_widget.dart';
 
 class PasswordLoginPage extends StatefulWidget {

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 
-import '../../../res_app/app_colors.dart';
+import '../../../res/app_colors.dart';
 
 class LoginTextFieldWidget extends StatefulWidget {
   const LoginTextFieldWidget({

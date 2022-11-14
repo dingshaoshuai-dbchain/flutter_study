@@ -8,7 +8,7 @@ import 'package:youliao/page/match/list/football_match_list_page.dart';
 import 'package:youliao/page/match/list/hot_match_list_page.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
 
-import '../../res_app/app_colors.dart';
+import '../../res/app_colors.dart';
 import '../../dss_library/util/font_weiget_util.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
 

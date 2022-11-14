@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util_app/font_family_util.dart';
-
-import '../dss_library/util/font_weiget_util.dart';
+import 'package:youliao/res/app_colors.dart';
+import 'package:youliao/util/font_family_util.dart';
 
 class HitRateWidget extends StatelessWidget {
   const HitRateWidget({super.key});

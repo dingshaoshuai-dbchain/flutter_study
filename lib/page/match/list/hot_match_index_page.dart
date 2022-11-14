@@ -6,13 +6,13 @@ import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
-import 'package:youliao/widgets_app/collected_widget.dart';
-import 'package:youliao/widgets_app/next_widget.dart';
+import 'package:youliao/widgets/collected_widget.dart';
+import 'package:youliao/widgets/next_widget.dart';
 
 import '../../../dss_library/util/toast_util.dart';
-import '../../../res_app/app_colors.dart';
-import '../../../util_app/font_family_util.dart';
-import '../../../widgets_app/plan_number_widget.dart';
+import '../../../res/app_colors.dart';
+import '../../../util/font_family_util.dart';
+import '../../../widgets/plan_number_widget.dart';
 
 class HotMatchIndexPage extends StatelessWidget {
   const HotMatchIndexPage({super.key});

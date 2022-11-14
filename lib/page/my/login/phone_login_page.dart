@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/user_api.dart';
 import 'package:youliao/global/length_config.dart';
-import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util_app/edit_check.dart';
+import 'package:youliao/res/app_colors.dart';
+import 'package:youliao/util/edit_check.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
-import 'package:youliao/widgets_app/app_button.dart';
+import 'package:youliao/widgets/app_button.dart';
 
-import '../../../widgets_app/sms_code_button.dart';
+import '../../../widgets/sms_code_button.dart';
 import 'login_text_field_widget.dart';
 
 class PhoneLoginPage extends StatefulWidget {

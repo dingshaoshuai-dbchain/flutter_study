@@ -9,7 +9,7 @@ import 'page/expert/expert_index_page.dart';
 import 'page/match/match_index_page.dart';
 import 'page/my/my_index_page.dart';
 import 'page/predict/predict_index_page.dart';
-import 'res_app/app_colors.dart';
+import 'res/app_colors.dart';
 import 'dss_library/widgets/basis/image_widget.dart';
 import 'dss_library/widgets/double_tap_back_exit_app.dart';
 

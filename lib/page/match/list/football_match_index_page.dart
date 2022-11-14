@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/res_app/app_colors.dart';
-import 'package:youliao/util_app/font_family_util.dart';
+import 'package:youliao/res/app_colors.dart';
+import 'package:youliao/util/font_family_util.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
-import 'package:youliao/widgets_app/football_match_card.dart';
-import 'package:youliao/widgets_app/plan_number_widget.dart';
+import 'package:youliao/widgets/football_match_card.dart';
+import 'package:youliao/widgets/plan_number_widget.dart';
 
 import '../../../dss_library/util/toast_util.dart';
 import '../../../dss_library/widgets/basis/container_widget.dart';
 import '../../../dss_library/widgets/gaps.dart';
-import '../../../widgets_app/collected_widget.dart';
-import '../../../widgets_app/next_widget.dart';
+import '../../../widgets/collected_widget.dart';
+import '../../../widgets/next_widget.dart';
 
 class FootballMatchIndexPage extends StatelessWidget {
   const FootballMatchIndexPage({super.key});
