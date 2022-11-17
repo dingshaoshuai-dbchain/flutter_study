@@ -207,41 +207,39 @@ class PlanItemWidget extends StatelessWidget {
       height: 32.w,
       marginHorizontal: 16.w,
       marginBottom: 5.w,
-      child: Stack(
-        alignment: Alignment.centerLeft,
+      child: Row(
         children: [
           Text(
             '10分钟前发布',
             style: TextStyle(color: AppColors.summaryText2, fontSize: 9.sp),
           ),
-          Positioned(
-            right: 0,
-            child: ContainerWidget(
-              width: 60.w,
-              height: 21.w,
-              borderSide: BorderSide(
-                color: AppColors.main,
-                width: 0.5.w,
-              ),
-              radius: 10.w,
-              child: Row(
-                children: [
-                  ImageWidget(
-                    url: 'ic_gold',
-                    width: 11.w,
-                    height: 11.w,
-                    marginLeft: 4.w,
-                  ),
-                  Expanded(
-                    child: TextWidget(
-                      text: '128金币',
-                      textColor: AppColors.main,
-                      fontSize: 10.sp,
-                      fontWeight: FontWeightUtil.pingFangSCSemibold,
-                    ),
-                  )
-                ],
-              ),
+          const Spacer(),
+          ContainerWidget(
+            height: 21.w,
+            borderSide: BorderSide(
+              color: AppColors.main,
+              width: 0.5.w,
+            ),
+            radius: 10.w,
+            child: Row(
+              children: [
+                ImageWidget(
+                  url: 'ic_gold',
+                  width: 11.w,
+                  height: 11.w,
+                  marginLeft: 4.w,
+                ),
+                TextWidget(
+                  text: '金币',
+                  minWidth: 40.w,
+                  maxWidth: 100.w,
+                  paddingLeft: 2.w,
+                  paddingRight: 4.w,
+                  textColor: AppColors.main,
+                  fontSize: 10.sp,
+                  fontWeight: FontWeightUtil.pingFangSCSemibold,
+                )
+              ],
             ),
           )
         ],

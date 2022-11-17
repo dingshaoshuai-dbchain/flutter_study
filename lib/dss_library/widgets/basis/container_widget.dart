@@ -95,13 +95,13 @@ class ContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content = Container(
+      alignment: alignment,
       constraints: BoxConstraints(
         minWidth: width ?? minWidth ?? 0.0,
         maxWidth: width ?? maxWidth ?? double.infinity,
         minHeight: height ?? minHeight ?? 0.0,
         maxHeight: height ?? maxHeight ?? double.infinity,
       ),
-      alignment: alignment,
       padding: EdgeInsets.only(
         left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
         right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
@@ -141,6 +141,9 @@ class ContainerWidget extends StatelessWidget {
                 )),
       child: child,
     );
+    if (onPressed == null) {
+      return content;
+    }
     return GestureDetector(
       onTap: onPressed,
       child: content,
