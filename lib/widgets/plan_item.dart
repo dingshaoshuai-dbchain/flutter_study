@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/global/plan_mode.dart';
-import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:youliao/global/plan_mode.dart';
+import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/hit_rate_widget.dart';
 
 import '../dss_library/util/font_weiget_util.dart';
@@ -47,29 +47,6 @@ class PlanItemWidget extends StatelessWidget {
               _buildBottom(),
             ],
           ),
-          Positioned(
-            right: 50.w,
-            bottom: 28.w,
-            child: TextWidget(
-              width: 40.w,
-              paddingBottom: 1,
-              text: '不中就退',
-              textColor: Colors.white,
-              fontSize: 8.sp,
-              radius: 5.w,
-              radiusBottomRight: 0,
-              backgroundColor: Color(0xFFFF0F47),
-            ),
-          ),
-          Positioned(
-            right: 32.w,
-            bottom: 65.w,
-            child: ImageWidget(
-              url: 'ic_plan_result_red',
-              width: 33.w,
-              height: 33.w,
-            ),
-          )
         ],
       ),
     );
@@ -195,6 +172,17 @@ class PlanItemWidget extends StatelessWidget {
               ],
             ),
           ),
+          Positioned(
+            right: 0,
+            child: Transform.translate(
+              offset: const Offset(-20, -25),
+              child: ImageWidget(
+                url: 'ic_plan_result_red',
+                width: 33.w,
+                height: 33.w,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -214,34 +202,52 @@ class PlanItemWidget extends StatelessWidget {
             style: TextStyle(color: AppColors.summaryText2, fontSize: 9.sp),
           ),
           const Spacer(),
-          ContainerWidget(
-            height: 21.w,
-            borderSide: BorderSide(
-              color: AppColors.main,
-              width: 0.5.w,
-            ),
-            radius: 10.w,
-            child: Row(
-              children: [
-                ImageWidget(
-                  url: 'ic_gold',
-                  width: 11.w,
-                  height: 11.w,
-                  marginLeft: 4.w,
+          Stack(
+            children: [
+              ContainerWidget(
+                height: 21.w,
+                borderSide: BorderSide(
+                  color: AppColors.main,
+                  width: 0.5.w,
                 ),
-                TextWidget(
-                  text: '金币',
-                  minWidth: 40.w,
-                  maxWidth: 100.w,
-                  paddingLeft: 2.w,
-                  paddingRight: 4.w,
-                  textColor: AppColors.main,
-                  fontSize: 10.sp,
-                  fontWeight: FontWeightUtil.pingFangSCSemibold,
-                )
-              ],
-            ),
-          )
+                radius: 10.w,
+                child: Row(
+                  children: [
+                    ImageWidget(
+                      url: 'ic_gold',
+                      width: 11.w,
+                      height: 11.w,
+                      marginLeft: 4.w,
+                    ),
+                    TextWidget(
+                      text: '金币',
+                      minWidth: 40.w,
+                      maxWidth: 100.w,
+                      paddingLeft: 2.w,
+                      paddingRight: 4.w,
+                      textColor: AppColors.main,
+                      fontSize: 10.sp,
+                      fontWeight: FontWeightUtil.pingFangSCSemibold,
+                    )
+                  ],
+                ),
+              ),
+              Transform.translate(
+                offset: const Offset(-20, -10),
+                child: TextWidget(
+                  minHeight: 0,
+                  paddingHorizontal: 5.w,
+                  paddingBottom: 1,
+                  text: '不中就退',
+                  textColor: Colors.white,
+                  fontSize: 8.sp,
+                  radius: 5.w,
+                  radiusBottomRight: 0,
+                  backgroundColor: const Color(0xFFFF0F47),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
