@@ -226,6 +226,7 @@ class _RecommendExpertWidget extends StatelessWidget {
             fontWeight: FontWeightUtil.pingFangSCSemibold,
             marginHorizontal: 2.w,
             marginTop: 2.w,
+            alignment: Alignment.topCenter,
           ),
           TextWidget(
             text: '平台人气王',

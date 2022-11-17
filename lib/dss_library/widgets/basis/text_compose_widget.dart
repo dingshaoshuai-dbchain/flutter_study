@@ -12,13 +12,14 @@ class TextComposeWidget extends StatelessWidget {
     required this.text,
     required this.textColor,
     required this.fontSize,
-    this.alignment = Alignment.center,
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
     this.width,
     this.height,
+    this.alignment,
     this.fontFamily,
+    this.textAlign = TextAlign.center,
     this.backgroundColor,
     this.padding,
     this.paddingHorizontal,
@@ -55,14 +56,16 @@ class TextComposeWidget extends StatelessWidget {
   final String text;
   final Color textColor;
   final double fontSize;
-  final Alignment alignment;
   final int? maxLines;
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
   final String? fontFamily;
+  final TextAlign textAlign;
 
   final double? width;
   final double? height;
+
+  final Alignment? alignment;
 
   final Color? backgroundColor;
 
@@ -137,6 +140,7 @@ class TextComposeWidget extends StatelessWidget {
       text,
       maxLines: maxLines,
       overflow: overflow,
+      textAlign: textAlign,
       style: TextStyle(
           color: textColor,
           fontSize: fontSize,

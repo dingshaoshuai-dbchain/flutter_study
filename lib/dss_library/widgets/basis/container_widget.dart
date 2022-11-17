@@ -13,6 +13,7 @@ class ContainerWidget extends StatelessWidget {
     this.minHeight,
     this.maxHeight,
     this.backgroundColor,
+    // 一旦设置了这个，最小最大宽高都失效，按最大的来
     this.alignment,
     this.backgroundImagePath,
     this.backgroundImageFormat,

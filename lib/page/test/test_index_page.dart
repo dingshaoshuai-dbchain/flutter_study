@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/page/test/test_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
+import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
+import 'package:youliao/page/test/test_router.dart';
+import 'package:youliao/res/app_colors.dart';
 
 class TestIndexPage extends StatelessWidget {
   const TestIndexPage({super.key});
@@ -20,6 +23,17 @@ class TestIndexPage extends StatelessWidget {
           _buildPageButton(context, 'NestedScrollerView 吸顶', () {
             NavigatorUtil.push(context, TestRouter.testNestedScrollerPager);
           }),
+          Center(
+            child: TextWidget(
+              text: 't',
+              textColor: AppColors.mainText,
+              fontSize: 18.sp,
+              backgroundColor: Colors.red,
+              minWidth: 100,
+              maxWidth: 300,
+              height: 50,
+            ),
+          )
         ],
       ),
     );

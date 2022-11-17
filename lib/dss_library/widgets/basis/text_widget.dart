@@ -9,17 +9,19 @@ class TextWidget extends StatelessWidget {
     required this.text,
     required this.textColor,
     required this.fontSize,
-    this.alignment = Alignment.center,
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
     this.fontFamily,
+    this.textAlign = TextAlign.center,
     this.width,
     this.height,
     this.minWidth,
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
+    // 一旦设置了这个，最小最大宽高都失效，按最大的来
+    this.alignment,
     this.backgroundColor,
     this.backgroundImagePath,
     this.backgroundImageFormat,
@@ -53,11 +55,11 @@ class TextWidget extends StatelessWidget {
   final String text;
   final Color textColor;
   final double fontSize;
-  final Alignment alignment;
   final int? maxLines;
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
   final String? fontFamily;
+  final TextAlign textAlign;
 
   final double? width;
   final double? height;
@@ -65,6 +67,8 @@ class TextWidget extends StatelessWidget {
   final double? maxWidth;
   final double? minHeight;
   final double? maxHeight;
+
+  final Alignment? alignment;
 
   final Color? backgroundColor;
 
@@ -103,6 +107,17 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Alignment? ali = alignment;
+    // 如果没有特意设置
+    if (ali == null) {
+      // 并且没有设置最小最大宽高，那就默认给个 center
+      if (minWidth == null &&
+          maxWidth == null &&
+          minHeight == null &&
+          maxHeight == null) {
+        ali = Alignment.center;
+      }
+    }
     return ContainerWidget(
       width: width,
       height: height,
@@ -110,7 +125,7 @@ class TextWidget extends StatelessWidget {
       maxWidth: maxWidth,
       minHeight: minHeight,
       maxHeight: maxHeight,
-      alignment: alignment,
+      alignment: ali,
       backgroundColor: backgroundColor,
       backgroundImagePath: backgroundImagePath,
       backgroundImageFormat: backgroundImageFormat,
@@ -148,12 +163,12 @@ class TextWidget extends StatelessWidget {
       text,
       maxLines: maxLines,
       overflow: overflow,
+      textAlign: textAlign,
       style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily
-      ),
+          color: textColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          fontFamily: fontFamily),
     );
   }
 }
