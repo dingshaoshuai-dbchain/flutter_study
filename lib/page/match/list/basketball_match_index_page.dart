@@ -89,7 +89,7 @@ class _BasketballMatchItem extends StatelessWidget {
               Gaps.hGap10,
               Text(
                 '10:00',
-                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 10.sp),
+                style: TextStyle(color: AppColors.summaryText2, fontSize: 10.sp),
               )
             ],
           ),
@@ -133,7 +133,7 @@ class _BasketballMatchItem extends StatelessWidget {
                 children: [
                   TextWidget(
                     text: '巴塞罗那',
-                    textColor: AppColors.color_181818,
+                    textColor: AppColors.mainText,
                     fontSize: 13.sp,
                     width: 80.w,
                     alignment: Alignment.centerLeft,
@@ -141,7 +141,7 @@ class _BasketballMatchItem extends StatelessWidget {
                   Gaps.vGap5,
                   TextWidget(
                     text: '巴塞罗那',
-                    textColor: AppColors.color_181818,
+                    textColor: AppColors.mainText,
                     fontSize: 13.sp,
                     width: 80.w,
                     alignment: Alignment.centerLeft,
@@ -232,11 +232,11 @@ class _BasketballMatchItem extends StatelessWidget {
   Widget _buildScoreItem() {
     return TextWidget(
       text: '10',
-      textColor: AppColors.color8B8B8B,
+      textColor: AppColors.summaryText2,
       fontSize: 11.sp,
       width: 20.w,
       height: 16.w,
-      backgroundColor: AppColors.colorF7F8FC,
+      backgroundColor: AppColors.mainBackground,
       radius: 2.5.w,
     );
   }
@@ -245,7 +245,7 @@ class _BasketballMatchItem extends StatelessWidget {
   Widget _buildStatus(String text) {
     return TextWidget(
       text: text,
-      textColor: AppColors.color8B8B8B,
+      textColor: AppColors.summaryText2,
       fontSize: 11.sp,
       width: 20.w,
     );

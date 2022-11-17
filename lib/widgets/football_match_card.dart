@@ -31,11 +31,11 @@ abstract class BaseFootballCard extends StatelessWidget {
 /// 足球赛事牌子 - 黄牌
 class YellowCard extends BaseFootballCard {
   const YellowCard({super.key, required super.number})
-      : super(backgroundColor: AppColors.footballMatchYellow);
+      : super(backgroundColor: AppColors.footballMatchCardYellow);
 }
 
 /// 足球赛事牌子 - 红牌
 class RedCard extends BaseFootballCard {
   const RedCard({super.key, required super.number})
-      : super(backgroundColor: AppColors.footballMatchRed);
+      : super(backgroundColor: AppColors.footballMatchCardRed);
 }

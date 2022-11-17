@@ -3,14 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/page/match/list/basketball_match_list_page.dart';
 import 'package:youliao/page/match/list/football_match_list_page.dart';
 import 'package:youliao/page/match/list/hot_match_list_page.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
 
-import '../../res/app_colors.dart';
 import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/util/log_utils.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
+import '../../res/app_colors.dart';
 
 class MatchIndexPage extends StatefulWidget {
   const MatchIndexPage({super.key});
@@ -41,7 +42,7 @@ class _MatchIndexPageState extends State<MatchIndexPage>
 
   @override
   Widget build(BuildContext context) {
-    print("build - MatchIndexPage");
+    Log.d('build - MatchIndexPage');
     return Column(
       children: [
         _TabBar(pageController: _pageController, titles: _titles),
@@ -53,6 +54,12 @@ class _MatchIndexPageState extends State<MatchIndexPage>
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
 
@@ -72,13 +79,12 @@ class _TabBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.center,
+          Center(
             child: ContainerWidget(
               marginVertical: 10.w,
               width: 190.w,
               height: 28.w,
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: AppColors.main,
                 width: 1,
               ),
@@ -103,7 +109,7 @@ class _TabBar extends StatelessWidget implements PreferredSizeWidget {
                         ),
                         color: AppColors.main),
                     indicatorSize: TabBarIndicatorSize.tab,
-                    // 坑爹玩意，只有设置了这个为 true 才会包裹内容显示tab
+                    // 是否滚动显示 tab 为 false 才会有多大撑多大
                     isScrollable: false,
                     tabs: titles.map((e) => Text(e)).toList(),
                   ),
@@ -123,11 +129,14 @@ class _TabBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
     );
-    // 有这个玩意，才会自动把状态栏高度空出来
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
+      // 状态栏字体颜色
       value: SystemUiOverlayStyle.dark,
       child: Material(
+        // 状态栏背景色
         color: Colors.white,
+        // 有这个玩意，才会自动把状态栏高度空出来
         child: SafeArea(
           child: content,
         ),

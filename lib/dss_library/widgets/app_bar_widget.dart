@@ -6,6 +6,7 @@ import 'package:youliao/res/app_colors.dart';
 
 import '../util/font_weiget_util.dart';
 import 'basis/container_widget.dart';
+import 'basis/image_widget.dart';
 import 'basis/text_widget.dart';
 import 'image_back.dart';
 
@@ -16,7 +17,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.isShowBack = true,
     this.isBlackBack = true,
     // 标题字体样式
-    this.titleColor = AppColors.color_181818,
+    this.titleColor = AppColors.mainText,
     this.titleFontSize = 18,
     this.titleFontWeight = FontWeightUtil.pingFangSCSemibold,
     // 标题及状态栏颜色
@@ -88,10 +89,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     );
     // 搞个状态栏变色神马的
     return AnnotatedRegion<SystemUiOverlayStyle>(
+      // 状态栏字体颜色
       value: isBlackStatusFontColor
           ? SystemUiOverlayStyle.dark
           : SystemUiOverlayStyle.light,
       child: Material(
+        // 状态栏背景色
         color: backgroundColor,
         child: SafeArea(
           child: content,
@@ -102,4 +105,33 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(48.h);
+}
+
+/// AppBar 顶部的按钮
+class AppBarMenuWidget extends StatelessWidget {
+  final String icon;
+  final double? width;
+  final double? height;
+  final double? padding;
+  final GestureTapCallback onPressed;
+
+  const AppBarMenuWidget({
+    super.key,
+    required this.icon,
+    required this.onPressed,
+    this.width,
+    this.height,
+    this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ImageWidget(
+      url: icon,
+      width: width ?? 40.w,
+      height: height ?? 40.w,
+      padding: padding ?? 10.w,
+      onPressed: onPressed,
+    );
+  }
 }

@@ -90,14 +90,13 @@ class _FootballMatchItem extends StatelessWidget {
               Gaps.hGap10,
               Text(
                 '10:00',
-                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 10.sp),
+                style: TextStyle(color: AppColors.summaryText2, fontSize: 10.sp),
               )
             ],
           ),
         ),
         // 比赛状态
-        Align(
-          alignment: Alignment.center,
+        Center(
           child: TextWidget(
             text: '中',
             textColor: AppColors.main,
@@ -137,7 +136,7 @@ class _FootballMatchItem extends StatelessWidget {
                 children: [
                   Expanded(child: _buildTeam(context, TextDirection.rtl)),
                   Gaps.hGap12,
-                  _buildScoreItem(context, '2 - 1'),
+                  _buildScore(context, '2 - 1'),
                   Gaps.hGap12,
                   Expanded(child: _buildTeam(context, TextDirection.ltr)),
                 ],
@@ -145,7 +144,7 @@ class _FootballMatchItem extends StatelessWidget {
               Gaps.vGap5,
               Text(
                 '半（0-0） 角（0-0）',
-                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 11.sp),
+                style: TextStyle(color: AppColors.summaryText2, fontSize: 11.sp),
               )
             ],
           ),
@@ -174,7 +173,7 @@ class _FootballMatchItem extends StatelessWidget {
             '皇家君主',
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: AppColors.color_181818,
+              color: AppColors.mainText,
               fontSize: 14.sp,
             ),
           ),
@@ -189,7 +188,7 @@ class _FootballMatchItem extends StatelessWidget {
 
   /// 比分 item
   /// 如果某一队有两位数的话，中间的横杠就不在整个界面的最中间，不考虑这种情况
-  Widget _buildScoreItem(BuildContext context, String text) {
+  Widget _buildScore(BuildContext context, String text) {
     return TextWidget(
       text: text,
       textColor: AppColors.main,

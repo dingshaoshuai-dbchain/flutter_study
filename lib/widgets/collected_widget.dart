@@ -17,8 +17,8 @@ class _CollectedWidgetState extends State<CollectedWidget> {
   Widget build(BuildContext context) {
     return ImageWidget(
       url: _isChecked
-          ? 'match/ic_collected_checked'
-          : 'match/ic_collected_normal',
+          ? 'ic_collected_checked'
+          : 'ic_collected_normal',
       width: 33.w,
       height: 33.w,
       padding: 10.w,

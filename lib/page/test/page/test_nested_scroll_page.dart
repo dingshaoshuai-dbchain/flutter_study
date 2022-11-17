@@ -27,7 +27,7 @@ class TestNestedScrollPage extends StatelessWidget {
   //               minHeight: 50.w,
   //               child: TextWidget(
   //                 text: '我可以固定',
-  //                 textColor: AppColors.color_181818,
+  //                 textColor: AppColors.mainText,
   //                 fontSize: 20.sp,
   //                 height: 50.w,
   //                 backgroundColor: Colors.orange,

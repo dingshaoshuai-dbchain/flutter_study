@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/dss_library/util/log_utils.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
@@ -24,6 +25,7 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Log.d('build - PasswordLoginPage');
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(left: 28.w, right: 28.w),
@@ -35,10 +37,11 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
                   bottom: 13.w,
                   child: TextWidget(
                       text: '中国 +86',
-                      textColor: AppColors.color_181818,
+                      textColor: AppColors.mainText,
                       alignment: Alignment.topLeft,
                       fontSize: 16.sp),
                 ),
+                // 手机号
                 LoginTextFieldWidget(
                   hintText: '请输入手机号码',
                   maxLength: phoneLength,
@@ -47,6 +50,7 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
                 )
               ],
             ),
+            // 密码
             Gaps.vGapValue(22.w),
             LoginTextFieldWidget(
               hintText: '请输入密码',
@@ -57,13 +61,13 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
               children: [
                 TextComposeWidget(
                   text: '记住密码',
-                  textColor: AppColors.color_999999,
+                  textColor: AppColors.summaryText2,
                   fontSize: 13.sp,
                   paddingVertical: 17.w,
                   leftWidget: ImageWidget(
                     url: _isSavePassword
-                        ? 'app/ic_checkbox_checked'
-                        : 'app/ic_checkbox_normal',
+                        ? 'ic_checkbox_checked'
+                        : 'ic_checkbox_normal',
                     width: 13.w,
                     height: 13.w,
                     marginRight: 6.w,
@@ -77,7 +81,7 @@ class _PasswordLoginPageState extends State<PasswordLoginPage> {
                 Spacer(),
                 TextWidget(
                   text: '忘记密码',
-                  textColor: AppColors.color_999999,
+                  textColor: AppColors.summaryText2,
                   fontSize: 13.sp,
                   paddingVertical: 17.w,
                   onPressed: () {

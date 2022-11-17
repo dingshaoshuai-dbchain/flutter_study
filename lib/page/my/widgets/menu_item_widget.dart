@@ -30,7 +30,7 @@ class MenuItemWidget extends StatelessWidget {
           Expanded(
               child: TextWidget(
             text: text ?? '',
-            textColor: AppColors.color_181818,
+            textColor: AppColors.mainText,
             marginLeft: 11.w,
             fontSize: 13.sp,
             alignment: Alignment.centerLeft,

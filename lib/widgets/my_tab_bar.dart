@@ -31,12 +31,12 @@ class MyTabBar extends StatelessWidget {
         padding:
             EdgeInsets.only(top: 13.w, bottom: 13.w, left: 10.w, right: 10.w),
         controller: pageController,
-        labelColor: AppColors.color_181818,
+        labelColor: AppColors.mainText,
         labelStyle: TextStyle(
           // fontSize: 15.sp,
           fontWeight: FontWeightUtil.pingFangSCSemibold,
         ),
-        unselectedLabelColor: AppColors.color_181818,
+        unselectedLabelColor: AppColors.mainText,
         unselectedLabelStyle: TextStyle(
             // fontSize: 13.sp,
             ),

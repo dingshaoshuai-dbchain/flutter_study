@@ -42,7 +42,7 @@ class _LoginTextFieldWidgetState extends State<LoginTextFieldWidget> {
               bottom: 5.w),
           hintText: widget.hintText,
           hintStyle: TextStyle(
-            color: AppColors.color_999999,
+            color: AppColors.summaryText2,
             fontSize: 16.sp,
           ),
           // 获取焦点后，下方的横线
@@ -50,11 +50,11 @@ class _LoginTextFieldWidgetState extends State<LoginTextFieldWidget> {
               borderSide: BorderSide(color: AppColors.main, width: 1.w)),
           // 未获取焦点并且可用状态，下方的横线
           enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.colorDADADA, width: 1.w)),
+              borderSide: BorderSide(color: const Color(0xFFDADADA), width: 1.w)),
           // 去掉最大长度显示
           counterText: ""),
       style: TextStyle(
-        color: AppColors.color_181818,
+        color: AppColors.mainText,
         fontSize: 16.sp,
       ),
       maxLength: widget.maxLength,

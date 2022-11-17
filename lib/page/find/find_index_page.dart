@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
+
 import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/util/log_utils.dart';
 import '../../dss_library/util/toast_util.dart';
 import '../../dss_library/widgets/app_bar_widget.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
@@ -23,7 +25,7 @@ class FindIndexPage extends StatefulWidget {
 class _FindIndexPageState extends State<FindIndexPage> {
   @override
   Widget build(BuildContext context) {
-    print("build - HomeIndexPage");
+    Log.d('build - FindIndexPage');
     return Scaffold(
       appBar: AppBarWidget(title: '发现', isShowBack: false),
       body: CustomScrollView(
@@ -83,7 +85,7 @@ class _Banner extends StatelessWidget {
         url: e,
         fit: BoxFit.cover,
         imageRadius: 6.w,
-        placeholder: 'app/ic_place_holder',
+        placeholder: 'ic_place_holder',
       ));
 
   @override
@@ -97,7 +99,7 @@ class _Banner extends StatelessWidget {
             spacing: 8.w,
             radius: 3.w,
             itemActiveColor: Colors.white,
-            itemColor: AppColors.colorAAAAAA,
+            itemColor: AppColors.summaryText2,
             padding: EdgeInsets.only(bottom: 10.w)),
         // 轮播图资源
         children: _bannerList.toList(),
@@ -115,55 +117,65 @@ class _Match extends StatelessWidget {
       radius: 8.w,
       child: Column(
         children: [
-          SizedBox(
-            height: 34.w,
-            child: Row(
-              children: [
-                ImageWidget(
-                  url: 'find/ic_hot_match',
-                  width: 62.w,
-                  height: 13.w,
-                  marginLeft: 7.w,
-                  fit: BoxFit.fill,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 4,
-                    right: 5.w,
-                  ),
-                  child: Gaps.vLine(thickness: 1.w, height: 13.w),
-                ),
-                ImageWidget(
-                  url: 'find/ic_hot_match_calendar',
-                  width: 10.w,
-                  height: 10.w,
-                  marginRight: 3.w,
-                ),
-                Text(
-                  '今日精选10场赛事',
-                  style: TextStyle(
-                    color: AppColors.color_999999,
-                    fontSize: 10.sp,
-                  ),
-                )
-              ],
-            ),
-          ),
+          _buildTitle(context),
           Gaps.hLine(),
-          SizedBox(
-            height: 72.w,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return _buildItem(context);
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return Gaps.vLine();
-              },
-            ),
-          ),
+          _buildBody(context),
         ],
+      ),
+    );
+  }
+
+  /// 标题区域
+  Widget _buildTitle(BuildContext context) {
+    return SizedBox(
+      height: 34.w,
+      child: Row(
+        children: [
+          ImageWidget(
+            url: 'ic_hot_match',
+            width: 62.w,
+            height: 13.w,
+            marginLeft: 7.w,
+            fit: BoxFit.fill,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 4,
+              right: 5.w,
+            ),
+            child: Gaps.vLine(thickness: 1.w, height: 13.w),
+          ),
+          ImageWidget(
+            url: 'ic_hot_match_calendar',
+            width: 10.w,
+            height: 10.w,
+            marginRight: 3.w,
+          ),
+          Text(
+            '今日精选10场赛事',
+            style: TextStyle(
+              color: AppColors.summaryText2,
+              fontSize: 10.sp,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  /// 内容区域
+  Widget _buildBody(BuildContext context) {
+    return SizedBox(
+      height: 72.w,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) {
+          return _buildItem(context);
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Gaps.vLine();
+        },
       ),
     );
   }
@@ -194,7 +206,7 @@ class _Match extends StatelessWidget {
       children: [
         TextWidget(
           text: '澳超',
-          textColor: AppColors.color_181818,
+          textColor: AppColors.mainText,
           fontSize: 10.sp,
           fontWeight: FontWeightUtil.pingFangSCSemibold,
           marginLeft: 9.w,
@@ -204,7 +216,7 @@ class _Match extends StatelessWidget {
         Expanded(
           child: TextWidget(
             text: '05.17 00:00',
-            textColor: AppColors.color_999999,
+            textColor: AppColors.summaryText2,
             marginTop: 7.w,
             fontSize: 10.sp,
             alignment: Alignment.centerLeft,
@@ -226,13 +238,13 @@ class _Match extends StatelessWidget {
                   width: 40.w,
                   height: 14.w,
                   fontSize: 8.sp,
-                  backgroundColor: AppColors.red_2,
+                  backgroundColor: const Color(0xFFD73422),
                   paddingLeft: 12.w,
                 ),
               ),
               Positioned(
                 child: ImageWidget(
-                  url: 'find/ic_hot_match_plan',
+                  url: 'ic_hot_match_plan',
                   width: 16.w,
                   height: 16.w,
                 ),
@@ -249,7 +261,7 @@ class _Match extends StatelessWidget {
     return Row(
       children: [
         ImageWidget(
-          url: 'app/ic_default_avatar',
+          url: 'ic_default_avatar',
           width: 18.w,
           height: 18.w,
           marginLeft: 9.w,
@@ -262,7 +274,7 @@ class _Match extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: AppColors.color_181818,
+                color: AppColors.mainText,
                 fontSize: 12.sp,
                 fontWeight: FontWeightUtil.pingFangSCSemibold,
               ),
@@ -284,23 +296,23 @@ class _Menu extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _buildItem(context, '不对退返', 'find/ic_plan_return', () {
+            child: _buildItem(context, '不对退返', 'ic_plan_return', () {
               Toast.show('不对退返');
             }),
           ),
           Gaps.hGap5,
           Expanded(
-              child: _buildItem(context, '免费专区', 'find/ic_plan_free', () {
+              child: _buildItem(context, '免费专区', 'ic_plan_free', () {
                 Toast.show('免费专区');
               })),
           Gaps.hGap5,
           Expanded(
-              child: _buildItem(context, '打包专区', 'find/ic_plan_package', () {
+              child: _buildItem(context, '打包专区', 'ic_plan_package', () {
                 Toast.show('打包专区');
               })),
           Gaps.hGap5,
           Expanded(
-              child: _buildItem(context, '2串1', 'find/ic_plan_2_and_1', () {
+              child: _buildItem(context, '2串1', 'ic_plan_2_and_1', () {
                 Toast.show('2串1');
               })),
         ],
@@ -315,7 +327,7 @@ class _Menu extends StatelessWidget {
       GestureTapCallback onPressed,) {
     return TextComposeWidget(
       text: text,
-      textColor: AppColors.color_181818,
+      textColor: AppColors.mainText,
       fontSize: 12.sp,
       fontWeight: FontWeightUtil.pingFangSCSemibold,
       marginTop: 10.w,
@@ -343,13 +355,13 @@ class _PlanListTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ImageWidget(
-            url: 'find/ic_hot_plan_list',
+            url: 'ic_hot_plan_list',
             width: 16.w,
             height: 14.w,
             fit: BoxFit.fill,
           ),
           ImageWidget(
-            url: 'find/ic_hot_plan_list_title',
+            url: 'ic_hot_plan_list_title',
             width: 62.w,
             height: 13.w,
             fit: BoxFit.fill,

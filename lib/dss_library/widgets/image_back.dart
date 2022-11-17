@@ -22,7 +22,6 @@ class ImageBack extends StatelessWidget {
       width: 48,
       height: 48,
       padding: 16,
-      // TODO 不知道为毛，死难点到
       onPressed: onPressed ??
           () {
             NavigatorUtil.pop(context);

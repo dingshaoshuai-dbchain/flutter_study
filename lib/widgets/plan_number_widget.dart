@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../dss_library/res/colors.dart';
-import '../res/app_colors.dart';
 import '../dss_library/widgets/basis/container_widget.dart';
 import '../dss_library/widgets/basis/text_widget.dart';
+import '../res/app_colors.dart';
 
 /// 方案数量 widget
 class PlanNumberWidget extends StatelessWidget {

@@ -4,14 +4,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/page/my/login/password_login_page.dart';
-import 'package:youliao/page/my/login/phone_login_page.dart';
-import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:youliao/page/my/login/password_login_page.dart';
+import 'package:youliao/page/my/login/phone_login_page.dart';
+import 'package:youliao/res/app_colors.dart';
 
 import '../../../dss_library/util/toast_util.dart';
 
@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBarWidget(
         title: '',
         isShowBack: false,
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ImageWidget(
-            url: 'app/ic_close_black',
+            url: 'ic_close_black',
             width: 80.w,
             height: 80.w,
             padding: 28.w,
@@ -62,16 +63,17 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             marginTop: 20.w,
             marginLeft: 12.w,
             child: TabBar(
-                controller: _pageController,
-                labelColor: AppColors.color_181818,
-                unselectedLabelColor: AppColors.color_999999,
-                indicatorColor: Colors.transparent,
-                // 坑爹玩意，只有设置了这个才会包裹内容显示tab
-                isScrollable: true,
-                labelPadding: EdgeInsets.only(left: 15.w, right: 15.w),
-                labelStyle:
-                    TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
-                tabs: titles.map((e) => Text(e)).toList()),
+              controller: _pageController,
+              labelColor: AppColors.mainText,
+              unselectedLabelColor: AppColors.summaryText2,
+              indicatorColor: Colors.transparent,
+              // 坑爹玩意，只有设置了这个才会包裹内容显示tab
+              isScrollable: true,
+              labelPadding: EdgeInsets.only(left: 15.w, right: 15.w),
+              labelStyle:
+                  TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+              tabs: titles.map((e) => Text(e)).toList(),
+            ),
           ),
           Gaps.vGapValue(30),
           Expanded(
@@ -93,8 +95,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       children: [
         ImageWidget(
           url: _checkboxSelected
-              ? 'app/ic_checkbox_checked'
-              : 'app/ic_checkbox_normal',
+              ? 'ic_checkbox_checked'
+              : 'ic_checkbox_normal',
           width: 23.w,
           height: 23.w,
           padding: 5.w,
@@ -110,7 +112,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               TextSpan(
                   text: '登录代表您同意《',
                   style: TextStyle(
-                    color: AppColors.color_999999,
+                    color: AppColors.summaryText2,
                     fontSize: 12.sp,
                   )),
               TextSpan(
@@ -124,7 +126,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               TextSpan(
                   text: '》和《',
                   style: TextStyle(
-                    color: AppColors.color_999999,
+                    color: AppColors.summaryText2,
                     fontSize: 12.sp,
                   )),
               TextSpan(
@@ -137,7 +139,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               TextSpan(
                   text: '》',
                   style: TextStyle(
-                    color: AppColors.color_999999,
+                    color: AppColors.summaryText2,
                     fontSize: 12.sp,
                   )),
             ],

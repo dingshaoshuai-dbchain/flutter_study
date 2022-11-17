@@ -14,10 +14,11 @@ class TextComposeWidget extends StatelessWidget {
     required this.fontSize,
     this.alignment = Alignment.center,
     this.maxLines,
-    this.overflow,
+    this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
     this.width,
     this.height,
+    this.fontFamily,
     this.backgroundColor,
     this.padding,
     this.paddingHorizontal,
@@ -58,6 +59,7 @@ class TextComposeWidget extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
+  final String? fontFamily;
 
   final double? width;
   final double? height;
@@ -136,10 +138,10 @@ class TextComposeWidget extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-      ),
+          color: textColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          fontFamily: fontFamily),
     );
     Widget child = textWidget;
     if (leftWidget != null || rightWidget != null) {

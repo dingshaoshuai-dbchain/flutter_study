@@ -65,7 +65,7 @@ class PlanItemWidget extends StatelessWidget {
             right: 32.w,
             bottom: 65.w,
             child: ImageWidget(
-              url: 'app/ic_plan_result_red',
+              url: 'ic_plan_result_red',
               width: 33.w,
               height: 33.w,
             ),
@@ -84,7 +84,7 @@ class PlanItemWidget extends StatelessWidget {
       child: Row(
         children: [
           ImageWidget(
-            url: 'app/ic_default_avatar',
+            url: 'ic_default_avatar',
             width: 19.w,
             height: 19.w,
             marginLeft: 14.w,
@@ -94,12 +94,12 @@ class PlanItemWidget extends StatelessWidget {
           ),
           TextWidget(
             text: '蔡萌萌',
-            textColor: AppColors.color_181818,
+            textColor: AppColors.mainText,
             fontSize: 10.sp,
             marginLeft: 6.w,
           ),
           ImageWidget(
-            url: 'app/ic_v',
+            url: 'ic_v',
             width: 11.w,
             height: 10.w,
             marginLeft: 8,
@@ -109,7 +109,7 @@ class PlanItemWidget extends StatelessWidget {
             '社区红人',
             style: TextStyle(
               fontSize: 10.sp,
-              color: AppColors.color_999999,
+              color: AppColors.summaryText2,
             ),
           ),
           const Spacer(),
@@ -139,7 +139,7 @@ class PlanItemWidget extends StatelessWidget {
             TextSpan(
               text:
                   '每场比赛都由作者第一时间带给您都解读分析，包括最终推荐价低覆盖场次多，欢迎大家尝鲜体验欢迎大家尝鲜体验欢迎大家尝鲜体验',
-              style: TextStyle(color: AppColors.color_666666, fontSize: 12.sp),
+              style: TextStyle(color: AppColors.summaryText, fontSize: 12.sp),
             )
           ],
         ),
@@ -154,7 +154,7 @@ class PlanItemWidget extends StatelessWidget {
     return ContainerWidget(
       width: double.infinity,
       height: 38.w,
-      backgroundColor: AppColors.colorF5F5F5,
+      backgroundColor: AppColors.mainBackground,
       radius: 9.w,
       marginHorizontal: 15.w,
       child: Stack(
@@ -180,14 +180,14 @@ class PlanItemWidget extends StatelessWidget {
                   TextSpan(
                     text: '英超 03:00',
                     style: TextStyle(
-                      color: AppColors.color_999999,
+                      color: AppColors.summaryText2,
                       fontSize: 9.sp,
                     ),
                 ),
                 TextSpan(
                   text: '     纽卡斯尔联 VS 阿森纳',
                   style: TextStyle(
-                    color: AppColors.color_181818,
+                    color: AppColors.mainText,
                     fontSize: 11.sp,
                     fontWeight: FontWeightUtil.pingFangSCSemibold,
                   ),
@@ -212,7 +212,7 @@ class PlanItemWidget extends StatelessWidget {
         children: [
           Text(
             '10分钟前发布',
-            style: TextStyle(color: AppColors.color_999999, fontSize: 9.sp),
+            style: TextStyle(color: AppColors.summaryText2, fontSize: 9.sp),
           ),
           Positioned(
             right: 0,
@@ -227,7 +227,7 @@ class PlanItemWidget extends StatelessWidget {
               child: Row(
                 children: [
                   ImageWidget(
-                    url: 'app/ic_gold',
+                    url: 'ic_gold',
                     width: 11.w,
                     height: 11.w,
                     marginLeft: 4.w,

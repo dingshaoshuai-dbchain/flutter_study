@@ -6,10 +6,11 @@ import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
 
-import '../../dss_library/util/toast_util.dart';
-import '../../res/app_colors.dart';
 import '../../dss_library/util/font_weiget_util.dart';
+import '../../dss_library/util/log_utils.dart';
+import '../../dss_library/util/toast_util.dart';
 import '../../dss_library/widgets/basis/image_widget.dart';
+import '../../res/app_colors.dart';
 import '../../widgets/my_tab_bar.dart';
 import '../../widgets/plan_item_list.dart';
 
@@ -57,34 +58,28 @@ class _PredictIndexPageState extends State<PredictIndexPage>
 
   @override
   Widget build(BuildContext context) {
-    print("build - PredictIndexPage");
+    Log.d('build - PredictIndexPage');
     return Scaffold(
       appBar: AppBarWidget(
         title: '预测',
         isShowBack: false,
         leftMenuWidget: [
-          ImageWidget(
-            url: 'app/ic_search',
-            width: 40.w,
-            height: 40.w,
-            padding: 11.5.w,
-            marginLeft: 5.w,
+          Gaps.hGap5,
+          AppBarMenuWidget(
+            icon: 'ic_search',
             onPressed: () {
               Toast.show('搜索');
             },
           ),
         ],
         rightMenuWidget: [
-          ImageWidget(
-            url: 'app/ic_my_predict',
-            width: 40.w,
-            height: 40.w,
-            padding: 11.w,
-            marginRight: 5.w,
+          AppBarMenuWidget(
+            icon: 'ic_my_predict',
             onPressed: () {
               Toast.show('我的预测');
             },
           ),
+          Gaps.hGap5,
         ],
       ),
       body: NestedScrollView(
@@ -97,6 +92,7 @@ class _PredictIndexPageState extends State<PredictIndexPage>
                 child: _Banner(),
               ),
             ),
+            // 专家
             SliverToBoxAdapter(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -116,6 +112,7 @@ class _PredictIndexPageState extends State<PredictIndexPage>
                 ],
               ),
             ),
+            // 方案列表 tab
             SliverPersistentHeaderToBox(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -132,12 +129,20 @@ class _PredictIndexPageState extends State<PredictIndexPage>
             ),
           ];
         },
+        // 方案列表
         body: TabBarView(
           controller: _planPageController,
           children: _planPages,
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _expertPageController.dispose();
+    _planPageController.dispose();
+    super.dispose();
   }
 }
 
@@ -151,7 +156,7 @@ class _Banner extends StatelessWidget {
         url: e,
         fit: BoxFit.cover,
         imageRadius: 6.w,
-        placeholder: 'app/ic_place_holder',
+        placeholder: 'ic_place_holder',
       ));
 
   @override
@@ -165,7 +170,7 @@ class _Banner extends StatelessWidget {
             spacing: 8.w,
             radius: 3.w,
             itemActiveColor: Colors.white,
-            itemColor: AppColors.colorAAAAAA,
+            itemColor: AppColors.summaryText2,
             padding: EdgeInsets.only(bottom: 10.w)),
         // 轮播图资源
         children: _bannerList.toList(),
@@ -208,7 +213,7 @@ class _ExpertWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ImageWidget(
-            url: 'app/ic_default_avatar',
+            url: 'ic_default_avatar',
             width: 40.w,
             height: 40.w,
             imageRadius: 20.w,
@@ -219,7 +224,7 @@ class _ExpertWidget extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-                color: AppColors.color_181818,
+                color: AppColors.mainText,
                 fontSize: 12.sp,
                 fontWeight: FontWeightUtil.pingFangSCSemibold),
           ),
@@ -229,7 +234,7 @@ class _ExpertWidget extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: AppColors.color_999999,
+              color: AppColors.summaryText2,
               fontSize: 8.sp,
             ),
           )
@@ -247,7 +252,7 @@ class _ExpertWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ImageWidget(
-              url: 'expert/ic_more_expert',
+              url: 'ic_more_expert',
               width: 40.w,
               height: 40.w,
               imageRadius: 20.w,

@@ -58,11 +58,13 @@ class _HotMatchItem extends StatelessWidget {
       },
       child: Column(
         children: [
+          // 标题
           SizedBox(
             height: 22.w,
             child: _buildTitle(context),
           ),
           Gaps.hLine(),
+          // 内容
           Expanded(child: _buildBody(context))
         ],
       ),
@@ -91,7 +93,7 @@ class _HotMatchItem extends StatelessWidget {
               Gaps.hGap10,
               Text(
                 '10:00',
-                style: TextStyle(color: AppColors.color8B8B8B, fontSize: 10.sp),
+                style: TextStyle(color: AppColors.summaryText2, fontSize: 10.sp),
               )
             ],
           ),
@@ -103,7 +105,7 @@ class _HotMatchItem extends StatelessWidget {
           bottom: 0,
           child: TextWidget(
             text: '完',
-            textColor: AppColors.color8B8B8B,
+            textColor: AppColors.summaryText2,
             fontSize: 10.sp,
             width: 50.w,
           ),
@@ -169,14 +171,15 @@ class _HotMatchItem extends StatelessWidget {
 
   /// 队伍
   Widget _buildTeamItem(BuildContext context) {
+    //TODO 长度过长会溢出
     return TextComposeWidget(
       text: '巴塞罗那',
-      textColor: AppColors.color_181818,
+      textColor: AppColors.mainText,
       fontSize: 13.sp,
       width: 100.w,
       alignment: Alignment.centerLeft,
       leftWidget: ImageWidget(
-        url: 'app/ic_default_avatar',
+        url: 'ic_default_avatar',
         width: 18.w,
         height: 18.w,
         marginRight: 8.w,
@@ -185,7 +188,6 @@ class _HotMatchItem extends StatelessWidget {
   }
 
   /// 比分 item
-  /// 如果某一队有两位数的话，中间的横杠就不在整个界面的最中间，不考虑这种情况
   Widget _buildScoreItem(BuildContext context, String text) {
     return TextWidget(
       text: text,

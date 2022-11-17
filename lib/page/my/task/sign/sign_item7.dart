@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
@@ -15,7 +16,7 @@ class SignItem7Widget extends StatefulWidget {
 }
 
 class _SignItem7WidgetState extends State<SignItem7Widget> {
-  Color defaultBackgroundColor = AppColors.colorF5F5F5;
+  Color defaultBackgroundColor = AppColors.mainBackground;
   Color lightBackgroundColor = AppColors.main;
 
   _State currentState = _State.stateNot;
@@ -23,34 +24,35 @@ class _SignItem7WidgetState extends State<SignItem7Widget> {
   @override
   Widget build(BuildContext context) {
     return ContainerWidget(
-      height: 80,
+      height: 80.w,
       backgroundColor: defaultBackgroundColor,
-      radius: 6,
+      radiusBottomLeft: 6.w,
+      radiusTopLeft: 6.w,
       child: Stack(
         children: [
           TextWidget(
             text: '第7天',
-            textColor: AppColors.color_181818,
-            fontSize: 12,
-            marginLeft: 20,
-            marginTop: 5,
+            textColor: AppColors.mainText,
+            fontSize: 12.sp,
+            marginLeft: 20.w,
+            marginTop: 5.w,
             alignment: Alignment.topLeft,
             fontWeight: FontWeightUtil.pingFangSCSemibold,
           ),
           TextWidget(
             text: '神秘大礼包',
-            textColor: AppColors.color_999999,
-            fontSize: 10,
-            marginLeft: 20,
-            marginTop: 26,
+            textColor: AppColors.summaryText2,
+            fontSize: 10.sp,
+            marginLeft: 20.w,
+            marginTop: 26.w,
             alignment: Alignment.topLeft,
           ),
           Align(
             alignment: Alignment.bottomRight,
             child: ImageWidget(
-              url: 'app/ic_gold',
-              width: 62,
-              height: 35,
+              url: 'ic_gold',
+              width: 62.w,
+              height: 35.w,
             ),
           ),
         ],

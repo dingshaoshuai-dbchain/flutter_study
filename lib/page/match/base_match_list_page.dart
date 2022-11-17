@@ -54,6 +54,12 @@ class _BaseMatchListPageState extends State<BaseMatchListPage>
       ],
     );
   }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 }
 
 class _TabBar extends StatelessWidget {
@@ -74,12 +80,12 @@ class _TabBar extends StatelessWidget {
       paddingBottom: 5.w,
       child: TabBar(
         controller: pageController,
-        labelColor: AppColors.color_181818,
+        labelColor: AppColors.mainText,
         labelStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeightUtil.pingFangSCSemibold,
         ),
-        unselectedLabelColor: AppColors.color_999999,
+        unselectedLabelColor: AppColors.summaryText2,
         unselectedLabelStyle: TextStyle(
           fontSize: 14.sp,
         ),

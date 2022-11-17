@@ -13,14 +13,14 @@ class HitRateWidget extends StatelessWidget {
         TextSpan(
           text: '准确率',
           style: TextStyle(
-            color: AppColors.colorE44D26,
+            color: AppColors.rate,
             fontSize: 10.sp,
           ),
         ),
         TextSpan(
           text: '100',
           style: TextStyle(
-            color: AppColors.colorE44D26,
+            color: AppColors.rate,
             fontSize: 20.sp,
             fontFamily: FontFamilyUtil.din
           ),
@@ -28,7 +28,7 @@ class HitRateWidget extends StatelessWidget {
         TextSpan(
           text: ' %',
           style: TextStyle(
-            color: AppColors.colorE44D26,
+            color: AppColors.rate,
             fontSize: 10.sp,
           ),
         )
