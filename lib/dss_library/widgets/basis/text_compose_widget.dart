@@ -17,6 +17,11 @@ class TextComposeWidget extends StatelessWidget {
     this.fontWeight,
     this.width,
     this.height,
+    this.minWidth,
+    this.maxWidth,
+    this.minHeight,
+    this.maxHeight,
+    // 一旦设置了这个，最小最大宽高都失效，按最大的来
     this.alignment,
     this.fontFamily,
     this.textAlign = TextAlign.center,
@@ -64,6 +69,10 @@ class TextComposeWidget extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final double? minWidth;
+  final double? maxWidth;
+  final double? minHeight;
+  final double? maxHeight;
 
   final Alignment? alignment;
 
@@ -101,6 +110,17 @@ class TextComposeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Alignment? ali = alignment;
+    // 如果没有特意设置
+    if (ali == null) {
+      // 并且没有设置最小最大宽高，那就默认给个 center
+      if (minWidth == null &&
+          maxWidth == null &&
+          minHeight == null &&
+          maxHeight == null) {
+        ali = Alignment.center;
+      }
+    }
     return ContainerWidget(
       width: width,
       height: height,
