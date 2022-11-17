@@ -128,7 +128,11 @@ class TextComposeWidget extends StatelessWidget {
     return ContainerWidget(
       width: width,
       height: height,
-      alignment: alignment,
+      minWidth: minWidth,
+      maxWidth: maxWidth,
+      minHeight: minHeight,
+      maxHeight: maxHeight,
+      alignment: ali,
       backgroundColor: backgroundColor,
       padding: padding,
       paddingHorizontal: paddingHorizontal,

@@ -132,19 +132,21 @@ class _BasketballMatchItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextWidget(
-                    text: '巴塞罗那',
+                    text: '巴塞罗那巴塞罗那',
                     textColor: AppColors.mainText,
                     fontSize: 13.sp,
-                    width: 80.w,
+                    width: 100.w,
                     alignment: Alignment.centerLeft,
+                    textAlign: TextAlign.start,
                   ),
                   Gaps.vGap5,
                   TextWidget(
-                    text: '巴塞罗那',
+                    text: '巴塞罗那巴塞罗那巴塞罗那巴塞罗那',
                     textColor: AppColors.mainText,
                     fontSize: 13.sp,
-                    width: 80.w,
+                    width: 100.w,
                     alignment: Alignment.centerLeft,
+                    textAlign: TextAlign.start,
                   ),
                 ],
               )
