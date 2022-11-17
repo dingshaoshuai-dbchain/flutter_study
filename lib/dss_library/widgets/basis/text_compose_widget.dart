@@ -12,6 +12,8 @@ class TextComposeWidget extends StatelessWidget {
     required this.text,
     required this.textColor,
     required this.fontSize,
+    // 文本是否展开占据最大空间
+    this.textExpanded = false,
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
@@ -52,6 +54,8 @@ class TextComposeWidget extends StatelessWidget {
     this.borderSideRight,
     this.onPressed,
   });
+
+  final bool textExpanded;
 
   final Widget? leftWidget;
   final Widget? rightWidget;
@@ -175,7 +179,8 @@ class TextComposeWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (leftWidget != null) leftWidget!,
-          textWidget,
+          // 如果设置了文本展开，就占据最大空间，防止出现溢出
+          textExpanded ? Expanded(child: textWidget) : textWidget,
           if (rightWidget != null) rightWidget!,
         ],
       );
@@ -187,7 +192,8 @@ class TextComposeWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (topWidget != null) topWidget!,
-          child,
+          // 如果设置了文本展开，就占据最大空间，防止出现溢出
+          textExpanded ? Expanded(child: child) : child,
           if (bottomWidget != null) bottomWidget!,
         ],
       );

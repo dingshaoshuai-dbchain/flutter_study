@@ -176,8 +176,9 @@ class _HotMatchItem extends StatelessWidget {
       text: '巴塞罗那',
       textColor: AppColors.mainText,
       fontSize: 13.sp,
-      width: 100.w,
-      alignment: Alignment.centerLeft,
+      width: 180.w,
+      textAlign: TextAlign.start,
+      textExpanded: true,
       leftWidget: ImageWidget(
         url: 'ic_default_avatar',
         width: 18.w,
