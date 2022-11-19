@@ -156,7 +156,6 @@ class _Banner extends StatelessWidget {
         url: e,
         fit: BoxFit.cover,
         imageRadius: 6.w,
-        placeholder: 'ic_place_holder',
       ));
 
   @override

@@ -9,7 +9,7 @@ class ImageWidget extends StatelessWidget {
     super.key,
     required this.url,
     this.fit = BoxFit.contain,
-    this.placeholder = 'none',
+    this.placeholder,
     this.format = ImageFormat.png,
     this.imageRadius,
     this.width,
@@ -48,7 +48,7 @@ class ImageWidget extends StatelessWidget {
 
   final String url;
   final BoxFit fit;
-  final String placeholder;
+  final String? placeholder;
   final ImageFormat format;
 
   final double? imageRadius;
@@ -134,7 +134,9 @@ class ImageWidget extends StatelessWidget {
   Widget? _buildChild() {
     final Widget child;
     if (url.startsWith('http')) {
-      final Widget holder = _buildAssetImage(placeholder, fit, format);
+      final Widget? holder = placeholder != null
+          ? _buildAssetImage(placeholder!, fit, format)
+          : null;
       child = _buildNetworkImage(url, fit, format, holder);
     } else {
       child = _buildAssetImage(url, fit, format);
@@ -151,12 +153,12 @@ class ImageWidget extends StatelessWidget {
     String url,
     BoxFit fit,
     ImageFormat format,
-    Widget holder,
+    Widget? holder,
   ) {
     return CachedNetworkImage(
       imageUrl: url,
-      placeholder: (_, __) => holder,
-      errorWidget: (_, __, dynamic error) => holder,
+      placeholder: holder != null ? (_, __) => holder : null,
+      errorWidget: holder != null ? (_, __, dynamic error) => holder : null,
       fit: fit,
     );
   }
