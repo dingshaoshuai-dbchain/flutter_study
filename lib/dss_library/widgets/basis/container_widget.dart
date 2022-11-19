@@ -183,16 +183,25 @@ class ContainerWidget extends StatelessWidget {
   }
 
   BorderRadiusGeometry? _getBorderRadius() {
-    double tl = radiusTopLeft ?? radius ?? 0.0;
-    double tr = radiusTopRight ?? radius ?? 0.0;
-    double bl = radiusBottomLeft ?? radius ?? 0.0;
-    double br = radiusBottomRight ?? radius ?? 0.0;
-    if (tl > 0 || tr > 0 || bl > 0 || br > 0) {
+    Radius getRadius(double? value) {
+      double r = value ?? radius ?? 0.0;
+      return r > 0 ? Radius.circular(r) : Radius.zero;
+    }
+
+    Radius tl = getRadius(radiusTopLeft);
+    Radius tr = getRadius(radiusTopRight);
+    Radius bl = getRadius(radiusBottomLeft);
+    Radius br = getRadius(radiusBottomRight);
+    if (tl != Radius.zero ||
+        tr != Radius.zero ||
+        bl != Radius.zero ||
+        br != Radius.zero) {
       return BorderRadius.only(
-          topLeft: Radius.circular(tl),
-          topRight: Radius.circular(tr),
-          bottomLeft: Radius.circular(bl),
-          bottomRight: Radius.circular(br));
+        topLeft: tl,
+        topRight: tr,
+        bottomLeft: bl,
+        bottomRight: br,
+      );
     }
     return null;
   }
