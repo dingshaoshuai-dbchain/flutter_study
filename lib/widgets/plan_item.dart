@@ -196,12 +196,12 @@ class PlanItemWidget extends StatelessWidget {
       marginHorizontal: 16.w,
       marginBottom: 5.w,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             '10分钟前发布',
             style: TextStyle(color: AppColors.summaryText2, fontSize: 9.sp),
           ),
-          const Spacer(),
           Stack(
             children: [
               ContainerWidget(
