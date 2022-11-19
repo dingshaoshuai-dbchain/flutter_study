@@ -96,49 +96,10 @@ class ContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget content = Container(
       alignment: alignment,
-      constraints: BoxConstraints(
-        minWidth: width ?? minWidth ?? 0.0,
-        maxWidth: width ?? maxWidth ?? double.infinity,
-        minHeight: height ?? minHeight ?? 0.0,
-        maxHeight: height ?? maxHeight ?? double.infinity,
-      ),
-      padding: EdgeInsets.only(
-        left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
-        right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
-        top: paddingTop ?? paddingVertical ?? padding ?? 0.0,
-        bottom: paddingBottom ?? paddingVertical ?? padding ?? 0.0,
-      ),
-      margin: EdgeInsets.only(
-        left: marginLeft ?? marginHorizontal ?? margin ?? 0.0,
-        right: marginRight ?? marginHorizontal ?? margin ?? 0.0,
-        top: marginTop ?? marginVertical ?? margin ?? 0.0,
-        bottom: marginBottom ?? marginVertical ?? margin ?? 0.0,
-      ),
-      decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(radiusTopLeft ?? radius ?? 0.0),
-            topRight: Radius.circular(radiusTopRight ?? radius ?? 0.0),
-            bottomLeft: Radius.circular(radiusBottomLeft ?? radius ?? 0.0),
-            bottomRight: Radius.circular(radiusBottomRight ?? radius ?? 0.0),
-          ),
-          border: Border(
-            top: borderSideTop ?? borderSide ?? BorderSide.none,
-            bottom: borderSideBottom ?? borderSide ?? BorderSide.none,
-            left: borderSideLeft ?? borderSide ?? BorderSide.none,
-            right: borderSideRight ?? borderSide ?? BorderSide.none,
-          ),
-          image: backgroundImagePath == null
-              ? null
-              : DecorationImage(
-                  fit: backgroundImageBoxFit,
-                  image: AssetImage(
-                    ImageUtils.getImgPath(
-                      backgroundImagePath ?? '',
-                      format: backgroundImageFormat ?? ImageFormat.png,
-                    ),
-                  ),
-                )),
+      constraints: _getConstraints(),
+      padding: _getPadding(),
+      margin: _getMargin(),
+      decoration: _getDecoration(),
       child: child,
     );
     if (onPressed == null) {
@@ -148,5 +109,123 @@ class ContainerWidget extends StatelessWidget {
       onTap: onPressed,
       child: content,
     );
+  }
+
+  BoxConstraints? _getConstraints() {
+    if (width != null ||
+        height != null ||
+        minWidth != null ||
+        maxWidth != null ||
+        minHeight != null ||
+        maxHeight != null) {
+      return BoxConstraints(
+        minWidth: width ?? minWidth ?? 0.0,
+        maxWidth: width ?? maxWidth ?? double.infinity,
+        minHeight: height ?? minHeight ?? 0.0,
+        maxHeight: height ?? maxHeight ?? double.infinity,
+      );
+    }
+    return null;
+  }
+
+  EdgeInsetsGeometry? _getPadding() {
+    if (padding != null ||
+        paddingHorizontal != null ||
+        paddingVertical != null ||
+        paddingLeft != null ||
+        paddingRight != null ||
+        paddingTop != null ||
+        paddingBottom != null) {
+      return EdgeInsets.only(
+        left: paddingLeft ?? paddingHorizontal ?? padding ?? 0.0,
+        right: paddingRight ?? paddingHorizontal ?? padding ?? 0.0,
+        top: paddingTop ?? paddingVertical ?? padding ?? 0.0,
+        bottom: paddingBottom ?? paddingVertical ?? padding ?? 0.0,
+      );
+    }
+    return null;
+  }
+
+  EdgeInsetsGeometry? _getMargin() {
+    if (margin != null ||
+        marginHorizontal != null ||
+        marginVertical != null ||
+        marginLeft != null ||
+        marginRight != null ||
+        marginTop != null ||
+        marginBottom != null) {
+      return EdgeInsets.only(
+        left: marginLeft ?? marginHorizontal ?? margin ?? 0.0,
+        right: marginRight ?? marginHorizontal ?? margin ?? 0.0,
+        top: marginTop ?? marginVertical ?? margin ?? 0.0,
+        bottom: marginBottom ?? marginVertical ?? margin ?? 0.0,
+      );
+    }
+    return null;
+  }
+
+  Decoration? _getDecoration() {
+    BorderRadiusGeometry? borderRadius = _getBorderRadius();
+    Border? border = _getBorder();
+    DecorationImage? image = _getDecorationImage();
+    if (backgroundColor != null ||
+        borderRadius != null ||
+        border != null ||
+        image != null) {
+      return BoxDecoration(
+        color: backgroundColor,
+        borderRadius: borderRadius,
+        border: border,
+        image: image,
+      );
+    }
+    return null;
+  }
+
+  BorderRadiusGeometry? _getBorderRadius() {
+    double tl = radiusTopLeft ?? radius ?? 0.0;
+    double tr = radiusTopRight ?? radius ?? 0.0;
+    double bl = radiusBottomLeft ?? radius ?? 0.0;
+    double br = radiusBottomRight ?? radius ?? 0.0;
+    if (tl > 0 || tr > 0 || bl > 0 || br > 0) {
+      return BorderRadius.only(
+          topLeft: Radius.circular(tl),
+          topRight: Radius.circular(tr),
+          bottomLeft: Radius.circular(bl),
+          bottomRight: Radius.circular(br));
+    }
+    return null;
+  }
+
+  Border? _getBorder() {
+    BorderSide getBorderSide(BorderSide? value) =>
+        value ?? borderSide ?? BorderSide.none;
+
+    BorderSide top = getBorderSide(borderSideTop);
+    BorderSide bottom = getBorderSide(borderSideBottom);
+    BorderSide left = getBorderSide(borderSideLeft);
+    BorderSide right = getBorderSide(borderSideRight);
+    if (top != BorderSide.none ||
+        bottom != BorderSide.none ||
+        left != BorderSide.none ||
+        right != BorderSide.none) {
+      return Border(top: top, bottom: bottom, left: left, right: right);
+    }
+    return null;
+  }
+
+  DecorationImage? _getDecorationImage() {
+    if (backgroundImagePath != null) {
+      return DecorationImage(
+        fit: backgroundImageBoxFit,
+        image: AssetImage(
+          ImageUtils.getImgPath(
+            backgroundImagePath ?? '',
+            format: backgroundImageFormat ?? ImageFormat.png,
+          ),
+        ),
+      );
+    }
+    return null;
   }
 }
