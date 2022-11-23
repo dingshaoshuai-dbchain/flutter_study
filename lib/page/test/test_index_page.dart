@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 import 'package:youliao/page/test/test_router.dart';
-import 'package:youliao/res/app_colors.dart';
 
 class TestIndexPage extends StatelessWidget {
   const TestIndexPage({super.key});
@@ -18,22 +15,14 @@ class TestIndexPage extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10, right: 10),
         children: [
           _buildPageButton(context, 'sliver 吸顶', () {
-            NavigatorUtil.push(context, TestRouter.testSliverPager);
+            NavigatorUtil.push(context, TestRouter.testSliverPage);
           }),
           _buildPageButton(context, 'NestedScrollerView 吸顶', () {
-            NavigatorUtil.push(context, TestRouter.testNestedScrollerPager);
+            NavigatorUtil.push(context, TestRouter.testNestedScrollerPage);
           }),
-          Center(
-            child: TextWidget(
-              text: 't',
-              textColor: AppColors.mainText,
-              fontSize: 18.sp,
-              backgroundColor: Colors.red,
-              minWidth: 100,
-              maxWidth: 300,
-              height: 50,
-            ),
-          )
+          _buildPageButton(context, 'json 测试', () {
+            NavigatorUtil.push(context, TestRouter.testJsonPage);
+          })
         ],
       ),
     );
