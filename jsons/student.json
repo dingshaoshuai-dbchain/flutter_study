@@ -1,0 +1,18 @@
+{
+  "@meta": {
+    "import": [
+    ],
+    "comments": {
+      "userId": "学生的唯一标识",
+      "name": "学生的姓名",
+      "age": "学生的年龄",
+      "sex": "学生的性别（1男 0女）"
+    },
+    "nullable": false,
+    "ignore": true
+  },
+  "userId": 1234567890,
+  "name?": "张三",
+  "age": 18,
+  "sex": 1
+}
