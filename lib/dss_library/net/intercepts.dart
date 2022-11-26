@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 import '../util/log_utils.dart';
-import 'error_handle.dart';
 
 class AuthInterceptor extends Interceptor {
   @override
@@ -37,11 +36,7 @@ class LoggingInterceptor extends Interceptor {
       Response<dynamic> response, ResponseInterceptorHandler handler) {
     _endTime = DateTime.now();
     final int duration = _endTime.difference(_startTime).inMilliseconds;
-    if (response.statusCode == ExceptionHandle.success) {
-      Log.d('ResponseCode: ${response.statusCode}');
-    } else {
-      Log.e('ResponseCode: ${response.statusCode}');
-    }
+    Log.e('ResponseCode: ${response.statusCode}');
     // 输出结果
     Log.json(response.data.toString());
     Log.d('----------End: $duration 毫秒----------');

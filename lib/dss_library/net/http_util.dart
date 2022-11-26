@@ -1,4 +1,12 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+
+import 'base_entity.dart';
+
+typedef NetSuccessCallback = Function(dynamic data);
+typedef NetSuccessTCallback<T> = Function(T data);
+typedef NetFailureCallback = Function(int code, String msg);
 
 class HttpUtil {
   HttpUtil._();
@@ -10,6 +18,13 @@ class HttpUtil {
   static HttpUtil get instance => _singleton;
 
   late final Dio _dio;
+
+  static const String methodGet = 'GET';
+  static const String methodPost = 'POST';
+  static const String methodPut = 'PUT';
+  static const String methodDelete = 'DELETE';
+
+
 
   /// 初始化Dio配置
   void init({
@@ -39,7 +54,48 @@ class HttpUtil {
     });
   }
 
-  Future<void> request(String path) async {
-    Response response = await _dio.request(path);
+  Future<BaseEntity> get({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _request(
+      url: url,
+      method: methodGet,
+      queryParameters: queryParameters,
+    );
+  }
+
+  void getCallback({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+    required NetSuccessCallback onSuccess,
+    required NetFailureCallback onFailure,
+  }) {
+    get(
+      url: url,
+      queryParameters: queryParameters,
+    ).then((BaseEntity value) {
+      if (value.code == netSuccessCode) {
+        onSuccess(value.data);
+      } else {
+        onFailure(value.code, value.msg ?? '操作失败');
+      }
+    });
+  }
+
+  Future<BaseEntity> _request({
+    required String method,
+    required String url,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      Response response =
+          await _dio.request(url, queryParameters: queryParameters);
+      final String data = response.data.toString();
+      Map<String, dynamic> map = json.decode(data);
+      return BaseEntity.fromJson(map);
+    } catch (e) {
+      return BaseEntity(netFailureCode, '接口错误或数据解析失败！', null);
+    }
   }
 }

@@ -10,7 +10,7 @@ class HttpInit extends AppModeInitProvider {
   init() {
     final List<Interceptor> interceptors = [];
     interceptors.add(AuthInterceptor());
-    if (!isDebug) {
+    if (isDebug) {
       interceptors.add(LoggingInterceptor());
     }
     HttpUtil.instance.init(

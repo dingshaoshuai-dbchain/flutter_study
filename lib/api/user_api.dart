@@ -16,6 +16,5 @@ class UserApi {
     String? inviteCode,
     String? ip,
   }) {
-    HttpUtil.instance.request('live-passport-api/user/codeLogin');
   }
 }

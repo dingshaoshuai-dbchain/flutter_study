@@ -1,0 +1,22 @@
+{
+  "@meta": {
+    "comments": {
+      "mediaType": "类型（1图片 2视频 3直播）",
+      "redirectType": "跳转方式（0无跳转 1活动详情 2资讯页面 3直播间 4站内页面 5用户主页）"
+    },
+    "nullable": false,
+    "ignore": true
+  },
+  "id": "5406754805960704",
+  "mediaType": 1,
+  "title?": "标题",
+  "imageUrl?": "https://live-yq.oss-cn-shenzhen.aliyuncs.com/cos/20220628170131189905/e65d423d-eff9-4a4f-9b88-70ec97c397ea.jrsion=3",
+  "videoUrl?": "地址",
+  "redirectType?": "",
+  "redirectId?": "",
+  "redirectUrl?": "",
+  "showDetailText?": "",
+  "liveTitle?": "",
+  "remark?": "",
+  "order": 0
+}

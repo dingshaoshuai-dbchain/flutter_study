@@ -17,6 +17,9 @@ class TestJsonPage extends StatelessWidget {
   final String _schoolJson =
       '{"name":"清华大学","nick_name":"冒牌的清华大学","students":[{"userId":1001,"name":"学生1","age":10,"sex":1},{"userId":1002,"name":"学生2","age":12,"sex":0}]}';
 
+  final String _studentListJson =
+      '[{"userId":1001,"name":"学生1","age":10,"sex":1},{"userId":1001,"name":"学生1","age":10,"sex":1}]';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +50,9 @@ class TestJsonPage extends StatelessWidget {
               Log.d("studentMap2 = ${studentMap2.toString()}");
               Log.d("studentJson = $studentJson");
               Log.d("schoolJson = $schoolJson");
+
+              List<dynamic> studentList= json.decode(_studentListJson);
+              Log.d("studentList = $studentList");
             },
           )
         ],
