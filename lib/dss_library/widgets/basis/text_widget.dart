@@ -165,10 +165,11 @@ class TextWidget extends StatelessWidget {
       overflow: overflow,
       textAlign: textAlign,
       style: TextStyle(
-          color: textColor,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          fontFamily: fontFamily),
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontFamily: fontFamily,
+      ),
     );
   }
 }

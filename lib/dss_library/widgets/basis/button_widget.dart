@@ -9,16 +9,18 @@ class ButtonWidget extends StatelessWidget {
     required this.text,
     required this.textColor,
     required this.fontSize,
-    this.alignment = Alignment.center,
     this.maxLines,
-    this.overflow,
+    this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
+    this.fontFamily,
+    this.textAlign = TextAlign.center,
     this.width,
     this.height,
     this.minWidth,
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
+    this.alignment,
     this.backgroundColor,
     this.backgroundImagePath,
     this.backgroundImageFormat,
@@ -52,10 +54,11 @@ class ButtonWidget extends StatelessWidget {
   final String text;
   final Color textColor;
   final double fontSize;
-  final Alignment alignment;
   final int? maxLines;
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
+  final String? fontFamily;
+  final TextAlign textAlign;
 
   final double? width;
   final double? height;
@@ -63,6 +66,8 @@ class ButtonWidget extends StatelessWidget {
   final double? maxWidth;
   final double? minHeight;
   final double? maxHeight;
+
+  final Alignment? alignment;
 
   final Color? backgroundColor;
 
@@ -144,13 +149,6 @@ class ButtonWidget extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        // 按钮大小
-        minimumSize: ButtonStyleButton.allOrNull(
-          const Size(
-            double.infinity,
-            double.infinity,
-          ),
-        ),
         // 水波纹
         overlayColor: MaterialStateProperty.resolveWith((states) {
           return Colors.white.withOpacity(0.12);
@@ -160,10 +158,12 @@ class ButtonWidget extends StatelessWidget {
         text,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: TextAlign.left,
         style: TextStyle(
           color: textColor,
           fontSize: fontSize,
           fontWeight: fontWeight,
+          fontFamily: fontFamily,
         ),
       ),
     );
