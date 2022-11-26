@@ -1,4 +1,5 @@
 import 'package:fluro/fluro.dart';
+import 'package:youliao/page/test/page/test_future_stream.dart';
 import 'package:youliao/page/test/page/test_json_page.dart';
 import 'package:youliao/page/test/page/test_nested_scroll_page.dart';
 import 'package:youliao/page/test/page/test_sliver_pager.dart';
@@ -13,6 +14,7 @@ class TestRouter implements IRouterProvider {
   static const String testNestedScrollerPage =
       "$_pageRoot/test_nested_scroller";
   static const String testJsonPage = "$_pageRoot/test_json_page";
+  static const String testFutureStream = "$_pageRoot/test_future_stream";
 
   @override
   void initRouter(FluroRouter router) {
@@ -24,5 +26,7 @@ class TestRouter implements IRouterProvider {
         handler: Handler(handlerFunc: (_, __) => const TestNestedScrollPage()));
     router.define(testJsonPage,
         handler: Handler(handlerFunc: (_, __) => const TestJsonPage()));
+    router.define(testFutureStream,
+        handler: Handler(handlerFunc: (_, __) => const TestFutureStream()));
   }
 }

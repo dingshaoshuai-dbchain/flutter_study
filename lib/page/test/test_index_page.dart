@@ -22,6 +22,9 @@ class TestIndexPage extends StatelessWidget {
           }),
           _buildPageButton(context, 'json 测试', () {
             NavigatorUtil.push(context, TestRouter.testJsonPage);
+          }),
+          _buildPageButton(context, '异步 测试', () {
+            NavigatorUtil.push(context, TestRouter.testFutureStream);
           })
         ],
       ),
