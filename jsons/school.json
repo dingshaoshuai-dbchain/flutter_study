@@ -7,7 +7,7 @@
       "students": "该学校的学生"
     },
     "nullable": false,
-    "ignore": false
+    "ignore": true
   },
   "name": "清华大学",
   "students?":"$[]student",

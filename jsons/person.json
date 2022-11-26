@@ -1,0 +1,20 @@
+{
+  "@meta": {
+    "comments": {
+      "nickname": "昵称",
+      "age": "年龄",
+      "father": "父亲",
+      "mother": "母亲",
+      "wife": "老婆，可能是个光棍，所以生命为可空类型",
+      "hobby": "爱好，有可能没有爱好，所以声明为可空类型"
+    },
+    "nullable": false,
+    "ignore": true
+  },
+  "nickname": "张三",
+  "age": 18,
+  "father": "$person",
+  "mother": "$person",
+  "@JsonKey(name:'laopo') Person?": "wife",
+  "hobby?": "$[]String"
+}
