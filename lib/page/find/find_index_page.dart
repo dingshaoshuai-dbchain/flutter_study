@@ -2,6 +2,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/models/index.dart';
 import 'package:youliao/page/find/widgets/hot_match_widget.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/banner_widget.dart';
@@ -172,5 +173,6 @@ Widget _buildPlanItem(BuildContext context, int index) {
   return PlanItemWidget(
     marginTop: 10.w,
     marginBottom: index == 30 - 1 ? 10.w : 0.0,
+    planBean: PlanBean(),
   );
 }

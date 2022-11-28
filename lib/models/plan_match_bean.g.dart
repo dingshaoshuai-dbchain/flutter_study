@@ -6,28 +6,28 @@ part of 'plan_match_bean.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Plan_match_bean _$Plan_match_beanFromJson(Map<String, dynamic> json) =>
-    Plan_match_bean()
+PlanMatchBean _$Plan_match_beanFromJson(Map<String, dynamic> json) =>
+    PlanMatchBean()
       ..matchId = json['matchId'] as num
       ..sportType = json['sportType'] as num
       ..leagueName = json['leagueName'] as String
-      ..homeTeamName = json['homeTeamName'] as String
-      ..homeTeamLogo = json['homeTeamLogo'] as String
-      ..awayTeamName = json['awayTeamName'] as String
-      ..awayTeamLogo = json['awayTeamLogo'] as String
+      ..homeTeamName = json['homeTeamName'] as String?
+      ..homeTeamLogo = json['homeTeamLogo'] as String?
+      ..awayTeamName = json['guestTeamName'] as String?
+      ..awayTeamLogo = json['awayTeamLogo'] as String?
       ..matchTime = json['matchTime'] as num
       ..matchTimeStr = json['matchTimeStr'] as String
       ..hostTeamScore = json['hostTeamScore'] as num
       ..guestTeamScore = json['guestTeamScore'] as num;
 
-Map<String, dynamic> _$Plan_match_beanToJson(Plan_match_bean instance) =>
+Map<String, dynamic> _$Plan_match_beanToJson(PlanMatchBean instance) =>
     <String, dynamic>{
       'matchId': instance.matchId,
       'sportType': instance.sportType,
       'leagueName': instance.leagueName,
       'homeTeamName': instance.homeTeamName,
       'homeTeamLogo': instance.homeTeamLogo,
-      'awayTeamName': instance.awayTeamName,
+      'guestTeamName': instance.awayTeamName,
       'awayTeamLogo': instance.awayTeamLogo,
       'matchTime': instance.matchTime,
       'matchTimeStr': instance.matchTimeStr,

@@ -5,25 +5,30 @@ import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
-import 'package:youliao/global/plan_mode.dart';
+import 'package:youliao/models/index.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/hit_rate_widget.dart';
+import 'package:youliao/widgets/plan_result_mark_widget.dart';
 
 import '../dss_library/util/font_weiget_util.dart';
 import '../dss_library/util/toast_util.dart';
 
 class PlanItemWidget extends StatelessWidget {
-  const PlanItemWidget(
-      {super.key,
-      this.marginTop,
-      this.marginBottom,
-      this.marginLeft,
-      this.marginRight});
+  const PlanItemWidget({
+    super.key,
+    this.marginTop,
+    this.marginBottom,
+    this.marginLeft,
+    this.marginRight,
+    required this.planBean,
+  });
 
   final double? marginTop;
   final double? marginBottom;
   final double? marginLeft;
   final double? marginRight;
+
+  final PlanBean planBean;
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +45,12 @@ class PlanItemWidget extends StatelessWidget {
       child: Stack(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildAnchor(),
-              _buildContent(),
-              _buildMatch(),
-              _buildBottom(),
+              _buildAnchor(context, planBean),
+              _buildContent(context, planBean),
+              _buildMatch(context, planBean),
+              _buildBottom(context, planBean),
             ],
           ),
         ],
@@ -53,24 +59,25 @@ class PlanItemWidget extends StatelessWidget {
   }
 
   /// 作者区域
-  Widget _buildAnchor() {
+  Widget _buildAnchor(BuildContext context, PlanBean bean) {
     return ContainerWidget(
-      onPressed: (){
+      onPressed: () {
         Toast.show('跳转专家主页');
       },
       child: Row(
         children: [
           ImageWidget(
-            url: 'ic_default_avatar',
-            width: 19.w,
-            height: 19.w,
+            url: bean.picUrl,
+            width: 20.w,
+            height: 20.w,
+            imageRadius: 10.w,
             marginLeft: 14.w,
             marginTop: 12.w,
             marginBottom: 10.w,
             fit: BoxFit.cover,
           ),
           TextWidget(
-            text: '蔡萌萌',
+            text: bean.name,
             textColor: AppColors.mainText,
             fontSize: 10.sp,
             marginLeft: 6.w,
@@ -90,7 +97,7 @@ class PlanItemWidget extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          HitRateWidget(),
+          HitRateWidget(number: bean.showRateNumM, rate: bean.showRate),
           Gaps.hGap20
         ],
       ),
@@ -98,11 +105,11 @@ class PlanItemWidget extends StatelessWidget {
   }
 
   /// 内容区域
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context, PlanBean bean) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 16.w,
-        right: 16.w,
+        left: 10.w,
+        right: 10.w,
         top: 2.w,
         bottom: 10.w,
       ),
@@ -110,12 +117,11 @@ class PlanItemWidget extends StatelessWidget {
         TextSpan(
           children: [
             TextSpan(
-              text: '【2串1】',
-              style: TextStyle(color: PlanMode.and21.color),
+              text: bean.label,
+              style: TextStyle(color: bean.getPlanMode().color),
             ),
             TextSpan(
-              text:
-                  '每场比赛都由作者第一时间带给您都解读分析，包括最终推荐价低覆盖场次多，欢迎大家尝鲜体验欢迎大家尝鲜体验欢迎大家尝鲜体验',
+              text: bean.title,
               style: TextStyle(color: AppColors.summaryText, fontSize: 12.sp),
             )
           ],
@@ -127,7 +133,9 @@ class PlanItemWidget extends StatelessWidget {
   }
 
   /// 赛事信息区域
-  Widget _buildMatch() {
+  Widget _buildMatch(BuildContext context, PlanBean bean) {
+    String? iconPath = bean.getPlanMode().iconPath;
+    PlanMatchBean matchBean = bean.expertTeams[0];
     return ContainerWidget(
       width: double.infinity,
       height: 38.w,
@@ -137,32 +145,35 @@ class PlanItemWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            child: ImageWidget(
-              url: PlanMode.and21.iconPath ?? '',
-              width: 38.w,
-              height: 15.w,
-            ),
-          ),
+          iconPath == null
+              ? Gaps.empty
+              : Positioned(
+                  top: 0,
+                  left: 0,
+                  child: ImageWidget(
+                    url: iconPath,
+                    width: 38.w,
+                    height: 15.w,
+                  ),
+                ),
           Text.rich(
             TextSpan(
-                text: '  竞足 ',
-                style: TextStyle(
-                  color: const Color(0xFF3564FB),
-                  fontSize: 9.sp,
-                ),
-                children: [
-                  TextSpan(
-                    text: '英超 03:00',
-                    style: TextStyle(
-                      color: AppColors.summaryText2,
-                      fontSize: 9.sp,
-                    ),
+              text: '  ${bean.lotteryClassName} ',
+              style: TextStyle(
+                color: const Color(0xFF3564FB),
+                fontSize: 9.sp,
+              ),
+              children: [
+                TextSpan(
+                  text: '${matchBean.leagueName} ${matchBean.matchTimeStr}',
+                  style: TextStyle(
+                    color: AppColors.summaryText2,
+                    fontSize: 9.sp,
+                  ),
                 ),
                 TextSpan(
-                  text: '     纽卡斯尔联 VS 阿森纳',
+                  text:
+                      '     ${matchBean.homeTeamName} VS ${matchBean.awayTeamName}',
                   style: TextStyle(
                     color: AppColors.mainText,
                     fontSize: 11.sp,
@@ -174,14 +185,7 @@ class PlanItemWidget extends StatelessWidget {
           ),
           Positioned(
             right: 0,
-            child: Transform.translate(
-              offset: const Offset(-20, -25),
-              child: ImageWidget(
-                url: 'ic_plan_result_red',
-                width: 33.w,
-                height: 33.w,
-              ),
-            ),
+            child: PlanResultMarkWidget(hitStatus: bean.hitStatus),
           ),
         ],
       ),
@@ -189,7 +193,36 @@ class PlanItemWidget extends StatelessWidget {
   }
 
   /// 底部区域
-  Widget _buildBottom() {
+  Widget _buildBottom(BuildContext context, PlanBean bean) {
+    String? tips;
+    if (bean.isFailureReturn()) {
+      tips = '不中就退';
+    } else if (bean.expertTeams.length > 1) {
+      tips = '精选${bean.expertTeams.length}场';
+    } else if (bean.hitStatus == 0) {
+      tips = '推荐';
+    }
+
+    /// 金币左上方的提示红标
+    Widget buildTipsWidget() {
+      return tips == null
+          ? Gaps.empty
+          : Transform.translate(
+              offset: const Offset(-20, -10),
+              child: TextWidget(
+                minHeight: 0,
+                paddingHorizontal: 5.w,
+                paddingBottom: 1,
+                text: tips,
+                textColor: Colors.white,
+                fontSize: 8.sp,
+                radius: 5.w,
+                radiusBottomRight: 0,
+                backgroundColor: const Color(0xFFFF0F47),
+              ),
+            );
+    }
+
     return ContainerWidget(
       width: double.infinity,
       height: 32.w,
@@ -199,7 +232,7 @@ class PlanItemWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '10分钟前发布',
+            '发布时间待调试',
             style: TextStyle(color: AppColors.summaryText2, fontSize: 9.sp),
           ),
           Stack(
@@ -220,7 +253,7 @@ class PlanItemWidget extends StatelessWidget {
                       marginLeft: 4.w,
                     ),
                     TextWidget(
-                      text: '金币',
+                      text: bean.isFreePlan() ? '免费' : '${bean.price}金币',
                       minWidth: 40.w,
                       maxWidth: 100.w,
                       paddingLeft: 2.w,
@@ -232,20 +265,7 @@ class PlanItemWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Transform.translate(
-                offset: const Offset(-20, -10),
-                child: TextWidget(
-                  minHeight: 0,
-                  paddingHorizontal: 5.w,
-                  paddingBottom: 1,
-                  text: '不中就退',
-                  textColor: Colors.white,
-                  fontSize: 8.sp,
-                  radius: 5.w,
-                  radiusBottomRight: 0,
-                  backgroundColor: const Color(0xFFFF0F47),
-                ),
-              ),
+              buildTipsWidget(),
             ],
           ),
         ],

@@ -1,6 +1,7 @@
 import 'package:youliao/global/match_mode.dart';
 
 import '../dss_library/net/http_util.dart';
+import '../models/index.dart';
 
 class PlanApi {
   PlanApi._();
@@ -22,7 +23,7 @@ class PlanApi {
     String? userId,
     // 排序 - 1盈利率 2时间 3准确率 4按人气 5连红
     int? sortValue,
-    required NetSuccessTCallback<List<Object>> onSuccess,
+    required NetSuccessTCallback<List<PlanBean>> onSuccess,
     required NetFailureCallback onFailure,
   }) {
     Map<String, dynamic> params = {};
@@ -36,9 +37,13 @@ class PlanApi {
       params.putIfAbsent('sortValue', () => sortValue);
     }
     HttpUtil.instance.getCallback(
-      url: 'sports-api/v41/expert/planAPP',
+      url: 'sports-api/v41/expert/planAPP123',
       queryParameters: params,
-      onSuccess: (dynamic data) {},
+      onSuccess: (dynamic data) {
+        List<PlanBean> list =
+            List.from(data).map((e) => PlanBean.fromJson(e)).toList();
+        onSuccess(list);
+      },
       onFailure: onFailure,
     );
   }
