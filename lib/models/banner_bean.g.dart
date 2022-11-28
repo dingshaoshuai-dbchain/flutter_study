@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'banner.dart';
+part of 'banner_bean.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Banner _$BannerFromJson(Map<String, dynamic> json) => Banner()
+BannerBean _$Banner_beanFromJson(Map<String, dynamic> json) => BannerBean()
   ..id = json['id'] as String
   ..mediaType = json['mediaType'] as num
   ..title = json['title'] as String?
   ..imageUrl = json['imageUrl'] as String?
   ..videoUrl = json['videoUrl'] as String?
-  ..redirectType = json['redirectType'] as String?
+  ..redirectType = json['redirectType'] as num?
   ..redirectId = json['redirectId'] as String?
   ..redirectUrl = json['redirectUrl'] as String?
   ..showDetailText = json['showDetailText'] as String?
@@ -20,7 +20,8 @@ Banner _$BannerFromJson(Map<String, dynamic> json) => Banner()
   ..remark = json['remark'] as String?
   ..order = json['order'] as num;
 
-Map<String, dynamic> _$BannerToJson(Banner instance) => <String, dynamic>{
+Map<String, dynamic> _$Banner_beanToJson(BannerBean instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'mediaType': instance.mediaType,
       'title': instance.title,

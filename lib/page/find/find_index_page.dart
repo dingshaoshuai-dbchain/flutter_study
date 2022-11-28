@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
+import 'package:youliao/widgets/banner_widget.dart';
 
 import '../../dss_library/util/font_weiget_util.dart';
 import '../../dss_library/util/log_utils.dart';
@@ -38,7 +39,10 @@ class _FindIndexPageState extends State<FindIndexPage> {
               child: Column(
                 children: [
                   Gaps.vGap8,
-                  _Banner(),
+                  const BannerWidget(
+                    aspectRatio: 354 / 150,
+                    locationId: 3,
+                  ),
                   Gaps.vGap8,
                   _Match(),
                   Gaps.vGap8,
