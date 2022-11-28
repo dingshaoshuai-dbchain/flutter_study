@@ -84,7 +84,6 @@ class _Banner extends StatelessWidget {
   ].map((e) => ImageWidget(
         url: e,
         fit: BoxFit.cover,
-        imageRadius: 6.w,
       ));
 
   @override
@@ -92,16 +91,19 @@ class _Banner extends StatelessWidget {
     return AspectRatio(
       // 比例
       aspectRatio: 3.3 / 1,
-      child: Swiper(
-        // 指示器样式
-        indicator: CircleSwiperIndicator(
-            spacing: 8.w,
-            radius: 3.w,
-            itemActiveColor: Colors.white,
-            itemColor: AppColors.summaryText2,
-            padding: EdgeInsets.only(bottom: 10.w)),
-        // 轮播图资源
-        children: _bannerList.toList(),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6.w),
+        child: Swiper(
+          // 指示器样式
+          indicator: CircleSwiperIndicator(
+              spacing: 8.w,
+              radius: 3.w,
+              itemActiveColor: Colors.white,
+              itemColor: AppColors.summaryText2,
+              padding: EdgeInsets.only(bottom: 10.w)),
+          // 轮播图资源
+          children: _bannerList.toList(),
+        ),
       ),
     );
   }

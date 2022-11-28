@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../util/image_util.dart';
 import 'container_widget.dart';
@@ -18,7 +19,8 @@ class ImageWidget extends StatelessWidget {
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
-    this.backgroundColor,
+    // 不设置个背景，padding出来的点击区域不生效，不知为何
+    this.backgroundColor = Colors.transparent,
     this.padding,
     this.paddingHorizontal,
     this.paddingVertical,
