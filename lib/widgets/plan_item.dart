@@ -111,7 +111,7 @@ class PlanItemWidget extends StatelessWidget {
           children: [
             TextSpan(
               text: '【2串1】',
-              style: TextStyle(color: PlanMode.And_2_1.color),
+              style: TextStyle(color: PlanMode.and21.color),
             ),
             TextSpan(
               text:
@@ -141,7 +141,7 @@ class PlanItemWidget extends StatelessWidget {
             top: 0,
             left: 0,
             child: ImageWidget(
-              url: PlanMode.And_2_1.iconPath ?? '',
+              url: PlanMode.and21.iconPath ?? '',
               width: 38.w,
               height: 15.w,
             ),

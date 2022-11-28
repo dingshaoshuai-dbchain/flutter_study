@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/api/common_api.dart';
+import 'package:youliao/api/plan_api.dart';
 import 'package:youliao/dss_library/util/log_utils.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
@@ -29,15 +30,16 @@ class TestIndexPage extends StatelessWidget {
             NavigatorUtil.push(context, TestRouter.testFutureStream);
           }),
           _buildPageButton(context, '网络 测试', () {
-            CommonApi.instance.getBanner(
-              locationId: 2,
-              onSuccess: (value) {
-                Log.d('请求成功123：${value[0].imageUrl}');
-              },
-              onFailure: (code, msg) {
-                Log.d('请求失败：$msg');
-              },
-            );
+            // CommonApi.instance.getBanner(
+            //   locationId: 2,
+            //   onSuccess: (value) {
+            //     Log.d('请求成功123：${value[0].imageUrl}');
+            //   },
+            //   onFailure: (code, msg) {
+            //     Log.d('请求失败：$msg');
+            //   },
+            // );
+            PlanApi.instance.getPlanList(onSuccess: (_){}, onFailure: (_,__){});
           }),
         ],
       ),

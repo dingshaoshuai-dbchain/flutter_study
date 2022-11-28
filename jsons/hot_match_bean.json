@@ -4,7 +4,7 @@
       "tournamentName": "联赛名称"
     },
     "nullable": false,
-    "ignore": false
+    "ignore": true
   },
   "matchId": 423065,
   "count": 1,

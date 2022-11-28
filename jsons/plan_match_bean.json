@@ -1,0 +1,30 @@
+{
+  "@meta": {
+    "comments": {
+      "matchId": "赛事 id",
+      "sportType": "赛事类型",
+      "leagueName": "联赛名称",
+      "homeTeamName": "主队名称",
+      "homeTeamLogo": "主队 logo",
+      "awayTeamName": "客队名称",
+      "awayTeamLogo": "客队 logo",
+      "matchTime": "比赛时间时间戳",
+      "matchTimeStr": "比赛时间格式化后的字符串 11-25 03:30",
+      "hostTeamScore": "主队得分",
+      "guestTeamScore": "客队得分"
+    },
+    "nullable": false,
+    "ignore": true
+  },
+  "matchId": 1725,
+  "sportType": 1,
+  "leagueName": "欧篮联",
+  "homeTeamName": "米兰奥林匹亚",
+  "homeTeamLogo": "https://..",
+  "awayTeamName": "米兰奥林匹亚",
+  "awayTeamLogo": "https://..",
+  "matchTime": 1669318200000,
+  "matchTimeStr": "11-25 03:30",
+  "hostTeamScore": 70,
+  "guestTeamScore": 68
+}

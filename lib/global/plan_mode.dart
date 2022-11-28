@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 enum PlanMode {
-  SIGNLE(color: Color(0xFF181818)),
-  And_2_1(color: Color(0xFFFA3F3F), iconPath: 'ic_plan_type_2_and_1'),
-  PACKAGE(color: Color(0xFF9069F6), iconPath: 'ic_plan_type_package');
+  single(color: Color(0xFF181818)),
+  and21(color: Color(0xFFFA3F3F), iconPath: 'ic_plan_type_2_and_1'),
+  package(color: Color(0xFF9069F6), iconPath: 'ic_plan_type_package');
 
   const PlanMode({required this.color, this.iconPath});
 

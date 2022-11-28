@@ -1,0 +1,26 @@
+{
+  "@meta": {
+    "comments": {
+      "expertId": "专家 id",
+      "name": "专家昵称",
+      "picUrl": "专家头像",
+      "publishTime": "发布时间",
+      "showRateNumM": "近x场胜率",
+      "showRate": "近$showRateNumM场胜率$showRate%",
+      "isFree": "是否免费 1免费",
+      "price": "方案价格",
+      "expertTeams": "方案包含的赛事"
+    },
+    "nullable": false,
+    "ignore": true
+  },
+  "expertId": 1725,
+  "name": "专家昵称",
+  "picUrl": "https://...",
+  "publishTime": 1669284611000,
+  "showRateNumM": 2,
+  "showRate": 100,
+  "isFree": 0,
+  "price": 128.0,
+  "expertTeams": "$[]plan_match_bean"
+}
