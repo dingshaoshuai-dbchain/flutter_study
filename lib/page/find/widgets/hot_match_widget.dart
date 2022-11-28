@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youliao/api/match_api.dart';
+import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
+import 'package:youliao/models/hot_match_bean.dart';
 
 import '../../../dss_library/res/colors.dart';
 import '../../../dss_library/util/font_weiget_util.dart';
@@ -17,9 +20,30 @@ class HotMatchWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _HotMatchWidgetState();
 }
 
-class _HotMatchWidgetState extends State<HotMatchWidget> {
+class _HotMatchWidgetState extends BaseDataWidgetState<HotMatchWidget> {
+  List<HotMatchBean> _data = [];
+
   @override
-  Widget build(BuildContext context) {
+  bool checkShowPlace(context) => _data.isEmpty;
+
+  @override
+  void initData() {
+    MatchApi.instance.getHotMatch(
+      onSuccess: (data) {
+        setState(() {
+          _data = data;
+        });
+      },
+      onFailure: (code, msg) {
+        setState(() {
+          _data = [];
+        });
+      },
+    );
+  }
+
+  @override
+  Widget onBuildContentWidget(context) {
     return ContainerWidget(
       backgroundColor: Colors.white,
       radius: 8.w,
@@ -60,7 +84,7 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
             marginRight: 3.w,
           ),
           Text(
-            '今日精选10场赛事',
+            '今日精选${_data.length}场赛事',
             style: TextStyle(
               color: AppColors.summaryText2,
               fontSize: 10.sp,
@@ -77,9 +101,10 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
       height: 72.w,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: _data.length,
         itemBuilder: (BuildContext context, int index) {
-          return _buildItem(context);
+          HotMatchBean bean = _data.elementAt(index);
+          return _buildItem(context, bean);
         },
         separatorBuilder: (BuildContext context, int index) {
           return Gaps.vLine();
@@ -89,19 +114,19 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
   }
 
   /// 精选赛事 item
-  Widget _buildItem(BuildContext context) {
+  Widget _buildItem(BuildContext context, HotMatchBean bean) {
     return ContainerWidget(
       width: 154.w,
       onPressed: () {
-        Toast.show('跳转赛事详情');
+        Toast.show('跳转赛事详情 - ${bean.tournamentName}');
       },
       child: Column(
         children: [
-          _buildMatch(context),
+          _buildMatch(context, bean),
           const Spacer(),
-          _buildTeam(context),
+          _buildTeam(context, bean.homeTeamName, bean.homeTeamLogo),
           const Spacer(),
-          _buildTeam(context),
+          _buildTeam(context, bean.awayTeamName, bean.awayTeamLogo),
           const Spacer(),
         ],
       ),
@@ -109,11 +134,11 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
   }
 
   /// 赛事信息 - 名称、时间..
-  Widget _buildMatch(BuildContext context) {
+  Widget _buildMatch(BuildContext context, HotMatchBean bean) {
     return Row(
       children: [
         TextWidget(
-          text: '澳超',
+          text: bean.tournamentName,
           textColor: AppColors.mainText,
           fontSize: 10.sp,
           fontWeight: FontWeightUtil.pingFangSCSemibold,
@@ -123,53 +148,60 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
         ),
         Expanded(
           child: TextWidget(
-            text: '05.17 00:00',
+            text: bean.matchTime,
             textColor: AppColors.summaryText2,
             marginTop: 7.w,
             fontSize: 10.sp,
             alignment: Alignment.centerLeft,
           ),
         ),
-        SizedBox(
-          width: 48.w,
-          height: 16.w,
-          child: Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              Positioned(
-                left: 6.w,
-                right: 0,
-                child: TextWidget(
-                  text: '10方案',
-                  maxLines: 1,
-                  textColor: Colors.white,
-                  width: 40.w,
-                  height: 14.w,
-                  fontSize: 8.sp,
-                  backgroundColor: const Color(0xFFD73422),
-                  paddingLeft: 12.w,
-                ),
-              ),
-              Positioned(
-                child: ImageWidget(
-                  url: 'ic_hot_match_plan',
-                  width: 16.w,
-                  height: 16.w,
-                ),
-              )
-            ],
-          ),
-        ),
+        bean.count > 0
+            ? _buildPlanNumberWidget(context, bean.count)
+            : Gaps.empty,
       ],
     );
   }
 
+  /// 方案数量
+  Widget _buildPlanNumberWidget(BuildContext context, num count) {
+    return SizedBox(
+      width: 48.w,
+      height: 16.w,
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          Positioned(
+            left: 6.w,
+            right: 0,
+            child: TextWidget(
+              text: '$count方案',
+              maxLines: 1,
+              textColor: Colors.white,
+              width: 40.w,
+              height: 14.w,
+              fontSize: 8.sp,
+              backgroundColor: const Color(0xFFD73422),
+              paddingLeft: 12.w,
+            ),
+          ),
+          Positioned(
+            child: ImageWidget(
+              url: 'ic_hot_match_plan',
+              width: 16.w,
+              height: 16.w,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   /// 队伍信息
-  Widget _buildTeam(BuildContext context) {
+  Widget _buildTeam(BuildContext context, String teamName, String teamLogo) {
     return Row(
       children: [
         ImageWidget(
-          url: 'ic_default_avatar',
+          url: teamLogo,
           width: 18.w,
           height: 18.w,
           marginLeft: 9.w,
@@ -178,7 +210,7 @@ class _HotMatchWidgetState extends State<HotMatchWidget> {
           child: Padding(
             padding: EdgeInsets.only(left: 4.w, right: 2.w),
             child: Text(
-              '亚特兰大',
+              teamName,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

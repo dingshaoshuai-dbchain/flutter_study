@@ -1,0 +1,19 @@
+{
+  "@meta": {
+    "comments": {
+      "tournamentName": "联赛名称"
+    },
+    "nullable": false,
+    "ignore": false
+  },
+  "matchId": 423065,
+  "count": 1,
+  "sportId": 2,
+  "tournamentName": "NBL",
+  "matchTime": "2022-11-28 08:30",
+  "matchTime2": 1669624200000,
+  "homeTeamName": "坎斯大班",
+  "awayTeamName": "悉尼国王",
+  "homeTeamLogo": "https://cdn.sportnanoapi.com/basketball/team/2f4677e5f2089fb794a968f25c2dcb3a.png",
+  "awayTeamLogo": "https://cdn.sportnanoapi.com/basketball/team/eba4bbba15054de591179e0001ab718b.png"
+}

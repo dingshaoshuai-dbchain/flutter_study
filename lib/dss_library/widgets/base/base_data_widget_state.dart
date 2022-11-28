@@ -13,16 +13,18 @@ abstract class BaseDataWidgetState<T extends StatefulWidget> extends State<T> {
   void initData();
 
   /// 用来检查是否需要展示占位视图
-  bool checkShowPlace();
+  bool checkShowPlace(BuildContext context);
 
   /// 请求回来数据之前的视图
-  Widget buildPlaceWidget() => Gaps.empty;
+  Widget onBuildPlaceWidget(BuildContext context) => Gaps.empty;
 
   /// 请求回来数据之后的真正的视图
-  Widget buildContentWidget();
+  Widget onBuildContentWidget(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    return checkShowPlace() ? buildPlaceWidget() : buildContentWidget();
+    return checkShowPlace(context)
+        ? onBuildPlaceWidget(context)
+        : onBuildContentWidget(context);
   }
 }

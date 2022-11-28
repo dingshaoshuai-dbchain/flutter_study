@@ -5,7 +5,7 @@
       "redirectType": "跳转方式（0无跳转 1活动详情 2资讯页面 3直播间 4站内页面 5用户主页）"
     },
     "nullable": false,
-    "ignore": false
+    "ignore": true
   },
   "id": "5406754805960704",
   "mediaType": 1,

@@ -27,9 +27,7 @@ class CommonApi {
             List.from(data).map((e) => BannerBean.fromJson(e)).toList();
         onSuccess(list);
       },
-      onFailure: (code, msg) {
-        onFailure(code, msg);
-      },
+      onFailure: onFailure,
     );
   }
 }

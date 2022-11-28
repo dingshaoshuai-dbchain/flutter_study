@@ -37,15 +37,19 @@ class _BannerWidgetState extends BaseDataWidgetState<BannerWidget> {
           _bannerData = data;
         });
       },
-      onFailure: (code, msg) {},
+      onFailure: (code, msg) {
+        setState(() {
+          _bannerData = [];
+        });
+      },
     );
   }
 
   @override
-  bool checkShowPlace() => _bannerData.isEmpty;
+  bool checkShowPlace(context) => _bannerData.isEmpty;
 
   @override
-  Widget buildContentWidget() {
+  Widget onBuildContentWidget(context) {
     return AspectRatio(
       // 比例
       aspectRatio: widget.aspectRatio,
