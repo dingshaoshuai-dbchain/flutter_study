@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/api/common_api.dart';
 import 'package:youliao/api/plan_api.dart';
-import 'package:youliao/dss_library/util/log_utils.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
+import 'package:youliao/dss_library/widgets/base/base_page.dart';
+import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
 import 'package:youliao/page/test/test_router.dart';
 
-class TestIndexPage extends StatelessWidget {
+class TestIndexPage extends StatefulWidget {
   const TestIndexPage({super.key});
 
+  @override
+  State<StatefulWidget> createState() => _TestIndexPageState();
+}
+
+class _TestIndexPageState extends State<TestIndexPage>
+    with BasePageState<TestIndexPage, _TestIndexPageViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,18 +45,29 @@ class TestIndexPage extends StatelessWidget {
             //     Log.d('请求失败：$msg');
             //   },
             // );
-            PlanApi.instance.getPlanList(onSuccess: (_){}, onFailure: (_,__){});
+            // PlanApi.instance
+            //     .getPlanList(onSuccess: (_) {}, onFailure: (_, __) {});
+            viewModel.test();
           }),
         ],
       ),
     );
   }
 
-  Widget _buildPageButton(
-    BuildContext context,
-    String title,
-    VoidCallback? onPressed,
-  ) {
+  Widget _buildPageButton(BuildContext context,
+      String title,
+      VoidCallback? onPressed,) {
     return ElevatedButton(onPressed: onPressed, child: Text(title));
+  }
+
+  @override
+  _TestIndexPageViewModel onCreateViewModel() => _TestIndexPageViewModel();
+}
+
+class _TestIndexPageViewModel extends BaseViewModel {
+
+  void test() {
+    showLoadingDialog();
+    Future.delayed(Duration(seconds: 3)).then((value) => hideLoadingDialog());
   }
 }

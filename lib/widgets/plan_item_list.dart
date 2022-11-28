@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/plan_api.dart';
 import 'package:youliao/dss_library/util/toast_util.dart';
+import 'package:youliao/dss_library/widgets/base/base_page.dart';
+import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
 import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/models/index.dart';
 import 'package:youliao/widgets/plan_item.dart';
@@ -13,8 +15,12 @@ class PlanItemListWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _PlanItemListWidgetState();
 }
 
-class _PlanItemListWidgetState extends State<PlanItemListWidget> {
+class _PlanItemListWidgetState extends State<PlanItemListWidget>
+    with BasePageState<PlanItemListWidget, _PlanItemListViewModel> {
   List<PlanBean> _data = [];
+
+  @override
+  _PlanItemListViewModel onCreateViewModel() => _PlanItemListViewModel();
 
   @override
   void initState() {
@@ -49,4 +55,8 @@ class _PlanItemListWidgetState extends State<PlanItemListWidget> {
       },
     );
   }
+}
+
+class _PlanItemListViewModel extends BaseViewModel {
+  _PlanItemListViewModel();
 }
