@@ -8,6 +8,7 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
     extends State<T> {
   late VM viewModel;
 
+  /// 创建 ViewModel
   VM onCreateViewModel();
 
   @override
@@ -28,6 +29,7 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
     });
   }
 
+  /// 对话框 - 显示
   void showLoadingDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -37,6 +39,7 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
     );
   }
 
+  /// 对话框 - 隐藏
   void hideLoadingDialog(BuildContext context) {
     Navigator.of(context).pop();
   }

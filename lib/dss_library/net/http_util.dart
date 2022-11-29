@@ -63,7 +63,7 @@ class HttpUtil {
       url: url,
       method: methodGet,
       queryParameters: queryParameters,
-    );
+    ).onError((error, stackTrace) => _defaultErrorEntity);
   }
 
   void getCallback({
@@ -98,7 +98,11 @@ class HttpUtil {
       Map<String, dynamic> map = json.decode(data);
       return BaseEntity.fromJson(map);
     } catch (e) {
-      return BaseEntity(Code.error.code, '接口错误或数据解析失败！', null);
+      return _defaultErrorEntity;
     }
   }
+
+  /// 默认的错误
+  final BaseEntity _defaultErrorEntity =
+      BaseEntity(Code.error.code, '接口错误或数据解析失败！', null);
 }
