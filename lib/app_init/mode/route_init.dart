@@ -25,13 +25,11 @@ class RouteInit extends AppModeInitProvider {
       element.initRouter(router);
     }
     NavigatorUtil.init(
-      router,
-      'login/path',
-      (pathWrapper, loginPath) {
-        if (pathWrapper.path == '1') {
-          pathWrapper.path = loginPath;
-        }
-      },
-    );
+        router: router,
+        loginPagePath: 'login/path',
+        checkLoginFunction: () {
+          /// TODO 改为真正的判断是否需要登录
+          return false;
+        });
   }
 }

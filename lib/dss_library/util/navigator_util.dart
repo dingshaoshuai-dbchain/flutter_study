@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 
 typedef NetSuccessCallback<T> = Function(String targetPath, String loginPath);
+typedef ValueFunction = bool Function();
 
 class NavigatorUtil {
   NavigatorUtil._();
@@ -9,17 +10,16 @@ class NavigatorUtil {
   static FluroRouter? _router;
 
   static String _loginPagePath = '';
-  /// dart 中不知道怎么使用返回值函数，暂先用 wrapper 包裹修改
-  static Function(PathWrapper pathWrapper, String loginPath)? _checkLoginBlock;
+  static late ValueFunction _checkLoginFunction;
 
-  static void init(
-    FluroRouter router,
-    String loginPagePath,
-    Function(PathWrapper targetPath, String loginPath)? checkLoginBlock,
-  ) {
+  static void init({
+    required FluroRouter router,
+    required String loginPagePath,
+    required ValueFunction checkLoginFunction,
+  }) {
     _router = router;
     _loginPagePath = loginPagePath;
-    _checkLoginBlock = checkLoginBlock;
+    _checkLoginFunction = checkLoginFunction;
   }
 
   static void push(
@@ -30,13 +30,16 @@ class NavigatorUtil {
     bool checkLogin = false,
     Object? arguments,
   }) {
-    PathWrapper pagePath = PathWrapper(path);
+    String page = path;
     if (checkLogin) {
-      _checkLoginBlock?.call(pagePath, _loginPagePath);
+      bool needLogin = _checkLoginFunction();
+      if (needLogin) {
+        page = _loginPagePath;
+      }
     }
     _router?.navigateTo(
       context,
-      pagePath.path,
+      page,
       replace: replace,
       clearStack: clearStack,
       routeSettings: RouteSettings(arguments: arguments),

@@ -4,7 +4,7 @@ import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
 import '../../net/http_util.dart';
 
-typedef BackValueFunction<T> = T Function(dynamic data);
+typedef ValueFunction<T> = T Function(dynamic data);
 
 abstract class BaseViewModel {
   ValueNotifier<LoadingDialogState> state =
@@ -21,7 +21,7 @@ abstract class BaseViewModel {
   void launch<T>({
     bool isShowLoadingDialog = true,
     required Future<BaseEntity> future,
-    BackValueFunction<T>? convert,
+    ValueFunction<T>? convert,
     required NetSuccessCallbackT onSuccess,
     required NetFailureCallback onFailure,
   }) {
