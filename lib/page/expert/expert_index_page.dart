@@ -35,9 +35,17 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
     _titles.clear();
     _pages.clear();
     _titles.add('准确率排序');
-    _pages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _pages.add(const KeepAliveWrapper(
+      child: PlanItemListWidget(
+        sortValue: 3,
+      ),
+    ));
     _titles.add('连红排序');
-    _pages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _pages.add(const KeepAliveWrapper(
+      child: PlanItemListWidget(
+        sortValue: 5,
+      ),
+    ));
     _pageController = TabController(length: _pages.length, vsync: this);
   }
 

@@ -48,11 +48,23 @@ class _PredictIndexPageState extends State<PredictIndexPage>
     _planTitles.clear();
     _planPages.clear();
     _planTitles.add('准确率排序');
-    _planPages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _planPages.add(const KeepAliveWrapper(
+      child: PlanItemListWidget(
+        sortValue: 3,
+      ),
+    ));
     _planTitles.add('按人气');
-    _planPages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _planPages.add(const KeepAliveWrapper(
+      child: PlanItemListWidget(
+        sortValue: 4,
+      ),
+    ));
     _planTitles.add('按时间');
-    _planPages.add(const KeepAliveWrapper(child: PlanItemListWidget()));
+    _planPages.add(const KeepAliveWrapper(
+      child: PlanItemListWidget(
+        sortValue: 2,
+      ),
+    ));
     _planPageController = TabController(length: _planPages.length, vsync: this);
   }
 

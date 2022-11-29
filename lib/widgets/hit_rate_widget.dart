@@ -14,7 +14,7 @@ class HitRateWidget extends StatelessWidget {
     return Text.rich(
       TextSpan(children: [
         TextSpan(
-          text: '近$number场命中率',
+          text: '近$number场命中率 ',
           style: TextStyle(
             color: AppColors.rate,
             fontSize: 10.sp,

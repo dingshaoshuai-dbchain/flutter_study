@@ -7,6 +7,7 @@ import '../../net/base_entity.dart';
 /// 一般用作一进来就需要请求网络的界面，如：文章详情、消息列表..
 abstract class BasePageViewModel<T> extends BaseViewModel {
   ValueNotifier<PageState> pageState = ValueNotifier(PageState.initState);
+  dynamic params = {};
 
   /// 显示状态页 - 加载中
   void showLoadingPage() {
@@ -26,6 +27,11 @@ abstract class BasePageViewModel<T> extends BaseViewModel {
   /// 显示状态页 - 空页面
   void showEmptyPage() {
     pageState.value = PageState.emptyState;
+  }
+
+  /// 请求数据往往需要参数
+  void onInitParams(dynamic params) {
+    this.params = params;
   }
 
   /// 一进来就需要初始化的数据，一般为网络请求

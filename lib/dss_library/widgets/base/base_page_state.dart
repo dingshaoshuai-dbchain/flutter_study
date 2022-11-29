@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youliao/dss_library/util/log_utils.dart';
 import 'package:youliao/dss_library/widgets/base/base_state.dart';
 import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
@@ -32,6 +31,9 @@ abstract class BasePageState<T extends StatefulWidget,
   /// 初始化一些监听
   void onInitListeners() {}
 
+  /// 初始化数据需要的参数
+  dynamic onInitParams() => {};
+
   @override
   void initState() {
     super.initState();
@@ -39,6 +41,7 @@ abstract class BasePageState<T extends StatefulWidget,
       setState(() {});
     });
     onInitListeners();
+    viewModel.onInitParams(onInitParams());
     viewModel.onInitData();
   }
 

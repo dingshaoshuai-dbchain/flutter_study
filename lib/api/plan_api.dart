@@ -23,25 +23,26 @@ class PlanApi {
 
   /// 获取方案列表
   Future<BaseEntity> getPlanList({
-    // 2赛事详情、直播间推荐方案 4全部最新方案 5免费 6临时 7竞彩串关
-    int type = 4,
-    // 方案类型
-    MatchMode matchMode = MatchMode.all,
+    // 数量
     int size = 20,
+    // 2赛事详情、直播间推荐方案 4全部最新方案 5免费 6临时 7竞彩串关
+    required int type,
+    // 方案类型
+    required MatchMode matchMode,
     // 用户id
     String? userId,
     // 排序 - 1盈利率 2时间 3准确率 4按人气 5连红
     int? sortValue,
   }) {
     Map<String, dynamic> params = {};
-    params.putIfAbsent('type', () => type);
-    params.putIfAbsent('sportType', () => matchMode.sportId);
-    params.putIfAbsent('size', () => size);
+    params['type'] = type;
+    params['sportType'] = matchMode.sportId;
+    params['size'] = size;
     if (userId != null) {
-      params.putIfAbsent('userId', () => userId);
+      params['userId'] = userId;
     }
     if (sortValue != null) {
-      params.putIfAbsent('sortValue', () => sortValue);
+      params['sortValue'] = sortValue;
     }
     return HttpUtil.instance.get(
       url: 'sports-api/v41/expert/planAPP',
