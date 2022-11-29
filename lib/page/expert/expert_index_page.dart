@@ -76,7 +76,7 @@ class _ExpertIndexPageState extends State<ExpertIndexPage>
                 headerSliverBuilder:
                     (BuildContext context, bool innerBoxIsScrolled) {
                   return [
-                    SliverToBoxAdapter(
+                    const SliverToBoxAdapter(
                       child: RecommendExpertWidget(),
                     ),
                     SliverPersistentHeader(

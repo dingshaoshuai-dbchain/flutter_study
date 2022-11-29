@@ -2,10 +2,10 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/models/index.dart';
 import 'package:youliao/page/find/widgets/hot_match_widget.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/banner_widget.dart';
+import 'package:youliao/widgets/plan_item_list.dart';
 
 import '../../dss_library/util/font_weiget_util.dart';
 import '../../dss_library/util/log_utils.dart';
@@ -14,9 +14,7 @@ import '../../dss_library/widgets/app_bar_widget.dart';
 import '../../dss_library/widgets/basis/container_widget.dart';
 import '../../dss_library/widgets/basis/image_widget.dart';
 import '../../dss_library/widgets/basis/text_compose_widget.dart';
-import '../../dss_library/widgets/basis/text_widget.dart';
 import '../../dss_library/widgets/gaps.dart';
-import '../../widgets/plan_item.dart';
 
 class FindIndexPage extends StatefulWidget {
   const FindIndexPage({super.key});
@@ -31,51 +29,46 @@ class _FindIndexPageState extends State<FindIndexPage> {
     Log.d('build - FindIndexPage');
     return Scaffold(
       appBar: AppBarWidget(title: '发现', isShowBack: false),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          // 头部区域
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(left: 9.w, right: 9.w),
-              child: Column(
-                children: [
-                  Gaps.vGap8,
-                  const BannerWidget(
-                    aspectRatio: 354 / 150,
-                    locationId: 3,
-                  ),
-                  Gaps.vGap8,
-                  const HotMatchWidget(),
-                  Gaps.vGap8,
-                  _Menu(),
-                  Gaps.vGap8,
-                ],
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            // 头部区域
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(left: 9.w, right: 9.w),
+                child: Column(
+                  children: [
+                    Gaps.vGap8,
+                    const BannerWidget(
+                      aspectRatio: 354 / 150,
+                      locationId: 3,
+                    ),
+                    Gaps.vGap8,
+                    const HotMatchWidget(),
+                    Gaps.vGap8,
+                    _Menu(),
+                    Gaps.vGap8,
+                  ],
+                ),
               ),
             ),
-          ),
-          // 头部固定区域
-          SliverPersistentHeader(
-            // 滑动到可视区域顶部时，是否固定在顶部
-            pinned: false,
-            // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
-            // 注意：测试 CustomScrollView 才生效
-            floating: true,
-            delegate: SliverHeaderDelegate.fixedHeight(
-              height: 30.w,
-              child: _PlanListTitle(),
-            ),
-          ),
-          // 列表区域
-          SliverPadding(
-            padding: EdgeInsets.only(left: 9.w, right: 9.w),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => _buildPlanItem(context, index),
+            // 头部固定区域
+            SliverPersistentHeader(
+              // 滑动到可视区域顶部时，是否固定在顶部
+              pinned: true,
+              // pinned 为 false 时（可滑动出可视区域），无论多远一拉，都能拉回来
+              // 注意：测试 CustomScrollView 才生效
+              floating: true,
+              delegate: SliverHeaderDelegate.fixedHeight(
+                height: 30.w,
+                child: _PlanListTitle(),
               ),
             ),
-          ),
-        ],
+          ];
+        },
+        body: const PlanItemListWidget(
+          type: 4,
+        ),
       ),
     );
   }
@@ -166,13 +159,4 @@ class _PlanListTitle extends StatelessWidget {
       ),
     );
   }
-}
-
-/// 红人情报方案列表
-Widget _buildPlanItem(BuildContext context, int index) {
-  return PlanItemWidget(
-    marginTop: 10.w,
-    marginBottom: index == 30 - 1 ? 10.w : 0.0,
-    planBean: PlanBean(),
-  );
 }

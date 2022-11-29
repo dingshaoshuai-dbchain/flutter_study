@@ -51,7 +51,7 @@ class _PlanItemListWidgetState
       itemBuilder: (BuildContext context, int index) {
         return PlanItemWidget(
           marginTop: index == 0 ? 10.w : 0.0,
-          marginBottom: index == 30 - 1 ? 10.w : 0.0,
+          marginBottom: index == data.length - 1 ? 10.w : 0.0,
           planBean: data[index],
         );
       },
