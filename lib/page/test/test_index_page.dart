@@ -15,8 +15,7 @@ class TestIndexPage extends StatefulWidget {
   State<StatefulWidget> createState() => _TestIndexPageState();
 }
 
-class _TestIndexPageState extends State<TestIndexPage>
-    with BaseState<TestIndexPage, _TestIndexPageViewModel> {
+class _TestIndexPageState extends BaseState<TestIndexPage, _TestIndexPageViewModel>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

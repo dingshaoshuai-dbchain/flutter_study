@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
 import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
-mixin BaseState<T extends StatefulWidget, VM extends BaseViewModel>
-    on State<T> {
+/// 一般用作操作之后需要请求网络等操作的界面，如：登录、设置..
+abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
+    extends State<T> {
   late VM viewModel;
 
   VM onCreateViewModel();

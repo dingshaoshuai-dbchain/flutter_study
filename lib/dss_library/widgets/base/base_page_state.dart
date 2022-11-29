@@ -4,44 +4,50 @@ import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
 import 'base_page_view_model.dart';
 
-mixin BasePageState<T extends StatefulWidget, VM extends BasePageViewModel>
-    on BaseState<T, VM> {
-
+abstract class BasePageState<T extends StatefulWidget,
+    VM extends BasePageViewModel> extends BaseState<T, VM> {
   /// 单独的页面，往往需要标题区域
-  PreferredSizeWidget? onCreateAppbar() => null;
+  PreferredSizeWidget? onCreateAppbar(BuildContext context) => null;
 
   /// 页面状态 - 初始化
-  Widget onCreateInitPage() => PageStateHolder.instance.initStatePage;
+  Widget onCreateInitPage(BuildContext context) =>
+      PageStateHolder.instance.initStatePage;
 
   /// 页面状态 - 加载中
-  Widget onCreateLoadingPage() => PageStateHolder.instance.loadingStatePage;
+  Widget onCreateLoadingPage(BuildContext context) =>
+      PageStateHolder.instance.loadingStatePage;
 
   /// 页面状态 - 加载完成后的内容
-  Widget onCreateContentPage();
+  Widget onCreateContentPage(BuildContext context);
 
   /// 页面状态 - 加载失败
-  Widget onCreateFailurePage() => PageStateHolder.instance.failureStatePage;
+  Widget onCreateFailurePage(BuildContext context) =>
+      PageStateHolder.instance.failureStatePage;
 
   /// 页面状态 - 空数据
-  Widget onCreateEmptyPage() => PageStateHolder.instance.emptyStatePage;
+  Widget onCreateEmptyPage(BuildContext context) =>
+      PageStateHolder.instance.emptyStatePage;
 
   /// 初始化一些监听
-  void onInitListeners();
+  void onInitListeners() {}
 
   @override
   void initState() {
     super.initState();
     viewModel.pageState.addListener(() {
+      if (viewModel.pageState.value == PageState.initState) {
+        return;
+      }
       setState(() {});
     });
     onInitListeners();
-    viewModel.initData();
+    viewModel.onInitData();
   }
 
   @override
   Widget build(BuildContext context) {
-    PreferredSizeWidget? appbarWidget = onCreateAppbar();
-    Widget body = getWidgetByState(viewModel.pageState.value);
+    PreferredSizeWidget? appbarWidget = onCreateAppbar(context);
+    Widget body = getWidgetByState(context, viewModel.pageState.value);
     if (appbarWidget == null) {
       return body;
     }
@@ -52,23 +58,23 @@ mixin BasePageState<T extends StatefulWidget, VM extends BasePageViewModel>
   }
 
   /// 根据状态来显示当前的 Widget
-  Widget getWidgetByState(PageState state) {
+  Widget getWidgetByState(BuildContext context, PageState state) {
     Widget page;
     switch (state) {
       case PageState.initState:
-        page = onCreateInitPage();
+        page = onCreateInitPage(context);
         break;
       case PageState.loadingState:
-        page = onCreateLoadingPage();
+        page = onCreateLoadingPage(context);
         break;
       case PageState.contentState:
-        page = onCreateContentPage();
+        page = onCreateContentPage(context);
         break;
       case PageState.failureState:
-        page = onCreateFailurePage();
+        page = onCreateFailurePage(context);
         break;
       case PageState.emptyState:
-        page = onCreateEmptyPage();
+        page = onCreateEmptyPage(context);
         break;
     }
     return page;
