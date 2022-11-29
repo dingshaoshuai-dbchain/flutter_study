@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
+import '../widgets/base/base_view_model.dart';
 import 'base_entity.dart';
 
 typedef NetSuccessCallback = Function(dynamic data);
@@ -66,22 +67,44 @@ class HttpUtil {
     ).onError((error, stackTrace) => _defaultErrorEntity);
   }
 
-  void getCallback({
+  void getCallback<T>({
     required String url,
     Map<String, dynamic>? queryParameters,
-    required NetSuccessCallback onSuccess,
+    ValueFunction<T>? convert,
+    required NetSuccessCallbackT<T> onSuccess,
     required NetFailureCallback onFailure,
   }) {
-    get(
+    var future = get(
       url: url,
       queryParameters: queryParameters,
-    ).then((value) {
+    );
+    simpleCallback(
+      future: future,
+      convert: convert,
+      onSuccess: onSuccess,
+      onFailure: onFailure,
+    );
+  }
+
+  /// 简单搞一个
+  Future simpleCallback<T>({
+    required Future<BaseEntity> future,
+    ValueFunction<T>? convert,
+    required NetSuccessCallbackT<T> onSuccess,
+    required NetFailureCallback onFailure,
+  }) {
+    return future.then((value) {
       if (value.code == Code.success.code) {
-        onSuccess(value.data);
+        if (convert == null) {
+          onSuccess(value.data);
+        } else {
+          T data = convert(value.data);
+          onSuccess(data);
+        }
       } else {
         onFailure(value.code, value.msg ?? Code.failure.msg);
       }
-    })/*.catchError(onFailure(Code.error.code, Code.error.msg))*/;
+    });
   }
 
   /// 请求 - GET - ed ==========================================================

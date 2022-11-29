@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/match_api.dart';
+import 'package:youliao/dss_library/net/http_util.dart';
 import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
 import 'package:youliao/models/hot_match_bean.dart';
 
@@ -28,16 +29,18 @@ class _HotMatchWidgetState extends BaseDataWidgetState<HotMatchWidget> {
 
   @override
   void initData() {
-    MatchApi.instance.getHotMatch(
+    HttpUtil.instance.simpleCallback(
+      future: MatchApi.instance.getHotMatch(),
+      convert: (data) {
+        return MatchApi.instance.convertByDynamic(data);
+      },
       onSuccess: (data) {
         setState(() {
           _data = data;
         });
       },
-      onFailure: (code, msg) {
-        setState(() {
-          _data = [];
-        });
+      onFailure: (_, __) {
+        setState(() {});
       },
     );
   }

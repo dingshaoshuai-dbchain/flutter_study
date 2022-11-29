@@ -2,6 +2,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/common_api.dart';
+import 'package:youliao/dss_library/net/http_util.dart';
 import 'package:youliao/dss_library/util/toast_util.dart';
 import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
 
@@ -30,17 +31,20 @@ class _BannerWidgetState extends BaseDataWidgetState<BannerWidget> {
 
   @override
   void initData() {
-    CommonApi.instance.getBanner(
-      locationId: widget.locationId,
+    HttpUtil.instance.simpleCallback(
+      future: CommonApi.instance.getBanner(
+        locationId: widget.locationId,
+      ),
+      convert: (data) {
+        return CommonApi.instance.convertByDynamic(data);
+      },
       onSuccess: (data) {
         setState(() {
           _bannerData = data;
         });
       },
       onFailure: (code, msg) {
-        setState(() {
-          _bannerData = [];
-        });
+        setState(() {});
       },
     );
   }

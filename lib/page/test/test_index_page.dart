@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:youliao/api/expert_api.dart';
 import 'package:youliao/dss_library/net/base_entity.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
 import 'package:youliao/dss_library/util/toast_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
 import 'package:youliao/dss_library/widgets/base/base_state.dart';
 import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
+import 'package:youliao/global/match_mode.dart';
 import 'package:youliao/page/test/test_router.dart';
 
 class TestIndexPage extends StatefulWidget {
@@ -68,8 +70,7 @@ class _TestIndexPageViewModel extends BaseViewModel {
 
   void test() {
     launch(
-        future: Future.delayed(const Duration(seconds: 3)).then(
-            (value) => BaseEntity(Code.error.code, Code.error.msg, null)),
+        future: ExpertApi.instance.getExpertList(matchMode: MatchMode.all),
         onSuccess: (data) {
           Toast.show('成功了');
         },

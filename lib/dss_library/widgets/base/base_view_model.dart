@@ -33,18 +33,14 @@ abstract class BaseViewModel {
     if (isShowLoadingDialog) {
       showLoadingDialog();
     }
-    future.then((value) {
-      if (value.code == Code.success.code) {
-        if (convert == null) {
-          onSuccess(value.data);
-        } else {
-          T data = convert(value.data);
-          onSuccess(data);
-        }
-      } else {
-        onFailure(value.code, value.msg ?? Code.failure.msg);
-      }
-    }).whenComplete(() {
+    HttpUtil.instance
+        .simpleCallback(
+      future: future,
+      convert: convert,
+      onSuccess: onSuccess,
+      onFailure: onFailure,
+    )
+        .whenComplete(() {
       if (isShowLoadingDialog) {
         hideLoadingDialog();
       }

@@ -1,4 +1,5 @@
 export 'banner_bean.dart' ; 
+export 'expert_bean.dart' ; 
 export 'hot_match_bean.dart' ; 
 export 'person.dart' ; 
 export 'plan_bean.dart' ; 

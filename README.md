@@ -56,7 +56,8 @@ dev_dependencies:
   "age": 18,
   "father": "$person",
   "mother": "$person",
-  "hobby?": "$[]String"
+  "hobby?": "$[]String",
+  "@JsonKey(name:'st') String": "student"
 }
 ```
 
