@@ -4,7 +4,7 @@ import '../../util/image_util.dart';
 
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
 class ContainerWidget extends StatelessWidget {
-  ContainerWidget({
+  const ContainerWidget({
     super.key,
     this.width,
     this.height,

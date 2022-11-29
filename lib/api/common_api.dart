@@ -13,7 +13,7 @@ class CommonApi {
   void getBanner({
     // 1资讯banner 2直播页banner 3预测方案banner 4个人中心banner 5首页大背景图 6预测首页banner 7资讯首页banner
     required int locationId,
-    required NetSuccessTCallback<List<BannerBean>> onSuccess,
+    required NetSuccessCallbackT<List<BannerBean>> onSuccess,
     required NetFailureCallback onFailure,
   }) {
     HttpUtil.instance.getCallback(

@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'base_entity.dart';
 
 typedef NetSuccessCallback = Function(dynamic data);
-typedef NetSuccessTCallback<T> = Function(T data);
+typedef NetSuccessCallbackT<T> = Function(T data);
 typedef NetFailureCallback = Function(int code, String msg);
 
 class HttpUtil {
@@ -54,6 +54,7 @@ class HttpUtil {
     });
   }
 
+  /// 请求 - GET - st ==========================================================
   Future<BaseEntity> get({
     required String url,
     Map<String, dynamic>? queryParameters,
@@ -74,14 +75,16 @@ class HttpUtil {
     get(
       url: url,
       queryParameters: queryParameters,
-    ).then((BaseEntity value) {
-      if (value.code == netSuccessCode) {
+    ).then((value) {
+      if (value.code == Code.success.code) {
         onSuccess(value.data);
       } else {
-        onFailure(value.code, value.msg ?? '操作失败');
+        onFailure(value.code, value.msg ?? Code.failure.msg);
       }
-    });
+    })/*.catchError(onFailure(Code.error.code, Code.error.msg))*/;
   }
+
+  /// 请求 - GET - ed ==========================================================
 
   Future<BaseEntity> _request({
     required String method,
@@ -95,7 +98,7 @@ class HttpUtil {
       Map<String, dynamic> map = json.decode(data);
       return BaseEntity.fromJson(map);
     } catch (e) {
-      return BaseEntity(netFailureCode, '接口错误或数据解析失败！', null);
+      return BaseEntity(Code.error.code, '接口错误或数据解析失败！', null);
     }
   }
 }

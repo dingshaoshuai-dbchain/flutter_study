@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/api/plan_api.dart';
+import 'package:youliao/dss_library/net/base_entity.dart';
 import 'package:youliao/dss_library/util/navigator_util.dart';
+import 'package:youliao/dss_library/util/toast_util.dart';
 import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
-import 'package:youliao/dss_library/widgets/base/base_page.dart';
+import 'package:youliao/dss_library/widgets/base/base_state.dart';
 import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
 import 'package:youliao/page/test/test_router.dart';
 
@@ -15,7 +16,7 @@ class TestIndexPage extends StatefulWidget {
 }
 
 class _TestIndexPageState extends State<TestIndexPage>
-    with BasePageState<TestIndexPage, _TestIndexPageViewModel> {
+    with BaseState<TestIndexPage, _TestIndexPageViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,14 @@ class _TestIndexPageState extends State<TestIndexPage>
 class _TestIndexPageViewModel extends BaseViewModel {
 
   void test() {
-    showLoadingDialog();
-    Future.delayed(Duration(seconds: 3)).then((value) => hideLoadingDialog());
+    launch(
+        future: Future.delayed(const Duration(seconds: 3)).then(
+            (value) => BaseEntity(Code.error.code, Code.error.msg, null)),
+        onSuccess: (data) {
+          Toast.show('成功了');
+        },
+        onFailure: (code, msg) {
+          Toast.show(msg);
+        });
   }
 }

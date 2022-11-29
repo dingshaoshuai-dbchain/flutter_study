@@ -31,7 +31,7 @@ class _TaskItemWidgetState extends State<TaskItemWidget> {
               children: [
                 TextWidget(
                   text: '累计签到3天',
-                  textColor: AppColors.color_181818,
+                  textColor: AppColors.mainText,
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   marginLeft: 12,
@@ -41,7 +41,7 @@ class _TaskItemWidgetState extends State<TaskItemWidget> {
                 ),
                 TextWidget(
                   text: '连续签到3天额外获得10金币',
-                  textColor: AppColors.color_999999,
+                  textColor: AppColors.summaryText2,
                   fontSize: 12,
                   marginTop: 2,
                   marginLeft: 12,

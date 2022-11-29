@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
-import 'package:youliao/dss_library/widgets/base/contract.dart';
-import 'package:youliao/dss_library/widgets/base/page_state.dart';
+import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
-mixin BasePageState<T extends StatefulWidget, VM extends BaseViewModel>
-    on State<T> implements Contract {
+mixin BaseState<T extends StatefulWidget, VM extends BaseViewModel>
+    on State<T> {
   late VM viewModel;
 
   VM onCreateViewModel();
@@ -28,7 +27,6 @@ mixin BasePageState<T extends StatefulWidget, VM extends BaseViewModel>
     });
   }
 
-  @override
   void showLoadingDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -38,7 +36,6 @@ mixin BasePageState<T extends StatefulWidget, VM extends BaseViewModel>
     );
   }
 
-  @override
   void hideLoadingDialog(BuildContext context) {
     Navigator.of(context).pop();
   }

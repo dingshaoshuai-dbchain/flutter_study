@@ -11,7 +11,7 @@ class MatchApi {
   static MatchApi get instance => _singleton;
 
   void getHotMatch({
-    required NetSuccessTCallback<List<HotMatchBean>> onSuccess,
+    required NetSuccessCallbackT<List<HotMatchBean>> onSuccess,
     required NetFailureCallback onFailure,
   }) {
     HttpUtil.instance.getCallback(
