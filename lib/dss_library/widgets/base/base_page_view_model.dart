@@ -42,6 +42,7 @@ abstract class BasePageViewModel<T> extends BaseViewModel {
   }) {
     showLoadingPage();
     launch(
+      isShowLoadingDialog: false,
       future: future,
       convert: convert,
       onSuccess: (data) {
