@@ -14,18 +14,18 @@ abstract class BaseState<T extends StatefulWidget, VM extends BaseViewModel>
   void initState() {
     super.initState();
     viewModel = onCreateViewModel();
-    viewModel.state.addListener(() {
-      switch (viewModel.state.value) {
-        case LoadingDialogState.init:
-          break;
-        case LoadingDialogState.show:
-          showLoadingDialog(context);
-          break;
-        case LoadingDialogState.hide:
-          hideLoadingDialog(context);
-          break;
-      }
-    });
+    // viewModel.state.addListener(() {
+    //   switch (viewModel.state.value) {
+    //     case LoadingDialogState.init:
+    //       break;
+    //     case LoadingDialogState.show:
+    //       showLoadingDialog(context);
+    //       break;
+    //     case LoadingDialogState.hide:
+    //       hideLoadingDialog(context);
+    //       break;
+    //   }
+    // });
   }
 
   void showLoadingDialog(BuildContext context) {

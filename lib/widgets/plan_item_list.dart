@@ -51,13 +51,13 @@ class _PlanItemListViewModel extends BasePageViewModel<List<PlanBean>> {
 
   @override
   void onInitData() {
-    // launchForPageState(
-    //   future: PlanApi.instance.getPlanList2(),
-    //   convert: (data) {
-    //     return PlanApi.instance.convertByDynamic(data);
-    //   },
-    //   showEmpty: (data) => data.isEmpty,
-    // );
+    launchForPageState(
+      future: PlanApi.instance.getPlanList(),
+      convert: (data) {
+        return PlanApi.instance.convertByDynamic(data);
+      },
+      showEmpty: (data) => data.isEmpty,
+    );
   }
 
   @override

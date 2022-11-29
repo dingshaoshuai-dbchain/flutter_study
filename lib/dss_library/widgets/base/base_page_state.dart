@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youliao/dss_library/util/log_utils.dart';
 import 'package:youliao/dss_library/widgets/base/base_state.dart';
 import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
@@ -35,9 +36,6 @@ abstract class BasePageState<T extends StatefulWidget,
   void initState() {
     super.initState();
     viewModel.pageState.addListener(() {
-      if (viewModel.pageState.value == PageState.initState) {
-        return;
-      }
       setState(() {});
     });
     onInitListeners();

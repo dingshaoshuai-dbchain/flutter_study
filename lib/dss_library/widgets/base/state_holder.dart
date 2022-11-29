@@ -36,12 +36,16 @@ class PageStateHolder {
 
   static PageStateHolder get instance => _singleton;
 
-  Widget initStatePage = const CircularProgressIndicator();
-  Widget loadingStatePage = const CircularProgressIndicator();
-  Widget failureStatePage = const ContainerWidget(
+  Widget initStatePage = const Center(
+    child: CircularProgressIndicator(),
+  );
+  Widget loadingStatePage = const Center(
+    child: CircularProgressIndicator(),
+  );
+  Widget failureStatePage = const Center(
     child: Text('网络开小差了，请检查网络设置'),
   );
-  Widget emptyStatePage = const ContainerWidget(
+  Widget emptyStatePage = const Center(
     child: Text('暂无数据'),
   );
 }

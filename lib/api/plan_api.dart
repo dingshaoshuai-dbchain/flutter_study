@@ -22,43 +22,7 @@ class PlanApi {
   /// 转换一些 bean - ed  ==========================================================
 
   /// 获取方案列表
-  void getPlanList({
-    // 2赛事详情、直播间推荐方案 4全部最新方案 5免费 6临时 7竞彩串关
-    int type = 4,
-    // 方案类型
-    MatchMode matchMode = MatchMode.all,
-    int size = 20,
-    // 用户id
-    String? userId,
-    // 排序 - 1盈利率 2时间 3准确率 4按人气 5连红
-    int? sortValue,
-    required NetSuccessCallbackT<List<PlanBean>> onSuccess,
-    required NetFailureCallback onFailure,
-  }) {
-    Map<String, dynamic> params = {};
-    params.putIfAbsent('type', () => type);
-    params.putIfAbsent('sportType', () => matchMode.sportId);
-    params.putIfAbsent('size', () => size);
-    if (userId != null) {
-      params.putIfAbsent('userId', () => userId);
-    }
-    if (sortValue != null) {
-      params.putIfAbsent('sortValue', () => sortValue);
-    }
-    HttpUtil.instance.getCallback(
-      url: 'sports-api/v41/expert/planAPP123',
-      queryParameters: params,
-      onSuccess: (dynamic data) {
-        List<PlanBean> list =
-            List.from(data).map((e) => PlanBean.fromJson(e)).toList();
-        onSuccess(list);
-      },
-      onFailure: onFailure,
-    );
-  }
-
-  /// 获取方案列表
-  Future<BaseEntity> getPlanList2({
+  Future<BaseEntity> getPlanList({
     // 2赛事详情、直播间推荐方案 4全部最新方案 5免费 6临时 7竞彩串关
     int type = 4,
     // 方案类型
@@ -80,7 +44,7 @@ class PlanApi {
       params.putIfAbsent('sortValue', () => sortValue);
     }
     return HttpUtil.instance.get(
-      url: 'sports-api/v41/expert/planAPP123',
+      url: 'sports-api/v41/expert/planAPP',
       queryParameters: params,
     );
   }
