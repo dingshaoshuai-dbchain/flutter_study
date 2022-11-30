@@ -1,12 +1,10 @@
+import 'package:dss_base_flutter/init_sum.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../app_widget_init_provider.dart';
-
 /// Toast 配置
-class ScreenInit extends AppWidgetInitProvider {
+class ScreenInit extends WidgetInitProvider {
   @override
   Widget init(Widget child) => ScreenUtilInit(
         /// 设计图尺寸

@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 import '../../global/config.dart';
-import '../app_mode_init_provider.dart';
 
-class HttpInit extends AppModeInitProvider {
+class HttpInit extends ModeInitProvider {
   @override
   init() {
     final List<Interceptor> interceptors = [];

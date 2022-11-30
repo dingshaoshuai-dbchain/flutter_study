@@ -1,20 +1,19 @@
 import 'package:fluro/fluro.dart';
+import 'package:youliao/page/expert/expert_router.dart';
+import 'package:youliao/page/find/find_router.dart';
+import 'package:youliao/page/match/match_router.dart';
+import 'package:youliao/page/my/my_router.dart';
+import 'package:youliao/page/predict/predict_router.dart';
 import 'package:youliao/page/test/test_router.dart';
 
 import 'package:dss_base_flutter/dss_base_flutter.dart';
-import '../../page/expert/expert_router.dart';
-import '../../page/find/find_router.dart';
-import '../../page/match/match_router.dart';
-import '../../page/my/my_router.dart';
-import '../../page/predict/predict_router.dart';
-import '../../page/router_provider.dart';
-import '../app_mode_init_provider.dart';
 
-class RouteInit extends AppModeInitProvider {
+
+class RouteInit extends ModeInitProvider {
   @override
   init() {
     FluroRouter router = FluroRouter();
-    List<IRouterProvider> routerList = [];
+    List<RouterInitProvider> routerList = [];
     routerList.add(FindRouter());
     routerList.add(ExpertRouter());
     routerList.add(PredictRouter());
@@ -22,7 +21,7 @@ class RouteInit extends AppModeInitProvider {
     routerList.add(MyRouter());
     routerList.add(TestRouter());
     for (var element in routerList) {
-      element.initRouter(router);
+      element.init(router);
     }
     NavigatorUtil.init(
         router: router,
