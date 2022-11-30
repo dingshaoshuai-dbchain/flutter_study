@@ -51,6 +51,9 @@ class _TestIndexPageState extends BaseState<TestIndexPage, _TestIndexPageViewMod
             //     .getPlanList(onSuccess: (_) {}, onFailure: (_, __) {});
             viewModel.test();
           }),
+          _buildPageButton(context, '下拉刷新 测试', () {
+            NavigatorUtil.push(context, TestRouter.testListRefresh);
+          }),
         ],
       ),
     );
