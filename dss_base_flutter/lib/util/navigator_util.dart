@@ -1,8 +1,6 @@
+import 'package:dss_base_flutter/model/function_ext.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
-
-typedef NetSuccessCallback<T> = Function(String targetPath, String loginPath);
-typedef ValueFunction = bool Function();
 
 class NavigatorUtil {
   NavigatorUtil._();
@@ -10,12 +8,12 @@ class NavigatorUtil {
   static FluroRouter? _router;
 
   static String _loginPagePath = '';
-  static late ValueFunction _checkLoginFunction;
+  static late ReturnValueFunction<bool> _checkLoginFunction;
 
   static void init({
     required FluroRouter router,
     required String loginPagePath,
-    required ValueFunction checkLoginFunction,
+    required ReturnValueFunction<bool> checkLoginFunction,
   }) {
     _router = router;
     _loginPagePath = loginPagePath;

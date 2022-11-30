@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/widgets/next_widget.dart';
 
 class MenuItemWidget extends StatelessWidget {

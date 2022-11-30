@@ -1,13 +1,9 @@
 import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/common_api.dart';
-import 'package:youliao/dss_library/net/http_util.dart';
-import 'package:youliao/dss_library/util/toast_util.dart';
-import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
-
-import '../dss_library/res/colors.dart';
-import '../dss_library/widgets/basis/image_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import '../models/banner_bean.dart';
 import '../res/app_colors.dart';
 

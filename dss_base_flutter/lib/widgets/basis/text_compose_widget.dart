@@ -1,29 +1,33 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import '../../util/image_util.dart';
 import 'container_widget.dart';
 
-class ButtonWidget extends StatelessWidget {
-  ButtonWidget({
+class TextComposeWidget extends StatelessWidget {
+  const TextComposeWidget({
     super.key,
+    this.leftWidget,
+    this.rightWidget,
+    this.topWidget,
+    this.bottomWidget,
     required this.text,
     required this.textColor,
     required this.fontSize,
+    // 文本是否展开占据最大空间
+    this.textExpanded = false,
     this.maxLines,
     this.overflow = TextOverflow.ellipsis,
     this.fontWeight,
-    this.fontFamily,
-    this.textAlign = TextAlign.center,
     this.width,
     this.height,
     this.minWidth,
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
+    // 一旦设置了这个，最小最大宽高都失效，按最大的来
     this.alignment,
+    this.fontFamily,
+    this.textAlign = TextAlign.center,
     this.backgroundColor,
-    this.backgroundImagePath,
-    this.backgroundImageFormat,
     this.padding,
     this.paddingHorizontal,
     this.paddingVertical,
@@ -51,6 +55,13 @@ class ButtonWidget extends StatelessWidget {
     this.onPressed,
   });
 
+  final bool textExpanded;
+
+  final Widget? leftWidget;
+  final Widget? rightWidget;
+  final Widget? topWidget;
+  final Widget? bottomWidget;
+
   final String text;
   final Color textColor;
   final double fontSize;
@@ -70,9 +81,6 @@ class ButtonWidget extends StatelessWidget {
   final Alignment? alignment;
 
   final Color? backgroundColor;
-
-  final String? backgroundImagePath;
-  final ImageFormat? backgroundImageFormat;
 
   final double? padding;
   final double? paddingHorizontal;
@@ -106,6 +114,17 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Alignment? ali = alignment;
+    // 如果没有特意设置
+    if (ali == null) {
+      // 并且没有设置最小最大宽高，那就默认给个 center
+      if (minWidth == null &&
+          maxWidth == null &&
+          minHeight == null &&
+          maxHeight == null) {
+        ali = Alignment.center;
+      }
+    }
     return ContainerWidget(
       width: width,
       height: height,
@@ -113,10 +132,8 @@ class ButtonWidget extends StatelessWidget {
       maxWidth: maxWidth,
       minHeight: minHeight,
       maxHeight: maxHeight,
-      alignment: alignment,
+      alignment: ali,
       backgroundColor: backgroundColor,
-      backgroundImagePath: backgroundImagePath,
-      backgroundImageFormat: backgroundImageFormat,
       padding: padding,
       paddingHorizontal: paddingHorizontal,
       paddingVertical: paddingVertical,
@@ -141,31 +158,50 @@ class ButtonWidget extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
+      onPressed: onPressed,
       child: _buildChild(),
     );
   }
 
-  Widget? _buildChild() {
-    return TextButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        // 水波纹
-        overlayColor: MaterialStateProperty.resolveWith((states) {
-          return Colors.white.withOpacity(0.12);
-        }),
-      ),
-      child: Text(
-        text,
-        maxLines: maxLines,
-        overflow: overflow,
-        textAlign: TextAlign.left,
-        style: TextStyle(
+  Widget _buildChild() {
+    Widget textWidget = Text(
+      text,
+      maxLines: maxLines,
+      overflow: overflow,
+      textAlign: textAlign,
+      style: TextStyle(
           color: textColor,
           fontSize: fontSize,
           fontWeight: fontWeight,
-          fontFamily: fontFamily,
-        ),
-      ),
+          fontFamily: fontFamily),
     );
+    Widget child = textWidget;
+    if (leftWidget != null || rightWidget != null) {
+      child = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (leftWidget != null) leftWidget!,
+          // 如果设置了文本展开，就占据最大空间，防止出现溢出
+          textExpanded ? Expanded(child: textWidget) : textWidget,
+          if (rightWidget != null) rightWidget!,
+        ],
+      );
+    }
+    if (topWidget != null || bottomWidget != null) {
+      child = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (topWidget != null) topWidget!,
+          // 如果设置了文本展开，就占据最大空间，防止出现溢出
+          textExpanded ? Expanded(child: child) : child,
+          if (bottomWidget != null) bottomWidget!,
+        ],
+      );
+    }
+    return child;
   }
 }

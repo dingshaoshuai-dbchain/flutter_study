@@ -1,7 +1,5 @@
-import 'package:youliao/dss_library/net/http_util.dart';
 import 'package:youliao/models/banner_bean.dart';
-
-import '../dss_library/net/base_entity.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class CommonApi {
   CommonApi._();

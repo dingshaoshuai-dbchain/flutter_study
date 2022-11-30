@@ -1,5 +1,5 @@
 
-import '../dss_library/net/http_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class UserApi {
   UserApi._();

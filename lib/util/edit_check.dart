@@ -1,6 +1,6 @@
 import 'package:common_utils/common_utils.dart';
 
-import '../dss_library/util/toast_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 bool checkPhone(String phone) {
   if (!RegexUtil.isMobileSimple(phone)) {

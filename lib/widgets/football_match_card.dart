@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/util/font_family_util.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 /// 足球赛事牌子
 abstract class BaseFootballCard extends StatelessWidget {

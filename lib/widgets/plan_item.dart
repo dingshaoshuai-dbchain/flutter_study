@@ -1,17 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/models/index.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/hit_rate_widget.dart';
 import 'package:youliao/widgets/plan_result_mark_widget.dart';
 
-import '../dss_library/util/font_weiget_util.dart';
-import '../dss_library/util/toast_util.dart';
 
 class PlanItemWidget extends StatelessWidget {
   const PlanItemWidget({

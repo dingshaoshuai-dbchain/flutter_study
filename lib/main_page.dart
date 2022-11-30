@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:youliao/page/find/find_index_page.dart';
 import 'package:youliao/page/test/test_index_page.dart';
 
-import 'dss_library/widgets/basis/image_widget.dart';
-import 'dss_library/widgets/double_tap_back_exit_app.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'main_provider.dart';
 import 'page/expert/expert_index_page.dart';
 import 'page/match/match_index_page.dart';

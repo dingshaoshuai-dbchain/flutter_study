@@ -1,20 +1,11 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/expert_api.dart';
-import 'package:youliao/dss_library/net/http_util.dart';
-import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
 import 'package:youliao/global/match_mode.dart';
 import 'package:youliao/models/expert_bean.dart';
 import 'package:youliao/res/app_colors.dart';
-
-import '../../../dss_library/util/font_weiget_util.dart';
-import '../../../dss_library/util/toast_util.dart';
-import '../../../dss_library/widgets/basis/container_widget.dart';
-import '../../../dss_library/widgets/basis/image_widget.dart';
-import '../../../dss_library/widgets/basis/text_compose_widget.dart';
-import '../../../dss_library/widgets/basis/text_widget.dart';
-import '../../../dss_library/widgets/gaps.dart';
 
 /// 顶部推荐专家
 class RecommendExpertWidget extends StatefulWidget {
@@ -24,8 +15,7 @@ class RecommendExpertWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _RecommendExpertWidgetState();
 }
 
-class _RecommendExpertWidgetState
-    extends BaseDataWidgetState<RecommendExpertWidget> {
+class _RecommendExpertWidgetState extends BaseDataWidgetState<RecommendExpertWidget> {
   List<ExpertBean> _data = [];
 
   @override
@@ -116,12 +106,10 @@ class _RecommendExpertWidgetState
   }
 
   /// 专家列表 item
-  Widget _buildItem(
-    BuildContext context,
-    int index,
-    int count,
-    ExpertBean bean,
-  ) {
+  Widget _buildItem(BuildContext context,
+      int index,
+      int count,
+      ExpertBean bean,) {
     double? marginLeft = index == 0 ? 12.5.w : null;
     double? marginRight = index == count - 1 ? 12.5.w : null;
     return ContainerWidget(

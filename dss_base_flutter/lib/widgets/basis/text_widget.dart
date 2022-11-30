@@ -1,26 +1,30 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dss_base_flutter/util/image_util.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../../util/image_util.dart';
 import 'container_widget.dart';
 
-class ImageWidget extends StatelessWidget {
-  ImageWidget({
+class TextWidget extends StatelessWidget {
+  const TextWidget({
     super.key,
-    required this.url,
-    this.fit = BoxFit.contain,
-    this.placeholder,
-    this.format = ImageFormat.png,
-    this.imageRadius,
+    required this.text,
+    required this.textColor,
+    required this.fontSize,
+    this.maxLines,
+    this.overflow = TextOverflow.ellipsis,
+    this.fontWeight,
+    this.fontFamily,
+    this.textAlign = TextAlign.center,
     this.width,
     this.height,
     this.minWidth,
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
-    // 不设置个背景，padding出来的点击区域不生效，不知为何
-    this.backgroundColor = Colors.transparent,
+    // 一旦设置了这个，最小最大宽高都失效，按最大的来
+    this.alignment,
+    this.backgroundColor,
+    this.backgroundImagePath,
+    this.backgroundImageFormat,
     this.padding,
     this.paddingHorizontal,
     this.paddingVertical,
@@ -48,12 +52,14 @@ class ImageWidget extends StatelessWidget {
     this.onPressed,
   });
 
-  final String url;
-  final BoxFit fit;
-  final String? placeholder;
-  final ImageFormat format;
-
-  final double? imageRadius;
+  final String text;
+  final Color textColor;
+  final double fontSize;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final FontWeight? fontWeight;
+  final String? fontFamily;
+  final TextAlign textAlign;
 
   final double? width;
   final double? height;
@@ -62,7 +68,12 @@ class ImageWidget extends StatelessWidget {
   final double? minHeight;
   final double? maxHeight;
 
+  final Alignment? alignment;
+
   final Color? backgroundColor;
+
+  final String? backgroundImagePath;
+  final ImageFormat? backgroundImageFormat;
 
   final double? padding;
   final double? paddingHorizontal;
@@ -96,6 +107,17 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Alignment? ali = alignment;
+    // 如果没有特意设置
+    if (ali == null) {
+      // 并且没有设置最小最大宽高，那就默认给个 center
+      if (minWidth == null &&
+          maxWidth == null &&
+          minHeight == null &&
+          maxHeight == null) {
+        ali = Alignment.center;
+      }
+    }
     return ContainerWidget(
       width: width,
       height: height,
@@ -103,7 +125,10 @@ class ImageWidget extends StatelessWidget {
       maxWidth: maxWidth,
       minHeight: minHeight,
       maxHeight: maxHeight,
+      alignment: ali,
       backgroundColor: backgroundColor,
+      backgroundImagePath: backgroundImagePath,
+      backgroundImageFormat: backgroundImageFormat,
       padding: padding,
       paddingHorizontal: paddingHorizontal,
       paddingVertical: paddingVertical,
@@ -134,42 +159,17 @@ class ImageWidget extends StatelessWidget {
   }
 
   Widget? _buildChild() {
-    final Widget child;
-    if (url.startsWith('http')) {
-      final Widget? holder = placeholder != null
-          ? _buildAssetImage(placeholder!, fit, format)
-          : null;
-      child = _buildNetworkImage(url, fit, format, holder);
-    } else {
-      child = _buildAssetImage(url, fit, format);
-    }
-    if (imageRadius == null) return child;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(imageRadius ?? 0),
-      child: child,
-    );
-  }
-
-  /// 加载网络图片
-  Widget _buildNetworkImage(
-    String url,
-    BoxFit fit,
-    ImageFormat format,
-    Widget? holder,
-  ) {
-    return CachedNetworkImage(
-      imageUrl: url,
-      placeholder: holder != null ? (_, __) => holder : null,
-      errorWidget: holder != null ? (_, __, dynamic error) => holder : null,
-      fit: fit,
-    );
-  }
-
-  /// 加载本地图片
-  Widget _buildAssetImage(String path, BoxFit fit, ImageFormat format) {
-    return Image.asset(
-      ImageUtils.getImgPath(path, format: format),
-      fit: fit,
+    return Text(
+      text,
+      maxLines: maxLines,
+      overflow: overflow,
+      textAlign: textAlign,
+      style: TextStyle(
+        color: textColor,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontFamily: fontFamily,
+      ),
     );
   }
 }

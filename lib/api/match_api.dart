@@ -1,7 +1,5 @@
-import 'package:youliao/dss_library/net/http_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/models/hot_match_bean.dart';
-
-import '../dss_library/net/base_entity.dart';
 
 class MatchApi {
   MatchApi._();

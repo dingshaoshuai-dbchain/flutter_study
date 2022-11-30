@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 
 import '../res/app_colors.dart';
-import '../dss_library/util/font_weiget_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class MyTabBar extends StatelessWidget {
   const MyTabBar({

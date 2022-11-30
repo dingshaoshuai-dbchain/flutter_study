@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/plan_api.dart';
-import 'package:youliao/dss_library/widgets/base/base_page_view_model.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/global/match_mode.dart';
 import 'package:youliao/models/index.dart';
 import 'package:youliao/widgets/plan_item.dart';
 
-import '../dss_library/widgets/base/base_page_state.dart';
 
 class PlanItemListWidget extends StatefulWidget {
   const PlanItemListWidget({

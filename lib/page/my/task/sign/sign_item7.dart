@@ -2,11 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/res/app_colors.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
-
-import '../../../../dss_library/util/font_weiget_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class SignItem7Widget extends StatefulWidget {
   const SignItem7Widget({super.key});

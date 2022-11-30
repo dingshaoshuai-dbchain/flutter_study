@@ -1,8 +1,8 @@
+import 'package:dss_base_flutter/model/function_ext.dart';
+import 'package:dss_base_flutter/net/base_entity.dart';
+import 'package:dss_base_flutter/widgets/base/base_view_model.dart';
+import 'package:dss_base_flutter/widgets/base/state_holder.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:youliao/dss_library/widgets/base/base_view_model.dart';
-import 'package:youliao/dss_library/widgets/base/state_holder.dart';
-
-import '../../net/base_entity.dart';
 
 /// 一般用作一进来就需要请求网络的界面，如：文章详情、消息列表..
 abstract class BasePageViewModel<T> extends BaseViewModel {
@@ -43,8 +43,8 @@ abstract class BasePageViewModel<T> extends BaseViewModel {
   /// 省事的附带界面切换的加载逻辑
   void launchForPageState({
     required Future<BaseEntity> future,
-    ValueFunction? convert,
-    ValueFunction2<bool, T>? showEmpty,
+    InputDynamicReturnValueFunction? convert,
+    InputGenericReturnValueFunction<bool, T>? showEmpty,
   }) {
     showLoadingPage();
     launch(

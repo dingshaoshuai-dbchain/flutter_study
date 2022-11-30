@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
-
-import '../dss_library/widgets/basis/image_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class PlanResultMarkWidget extends StatelessWidget {
   const PlanResultMarkWidget({super.key, required this.hitStatus});

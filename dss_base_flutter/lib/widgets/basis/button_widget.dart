@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:dss_base_flutter/util/image_util.dart';
+import 'package:flutter/material.dart';
 
-import '../../util/image_util.dart';
 import 'container_widget.dart';
 
-class TextWidget extends StatelessWidget {
-  TextWidget({
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
     super.key,
     required this.text,
     required this.textColor,
@@ -20,7 +20,6 @@ class TextWidget extends StatelessWidget {
     this.maxWidth,
     this.minHeight,
     this.maxHeight,
-    // 一旦设置了这个，最小最大宽高都失效，按最大的来
     this.alignment,
     this.backgroundColor,
     this.backgroundImagePath,
@@ -107,17 +106,6 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Alignment? ali = alignment;
-    // 如果没有特意设置
-    if (ali == null) {
-      // 并且没有设置最小最大宽高，那就默认给个 center
-      if (minWidth == null &&
-          maxWidth == null &&
-          minHeight == null &&
-          maxHeight == null) {
-        ali = Alignment.center;
-      }
-    }
     return ContainerWidget(
       width: width,
       height: height,
@@ -125,7 +113,7 @@ class TextWidget extends StatelessWidget {
       maxWidth: maxWidth,
       minHeight: minHeight,
       maxHeight: maxHeight,
-      alignment: ali,
+      alignment: alignment,
       backgroundColor: backgroundColor,
       backgroundImagePath: backgroundImagePath,
       backgroundImageFormat: backgroundImageFormat,
@@ -153,22 +141,30 @@ class TextWidget extends StatelessWidget {
       borderSideBottom: borderSideBottom,
       borderSideLeft: borderSideLeft,
       borderSideRight: borderSideRight,
-      onPressed: onPressed,
       child: _buildChild(),
     );
   }
 
   Widget? _buildChild() {
-    return Text(
-      text,
-      maxLines: maxLines,
-      overflow: overflow,
-      textAlign: textAlign,
-      style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily,
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        // 水波纹
+        overlayColor: MaterialStateProperty.resolveWith((states) {
+          return Colors.white.withOpacity(0.12);
+        }),
+      ),
+      child: Text(
+        text,
+        maxLines: maxLines,
+        overflow: overflow,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: textColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          fontFamily: fontFamily,
+        ),
       ),
     );
   }

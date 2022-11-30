@@ -1,8 +1,8 @@
+import 'package:dss_base_flutter/widgets/base/base_page_view_model.dart';
+import 'package:dss_base_flutter/widgets/base/base_state.dart';
+import 'package:dss_base_flutter/widgets/base/state_holder.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/dss_library/widgets/base/base_state.dart';
-import 'package:youliao/dss_library/widgets/base/state_holder.dart';
 
-import 'base_page_view_model.dart';
 
 abstract class BasePageState<T extends StatefulWidget,
     VM extends BasePageViewModel> extends BaseState<T, VM> {

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:dss_base_flutter/model/function_ext.dart';
+import 'package:dss_base_flutter/widgets/base/base_view_model.dart';
 
-import '../widgets/base/base_view_model.dart';
 import 'base_entity.dart';
 
 typedef NetSuccessCallback = Function(dynamic data);
@@ -24,8 +25,6 @@ class HttpUtil {
   static const String methodPost = 'POST';
   static const String methodPut = 'PUT';
   static const String methodDelete = 'DELETE';
-
-
 
   /// 初始化Dio配置
   void init({
@@ -70,7 +69,7 @@ class HttpUtil {
   void getCallback<T>({
     required String url,
     Map<String, dynamic>? queryParameters,
-    ValueFunction<T>? convert,
+    InputDynamicReturnValueFunction<T>? convert,
     required NetSuccessCallbackT<T> onSuccess,
     required NetFailureCallback onFailure,
   }) {
@@ -89,7 +88,7 @@ class HttpUtil {
   /// 简单搞一个
   Future simpleCallback<T>({
     required Future<BaseEntity> future,
-    ValueFunction<T>? convert,
+    InputDynamicReturnValueFunction<T>? convert,
     required NetSuccessCallbackT<T> onSuccess,
     required NetFailureCallback onFailure,
   }) {

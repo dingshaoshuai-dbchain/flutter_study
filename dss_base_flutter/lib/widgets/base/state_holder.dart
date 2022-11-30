@@ -1,6 +1,6 @@
+import 'package:dss_base_flutter/widgets/basis/container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
 
 /// 对话框改变状态
 enum LoadingDialogState { init, show, hide }

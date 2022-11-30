@@ -1,3 +1,4 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,16 +7,6 @@ import 'package:youliao/page/expert/widgets/recommend_expert_widget.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/widgets/my_tab_bar.dart';
 import 'package:youliao/widgets/plan_item_list.dart';
-
-import '../../dss_library/util/font_weiget_util.dart';
-import '../../dss_library/util/log_utils.dart';
-import '../../dss_library/util/toast_util.dart';
-import '../../dss_library/widgets/app_bar_widget.dart';
-import '../../dss_library/widgets/basis/container_widget.dart';
-import '../../dss_library/widgets/basis/image_widget.dart';
-import '../../dss_library/widgets/basis/text_compose_widget.dart';
-import '../../dss_library/widgets/basis/text_widget.dart';
-import '../../dss_library/widgets/gaps.dart';
 
 class ExpertIndexPage extends StatefulWidget {
   const ExpertIndexPage({super.key});

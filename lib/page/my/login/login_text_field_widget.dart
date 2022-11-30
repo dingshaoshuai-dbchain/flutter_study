@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 import '../../../res/app_colors.dart';
 

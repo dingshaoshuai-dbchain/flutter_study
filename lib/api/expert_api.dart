@@ -1,8 +1,7 @@
-import 'package:youliao/dss_library/net/http_util.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/global/match_mode.dart';
 import 'package:youliao/models/expert_bean.dart';
 
-import '../dss_library/net/base_entity.dart';
 
 class ExpertApi {
   ExpertApi._();

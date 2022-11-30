@@ -1,6 +1,5 @@
+import 'package:dss_base_flutter/util/image_util.dart';
 import 'package:flutter/material.dart';
-
-import '../../util/image_util.dart';
 
 /// 优先明确的再笼统的，如：优先 paddingLeft 次取 padding
 class ContainerWidget extends StatelessWidget {

@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/util/log_utils.dart';
-import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/button_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/models/index.dart';
 import 'package:youliao/res/app_colors.dart';
 

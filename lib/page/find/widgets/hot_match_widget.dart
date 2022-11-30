@@ -1,18 +1,10 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youliao/api/match_api.dart';
-import 'package:youliao/dss_library/net/http_util.dart';
-import 'package:youliao/dss_library/widgets/base/base_data_widget_state.dart';
 import 'package:youliao/models/hot_match_bean.dart';
-
-import '../../../dss_library/res/colors.dart';
-import '../../../dss_library/util/font_weiget_util.dart';
-import '../../../dss_library/util/toast_util.dart';
-import '../../../dss_library/widgets/basis/container_widget.dart';
-import '../../../dss_library/widgets/basis/image_widget.dart';
-import '../../../dss_library/widgets/basis/text_widget.dart';
-import '../../../dss_library/widgets/gaps.dart';
-import '../../../res/app_colors.dart';
+import 'package:youliao/res/app_colors.dart';
 
 class HotMatchWidget extends StatefulWidget {
   const HotMatchWidget({super.key});

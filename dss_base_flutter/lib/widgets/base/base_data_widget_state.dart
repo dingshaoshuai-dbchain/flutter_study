@@ -1,5 +1,5 @@
+import 'package:dss_base_flutter/widgets/gaps.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
 
 /// 一般用于需要请求数据，如果请求失败就隐藏不显示（可以重写为其他展示方式）的 widget
 abstract class BaseDataWidgetState<T extends StatefulWidget> extends State<T> {

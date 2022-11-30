@@ -4,11 +4,9 @@ import 'package:youliao/api/user_api.dart';
 import 'package:youliao/global/length_config.dart';
 import 'package:youliao/res/app_colors.dart';
 import 'package:youliao/util/edit_check.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/widgets/app_button.dart';
 
-import '../../../dss_library/util/log_utils.dart';
 import '../../../widgets/sms_code_button.dart';
 import 'login_text_field_widget.dart';
 

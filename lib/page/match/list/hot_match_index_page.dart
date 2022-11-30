@@ -1,15 +1,10 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_compose_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/text_widget.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/widgets/collected_widget.dart';
 import 'package:youliao/widgets/next_widget.dart';
 
-import '../../../dss_library/util/toast_util.dart';
 import '../../../res/app_colors.dart';
 import '../../../util/font_family_util.dart';
 import '../../../widgets/plan_number_widget.dart';

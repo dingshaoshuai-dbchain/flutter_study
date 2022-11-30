@@ -1,5 +1,5 @@
-name: youliao
-description: A new Flutter project.
+name: dss_base_flutter
+description: 搞个通用的玩意儿.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -22,13 +22,9 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.18.2 <3.0.0'
 
-
-
 dependencies:
   flutter:
     sdk: flutter
-  dss_base_flutter:
-    path: dss_base_flutter
 
   cupertino_icons: ^1.0.2
   # 路由框架 https://github.com/theyakka/fluro
@@ -46,13 +42,9 @@ dependencies:
   cached_network_image: ^3.2.1
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
   common_utils: 2.1.0
-  # 状态管理 https://github.com/rrousselGit/provider
-  provider: ^6.0.3
 
   # 网络
   dio: ^4.0.6
-
-
 
 dev_dependencies:
   flutter_test:
@@ -64,13 +56,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  fonts:
-    - family: D_Din_Bold
-      fonts:
-        - asset: assets/fonts/D-DIN-Bold.ttf
-
-  assets:
-    - assets/images/
-    - assets/images/common/
-    - assets/images/main/

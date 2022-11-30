@@ -1,23 +1,18 @@
-import 'package:flutter/cupertino.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
+import 'package:dss_base_flutter/util/font_weiget_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/res/app_colors.dart';
 
-import '../util/font_weiget_util.dart';
-import 'basis/container_widget.dart';
-import 'basis/image_widget.dart';
-import 'basis/text_widget.dart';
-import 'image_back.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  AppBarWidget({
+  const AppBarWidget({
     super.key,
     required this.title,
     this.isShowBack = true,
     this.isBlackBack = true,
     // 标题字体样式
-    this.titleColor = AppColors.mainText,
+    this.titleColor = CommonColors.mainText,
     this.titleFontSize = 18,
     this.titleFontWeight = FontWeightUtil.pingFangSCSemibold,
     // 标题及状态栏颜色

@@ -1,11 +1,8 @@
+import 'package:dss_base_flutter/model/function_ext.dart';
+import 'package:dss_base_flutter/net/base_entity.dart';
+import 'package:dss_base_flutter/net/http_util.dart';
+import 'package:dss_base_flutter/widgets/base/state_holder.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:youliao/dss_library/net/base_entity.dart';
-import 'package:youliao/dss_library/widgets/base/state_holder.dart';
-
-import '../../net/http_util.dart';
-
-typedef ValueFunction<T> = T Function(dynamic data);
-typedef ValueFunction2<T,E> = T Function(E data);
 
 abstract class BaseViewModel {
   ValueNotifier<LoadingDialogState> state =
@@ -25,7 +22,7 @@ abstract class BaseViewModel {
   void launch<T>({
     bool isShowLoadingDialog = true,
     required Future<BaseEntity> future,
-    ValueFunction<T>? convert,
+    InputDynamicReturnValueFunction<T>? convert,
     required NetSuccessCallbackT<T> onSuccess,
     required NetFailureCallback onFailure,
     Function? onComplete,

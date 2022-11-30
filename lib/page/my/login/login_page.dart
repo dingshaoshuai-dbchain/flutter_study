@@ -4,16 +4,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/util/navigator_util.dart';
-import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:youliao/page/my/login/password_login_page.dart';
 import 'package:youliao/page/my/login/phone_login_page.dart';
 import 'package:youliao/res/app_colors.dart';
 
-import '../../../dss_library/util/toast_util.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

@@ -1,15 +1,8 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/app_bar_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
-import 'package:youliao/dss_library/widgets/basis/image_widget.dart';
 import 'package:youliao/util/font_family_util.dart';
 
-import '../../../../dss_library/widgets/basis/text_widget.dart';
-import '../../../../dss_library/widgets/gaps.dart';
-import '../../../dss_library/util/font_weiget_util.dart';
-import '../../../dss_library/util/toast_util.dart';
-import '../../../dss_library/widgets/basis/text_compose_widget.dart';
 import '../../../res/app_colors.dart';
 import 'sign/sign_item.dart';
 import 'sign/sign_item7.dart';

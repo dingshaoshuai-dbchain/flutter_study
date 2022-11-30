@@ -1,16 +1,13 @@
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:youliao/dss_library/widgets/gaps.dart';
 import 'package:youliao/page/match/list/basketball_match_list_page.dart';
 import 'package:youliao/page/match/list/football_match_list_page.dart';
 import 'package:youliao/page/match/list/hot_match_list_page.dart';
 
-import '../../dss_library/util/font_weiget_util.dart';
-import '../../dss_library/util/log_utils.dart';
-import '../../dss_library/widgets/basis/container_widget.dart';
 import '../../res/app_colors.dart';
 
 class MatchIndexPage extends StatefulWidget {

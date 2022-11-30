@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youliao/dss_library/widgets/basis/container_widget.dart';
+import 'package:dss_base_flutter/dss_base_flutter.dart';
 
 class TestNestedScrollPage extends StatelessWidget {
   const TestNestedScrollPage({super.key});
