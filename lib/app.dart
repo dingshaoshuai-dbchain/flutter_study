@@ -2,6 +2,7 @@ import 'package:dss_base_flutter/init_sum.dart';
 import 'package:flutter/material.dart';
 import 'package:youliao/app_init/mode/http_init.dart';
 import 'package:youliao/app_init/mode/piecemeal_init.dart';
+import 'package:youliao/app_init/mode/refresh_init.dart';
 import 'package:youliao/app_init/mode/route_init.dart';
 import 'package:youliao/app_init/widget/main_init.dart';
 import 'package:youliao/app_init/widget/screen_init.dart';
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
       RouteInit(),
       // 网络初始化
       HttpInit(),
+      // 下拉刷新初始化
+      RefreshInit(),
     ];
     for (var element in list) {
       element.init();

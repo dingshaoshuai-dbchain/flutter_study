@@ -41,6 +41,8 @@ dependencies:
   flukit:
   # 屏幕适配 https://github:com/OpenFlutter/flutter_screenutil
   flutter_screenutil: ^5.0.0
+  # 下拉刷新 https://github.com/xuelongqy/flutter_easy_refresh
+  easy_refresh: ^3.0.5
 
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
   cached_network_image: ^3.2.1
