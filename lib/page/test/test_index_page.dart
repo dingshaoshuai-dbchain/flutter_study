@@ -49,6 +49,9 @@ class _TestIndexPageState extends BaseState<TestIndexPage, _TestIndexPageViewMod
           _buildPageButton(context, '下拉刷新 测试', () {
             NavigatorUtil.push(context, TestRouter.testListRefresh);
           }),
+          _buildPageButton(context, '下拉刷新2 测试', () {
+            NavigatorUtil.push(context, TestRouter.testListRefresh2);
+          }),
         ],
       ),
     );
