@@ -148,7 +148,7 @@ class _RecommendExpertWidgetState extends BaseDataWidgetState<RecommendExpertWid
                   borderSide: BorderSide(
                       color: Colors.white,
                       width: 1.w,
-                      strokeAlign: StrokeAlign.outside),
+                      /*strokeAlign: StrokeAlign.outside*/),
                   backgroundColor: AppColors.main,
                 ),
               )
